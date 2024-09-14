@@ -1,6 +1,5 @@
 package utils;
 
-import com.github.javafaker.Faker;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -10,7 +9,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import static utils.PropertiesFileManager.*;
+import static utils.PropertiesManager.*;
 
 public class Waits {
 

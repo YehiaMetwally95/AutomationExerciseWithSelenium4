@@ -2,7 +2,10 @@ package utils;
 
 import org.testng.*;
 
+import java.io.File;
 import java.io.IOException;
+
+import static utils.DeleteDirectoryFiles.deleteFiles;
 
 public class TestNGListners implements ITestListener , IInvokedMethodListener , ISuiteListener {
     String propertiesFilePath = "src/main/resources/Configurations.properties";
@@ -22,12 +25,19 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
     }
 
     public void onStart(ITestContext context) {
-        PropertiesFileManager.filePath = propertiesFilePath;
+        //Load Properties File
+        PropertiesManager.filePath = propertiesFilePath;
         try {
-            PropertiesFileManager.loadPropertiesIntoSystem();
+            PropertiesManager.loadPropertiesIntoSystem();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        //Clear Old Files from Screenshots & Allure Results
+        File file1 = new File("src/test/resources/Screenshots");
+        File file2 = new File("allure-results");
+        deleteFiles(file1);
+        deleteFiles(file2);
     }
 
     public void onFinish(ITestContext context) {
