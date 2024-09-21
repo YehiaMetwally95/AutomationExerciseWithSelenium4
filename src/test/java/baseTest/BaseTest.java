@@ -3,6 +3,7 @@ package baseTest;
 import org.openqa.selenium.*;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import utils.CustomSoftAssert;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,6 +31,9 @@ public class BaseTest {
 
         //Perform actions on Window
         navigateToURL(driver,getPropertiesValue("baseUrl"));
+
+        //Set the CustomSoftAssert Class with the driver
+        CustomSoftAssert.softAssertDriver = driver;
     }
 
     @AfterMethod
@@ -43,9 +47,6 @@ public class BaseTest {
 
     @AfterMethod (dependsOnMethods = "getScreenshots")
     public void tearDownBrowser(){
-        //Delete All Cookies
-        deleteAllCookies(driver);
-
         //Close Browser after every test
         closeCurrentWindow(driver);
     }

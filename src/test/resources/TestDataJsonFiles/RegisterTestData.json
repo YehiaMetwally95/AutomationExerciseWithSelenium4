@@ -1,0 +1,27 @@
+{
+  "NewUser1": {
+    "DayOfBirth": "9",
+    "Company": "Oberbrunner, Bailey and Langworth",
+    "Email": "Test5540734@gmail.com",
+    "FirstName": "Brendan",
+    "ZipCode": "72993",
+    "Address2": "173 Shields Village, Alanabury, VA 07122-7225",
+    "Title": "Mrs",
+    "Address1": "Suite 234 44743 Schumm Orchard, Blockberg, ID 28383-7515",
+    "City": "South Dominic",
+    "Name": "Test5540728",
+    "MobileNumber": "5541964",
+    "YearOfBirth": "1941",
+    "State": "Jerrelltown",
+    "MonthOfBirth": "July",
+    "Country": "India",
+    "LastName": "Fredda",
+    "Password": "Test@%^5540739"
+  },
+
+  "Messages": [
+    {
+      "DuplicatedEmail": "Email Address already exist!"
+    }
+  ]
+}

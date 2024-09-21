@@ -1,0 +1,98 @@
+package pages;
+
+import io.qameta.allure.Step;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import utils.CustomSoftAssert;
+
+import java.io.IOException;
+
+public class PaymentPage extends HomePage{
+    //Variables
+
+    //Locators
+    By cardNameText = By.name("name_on_card");
+    By cardNumberText = By.name("card_number");
+    By cardCVCText = By.name("cvc");
+    By cardExpirationMonthText = By.name("expiry_month");
+    By cartExpirationYearText = By.name("expiry_year");
+    By confirmOrderButton = By.id("submit");
+    By successMessageLocator = By.cssSelector("#success_message .alert");
+
+    //Constructor
+    public PaymentPage(WebDriver driver) {
+        super(driver);
+    }
+
+    //Actions
+    @Step("Perform Payment")
+    public PaymentDonePage performPayment(String name,String number,String cvc,String month,String year) throws IOException {
+        enterCardName(name).
+                enterCardNumber(number).
+                enterCardCVC(cvc).
+                enterCardExpirationMonth(month).
+                enterCardExpirationYear(year).
+                clickOnConfirmOrderButton();
+        return new PaymentDonePage(driver);
+    }
+
+    //Validations
+    @Step("Verify Payment Page is Opened")
+    public PaymentPage verifyPaymentPageIsOpened(String pageTitle) throws IOException {
+        verifyPaymentPageTitle(pageTitle);
+        return this;
+    }
+
+    @Step("Assert Payment Success Massage")
+    public PaymentPage assertPaymentSuccessMassage(String message) throws IOException {
+        Assert.assertEquals(
+                bot.readText(successMessageLocator)
+                ,message
+        );
+        return this;
+    }
+
+    //Private Methods
+    @Step("Enter Card Name")
+    private PaymentPage enterCardName(String name) throws IOException {
+        bot.type(cardNameText,name);
+        return this;
+    }
+
+    @Step("Enter Card Number")
+    private PaymentPage enterCardNumber(String number) throws IOException {
+        bot.type(cardNumberText,number);
+        return this;
+    }
+
+    @Step("Enter Card CVC")
+    private PaymentPage enterCardCVC(String cvc) throws IOException {
+        bot.type(cardCVCText,cvc);
+        return this;
+    }
+
+    @Step("Enter Card Expiration Month")
+    private PaymentPage enterCardExpirationMonth(String month) throws IOException {
+        bot.type(cardExpirationMonthText,month);
+        return this;
+    }
+
+    @Step("Enter Card Expiration Year")
+    private PaymentPage enterCardExpirationYear(String year) throws IOException {
+        bot.type(cartExpirationYearText,year);
+        return this;
+    }
+
+    @Step("Click on Confirm Order Button")
+    private PaymentPage clickOnConfirmOrderButton() throws IOException {
+        bot.press(confirmOrderButton);
+        return this;
+    }
+
+    @Step("Verify Payment Page Title")
+    private PaymentPage verifyPaymentPageTitle(String title) throws IOException {
+        CustomSoftAssert.softAssert.assertTrue(bot.getPageTitle().contains(title));
+        return this;
+    }
+}

@@ -69,14 +69,14 @@ public class Screenshot {
         }
     }
 
-    public static void captureSoftFailure(AppiumDriver driver, IAssert<?> assertCommand) throws IOException, InterruptedException {
+    public static void captureSoftFailure(WebDriver driver, IAssert<?> assertCommand) throws IOException, InterruptedException {
 
         File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         File destination = new File("src/test/resources/Screenshots/SoftAssertionFailures/"+ assertCommand.getExpected() +".png");
         FileHandler.copy(source, destination);
 
         var screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-        Allure.addAttachment((String) assertCommand.getExpected(),new ByteArrayInputStream(screenshot));
+        Allure.addAttachment(String.valueOf(assertCommand.getExpected()),new ByteArrayInputStream(screenshot));
     }
 
     public static void takeElementScreenshot(WebDriver driver, By locator , String targetPath ,

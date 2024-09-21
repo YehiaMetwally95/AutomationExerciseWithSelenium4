@@ -5,6 +5,7 @@ import org.testng.*;
 import java.io.File;
 import java.io.IOException;
 
+import static utils.CustomSoftAssert.softAssert;
 import static utils.DeleteDirectoryFiles.deleteFiles;
 
 public class TestNGListners implements ITestListener , IInvokedMethodListener , ISuiteListener {
@@ -41,7 +42,7 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
     }
 
     public void onFinish(ITestContext context) {
-        // not implemented
+        softAssert.assertAll("The Soft Assertion Errors are listed below: ");
     }
 
     public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {

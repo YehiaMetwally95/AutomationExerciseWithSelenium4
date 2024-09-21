@@ -1,4 +1,4 @@
-import static utils.WebActionBot.*;
+import static utils.WebElementsActionBot.*;
 import static utils.AlertsActions.*;
 import static utils.BrowserFactory.*;
 import static utils.CookiesManager.*;
