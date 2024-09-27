@@ -5,6 +5,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.WheelInput;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -44,14 +45,23 @@ public class WebElementsActionBot {
     public WebElementsActionBot press(By locator) throws IOException {
         Waits.getFluentWait(driver).until(f -> {
             System.out.println("Clicking On " + driver.findElement(locator).getText());
-            try {
+            /*try {
                 takeElementScreenshot(driver,locator,pressedButtonsPath,generateUniqueInteger());
             } catch (IOException e) {
                 throw new RuntimeException(e);
-            }
+            }*/
             driver.findElement(locator).click();
             return true;
          });
+        return this;
+    }
+
+    public WebElementsActionBot press(WebElement element) throws IOException {
+        Waits.getFluentWait(driver).until(f -> {
+            System.out.println("Clicking On " + element.getText());
+            element.click();
+            return true;
+        });
         return this;
     }
 

@@ -45,7 +45,7 @@ public class PaymentDonePage extends HomePage {
 
     @Step("Assert Order Confirm Message")
     public PaymentDonePage assertOrderConfirmMessage(String message) throws IOException {
-        Assert.assertTrue(bot.readText(orderConfirmMessageLocator).contains(message));
+        Assert.assertEquals(bot.readText(orderConfirmMessageLocator),message);
         return this;
     }
 

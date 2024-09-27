@@ -43,8 +43,8 @@ public class ProductsPage extends HomePage{
         return this;
     }
 
-    @Step("View Product Details Page")
-    public ProductDetailsPage viewProductDetailsPage(String productName) throws IOException {
+    @Step("Open Product Details Page")
+    public ProductDetailsPage openProductDetailsPage(String productName) throws IOException {
         setLocatorsByProductName(productName);
         bot.press(viewProductButtonLocator);
         return new ProductDetailsPage(driver);
@@ -77,7 +77,7 @@ public class ProductsPage extends HomePage{
     }
 
     @Step("Verify Searched Products")
-    public ProductsPage verifySearchedProducts(String productName) {
+    public ProductsPage verifySearchedProduct(String productName) {
         setLocatorsByProductName(productName);
         CustomSoftAssert.softAssert.assertTrue(bot.isElementDisplayed(productNameLocator));
         return this;

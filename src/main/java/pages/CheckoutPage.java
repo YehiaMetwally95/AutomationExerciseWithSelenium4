@@ -18,16 +18,16 @@ public class CheckoutPage extends HomePage{
     By productPriceLocator;
     By productQuantityLocator;
     By productTotalPriceLocator;
-    By totalPriceTextLocator = By.xpath("//b[contains(.,'Total')]");
-    By totalPriceLocator = RelativeLocator.with(By.tagName("p")).toRightOf(totalPriceTextLocator);
-    By deliveryAddressBox = By.id("address_delivery");
-    By fullNameLocator = RelativeLocator.with(By.tagName("li")).below(deliveryAddressBox).below(deliveryAddressBox);
-    By companyLocator = RelativeLocator.with(By.tagName("li")).below(fullNameLocator);
-    By address1Locator = RelativeLocator.with(By.tagName("li")).below(companyLocator);
-    By address2Locator = RelativeLocator.with(By.tagName("li")).below(address1Locator);
-    By stateCityLocator = RelativeLocator.with(By.tagName("li")).below(address2Locator);
-    By countryLocator = RelativeLocator.with(By.tagName("li")).below(stateCityLocator);
-    By mobileNumberLocator = RelativeLocator.with(By.tagName("li")).below(countryLocator);
+    By totalPriceText = By.xpath("//b[.='Total Amount']");
+    By totalPriceLocator = RelativeLocator.with(By.className("cart_total_price")).toRightOf(totalPriceText);
+    By addressTitleLocator = By.className("address_title");
+    By fullNameLocator = RelativeLocator.with(By.className("address_firstname")).below(addressTitleLocator);
+    By companyLocator = RelativeLocator.with(By.className("address_address1")).below(addressTitleLocator);
+    By address1Locator = By.xpath("(//ul[@id='address_delivery']/li[contains(@class,'address_address1')])[2]");
+    By address2Locator = By.xpath("(//ul[@id='address_delivery']/li[contains(@class,'address_address1')])[3]");
+    By stateCityLocator = RelativeLocator.with(By.className("address_city")).below(addressTitleLocator);
+    By countryLocator = RelativeLocator.with(By.className("address_country_name")).below(addressTitleLocator);
+    By mobileNumberLocator = RelativeLocator.with(By.className("address_phone")).below(addressTitleLocator);
     By productPriceLocator2 = By.xpath("//tr[contains(@id,'product')]/descendant::p[@class='cart_total_price']");
 
     By placeOrderButton = By.partialLinkText("Order");
@@ -40,10 +40,10 @@ public class CheckoutPage extends HomePage{
     //Actions
     private void setLocatorsByProductName(String productName)
     {
-        By productNameLocator = By.partialLinkText(productName);
-        By productPriceLocator = RelativeLocator.with(By.tagName("p")).toRightOf(productNameLocator);
-        By productQuantityLocator = RelativeLocator.with(By.tagName("button")).toRightOf(productPriceLocator);
-        By productTotalPriceLocator = RelativeLocator.with(By.tagName("p")).toRightOf(productQuantityLocator);
+        productNameLocator = By.partialLinkText(productName);
+        productPriceLocator = RelativeLocator.with(By.className("cart_price")).toRightOf(productNameLocator);
+        productQuantityLocator = RelativeLocator.with(By.tagName("button")).toRightOf(productPriceLocator);
+        productTotalPriceLocator = RelativeLocator.with(By.className("cart_total_price")).toRightOf(productQuantityLocator);
     }
 
     @Step("Place Order")
@@ -60,16 +60,16 @@ public class CheckoutPage extends HomePage{
     }
 
     @Step("Verify All Product Details")
-    public CheckoutPage verifyAllProductDetails(String productName,String price,String quantity) throws IOException {
+    public CheckoutPage verifyAllProductDetails(String productName,String price,String quantity,String totalPrice) throws IOException {
         verifyProductName(productName).
                 verifyProductPrice(productName,price).
                 verifyProductQuantity(productName,quantity).
-                verifyProductTotalPrice(productName);
+                verifyProductTotalPrice(productName,totalPrice);
         return this;
     }
 
-    @Step("Verify Total Price of Products")
-    public CheckoutPage verifyTotalPriceOfProducts() throws IOException {
+    @Step("Verify Total Price of All Products")
+    public CheckoutPage verifyTotalPriceOfAllProducts() throws IOException {
         int total = 0;
         String totalPrice;
         List<WebElement> elements = bot.getAllMatchedElements(productPriceLocator2);
@@ -78,6 +78,7 @@ public class CheckoutPage extends HomePage{
         }
         totalPrice = Integer.toString(total);
         CustomSoftAssert.softAssert.assertTrue(bot.readText(totalPriceLocator).contains(totalPrice));
+        System.out.println(totalPrice);
         return this;
     }
 
@@ -87,14 +88,14 @@ public class CheckoutPage extends HomePage{
                                              String zipCode,String country,String mobileNumber) throws IOException {
         CustomSoftAssert.softAssert.assertTrue(bot.readText(fullNameLocator).contains(firstName));
         CustomSoftAssert.softAssert.assertTrue(bot.readText(fullNameLocator).contains(lastName));
-        CustomSoftAssert.softAssert.assertTrue(bot.readText(companyLocator).contains(company));
-        CustomSoftAssert.softAssert.assertTrue(bot.readText(address1Locator).contains(address1));
-        CustomSoftAssert.softAssert.assertTrue(bot.readText(address2Locator).contains(address2));
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(companyLocator),company);
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(address1Locator),address1);
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(address2Locator),address2);
         CustomSoftAssert.softAssert.assertTrue(bot.readText(stateCityLocator).contains(state));
         CustomSoftAssert.softAssert.assertTrue(bot.readText(stateCityLocator).contains(city));
         CustomSoftAssert.softAssert.assertTrue(bot.readText(stateCityLocator).contains(zipCode));
-        CustomSoftAssert.softAssert.assertTrue(bot.readText(countryLocator).contains(country));
-        CustomSoftAssert.softAssert.assertTrue(bot.readText(mobileNumberLocator).contains(mobileNumber));
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(countryLocator),country);
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(mobileNumberLocator),mobileNumber);
         return this;
     }
 
@@ -147,11 +148,8 @@ public class CheckoutPage extends HomePage{
     }
 
     @Step("Verify Product Total Price")
-    private CheckoutPage verifyProductTotalPrice(String productName) throws IOException {
+    private CheckoutPage verifyProductTotalPrice(String productName,String totalPrice) throws IOException {
         setLocatorsByProductName(productName);
-        int price = Integer.parseInt(bot.readText(productPriceLocator).split("Rs. ",2)[1]);
-        int quantity = Integer.parseInt(bot.readText(productQuantityLocator));
-        String totalPrice = Integer.toString(price*quantity);
         CustomSoftAssert.softAssert.assertTrue(
                 bot.readText(productTotalPriceLocator).contains(totalPrice)
         );

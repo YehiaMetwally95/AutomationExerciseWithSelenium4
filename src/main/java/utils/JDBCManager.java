@@ -90,7 +90,8 @@ public class JDBCManager {
         JSONObject object2 = new JsonManager(jsonFilePath).readJsonFile();
 
         //Combine the two Json objects into one Object then Write it to the JSON File
-        setJsonFileFromMultipleJsonObjects(new JSONObject[]{object1, object2},jsonFilePath);
+        object2.putAll(object1);
+        createJsonFile(object2,jsonFilePath);
     }
 
     //Table of Multiple Rows and Multiple Nested Keys
@@ -103,7 +104,8 @@ public class JDBCManager {
         JSONObject object2 = new JsonManager(jsonFilePath).readJsonFile();
 
         //Combine the two Json objects into one Object then Write it to the JSON File
-        setJsonFileFromMultipleJsonObjects(new JSONObject[]{object1, object2},jsonFilePath);
+        object2.putAll(object1);
+        createJsonFile(object2,jsonFilePath);
     }
 
     //**********************************************************************************************************************//

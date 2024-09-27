@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -42,19 +43,57 @@ public class JsonManager {
             if (arrofSTG.length==3) {
                 object = ((JSONObject) object).get(arrofSTG[2]);
             }
-            return (String) object;
+            return object.toString();
         }
 
         else
         {
             Object object = readJsonFile().get(arrofSTG[0]);
             if (arrofSTG.length==2) {
+
+                object = ((JSONObject) object).get(arrofSTG[1]);
+            }
+            else if (arrofSTG.length==3) {
+
+                object = ((JSONObject) object).get(arrofSTG[2]);
+            }
+            return object.toString();
+        }
+    }
+
+    //Method to Get JsonData by jsonPath
+    public Object getDataAsObject(String jsonPath) throws IOException, ParseException {
+        String[] arrofSTG = jsonPath.split("\\.");
+        if (arrofSTG[0].contains("["))
+        {
+            String[] arrofSTG_2 = (arrofSTG[0]).split("\\[");
+            String [] arrofSTG_3 = (arrofSTG_2[1]).split("]");
+            int index = Integer.parseInt(arrofSTG_3[0]);
+
+            JSONArray array = (JSONArray) readJsonFile().get(arrofSTG_2[0]);
+            Object object = null;
+            if (arrofSTG.length==2) {
+                object = (array).get(index);
                 object = ((JSONObject) object).get(arrofSTG[1]);
             }
             if (arrofSTG.length==3) {
                 object = ((JSONObject) object).get(arrofSTG[2]);
             }
-            return (String) object;
+            return object;
+        }
+
+        else
+        {
+            Object object = readJsonFile().get(arrofSTG[0]);
+            if (arrofSTG.length==2) {
+
+                object = ((JSONObject) object).get(arrofSTG[1]);
+            }
+            else if (arrofSTG.length==3) {
+
+                object = ((JSONObject) object).get(arrofSTG[2]);
+            }
+            return object;
         }
     }
 
@@ -109,6 +148,7 @@ public class JsonManager {
             total.putAll(arr[i]);
         }
 
+        System.out.println(total.toJSONString());
         //Write the Pretty Format of Parent JSON Array into the JSON File
         createJsonFile(total,jsonFilePath);
     }

@@ -33,7 +33,7 @@ public class AccountCreatedPage extends HomePage{
         //Private Methods
         @Step("Verify Account Created Page Title")
         private AccountCreatedPage verifyAccountCreatedPageTitle(String title) {
-        CustomSoftAssert.softAssert.assertTrue(bot.getPageTitle().contains(title));
+        CustomSoftAssert.softAssert.assertEquals(bot.getPageTitle(),title);
         return this;
         }
 

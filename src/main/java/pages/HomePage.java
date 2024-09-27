@@ -10,6 +10,9 @@ import utils.WebElementsActionBot;
 
 import java.io.IOException;
 
+import static utils.PropertiesManager.getPropertiesValue;
+import static utils.WindowManager.navigateToURL;
+
 public class HomePage {
     //Variables
     WebDriver driver;
@@ -86,6 +89,13 @@ public class HomePage {
                 type(subscriptionText,email).
                 press(subscriptionButton);
         return this;
+    }
+
+    @Step("Open Product Details Page by URL")
+    public ProductDetailsPage openProductDetailsPageByUrl(int productId) throws IOException {
+      String url = getPropertiesValue("baseUrl") + "product_details/" + productId;
+        navigateToURL(driver,url);
+        return new ProductDetailsPage(driver);
     }
 
     //Validations

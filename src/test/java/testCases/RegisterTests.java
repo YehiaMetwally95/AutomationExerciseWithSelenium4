@@ -2,12 +2,9 @@ package testCases;
 
 import baseTest.BaseTest;
 import io.qameta.allure.*;
+import objectModelsForAPIs.RegistrationRequestModel;
 import org.json.simple.parser.ParseException;
-import org.junit.After;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.HomePage;
 import pages.RegisterPage;
 import utils.JDBCManager;
@@ -17,21 +14,19 @@ import static utils.RandomDataGenerator.generateUniqueEmail;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.List;
 
 
 @Epic("Automation Exercise Features")
 @Feature("User Register")
-@Story("Verify New User Register Through GUI")
+@Story("Verify New User Register")
 @Listeners(utils.TestNGListners.class)
 public class RegisterTests extends BaseTest {
     //Variables
     String jsonFilePath = "src/test/resources/TestDataJsonFiles/RegisterTestData.json";
     JsonManager json;
 
-    //Test Data Preparation
-    @BeforeClass
+    //Test Data Preparation as setting registration inputs with random data
+    @BeforeMethod
     public void prepareTestData() throws IOException, ParseException {
         json = new JsonManager(jsonFilePath);
         json
@@ -54,18 +49,8 @@ public class RegisterTests extends BaseTest {
                 .setData("NewUser1.MobileNumber",generateUniqueInteger());
     }
 
-    @AfterClass
-    public void updateDatabaseWithNewData() throws IOException, SQLException, ParseException {
-        String name = json.getData("NewUser1.Name");
-        String email = json.getData("NewUser1.Email");
-        String password = json.getData("NewUser1.Password");
-        String query = "INSERT INTO automationexercise.users VALUES ('" +name+ "','" +email+ "','" +password+ "')";
-
-        JDBCManager.insertNewRecordToDatabase(query);
-    }
-
     //Test Scripts
-    @Description("Register New User")
+    @Description("Register New User On GUI")
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void registerNewUserThroughGUI() throws IOException, ParseException {
@@ -87,7 +72,7 @@ public class RegisterTests extends BaseTest {
                 .assertUserIsLoggedIn(json.getData("NewUser1.Name"));
     }
 
-    @Description("Register Existing User")
+    @Description("Register Existing User On GUI")
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void registerExistingUserThroughGUI() throws IOException, ParseException {
@@ -106,5 +91,48 @@ public class RegisterTests extends BaseTest {
                 .logout()
                 .signupWithExistingUser(json.getData("NewUser1.Name"),json.getData("NewUser1.Email"))
                 .assertIncorrectSignupMassage(json.getData("Messages[0].DuplicatedEmail"));
+    }
+
+    @Description("Register New User On API")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test
+    public void registerNewUserThroughAPI() throws IOException, ParseException {
+        var registerRequestObject = new RegistrationRequestModel()
+                .prepareRegistrationRequestBody()
+                .sendRequestRegisterNewUser()
+                .validateCodeFromResponse(201)
+                .validateMassageFromResponse("User created!")
+                .getRequestPojoObject();
+
+        new HomePage(driver)
+                .verifyHomePageIsOpened()
+                .openLoginSignupPage()
+                .verifyLoginSignupPageIsOpened()
+                .loginWithValidUser(registerRequestObject.getEmail(), registerRequestObject.getPassword())
+                .assertUserIsLoggedIn(registerRequestObject.getName());
+    }
+
+    @AfterMethod
+    public void updateDatabaseWithNewData() throws IOException, SQLException, ParseException {
+        String title = json.getData("NewUser1.Title");
+        String name = json.getData("NewUser1.Name");
+        String email = json.getData("NewUser1.Email");
+        String password = json.getData("NewUser1.Password");
+        String dayOfBirth = json.getData("NewUser1.DayOfBirth");
+        String monthOfBirth = json.getData("NewUser1.MonthOfBirth");
+        String yearOfBirth = json.getData("NewUser1.YearOfBirth");
+        String firstName = json.getData("NewUser1.FirstName");
+        String LastName = json.getData("NewUser1.LastName");
+        String company = json.getData("NewUser1.Company");
+        String address1 = json.getData("NewUser1.Address1");
+        String address2 = json.getData("NewUser1.Address2");
+        String country = json.getData("NewUser1.Country");
+        String state = json.getData("NewUser1.State");
+        String city = json.getData("NewUser1.City");
+        String zipCode = json.getData("NewUser1.ZipCode");
+        String mobileNumber = json.getData("NewUser1.MobileNumber");
+
+        String query = "INSERT INTO automationexercise.users VALUES ('"+title+"','" +name+ "','" +email+ "','" +password+ "','"+dayOfBirth+"','"+monthOfBirth+"','"+yearOfBirth+"','"+firstName+"','"+LastName+"','"+company+"','"+address1+"','"+address2+"','"+country+"','"+state+"','"+city+"','"+zipCode+"','"+mobileNumber+"')";
+        JDBCManager.insertNewRecordToDatabase(query);
     }
 }

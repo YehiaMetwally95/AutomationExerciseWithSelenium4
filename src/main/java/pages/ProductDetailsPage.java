@@ -55,7 +55,7 @@ public class ProductDetailsPage extends HomePage {
 
     //Validations
     @Step("Verify All Product Details")
-    private ProductDetailsPage verifyAllProductDetails(String name,String price,String availability,
+    public ProductDetailsPage verifyAllProductDetails(String name,String price,String availability,
                                                        String condition,String brand,String category,
                                                        String subCategory) throws IOException {
         verifyProductName(name).

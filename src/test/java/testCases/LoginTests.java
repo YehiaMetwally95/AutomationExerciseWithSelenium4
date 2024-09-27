@@ -10,9 +10,12 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import utils.JDBCManager;
 import utils.JsonManager;
+import utils.SessionManager;
 
 import java.io.IOException;
 import java.sql.SQLException;
+
+import static utils.PropertiesManager.getPropertiesValue;
 
 @Epic("Automation Exercise Features")
 @Feature("User Login")
@@ -21,12 +24,12 @@ import java.sql.SQLException;
 public class LoginTests extends BaseTest {
     //Variables
     JsonManager json;
-    String jsonFilePath = "src/test/resources/TestDataJsonFiles/LoginTestData.json";
+    String jsonFilePathForTestData = "src/test/resources/TestDataJsonFiles/LoginTestData.json";
 
-    //Test Data Preparation
+    //Test Data Preparation as Getting Users from Database
     @BeforeClass
     public void prepareTestData() throws IOException, ParseException, SQLException {
-        json = new JsonManager(jsonFilePath);
+        json = new JsonManager(jsonFilePathForTestData);
         String dbQuery = "SELECT Username,Email,Password FROM automationexercise.users Order by Username Asc;";
 
         //JsonKeys shall be filled by the same order of table columns of database query
@@ -36,7 +39,7 @@ public class LoginTests extends BaseTest {
         //In Case of writing JsonMainKey for every record, Each Record will represent an object value for the corresponding JsonMainKey,In this case JsonMainKeys shall be filled by the same order of table rows on database
         String jsonMainKeyForUsers = "Users";
 
-        JDBCManager.setJsonFileFromDBForNestedArrayOfJsonObjects(dbQuery,jsonFilePath,jsonKeysForUsers,jsonMainKeyForUsers);
+        JDBCManager.setJsonFileFromDBForNestedArrayOfJsonObjects(dbQuery, jsonFilePathForTestData,jsonKeysForUsers,jsonMainKeyForUsers);
     }
 
     //Test Scripts
@@ -45,12 +48,15 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginWithExistingUserThroughGUI() throws IOException, ParseException {
         new HomePage(driver)
-                .openHomePage()
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
                 .verifyLoginSignupPageIsOpened()
                 .loginWithValidUser(json.getData("Users[0].Email"),json.getData("Users[0].Password"))
                 .assertUserIsLoggedIn(json.getData("Users[0].Username"));
+
+        //Store Cookies into Json File for the next tests to bypass login
+         new SessionManager(driver,jsonFilePathForSessionData)
+                 .storeSessionCookies(json.getData("Users[0].Username"));
     }
 
     @Description("Login With Non Existing User")
@@ -58,7 +64,6 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginWithNonExistingUserThroughGUI() throws IOException, ParseException {
         new HomePage(driver)
-                .openHomePage()
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
                 .verifyLoginSignupPageIsOpened()

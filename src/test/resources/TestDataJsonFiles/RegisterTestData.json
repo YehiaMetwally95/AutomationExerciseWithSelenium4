@@ -1,24 +1,23 @@
 {
   "NewUser1": {
-    "DayOfBirth": "9",
-    "Company": "Oberbrunner, Bailey and Langworth",
-    "Email": "Test5540734@gmail.com",
-    "FirstName": "Brendan",
-    "ZipCode": "72993",
-    "Address2": "173 Shields Village, Alanabury, VA 07122-7225",
-    "Title": "Mrs",
-    "Address1": "Suite 234 44743 Schumm Orchard, Blockberg, ID 28383-7515",
-    "City": "South Dominic",
-    "Name": "Test5540728",
-    "MobileNumber": "5541964",
-    "YearOfBirth": "1941",
-    "State": "Jerrelltown",
-    "MonthOfBirth": "July",
-    "Country": "India",
-    "LastName": "Fredda",
-    "Password": "Test@%^5540739"
+    "DayOfBirth": "19",
+    "Company": "Erdman, Douglas and Bednar",
+    "Email": "Test1359121@gmail.com",
+    "FirstName": "Venice",
+    "ZipCode": "60222",
+    "Address2": "Suite 844 936 Johnson Stream, North Catherinachester, AZ 68315",
+    "Title": "Mr",
+    "Address1": "Apt. 973 7336 Reichel Curve, Demetriusburgh, NY 02395-0695",
+    "City": "New Louisamouth",
+    "Name": "Test1359119",
+    "MobileNumber": "1359367",
+    "YearOfBirth": "1956",
+    "State": "East Nicolas",
+    "MonthOfBirth": "November",
+    "Country": "Australia",
+    "LastName": "Angla",
+    "Password": "Test@%^1359123"
   },
-
   "Messages": [
     {
       "DuplicatedEmail": "Email Address already exist!"

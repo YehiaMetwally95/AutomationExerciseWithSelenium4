@@ -1,9 +1,11 @@
 package baseTest;
 
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.*;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.CustomSoftAssert;
+import utils.SessionManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,12 +22,12 @@ public class BaseTest {
 
     //Variables
     public WebDriver driver;
+    public String jsonFilePathForSessionData = "src/main/resources/SessionData.json";
 
     //Annotations
     @BeforeMethod
     //@Parameters({"BrowserType"})
-    public void setUpAndOpenBrowser()
-    {
+    public void setUpAndOpenBrowser() throws IOException, ParseException {
         //Open Browser
         driver = openBrowser();
 

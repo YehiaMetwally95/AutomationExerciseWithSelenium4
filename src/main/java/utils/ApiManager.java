@@ -1,9 +1,13 @@
 package utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import io.restassured.RestAssured;
 import io.restassured.http.Header;
+import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
@@ -17,6 +21,7 @@ import static utils.JsonManager.convertJsonStringToMap;
 public class ApiManager {
 
     public static Response MakeRequest(String requestType,String endpoint,Object requestBody,String contentType) throws JsonProcessingException {
+        RestAssured.registerParser("text/html", Parser.JSON);
         RequestSpecification request = RestAssured.given();
         Response response = null;
 
@@ -29,9 +34,11 @@ public class ApiManager {
 
             else if (contentType.equalsIgnoreCase("application/x-www-form-urlencoded"))
             {
-                JsonMapper mapper = new JsonMapper();
-                String jsonString = mapper.writeValueAsString(requestBody);
-                Map map = convertJsonStringToMap(jsonString);
+                //convert requestObject to Map
+                Gson gson = new Gson();
+                String json = gson.toJson(requestBody);
+                Map<String, Object> map = gson.fromJson(json, new TypeToken<Map<String, Object>>() {}.getType());
+
                 request = request.contentType(contentType + "; charset=utf-8").formParams(map);
             }
         }
@@ -56,6 +63,7 @@ public class ApiManager {
 
     public static Response MakeAuthRequest(String requestType,String endpoint,Object requestBody,String contentType,
                                            String authType,String authUser,String authPass, String token) throws JsonProcessingException {
+        RestAssured.registerParser("text/html", Parser.JSON);
         RequestSpecification request = RestAssured.given();
         Response response = null;
 
@@ -68,9 +76,10 @@ public class ApiManager {
 
             else if (contentType.equalsIgnoreCase("application/x-www-form-urlencoded"))
             {
-                JsonMapper mapper = new JsonMapper();
-                String jsonString = mapper.writeValueAsString(requestBody);
-                Map map = convertJsonStringToMap(jsonString);
+                //convert requestObject to Map
+                Gson gson = new Gson();
+                String json = gson.toJson(requestBody);
+                Map<String, Object> map = gson.fromJson(json, new TypeToken<Map<String, Object>>() {}.getType());
                 request = request.contentType(contentType + "; charset=utf-8").formParams(map);
             }
         }

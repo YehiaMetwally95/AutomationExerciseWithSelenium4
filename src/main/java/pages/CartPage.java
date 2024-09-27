@@ -3,11 +3,14 @@ package pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import utils.CustomSoftAssert;
 import utils.WebElementsActionBot;
 
 import java.io.IOException;
+import java.util.List;
 
 public class CartPage extends HomePage {
     //Variables
@@ -19,6 +22,7 @@ public class CartPage extends HomePage {
     By productQuantityLocator;
     By productTotalPriceLocator;
     By removeProductFromCartButton;
+    By removeAllProductsFromCartButton = By.className("cart_quantity_delete");
 
     //Constructor
     public CartPage(WebDriver driver) {
@@ -28,11 +32,11 @@ public class CartPage extends HomePage {
     //Actions
     private void setLocatorsByProductName(String productName)
     {
-        By productNameLocator = By.partialLinkText(productName);
-        By productPriceLocator = RelativeLocator.with(By.tagName("p")).toRightOf(productNameLocator);
-        By productQuantityLocator = RelativeLocator.with(By.tagName("button")).toRightOf(productPriceLocator);
-        By productTotalPriceLocator = RelativeLocator.with(By.tagName("p")).toRightOf(productQuantityLocator);
-        By removeProductFromCartButton = RelativeLocator.with(By.tagName("a")).toRightOf(productTotalPriceLocator);
+        productNameLocator = By.xpath("//td[contains(.,'"+productName+"')]");
+        productPriceLocator = RelativeLocator.with(By.className("cart_price")).toRightOf(productNameLocator);
+        productQuantityLocator = RelativeLocator.with(By.tagName("button")).toRightOf(productNameLocator);
+        productTotalPriceLocator = RelativeLocator.with(By.className("cart_total_price")).toRightOf(productNameLocator);
+        removeProductFromCartButton = RelativeLocator.with(By.className("cart_quantity_delete")).toRightOf(productNameLocator);
     }
 
     @Step("Proceed to CheckOut")
@@ -48,6 +52,15 @@ public class CartPage extends HomePage {
         return this;
     }
 
+    @Step("Remove All Old Products from Cart")
+    public CartPage removeAllOldProductsFromCart() throws IOException {
+        List<WebElement> elements = bot.getAllMatchedElements(removeAllProductsFromCartButton);
+        for (WebElement element : elements) {
+            bot.press(element);
+        }
+        return this;
+    }
+
     //Validations
     @Step("Verify Cart Page Is Opened")
     public CartPage verifyCartPageIsOpened(String pageTitle) throws IOException {
@@ -56,11 +69,11 @@ public class CartPage extends HomePage {
     }
 
     @Step("Verify All Product Details")
-    public CartPage verifyAllProductDetails(String productName,String price,String quantity) throws IOException {
+    public CartPage verifyAllProductDetails(String productName,String price,String quantity,String totalPrice) throws IOException {
         verifyProductName(productName).
                 verifyProductPrice(productName,price).
                 verifyProductQuantity(productName,quantity).
-                verifyProductTotalPrice(productName);
+                verifyProductTotalPrice(productName,totalPrice);
         return this;
     }
 
@@ -91,8 +104,8 @@ public class CartPage extends HomePage {
     @Step("Verify Product Price")
     private CartPage verifyProductPrice(String productName,String productPrice) throws IOException {
         setLocatorsByProductName(productName);
-        CustomSoftAssert.softAssert.assertTrue(
-                bot.readText(productPriceLocator).contains(productPrice)
+        CustomSoftAssert.softAssert.assertEquals(
+                bot.readText(productPriceLocator),productPrice
         );
         return this;
     }
@@ -100,18 +113,15 @@ public class CartPage extends HomePage {
     @Step("Verify Product Quantity")
     private CartPage verifyProductQuantity(String productName,String productQuantity) throws IOException {
         setLocatorsByProductName(productName);
-        CustomSoftAssert.softAssert.assertTrue(
-                bot.readText(productQuantityLocator).contains(productQuantity)
+        CustomSoftAssert.softAssert.assertEquals(
+                bot.readText(productQuantityLocator),productQuantity
         );
         return this;
     }
 
     @Step("Verify Product Total Price")
-    private CartPage verifyProductTotalPrice(String productName) throws IOException {
+    private CartPage verifyProductTotalPrice(String productName,String totalPrice) throws IOException {
         setLocatorsByProductName(productName);
-        int price = Integer.parseInt(bot.readText(productPriceLocator).split("Rs. ",2)[1]);
-        int quantity = Integer.parseInt(bot.readText(productQuantityLocator));
-        String totalPrice = Integer.toString(price*quantity);
         CustomSoftAssert.softAssert.assertTrue(
                 bot.readText(productTotalPriceLocator).contains(totalPrice)
         );
@@ -120,7 +130,7 @@ public class CartPage extends HomePage {
 
     @Step("Verify Cart Page Title")
     private CartPage verifyCartPageTitle(String title) throws IOException {
-        CustomSoftAssert.softAssert.assertTrue(bot.getPageTitle().contains(title));
+        CustomSoftAssert.softAssert.assertEquals(bot.getPageTitle(),title);
         return this;
     }
 
