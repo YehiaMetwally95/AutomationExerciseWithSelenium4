@@ -31,9 +31,9 @@ public class RegistrationRequestModel {
 
     //Method to set Request Body by reading from Json File
     @Step("Prepare Registration Request Body From Json File")
-    public RegistrationRequestModel prepareRegistrationRequestBody() throws IOException, ParseException {
+    public RegistrationRequestModel prepareRegistrationRequestBody(String userJsonObject) throws IOException, ParseException {
         json = new JsonManager(jsonFilePath);
-        jsonBodyAsString = json.getData("NewUser1");
+        jsonBodyAsString = userJsonObject;
 
         mapper = new JsonMapper();
         requestObject = mapper.readValue(jsonBodyAsString, RegistrationRequestPojo.class);

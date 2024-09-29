@@ -5,11 +5,8 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.json.simple.parser.ParseException;
-import pojoClassesForAPIs.SearchProductRequestPojo;
-import pojoClassesForAPIs.SearchProductResponsePojo;
 import pojoClassesForAPIs.UserDetailsRequestPojo;
 import pojoClassesForAPIs.UserDetailsResponsePojo;
-import utils.JsonManager;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -41,7 +38,7 @@ public class UserDetailsRequestModel {
 
     //Method to Execute User Details Request
     @Step("Send Request of Get User Details")
-    public UserDetailsResponseModel sendRequestGetUserDetails() throws JsonProcessingException {
+    public UserDetailsResponseModel sendRequestOfGetUserDetails() throws JsonProcessingException {
         response =
                 GetRequest(userDetailsEndpoint,queryParam);
         jsonBodyAsString = getResponseBody(response);

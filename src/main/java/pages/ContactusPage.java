@@ -28,7 +28,7 @@ public class ContactusPage extends HomePage {
     }
 
     //Actions
-    @Step("submitContactUsRequest")
+    @Step("Submit ContactUs Request")
     public ContactusPage submitContactUsRequest(String name, String email , String subject , String message, String filepath) throws IOException {
         enterContactDetails(name,email,subject,message,filepath)
                 .clickOnSubmitButton();
@@ -59,7 +59,7 @@ public class ContactusPage extends HomePage {
                 type(emailLocator,email).
                 type(subjectLocator,subject).
                 type(messageLocator,message).
-                type(uploadFileControl,filepath);
+                type(uploadFileControl,System.getProperty("user.dir")+filepath);
         return this;
     }
 

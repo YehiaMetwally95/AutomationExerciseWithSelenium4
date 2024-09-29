@@ -19,18 +19,24 @@ public class CheckoutPage extends HomePage{
     By productQuantityLocator;
     By productTotalPriceLocator;
     By totalPriceText = By.xpath("//b[.='Total Amount']");
-    By totalPriceLocator = RelativeLocator.with(By.className("cart_total_price")).toRightOf(totalPriceText);
+    //By totalPriceLocator = RelativeLocator.with(By.className("cart_total_price")).toRightOf(totalPriceText);
+    By totalPriceLocator = By.xpath("//h4[.='Total Amount']/parent::td/following-sibling::td/p[@class='cart_total_price']");
     By addressTitleLocator = By.className("address_title");
-    By fullNameLocator = RelativeLocator.with(By.className("address_firstname")).below(addressTitleLocator);
-    By companyLocator = RelativeLocator.with(By.className("address_address1")).below(addressTitleLocator);
+    //By fullNameLocator = RelativeLocator.with(By.className("address_firstname")).below(addressTitleLocator);
+    By fullNameLocator = By.cssSelector("#address_delivery .address_firstname");
+    //By companyLocator = RelativeLocator.with(By.className("address_address1")).below(addressTitleLocator);
+    By companyLocator = By.xpath("(//ul[@id='address_delivery']/li[contains(@class,'address_address1')])[1]");
     By address1Locator = By.xpath("(//ul[@id='address_delivery']/li[contains(@class,'address_address1')])[2]");
     By address2Locator = By.xpath("(//ul[@id='address_delivery']/li[contains(@class,'address_address1')])[3]");
-    By stateCityLocator = RelativeLocator.with(By.className("address_city")).below(addressTitleLocator);
-    By countryLocator = RelativeLocator.with(By.className("address_country_name")).below(addressTitleLocator);
-    By mobileNumberLocator = RelativeLocator.with(By.className("address_phone")).below(addressTitleLocator);
+    //By stateCityLocator = RelativeLocator.with(By.className("address_city")).below(addressTitleLocator);
+    By stateCityLocator = By.cssSelector("#address_delivery .address_city");
+    //By countryLocator = RelativeLocator.with(By.className("address_country_name")).below(addressTitleLocator);
+    By countryLocator = By.cssSelector("#address_delivery .address_country_name");
+    //By mobileNumberLocator = RelativeLocator.with(By.className("address_phone")).below(addressTitleLocator);
+    By mobileNumberLocator = By.cssSelector("#address_delivery .address_phone");
     By productPriceLocator2 = By.xpath("//tr[contains(@id,'product')]/descendant::p[@class='cart_total_price']");
 
-    By placeOrderButton = By.partialLinkText("Order");
+    By placeOrderButton = By.xpath("//a[contains(@class,'check_out')]");
 
     //Constructor
     public CheckoutPage(WebDriver driver) {
@@ -40,10 +46,13 @@ public class CheckoutPage extends HomePage{
     //Actions
     private void setLocatorsByProductName(String productName)
     {
-        productNameLocator = By.partialLinkText(productName);
-        productPriceLocator = RelativeLocator.with(By.className("cart_price")).toRightOf(productNameLocator);
-        productQuantityLocator = RelativeLocator.with(By.tagName("button")).toRightOf(productPriceLocator);
-        productTotalPriceLocator = RelativeLocator.with(By.className("cart_total_price")).toRightOf(productQuantityLocator);
+        productNameLocator = By.xpath("//td[contains(.,'"+productName+"')]");
+        //productPriceLocator = RelativeLocator.with(By.className("cart_price")).toRightOf(productNameLocator);
+        productPriceLocator = By.xpath("//td[contains(.,'"+productName+"')]/following-sibling::td[@class='cart_price']");
+        //productQuantityLocator = RelativeLocator.with(By.tagName("button")).toRightOf(productNameLocator);
+        productQuantityLocator = By.xpath("//td[contains(.,'"+productName+"')]/following-sibling::td[@class='cart_quantity']/button");
+        //productTotalPriceLocator = RelativeLocator.with(By.className("cart_total_price")).toRightOf(productNameLocator);
+        productTotalPriceLocator = By.xpath("//td[contains(.,'"+productName+"')]/following-sibling::td[@class='cart_total']/p");
     }
 
     @Step("Place Order")

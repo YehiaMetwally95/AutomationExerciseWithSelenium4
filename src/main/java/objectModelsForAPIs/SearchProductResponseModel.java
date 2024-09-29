@@ -26,47 +26,75 @@ public class SearchProductResponseModel {
         return this;
     }
 
+    @Step("Validate Product Details from Response")
+    public SearchProductResponseModel validateProductDetailsFromResponse(String id,String name,String price,
+                                                                         String brand,String category,
+                                                                         String subcategory,String quantity,
+                                                                         String totalPrice) {
+        validateProductIdFromResponse(id)
+                .validateProductNameFromResponse(name)
+                .validateProductPriceFromResponse(price)
+                .validateProductBrandFromResponse(brand)
+                .validateProductCategoryFromResponse(category)
+                .validateProductSubcategoryFromResponse(subcategory)
+                .validateProductTotalPrice(quantity,totalPrice);
+        return this;
+    }
+
+    @Step("Validate Product Details from Response")
+    public SearchProductResponseModel validateProductDetailsFromResponse(String id,String name,String price,
+                                                                         String brand,String category,
+                                                                         String subcategory) {
+        validateProductIdFromResponse(id)
+                .validateProductNameFromResponse(name)
+                .validateProductPriceFromResponse(price)
+                .validateProductBrandFromResponse(brand)
+                .validateProductCategoryFromResponse(category)
+                .validateProductSubcategoryFromResponse(subcategory);
+        return this;
+    }
+
     @Step("Validate Product Id from Response")
-    public SearchProductResponseModel validateProductIdFromResponse(String id) {
-        CustomSoftAssert.softAssert.assertEquals(String.valueOf(responseObject.getProducts().getFirst().getId()),id);
+    private SearchProductResponseModel validateProductIdFromResponse(String id) {
+        CustomSoftAssert.softAssert.assertEquals(String.valueOf(responseObject.getProducts().get(0).getId()),id);
         return this;
     }
 
     @Step("Validate Product Name from Response")
-    public SearchProductResponseModel validateProductNameFromResponse(String name) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getProducts().getFirst().getName(),name);
+    private SearchProductResponseModel validateProductNameFromResponse(String name) {
+        CustomSoftAssert.softAssert.assertEquals(responseObject.getProducts().get(0).getName(),name);
         return this;
     }
 
     @Step("Validate Product Price from Response")
-    public SearchProductResponseModel validateProductPriceFromResponse(String price) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getProducts().getFirst().getPrice(),price);
+    private SearchProductResponseModel validateProductPriceFromResponse(String price) {
+        CustomSoftAssert.softAssert.assertEquals(responseObject.getProducts().get(0).getPrice(),price);
         return this;
     }
 
     @Step("Validate Product Brand from Response")
-    public SearchProductResponseModel validateProductBrandFromResponse(String brand) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getProducts().getFirst().getBrand(),brand);
+    private SearchProductResponseModel validateProductBrandFromResponse(String brand) {
+        CustomSoftAssert.softAssert.assertEquals(responseObject.getProducts().get(0).getBrand(),brand);
         return this;
     }
 
     @Step("Validate Product Category from Response")
-    public SearchProductResponseModel validateProductCategoryFromResponse(String category) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getProducts().getFirst()
+    private SearchProductResponseModel validateProductCategoryFromResponse(String category) {
+        CustomSoftAssert.softAssert.assertEquals(responseObject.getProducts().get(0)
                 .getCategory().getUsertype().getUsertype(),category);
         return this;
     }
 
     @Step("Validate Product Subcategory from Response")
-    public SearchProductResponseModel validateProductSubcategoryFromResponse(String subCategory) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getProducts().getFirst()
+    private SearchProductResponseModel validateProductSubcategoryFromResponse(String subCategory) {
+        CustomSoftAssert.softAssert.assertEquals(responseObject.getProducts().get(0)
                 .getCategory().getCategory(),subCategory);
         return this;
     }
 
     @Step("Validate Product Total Price")
-    public SearchProductResponseModel validateProductTotalPrice(String quantity,String totalPrice) {
-        int productPrice = Integer.parseInt(responseObject.getProducts().getFirst().getPrice().split("Rs. ",2)[1]);
+    private SearchProductResponseModel validateProductTotalPrice(String quantity,String totalPrice) {
+        int productPrice = Integer.parseInt(responseObject.getProducts().get(0).getPrice().split("Rs. ",2)[1]);
         int productQuantity = Integer.parseInt(quantity);
         int productTotalPrice = Integer.parseInt(totalPrice);
         CustomSoftAssert.softAssert.assertEquals(productPrice*productQuantity , productTotalPrice);

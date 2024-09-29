@@ -38,7 +38,7 @@ public class SearchProductRequestModel {
 
     //Method to Execute Search Request
     @Step("Send Request of Search For Product")
-    public SearchProductResponseModel sendRequestSearchForProduct() throws JsonProcessingException {
+    public SearchProductResponseModel sendRequestOfSearchForProduct() throws JsonProcessingException {
         response =
                 MakeRequest("Post", searchProductEndpoint,requestObject, "application/x-www-form-urlencoded");
         jsonBodyAsString = getResponseBody(response);

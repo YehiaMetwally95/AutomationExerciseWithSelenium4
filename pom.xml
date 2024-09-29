@@ -14,10 +14,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <testng.version>7.10.2</testng.version>
         <selenium.version>4.23.1</selenium.version>
-        <junit-jupiter.version>5.11.0-RC1</junit-jupiter.version>
         <javafaker.version>1.0.2</javafaker.version>
         <commons-io.version>RELEASE</commons-io.version>
         <json-simple.version>1.1</json-simple.version>
+        <allure-maven.version>2.12.0</allure-maven.version>
+        <compiler-maven.version>3.10.1</compiler-maven.version>
+        <surefire-maven.version>3.0.0-M7</surefire-maven.version>
+
 
     </properties>
 
@@ -32,12 +35,6 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit-jupiter.version}</version>
         </dependency>
 
         <dependency>
@@ -84,13 +81,6 @@
 
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>7.18.1</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
             <version>7.18.0</version>
         </dependency>
@@ -118,7 +108,6 @@
             <artifactId>allure-bom</artifactId>
             <version>2.29.0</version>
             <type>pom</type>
-            <scope>import</scope>
         </dependency>
 
         <dependency>
@@ -137,13 +126,6 @@
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <version>8.0.33</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>RELEASE</version>
-            <scope>compile</scope>
         </dependency>
 
         <dependency>
@@ -219,35 +201,13 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M7</version>
                     <configuration>
-                        <!-- <parallel>classes</parallel> <threadCount>4</threadCount> -->
-                        <!-- <suiteXmlFiles> <suiteXmlFile>${testNGSuite}</suiteXmlFile> </suiteXmlFiles> -->
-                        <argLine>
-                            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.9.1/aspectjweaver-1.9.9.1.jar"
-                        </argLine>
-                        <properties>
-                            <property>
-                                <name>usedefaultlisteners</name>
-                                <value>false</value> <!-- disabling default listeners is optional -->
-                            </property>
-                            <property>
-                                <name>listener</name>
-                                <value>utils.TestngListener</value>
-                            </property>
-                        </properties>
+                        <suiteXmlFiles>
+                            <suiteXmlFile>src/test/resources/TestNG_XML_Files/ExecuteTestsOnOneBrowser.xml</suiteXmlFile>
+                        </suiteXmlFiles>
                     </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>21</source>
-                    <target>21</target>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
 
 </project>

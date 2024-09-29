@@ -1,64 +1,14 @@
 {
-  "Products": [
+  "Details": {
+    "FilePath": "/src/test/resources/FilesToBeUploaded/Mattresses.pdf",
+    "Email": "Yehia@gmail.com",
+    "Description": "Payment is failed while checkout more than 50 products",
+    "Subject": "Complaint",
+    "Name": "Yehia Metwally"
+  },
+  "Messages": [
     {
-      "Availability": "In Stock",
-      "Brand": "Polo",
-      "Category": "Women",
-      "Subcategory": "Tops",
-      "Price": "Rs. 500",
-      "TotalPrice": "1500",
-      "Quantity": "3",
-      "ID": "1",
-      "Situation": "New",
-      "Name": "Blue Top"
-    },
-    {
-      "Availability": "In Stock",
-      "Brand": "H\u0026M",
-      "Category": "Men",
-      "Subcategory": "Tshirts",
-      "Price": "Rs. 400",
-      "TotalPrice": "400",
-      "Quantity": "1",
-      "ID": "2",
-      "Situation": "New",
-      "Name": "Men Tshirt"
-    },
-    {
-      "Availability": "In Stock",
-      "Brand": "Kookie Kids",
-      "Category": "Kids",
-      "Subcategory": "Tops \u0026 Shirts",
-      "Price": "Rs. 679",
-      "TotalPrice": "2037",
-      "Quantity": "3",
-      "ID": "14",
-      "Situation": "New",
-      "Name": "Full Sleeves Top Cherry - Pink"
-    },
-    {
-      "Availability": "In Stock",
-      "Brand": "H\u0026M",
-      "Category": "Men",
-      "Subcategory": "Jeans",
-      "Price": "Rs. 1200",
-      "TotalPrice": "6000",
-      "Quantity": "5",
-      "ID": "35",
-      "Situation": "New",
-      "Name": "Regular Fit Straight Jeans"
-    },
-    {
-      "Availability": "In Stock",
-      "Brand": "Mast \u0026 Harbour",
-      "Category": "Women",
-      "Subcategory": "Tops",
-      "Price": "Rs. 1400",
-      "TotalPrice": "1400",
-      "Quantity": "1",
-      "ID": "42",
-      "Situation": "New",
-      "Name": "Lace Top For Women"
+      "RequestSubmitted": "Success! Your details have been submitted successfully."
     }
   ],
   "Users": [
@@ -175,11 +125,6 @@
       "LastName": "Marsha",
       "Password": "Test@%^2723127",
       "DayofBirth": "8"
-    }
-  ],
-  "PageTitles": [
-    {
-      "ProductDetailsPage": "Product Details"
     }
   ]
 }

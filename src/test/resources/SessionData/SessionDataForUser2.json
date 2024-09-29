@@ -1,0 +1,68 @@
+{
+  "cookies_data": [
+    {
+      "path": "/",
+      "domain": ".automationexercise.com",
+      "name": "FCNEC",
+      "isHttpOnly": false,
+      "isSecure": false,
+      "expiry": "Sep 29, 2025, 2:59:29 AM",
+      "value": "%5B%5B%22AKsRol8Ly-ae4yBkhfq-TqHbkx3GFGxPVrcnX0_nSEDiY-7aF4Sn9IvZgGP2l_XgvSgYfP_s59VBIYWkybmZaD6hpkniRU5gtXlA5MzyUzPn7pp_rvmK_c9rEJLCoae7NFGr8QrQEjF1r0wSZNkJsz0VIlxH45rPnQ%3D%3D%22%5D%5D"
+    },
+    {
+      "path": "/",
+      "domain": ".automationexercise.com",
+      "name": "__gpi",
+      "isHttpOnly": false,
+      "isSecure": true,
+      "expiry": "Oct 24, 2025, 2:59:19 AM",
+      "value": "UID\u003d00000f12605d17f9:T\u003d1727567959:RT\u003d1727567959:S\u003dALNI_MZ8OXYlpj3tiqd_u4HGp67e21qxCA"
+    },
+    {
+      "path": "/",
+      "domain": ".automationexercise.com",
+      "name": "__eoi",
+      "isHttpOnly": false,
+      "isSecure": true,
+      "expiry": "Mar 28, 2025, 1:59:19 AM",
+      "value": "ID\u003d45491ab2c9e42a95:T\u003d1727567959:RT\u003d1727567959:S\u003dAA-AfjbPnSUp8UNYEDfFLJuOc_5N"
+    },
+    {
+      "path": "/",
+      "domain": ".automationexercise.com",
+      "name": "__gsas",
+      "isHttpOnly": false,
+      "isSecure": false,
+      "expiry": "Oct 24, 2025, 2:59:22 AM",
+      "value": "ID\u003d44b89754be693bc3:T\u003d1727567962:RT\u003d1727567962:S\u003dALNI_MZ-iU-8ogeqH9mvXHPsCu98FGSyeA"
+    },
+    {
+      "path": "/",
+      "domain": "automationexercise.com",
+      "name": "sessionid",
+      "isHttpOnly": true,
+      "isSecure": false,
+      "expiry": "Oct 13, 2024, 2:59:26 AM",
+      "value": "pji5k6jj89bm4wbb426htmnbzcxk233y"
+    },
+    {
+      "path": "/",
+      "domain": "automationexercise.com",
+      "name": "csrftoken",
+      "isHttpOnly": false,
+      "isSecure": false,
+      "expiry": "Sep 28, 2025, 2:59:27 AM",
+      "value": "IfRVdCBdtJTmHqHi3OebX67Vn8zWBhI8t0HXrXjNF9NSXkBlB1VfGNIWf9wIxg5g"
+    },
+    {
+      "path": "/",
+      "domain": ".automationexercise.com",
+      "name": "__gads",
+      "isHttpOnly": false,
+      "isSecure": true,
+      "expiry": "Oct 24, 2025, 2:59:19 AM",
+      "value": "ID\u003db7b52c205d67db85:T\u003d1727567959:RT\u003d1727567959:S\u003dALNI_MZH8dZ-UFbWluTFyZTpawhfUp6Cfw"
+    }
+  ],
+  "username": "Test2605552"
+}

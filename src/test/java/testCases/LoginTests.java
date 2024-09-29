@@ -1,13 +1,14 @@
 package testCases;
 
-
 import baseTest.BaseTest;
 import io.qameta.allure.*;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
+import prepareTestData.TestNGListners;
 import utils.JDBCManager;
 import utils.JsonManager;
 import utils.SessionManager;
@@ -15,54 +16,40 @@ import utils.SessionManager;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static utils.PropertiesManager.getPropertiesValue;
+import static utils.ThreadDriver.getIsolatedDriver;
 
 @Epic("Automation Exercise Features")
 @Feature("User Login")
 @Story("Verify User Login Through GUI")
-@Listeners(utils.TestNGListners.class)
+@Listeners(TestNGListners.class)
 public class LoginTests extends BaseTest {
     //Variables
-    JsonManager json;
-    String jsonFilePathForTestData = "src/test/resources/TestDataJsonFiles/LoginTestData.json";
-
-    //Test Data Preparation as Getting Users from Database
-    @BeforeClass
-    public void prepareTestData() throws IOException, ParseException, SQLException {
-        json = new JsonManager(jsonFilePathForTestData);
-        String dbQuery = "SELECT Username,Email,Password FROM automationexercise.users Order by Username Asc;";
-
-        //JsonKeys shall be filled by the same order of table columns of database query
-        String[] jsonKeysForUsers = {"Username","Email","Password"};
-
-        //In Case of writing one JsonMainKey for all records, the Records will represent an array of Json objects
-        //In Case of writing JsonMainKey for every record, Each Record will represent an object value for the corresponding JsonMainKey,In this case JsonMainKeys shall be filled by the same order of table rows on database
-        String jsonMainKeyForUsers = "Users";
-
-        JDBCManager.setJsonFileFromDBForNestedArrayOfJsonObjects(dbQuery, jsonFilePathForTestData,jsonKeysForUsers,jsonMainKeyForUsers);
-    }
+    String jsonFilePathForLogin = "src/test/resources/TestDataJsonFiles/LoginTestData.json";
+    JsonManager json = new JsonManager(jsonFilePathForLogin);
 
     //Test Scripts
     @Description("Login With Existing User")
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void loginWithExistingUserThroughGUI() throws IOException, ParseException {
+        WebDriver driver = getIsolatedDriver(threadDriver);
         new HomePage(driver)
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
                 .verifyLoginSignupPageIsOpened()
-                .loginWithValidUser(json.getData("Users[0].Email"),json.getData("Users[0].Password"))
-                .assertUserIsLoggedIn(json.getData("Users[0].Username"));
+                .loginWithValidUser(json.getData("Users[4].Email"),json.getData("Users[4].Password"))
+                .assertUserIsLoggedIn(json.getData("Users[4].Username"));
 
         //Store Cookies into Json File for the next tests to bypass login
-         new SessionManager(driver,jsonFilePathForSessionData)
-                 .storeSessionCookies(json.getData("Users[0].Username"));
+         new SessionManager(driver, jsonFilePathForSessionDataUser4)
+                 .storeSessionCookies(json.getData("Users[4].Username"));
     }
 
     @Description("Login With Non Existing User")
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void loginWithNonExistingUserThroughGUI() throws IOException, ParseException {
+        WebDriver driver = getIsolatedDriver(threadDriver);
         new HomePage(driver)
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()

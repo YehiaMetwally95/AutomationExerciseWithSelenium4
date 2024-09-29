@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Login Suit">
+    <test name="Chrome Login"> <parameter name = "BrowserType" value = "Chrome"/>
+        <classes>
+            <class name = "testCases.LoginTests">
+                <methods>
+                    <include name="loginWithExistingUserThroughGUI" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

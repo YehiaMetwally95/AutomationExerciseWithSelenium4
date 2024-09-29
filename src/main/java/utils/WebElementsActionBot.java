@@ -5,15 +5,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.WheelInput;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static utils.Screenshot.*;
-import static utils.RandomDataGenerator.*;
 
 public class WebElementsActionBot {
     //Variables
@@ -36,15 +32,15 @@ public class WebElementsActionBot {
             return true;
         });
 
-        System.out.println("Typing " + text);
-        takeElementScreenshot(driver,locator,textBoxesPath,generateUniqueInteger());
+       // System.out.println("Typing " + text);
+       // takeElementScreenshot(driver,locator,textBoxesPath,generateUniqueInteger());
         return this;
     }
 
         //ActionBot2 for Pressing on Button or Link & Printing Button Name & Take Screenshot for Button
     public WebElementsActionBot press(By locator) throws IOException {
         Waits.getFluentWait(driver).until(f -> {
-            System.out.println("Clicking On " + driver.findElement(locator).getText());
+            //System.out.println("Clicking On " + driver.findElement(locator).getText());
             /*try {
                 takeElementScreenshot(driver,locator,pressedButtonsPath,generateUniqueInteger());
             } catch (IOException e) {
@@ -58,7 +54,7 @@ public class WebElementsActionBot {
 
     public WebElementsActionBot press(WebElement element) throws IOException {
         Waits.getFluentWait(driver).until(f -> {
-            System.out.println("Clicking On " + element.getText());
+       //     System.out.println("Clicking On " + element.getText());
             element.click();
             return true;
         });
@@ -69,11 +65,11 @@ public class WebElementsActionBot {
     public WebElementsActionBot longPress(By locator) throws IOException {
         Waits.getFluentWait(driver).until(f -> {
             System.out.println("LongClicking On " + driver.findElement(locator).getText());
-            try {
+            /*try {
                 takeElementScreenshot(driver,locator,pressedButtonsPath,generateUniqueInteger());
             } catch (IOException e) {
                 throw new RuntimeException(e);
-            }
+            }*/
             new Actions(driver).moveToElement(driver.findElement(locator)).clickAndHold();
             return true;
         });
@@ -86,7 +82,7 @@ public class WebElementsActionBot {
           driver.findElement(locator).getText();
             return true;
         });
-        takeElementScreenshot(driver,locator,retrievedTextPath,generateUniqueInteger());
+        //takeElementScreenshot(driver,locator,retrievedTextPath,generateUniqueInteger());
         return driver.findElement(locator).getText().replace("\n","");
     }
 
@@ -125,14 +121,12 @@ public class WebElementsActionBot {
         return driver.getTitle();
     }
 
-        //ActionBot8 for Hover on Main-menu & Sub-menu
-    public WebElementsActionBot hoverToSubMenuAndClick(By mainMenuLocator , By subMenuLocator) {
+        //ActionBot8 for Hover on Element
+    public WebElementsActionBot hoverOnElement(By locator) {
         Waits.getFluentWait(driver).until(f -> {
             new Actions(driver)
-                    .moveToElement(driver.findElement(mainMenuLocator))
-                    .pause(Duration.ofMillis(100))
-                    .moveToElement(driver.findElement(subMenuLocator))
-                    .click()
+                    .moveToElement(driver.findElement(locator))
+                    .pause(Duration.ofMillis(500))
                     .perform();
             return true;
         });

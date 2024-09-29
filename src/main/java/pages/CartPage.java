@@ -16,7 +16,7 @@ public class CartPage extends HomePage {
     //Variables
 
     //Locators
-    By checkOutButton = By.partialLinkText("Checkout");
+    By checkOutButton = By.linkText("Proceed To Checkout");
     By productNameLocator;
     By productPriceLocator;
     By productQuantityLocator;
@@ -33,10 +33,14 @@ public class CartPage extends HomePage {
     private void setLocatorsByProductName(String productName)
     {
         productNameLocator = By.xpath("//td[contains(.,'"+productName+"')]");
-        productPriceLocator = RelativeLocator.with(By.className("cart_price")).toRightOf(productNameLocator);
-        productQuantityLocator = RelativeLocator.with(By.tagName("button")).toRightOf(productNameLocator);
-        productTotalPriceLocator = RelativeLocator.with(By.className("cart_total_price")).toRightOf(productNameLocator);
-        removeProductFromCartButton = RelativeLocator.with(By.className("cart_quantity_delete")).toRightOf(productNameLocator);
+        //productPriceLocator = RelativeLocator.with(By.className("cart_price")).toRightOf(productNameLocator);
+        productPriceLocator = By.xpath("//td[contains(.,'"+productName+"')]/following-sibling::td[@class='cart_price']");
+        //productQuantityLocator = RelativeLocator.with(By.tagName("button")).toRightOf(productNameLocator);
+        productQuantityLocator = By.xpath("//td[contains(.,'"+productName+"')]/following-sibling::td[@class='cart_quantity']/button");
+        //productTotalPriceLocator = RelativeLocator.with(By.className("cart_total_price")).toRightOf(productNameLocator);
+        productTotalPriceLocator = By.xpath("//td[contains(.,'"+productName+"')]/following-sibling::td[@class='cart_total']/p");
+        //removeProductFromCartButton = RelativeLocator.with(By.className("cart_quantity_delete")).toRightOf(productNameLocator);
+        removeProductFromCartButton = By.xpath("//td[contains(.,'"+productName+"')]/following-sibling::td[@class='cart_delete']/a");
     }
 
     @Step("Proceed to CheckOut")

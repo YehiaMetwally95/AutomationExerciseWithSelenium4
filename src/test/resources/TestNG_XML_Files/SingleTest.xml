@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Login Suit">
+    <test name="Chrome Login"> <parameter name = "BrowserType" value = "Firefox"/>
+        <classes>
+            <class name = "testCases.CheckoutTests.CheckoutProductOnGUI">
+            </class>
+        </classes>
+    </test>
+</suite>

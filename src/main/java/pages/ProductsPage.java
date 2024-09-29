@@ -17,9 +17,32 @@ public class ProductsPage extends HomePage{
     By searchButton = By.cssSelector(".container #submit_search");
     By continueShoppingButton = By.xpath("//button[@data-dismiss='modal']");
     By viewCartButton = By.xpath("//div[@id='cartModal']/descendant::a");
-    By addToCartButton;
-    By productNameLocator;
-    By viewProductButtonLocator;
+
+    private By productNameInnerLocator (String productName)
+    {
+        return By.xpath("//div[contains(@class,'overlay-content')]/descendant::*[.='"+productName+"']");
+    }
+
+    private By productNameOuterLocator (String productName)
+    {
+        return By.xpath("//div[@class='features_items']//div[contains(@class,'productinfo')]/descendant::*[.='"+productName+"']");
+    }
+
+    private By viewProductButtonLocator (String productName)
+    {
+       return By.xpath("//div[contains(@class,'overlay-content')]/descendant::*[.='"+productName+"']/ancestor::div[contains(@class,'single-products')]/following-sibling::div/descendant::a[contains(@href,'product_details')]");
+       // return RelativeLocator.with(By.linkText("View Product")).below(productNameOuterLocator(productName));
+    }
+
+    private By addToCartInnerLocator (String productName)
+    {
+        return RelativeLocator.with(By.tagName("a")).below(productNameInnerLocator(productName));
+    }
+
+    private By productImageOuterLocator (String productName)
+    {
+        return RelativeLocator.with(By.tagName("img")).above(productNameOuterLocator(productName));
+    }
 
     //Constructor
     public ProductsPage(WebDriver driver) {
@@ -29,14 +52,15 @@ public class ProductsPage extends HomePage{
     //Actions
     private void setLocatorsByProductName(String productName)
     {
-        productNameLocator = By.xpath("//div[contains(@class,'overlay-content')]/p[.='"+productName+"']");
-        viewProductButtonLocator = RelativeLocator.with(By.partialLinkText("View Product")).below(productNameLocator);
-        addToCartButton = RelativeLocator.with(By.partialLinkText("Add to cart")).below(productNameLocator);
+        //productNameLocator = By.xpath("//div[contains(@class,'overlay-content')]/p[.='"+productName+"']");
+        //viewProductButtonLocator = RelativeLocator.with(By.partialLinkText("View Product")).below(productNameLocator);
+        //viewProductButtonLocator = By.xpath("//div[contains(@class,'overlay-content')]/p[.='"+productName+"']/ancestor::div[contains(@class,'single-products')]/following-sibling::div/descendant::a[contains(@href,'product_details')]");
+        //addToCartButton = RelativeLocator.with(By.partialLinkText("Add to cart")).below(productNameLocator);
+       // addToCartButton = By.xpath("//div[contains(@class,'productinfo')]/p[.='"+productName+"']/following-sibling::a[contains(@class,'add-to-cart')]");
     }
 
     @Step("Search For A Product")
     public ProductsPage searchForProduct(String productName) throws IOException {
-        setLocatorsByProductName(productName);
         bot.
                 type(searchTextBox,productName).
                 press(searchButton);
@@ -45,15 +69,14 @@ public class ProductsPage extends HomePage{
 
     @Step("Open Product Details Page")
     public ProductDetailsPage openProductDetailsPage(String productName) throws IOException {
-        setLocatorsByProductName(productName);
-        bot.press(viewProductButtonLocator);
+        bot.press(viewProductButtonLocator(productName));
         return new ProductDetailsPage(driver);
     }
 
     @Step("Add Product To Cart")
     public ProductsPage addProductToCart(String productName) throws IOException {
-        setLocatorsByProductName(productName);
-        bot.press(addToCartButton);
+        bot.press(productImageOuterLocator(productName))
+                .press(addToCartInnerLocator(productName));
         return this;
     }
 
@@ -78,8 +101,7 @@ public class ProductsPage extends HomePage{
 
     @Step("Verify Searched Products")
     public ProductsPage verifySearchedProduct(String productName) {
-        setLocatorsByProductName(productName);
-        CustomSoftAssert.softAssert.assertTrue(bot.isElementDisplayed(productNameLocator));
+        CustomSoftAssert.softAssert.assertTrue(bot.isElementDisplayed(productImageOuterLocator(productName)));
         return this;
     }
 

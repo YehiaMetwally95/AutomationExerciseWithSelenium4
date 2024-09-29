@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Register Suit" parallel="methods">
+    <test name="Chrome Register"> <parameter name = "BrowserType" value = "Chrome"/>
+        <classes>
+            <class name = "testCases.RegisterTests.RegisterNewUserOnGUI">
+                <methods>
+                    <include name="registerNewUserThroughGUI" />
+                </methods>
+            </class>
+            <class name = "testCases.RegisterTests.RegisterNewUserOnAPI">
+                <methods>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Edge Register"> <parameter name = "BrowserType" value = "Edge"/>
+        <classes>
+            <class name = "testCases.RegisterTests.RegisterNewUserOnGUI">
+                <methods>
+                    <include name="registerNewUserThroughGUI" />
+                </methods>
+            </class>
+            <class name = "testCases.RegisterTests.RegisterNewUserOnAPI">
+                <methods>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Firefox Register"> <parameter name = "BrowserType" value = "Firefox"/>
+        <classes>
+            <class name = "testCases.RegisterTests.RegisterNewUserOnGUI">
+                <methods>
+                    <include name="registerNewUserThroughGUI" />
+                </methods>
+            </class>
+            <class name = "testCases.RegisterTests.RegisterNewUserOnAPI">
+                <methods>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

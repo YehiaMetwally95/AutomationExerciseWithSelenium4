@@ -2,34 +2,55 @@ package baseTest;
 
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utils.CustomSoftAssert;
-import utils.SessionManager;
 
-import java.io.File;
 import java.io.IOException;
 
-import static utils.BrowserFactory.openBrowser;
-import static utils.CookiesManager.*;
+import static utils.BrowserFactory.*;
 import static utils.Screenshot.*;
 import static utils.WindowManager.*;
 import static utils.ThreadDriver.*;
-import static utils.DeleteDirectoryFiles.*;
 import static utils.PropertiesManager.*;
 
 public class BaseTest {
 
     //Variables
     public WebDriver driver;
-    public String jsonFilePathForSessionData = "src/main/resources/SessionData.json";
+    public String jsonFilePathForSessionDataUser0 = "src/test/resources/SessionData/SessionDataForUser0.json";
+    public String jsonFilePathForSessionDataUser1 = "src/test/resources/SessionData/SessionDataForUser1.json";
+    public String jsonFilePathForSessionDataUser2 = "src/test/resources/SessionData/SessionDataForUser2.json";
+    public String jsonFilePathForSessionDataUser3 = "src/test/resources/SessionData/SessionDataForUser3.json";
+    public String jsonFilePathForSessionDataUser4 = "src/test/resources/SessionData/SessionDataForUser4.json";
 
-    //Annotations
-    @BeforeMethod
-    //@Parameters({"BrowserType"})
-    public void setUpAndOpenBrowser() throws IOException, ParseException {
+    public ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();;
+
+    //Open Browser by read Browser Type from Properties file
+ /*   @BeforeMethod
+    public void setUpAndOpenBrowserFromPropertiesFile() throws IOException, ParseException {
         //Open Browser
         driver = openBrowser();
+
+        //Generate Isolated Driver from ThreadDriver
+        setIsolatedDriver(threadDriver,driver);
+
+        //Perform actions on Window
+        navigateToURL(driver,getPropertiesValue("baseUrl"));
+
+        //Set the CustomSoftAssert Class with the driver
+        CustomSoftAssert.softAssertDriver = driver;
+    }*/
+
+    //Open Browser by read Browser Type from TestNG XML File
+    @BeforeMethod
+    @Parameters({"BrowserType"})
+    public void setUpAndOpenBrowserFromTestngFile(String browserType) throws IOException, ParseException {
+        //Open Browser
+        driver = openBrowser(browserType);
+        //Generate Isolated Driver from ThreadDriver
+        setIsolatedDriver(threadDriver,driver);
 
         //Perform actions on Window
         navigateToURL(driver,getPropertiesValue("baseUrl"));
@@ -41,15 +62,18 @@ public class BaseTest {
     @AfterMethod
     public void getScreenshots(ITestResult result) throws IOException, InterruptedException {
         //Take Screenshot after every successful test
-        captureSuccess(driver,result);
+        captureSuccess(getIsolatedDriver(threadDriver),result);
 
         //Take Screenshot after every failed test
-        captureFailure(driver, result);
+        captureFailure(getIsolatedDriver(threadDriver), result);
     }
 
     @AfterMethod (dependsOnMethods = "getScreenshots")
     public void tearDownBrowser(){
         //Close Browser after every test
-        closeCurrentWindow(driver);
+        closeAllWindows(getIsolatedDriver(threadDriver));
+
+        //Remove the Isolated Driver from Memory
+        removeIsolatedDriver(threadDriver);
     }
 }

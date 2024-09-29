@@ -1,42 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<suite name="Login Suit" parallel="methods" thread-count="4">
-    <parameter name = "URL" value = "https://the-internet.herokuapp.com/"/>
+<suite name="Checkout Suit" parallel="methods" thread-count = "4">
 
-    <test name="Chrome Login"> <parameter name = "BrowserType" value = "Chrome"/>
+    <test name="Chrome Test"> <parameter name = "BrowserType" value = "Chrome"/>
         <classes>
-            <class name = "testCases.LoginTests">
-                 <methods>
-                     <include name = "SuccessfulLogin"/>
-                     <include name = "IncorrectUsernameLogin"/>
-                     <include name = "IncorrectPasswordLogin"/>
-                </methods>
-            </class>
+            <class name = "testCases.AddToCartTests.AddToCartWithSearchOnGUI"> </class>
+            <class name = "testCases.AddToCartTests.AddToCartWithSearchOnAPI"> </class>
+            <class name = "testCases.CheckoutTests.CheckoutProductOnAPI"> </class>
+            <class name = "testCases.CheckoutTests.CheckoutProductOnGUI"> </class>
         </classes>
     </test>
 
-    <test name="Firefox Login"> <parameter name = "BrowserType" value = "Firefox"/>
+    <test name="Firefox Test"> <parameter name = "BrowserType" value = "Firefox"/>
         <classes>
-            <class name = "testCases.LoginTests">
-                <methods>
-                    <include name = "SuccessfulLogin"/>
-                    <include name = "IncorrectUsernameLogin"/>
-                    <include name = "IncorrectPasswordLogin"/>
-                </methods>
-            </class>
+            <class name = "testCases.AddToCartTests.AddToCartWithSearchOnGUI"> </class>
+            <class name = "testCases.AddToCartTests.AddToCartWithSearchOnAPI"> </class>
+            <class name = "testCases.CheckoutTests.CheckoutProductOnAPI"> </class>
+            <class name = "testCases.CheckoutTests.CheckoutProductOnGUI"> </class>
         </classes>
     </test>
 
-    <test name="Edge Login"> <parameter name = "BrowserType" value = "Edge"/>
+    <test name="Edge Test"> <parameter name = "BrowserType" value = "Edge"/>
         <classes>
-            <class name = "testCases.LoginTests">
-                <methods>
-                    <include name = "SuccessfulLogin"/>
-                    <include name = "IncorrectUsernameLogin"/>
-                    <include name = "IncorrectPasswordLogin"/>
-                </methods>
-            </class>
+            <class name = "testCases.AddToCartTests.AddToCartWithSearchOnGUI"> </class>
+            <class name = "testCases.AddToCartTests.AddToCartWithSearchOnAPI"> </class>
+            <class name = "testCases.CheckoutTests.CheckoutProductOnAPI"> </class>
+            <class name = "testCases.CheckoutTests.CheckoutProductOnGUI"> </class>
         </classes>
     </test>
-
 </suite>

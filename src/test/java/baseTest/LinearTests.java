@@ -1,15 +1,14 @@
 package baseTest;
 
-import objectModelsForAPIs.RegistrationRequestModel;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import utils.JsonManager;
+import prepareTestData.TestNGListners;
+import utils.WebElementsActionBot;
 
 import java.io.*;
 import java.time.Duration;
@@ -17,7 +16,7 @@ import java.time.Duration;
 import static io.restassured.RestAssured.form;
 import static io.restassured.RestAssured.given;
 
-@Listeners(utils.TestNGListners.class)
+@Listeners(TestNGListners.class)
 public class LinearTests {
 
     @Test
@@ -60,40 +59,21 @@ public class LinearTests {
 
     @Test
     public void test3() throws IOException, InterruptedException, ParseException {
-        String jsonFilePath = "src/test/resources/TestDataJsonFiles/LoginTestData.json";
-        JsonManager json = new JsonManager(jsonFilePath);
-        String yehia = json.getData("Users");
+       String yehia = System.getProperty("user.dir")+"/+src/test/resources/FilesToBeUploaded/Mattresses.pdf";
         System.out.println(yehia);
     }
 
     @Test
-    public void test4() throws IOException, InterruptedException, ParseException {
-        new RegistrationRequestModel()
-                .prepareRegistrationRequestBody()
-                .sendRequestRegisterNewUser()
-                .validateCodeFromResponse(201)
-                .validateMassageFromResponse("User created!");
-    }
-
-    @Test
     public void test5() throws IOException, InterruptedException, ParseException {
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new EdgeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        driver.manage().window().maximize();
+        driver.navigate().to("https://automationexercise.com/products");
+        By box = By.xpath("//div[contains(@class,'productinfo')]/descendant::*[.='Blue Top']");
+        By button = By.xpath("//div[contains(@class,'overlay-content')]/p[.='Blue Top']/following-sibling::a[contains(@class,'add-to-cart')]");
+        new WebElementsActionBot(driver).hoverOnElement
+                (box);
 
-        driver.navigate().to("https://www.99.co/");
-
-     /* driver.findElement(By.cssSelector("a[href='/signin']")).click(); // Click on Log In button on Top
-
-       driver.findElement(By.cssSelector("input[name='email_or_phone']")).sendKeys("jmetwallym@gmail.com"); // Enter Username
-       driver.findElement(By.cssSelector("[name='password']")).sendKeys("123456789"); // Enter Password
-       driver.findElement(By.xpath("//button/div[contains(text(),'Log In')]")).click(); // Click Login Button
-
-        System.out.println(" Login Successful ...");*/
-
-
-        // Method 1:
-//        sessionManager.storeSessionFile("ninetynineco","jmetwallym@gmail.com");
-//        sessionManager.usePreviousLoggedInSession("ninetynineco");
     }
 
 }
