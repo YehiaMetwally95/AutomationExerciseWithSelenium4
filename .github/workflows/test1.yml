@@ -24,4 +24,4 @@ jobs:
         run: docker ps
       
       - name: Run tests
-        run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnGUI" -DexecutionType="Remote"
+        run: mvn clean test -Dtest="AddToCartTests.**" -DexecutionType="Remote"
