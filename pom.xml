@@ -88,6 +88,7 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>1.9.22.1</version>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>
@@ -194,12 +195,30 @@
                 </plugin>
 
                 <plugin>
+                    <groupId>dev.aspectj</groupId>
+                    <artifactId>aspectj-maven-plugin</artifactId>
+                    <version>1.14</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.aspectj</groupId>
+                            <artifactId>aspectjtools</artifactId>
+                            <!-- AspectJ compiler version, in sync with runtime -->
+                            <version>1.9.22.1</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <!-- Your favourite Java source/target version -->
+                        <complianceLevel>21</complianceLevel>
+                    </configuration>
+                </plugin>
+
+                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.5.0</version>
                     <configuration>
                         <argLine>
-                            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.9.1/aspectjweaver-1.9.9.1.jar"
+                            -javaagent:${user.home}/.m2/repository/org/aspectj/aspectjweaver/1.9.22.1/aspectjweaver-1.9.22.1.jar
                         </argLine>
                         <properties>
                             <property>
@@ -213,7 +232,6 @@
                         </properties>
                     </configuration>
                 </plugin>
-
             </plugins>
         </pluginManagement>
     </build>
