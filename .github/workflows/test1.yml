@@ -6,7 +6,26 @@ on:
 jobs:
   run_tests:
     runs-on: ubuntu-latest
-    
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: yehia  # Root password
+          MYSQL_DATABASE: automationexercise  # Specify if your tests expect this database
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost" 
+          --health-interval=10s 
+          --health-timeout=5s 
+          --health-retries=3
+
+    env:
+      DB_URL: jdbc:mysql://127.0.0.1:3306/automationexercise
+      DB_USER: root
+      DB_PASSWORD: yehia  # Root password
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4.2.0
@@ -14,8 +33,20 @@ jobs:
       - name: Setup JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
           distribution: 'zulu'
+          java-version: '21'
+          
+      - name: Wait for MySQL to be ready
+        run: |
+          echo "Waiting for MySQL to be ready..."
+          for i in {1..30}; do
+            if mysqladmin ping -h 127.0.0.1 -uyehia --silent; then
+              echo "MySQL is ready!"
+              break
+            fi
+            echo "Waiting for MySQL..."
+            sleep 2
+          done
 
       - name: Run tests
-        run: mvn clean test -Dtest="LoginTests.LoginWithExistingUserOnGUI" -DbrowserType="Chrome"
+        run: mvn clean test -Dtest="LoginTests.LoginWithExistingUserOnGUI" -DbrowserType="Chrome" -Ddb.url="${{ env.DB_URL }}" -Ddb.user="${{ env.DB_USER }}" -Ddb.password="${{ env.DB_PASSWORD }}"
