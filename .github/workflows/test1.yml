@@ -18,7 +18,7 @@ jobs:
           java-version: '21'
           
       - name: Set up Selenium Grid with Docker Containers
-        run: docker-compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=4 --scale edge=4 --scale firefox=4 -d
+        run: docker compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=5 --scale edge=5 --scale firefox=5 -d
     
       - name: Check running containers
         run: docker ps
