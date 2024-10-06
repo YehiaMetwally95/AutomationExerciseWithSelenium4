@@ -18,4 +18,4 @@ jobs:
           distribution: 'zulu'
 
       - name: Run tests
-        run: mvn clean test -Dtest="LinearTests"
+        run: mvn clean test -Dtest="LoginTests.LoginWithExistingUserOnGUI" -DbrowserType="Chrome"
