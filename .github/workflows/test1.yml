@@ -17,5 +17,11 @@ jobs:
           distribution: 'zulu'
           java-version: '21'
           
+      - name: Set up Selenium Grid with Docker Containers
+        run: docker-compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=4 --scale edge=4 --scale firefox=4 -d
+    
+      - name: Check running containers
+        run: docker ps
+      
       - name: Run tests
-        run: mvn clean test -Dtest="LoginTests.LoginWithExistingUserOnGUI" -DbrowserType="Chrome" -DisHeadless="true"
+        run: mvn clean test -Dtest="AddToCartTests" -DexecutionType="Remote"
