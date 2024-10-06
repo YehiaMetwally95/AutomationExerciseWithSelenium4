@@ -16,7 +16,7 @@ public class AccountCreatedPage extends HomePage{
             super(driver);
         }
 
-        //Actions
+        //Action
         @Step("Continue To Home Page")
         public HomePage continueToHomePage() throws IOException {
             bot.press(continueButton);
