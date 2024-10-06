@@ -6,26 +6,8 @@
       "name": "FCNEC",
       "isHttpOnly": false,
       "isSecure": false,
-      "expiry": "Oct 6, 2025, 6:52:15 PM",
-      "value": "%5B%5B%22AKsRol-qW6UMprXPW6_BovPhGrshInRAVVfDphL8Fuop66hm1CA2Z41j8ZPjouag4qtxbr49XxbjRqPWJGeS_hdF5agzf6QTkkbLsM4-7eyf_1bPRYikEU3jxHHo6P1HDGVtf7DCBa6t_MeyTfW-UItGyuPYyRBvOw%3D%3D%22%5D%5D"
-    },
-    {
-      "path": "/",
-      "domain": ".automationexercise.com",
-      "name": "__gpi",
-      "isHttpOnly": false,
-      "isSecure": true,
-      "expiry": "Oct 31, 2025, 5:52:13 PM",
-      "value": "UID\u003d00000f042cd4d987:T\u003d1728229933:RT\u003d1728229933:S\u003dALNI_MaQIBpi7Ps8zqoIXTYrcfhj0fLnQA"
-    },
-    {
-      "path": "/",
-      "domain": ".automationexercise.com",
-      "name": "__eoi",
-      "isHttpOnly": false,
-      "isSecure": true,
-      "expiry": "Apr 4, 2025, 5:52:13 PM",
-      "value": "ID\u003ddc6665267695f120:T\u003d1728229933:RT\u003d1728229933:S\u003dAA-AfjaxPJ5MjVRB9eKqQ9jvNkCQ"
+      "expiry": "Oct 6, 2025, 7:19:29 PM",
+      "value": "%5B%5B%22AKsRol9aOQs0inHUPqLod8fRJtQp8S_XPiM1eG9_6C9uEz8d8up9diiOE7xODfGLR2udvtKNdfpGLpxb8zzJV8ct9UTRHki8ELM6xvFGq04tH5OTspCv9T4ggQ6Jiiul8NDlV77cOCvYplfxcUWgRkm2v0Hi6zoC1A%3D%3D%22%5D%5D"
     },
     {
       "path": "/",
@@ -33,8 +15,8 @@
       "name": "sessionid",
       "isHttpOnly": true,
       "isSecure": false,
-      "expiry": "Oct 20, 2024, 6:52:15 PM",
-      "value": "e6ssfdg86eekcpnmonu70g99lej01djk"
+      "expiry": "Oct 20, 2024, 7:19:22 PM",
+      "value": "ghqthg8pcer674wtbgo7eii638d6onyy"
     },
     {
       "path": "/",
@@ -42,17 +24,8 @@
       "name": "csrftoken",
       "isHttpOnly": false,
       "isSecure": false,
-      "expiry": "Oct 5, 2025, 6:52:15 PM",
-      "value": "lAtsLj4bOAyX11VjYyLtqkcfWRUFCnGyR5SAkg4csOspzoAZ7dRlcNFhhjAp5NIu"
-    },
-    {
-      "path": "/",
-      "domain": ".automationexercise.com",
-      "name": "__gads",
-      "isHttpOnly": false,
-      "isSecure": true,
-      "expiry": "Oct 31, 2025, 5:52:13 PM",
-      "value": "ID\u003df659ce6f02bd2d1c:T\u003d1728229933:RT\u003d1728229933:S\u003dALNI_MZnzamdSkcdXUSOeTFTHLAs7jTteg"
+      "expiry": "Oct 5, 2025, 7:19:24 PM",
+      "value": "CIP2Q1xEfRFRJynNHzXRp0v2Rnvk2amWxaLimhugeX6Jy6JWQS21y8bELDYdzeDM"
     }
   ],
   "username": "Test2720747"
