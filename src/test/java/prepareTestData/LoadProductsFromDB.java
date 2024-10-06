@@ -16,7 +16,7 @@ public class LoadProductsFromDB {
 
         //JsonKeys shall be filled by the same order of table columns of database query
         String[] jsonKeysForUsers = {"ID", "Name","Category", "Subcategory", "Price","Availability"
-                ,"Situation","Brand","Quantity","TotalPrice"};
+                ,"Condition","Brand","Quantity","TotalPrice"};
 
         //In Case of writing one JsonMainKey for all records, the Records will represent an array of Json objects
         //In Case of writing JsonMainKey for every record, Each Record will represent an object value for the corresponding JsonMainKey,In this case JsonMainKeys shall be filled by the same order of table rows on database

@@ -2,6 +2,7 @@
   "Products": [
     {
       "Availability": "In Stock",
+      "Condition": "New",
       "Brand": "Polo",
       "Category": "Women",
       "Subcategory": "Tops",
@@ -9,11 +10,11 @@
       "TotalPrice": "1500",
       "Quantity": "3",
       "ID": "1",
-      "Situation": "New",
       "Name": "Blue Top"
     },
     {
       "Availability": "In Stock",
+      "Condition": "New",
       "Brand": "H\u0026M",
       "Category": "Men",
       "Subcategory": "Tshirts",
@@ -21,11 +22,11 @@
       "TotalPrice": "400",
       "Quantity": "1",
       "ID": "2",
-      "Situation": "New",
       "Name": "Men Tshirt"
     },
     {
       "Availability": "In Stock",
+      "Condition": "New",
       "Brand": "Kookie Kids",
       "Category": "Kids",
       "Subcategory": "Tops \u0026 Shirts",
@@ -33,11 +34,11 @@
       "TotalPrice": "2037",
       "Quantity": "3",
       "ID": "14",
-      "Situation": "New",
       "Name": "Full Sleeves Top Cherry - Pink"
     },
     {
       "Availability": "In Stock",
+      "Condition": "New",
       "Brand": "H\u0026M",
       "Category": "Men",
       "Subcategory": "Jeans",
@@ -45,11 +46,11 @@
       "TotalPrice": "6000",
       "Quantity": "5",
       "ID": "35",
-      "Situation": "New",
       "Name": "Regular Fit Straight Jeans"
     },
     {
       "Availability": "In Stock",
+      "Condition": "New",
       "Brand": "Mast \u0026 Harbour",
       "Category": "Women",
       "Subcategory": "Tops",
@@ -57,7 +58,6 @@
       "TotalPrice": "1400",
       "Quantity": "1",
       "ID": "42",
-      "Situation": "New",
       "Name": "Lace Top For Women"
     }
   ],
