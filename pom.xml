@@ -17,7 +17,6 @@
         <javafaker.version>1.0.2</javafaker.version>
         <commons-io.version>RELEASE</commons-io.version>
         <json-simple.version>1.1</json-simple.version>
-        <allure-maven.version>2.12.0</allure-maven.version>
         <compiler-maven.version>3.10.1</compiler-maven.version>
         <surefire-maven.version>3.0.0-M7</surefire-maven.version>
 
@@ -86,28 +85,9 @@
         </dependency>
 
         <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>2.29.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-cucumber7-jvm</artifactId>
-            <version>2.29.0</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>1.9.22.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-bom</artifactId>
-            <version>2.29.0</version>
-            <type>pom</type>
         </dependency>
 
         <dependency>
@@ -170,6 +150,23 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.29.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber7-jvm</artifactId>
+            <version>2.29.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>2.29.0</version>
+        </dependency>
 
     </dependencies>
 
@@ -179,9 +176,9 @@
                 <plugin>
                     <groupId>io.qameta.allure</groupId>
                     <artifactId>allure-maven</artifactId>
-                    <version>${allure-maven.version}</version>
+                    <version>2.12.0</version>
                     <configuration>
-                        <reportVersion>2.10.0</reportVersion>
+                        <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
                     </configuration>
                 </plugin>
 

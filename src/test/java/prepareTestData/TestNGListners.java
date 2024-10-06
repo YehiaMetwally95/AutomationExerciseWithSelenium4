@@ -44,9 +44,7 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
 
         //Clear Old Screenshots & Allure Results before Every Run
         File file1 = new File("src/test/resources/Screenshots");
-        File file2 = new File("allure-results");
         deleteFiles(file1);
-        deleteFiles(file2);
     }
 
     public void onFinish(ISuite suite) {
