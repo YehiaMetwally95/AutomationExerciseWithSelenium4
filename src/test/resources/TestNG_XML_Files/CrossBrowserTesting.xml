@@ -1,31 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<suite name="Checkout Suit" parallel="methods" thread-count = "4">
+<suite name="Checkout Suit" parallel="methods" thread-count = "2">
 
     <test name="Chrome Test"> <parameter name = "BrowserType" value = "Chrome"/>
         <classes>
-            <class name = "testCases.AddToCartTests.AddToCartWithSearchOnGUI"> </class>
             <class name = "testCases.AddToCartTests.AddToCartWithSearchOnAPI"> </class>
             <class name = "testCases.CheckoutTests.CheckoutProductOnAPI"> </class>
-            <class name = "testCases.CheckoutTests.CheckoutProductOnGUI"> </class>
         </classes>
     </test>
 
     <test name="Firefox Test"> <parameter name = "BrowserType" value = "Firefox"/>
         <classes>
             <class name = "testCases.AddToCartTests.AddToCartWithSearchOnGUI"> </class>
-            <class name = "testCases.AddToCartTests.AddToCartWithSearchOnAPI"> </class>
-            <class name = "testCases.CheckoutTests.CheckoutProductOnAPI"> </class>
             <class name = "testCases.CheckoutTests.CheckoutProductOnGUI"> </class>
         </classes>
     </test>
 
     <test name="Edge Test"> <parameter name = "BrowserType" value = "Edge"/>
         <classes>
-            <class name = "testCases.AddToCartTests.AddToCartWithSearchOnGUI"> </class>
-            <class name = "testCases.AddToCartTests.AddToCartWithSearchOnAPI"> </class>
-            <class name = "testCases.CheckoutTests.CheckoutProductOnAPI"> </class>
-            <class name = "testCases.CheckoutTests.CheckoutProductOnGUI"> </class>
+            <class name = "testCases.AddToCartTests.RemoveFromCartWithSearchOnAPI"> </class>
+            <class name = "testCases.ContactusTests"> </class>
         </classes>
     </test>
 </suite>

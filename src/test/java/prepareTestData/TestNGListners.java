@@ -7,9 +7,6 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static prepareTestData.LoadPropertiesFile.loadPropertiesFile;
-import static prepareTestData.LoadProductsFromDB.*;
-import static prepareTestData.LoadUsersFromDB.prepareUsersFromDB;
 import static utils.CustomSoftAssert.softAssert;
 import static utils.DeleteDirectoryFiles.deleteFiles;
 
@@ -31,16 +28,16 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
 
     public void onStart (ISuite suite) {
         //Load Properties File
-        loadPropertiesFile();
+        LoadPropertiesFile.loadPropertiesFile();
 
         //Load Test Data from DB & Set Json Files Test Data
         try {
-            prepareProductsFromDB();
+            LoadProductsFromDB.prepareProductsFromDB();
         } catch (SQLException | IOException | ParseException e) {
             throw new RuntimeException(e);
         }
         try {
-            prepareUsersFromDB();
+            LoadUsersFromDB.prepareUsersFromDB();
         } catch (SQLException | IOException | ParseException e) {
             throw new RuntimeException(e);
         }

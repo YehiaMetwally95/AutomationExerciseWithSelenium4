@@ -6,18 +6,15 @@ import objectModelsForAPIs.SearchProductRequestModel;
 import objectModelsForAPIs.UserDetailsRequestModel;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import prepareTestData.TestNGListners;
-import utils.JDBCManager;
 import utils.JsonManager;
 import utils.SessionManager;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import static utils.ThreadDriver.getIsolatedDriver;
 

@@ -8,10 +8,8 @@ import org.openqa.selenium.support.locators.RelativeLocator;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import prepareTestData.TestNGListners;
-import utils.WebElementsActionBot;
 
 import java.io.*;
-import java.time.Duration;
 
 import static io.restassured.RestAssured.form;
 import static io.restassured.RestAssured.given;
@@ -65,15 +63,7 @@ public class LinearTests {
 
     @Test
     public void test5() throws IOException, InterruptedException, ParseException {
-        WebDriver driver = new EdgeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        driver.manage().window().maximize();
-        driver.navigate().to("https://automationexercise.com/products");
-        By box = By.xpath("//div[contains(@class,'productinfo')]/descendant::*[.='Blue Top']");
-        By button = By.xpath("//div[contains(@class,'overlay-content')]/p[.='Blue Top']/following-sibling::a[contains(@class,'add-to-cart')]");
-        new WebElementsActionBot(driver).hoverOnElement
-                (box);
-
+        System.out.println(System.getProperty("browserType"));
     }
 
 }

@@ -8,6 +8,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
@@ -25,7 +26,7 @@ public class BrowserFactory {
     private static String remoteExecutionPort = System.getProperty("remoteExecutionPort");
 
     public static WebDriver openBrowser(String browserType) throws MalformedURLException {
-        WebDriver driver = null;
+        RemoteWebDriver driver = null;
 
         if (executionType.equalsIgnoreCase("Local"))
         {
@@ -55,18 +56,21 @@ public class BrowserFactory {
                     driver = new RemoteWebDriver(
                             new URL("http://" + remoteExecutionHost + ":" + remoteExecutionPort + "/wd/hub")
                             ,getChromeOptions());
+                    driver.setFileDetector(new LocalFileDetector());
                     break;
 
                 case "Firefox" :
                     driver = new RemoteWebDriver(
                             new URL("http://" + remoteExecutionHost + ":" + remoteExecutionPort + "/wd/hub")
                             ,getFireFoxOptions());
+                    driver.setFileDetector(new LocalFileDetector());
                     break;
 
                 case "Edge" :
                     driver = new RemoteWebDriver(
                             new URL("http://" + remoteExecutionHost + ":" + remoteExecutionPort + "/wd/hub")
                             ,getEdgeOptions());
+                    driver.setFileDetector(new LocalFileDetector());
                     break;
                 default:
                     System.out.println("Wrong driver name");
@@ -112,7 +116,7 @@ public class BrowserFactory {
     }
 
     public static WebDriver openBrowser() throws MalformedURLException {
-        WebDriver driver = null;
+        RemoteWebDriver driver = null;
 
         if (executionType.equalsIgnoreCase("Local"))
         {
@@ -142,18 +146,21 @@ public class BrowserFactory {
                     driver = new RemoteWebDriver(
                             new URL("http://" + remoteExecutionHost + ":" + remoteExecutionPort + "/wd/hub")
                             ,getChromeOptions());
+                    driver.setFileDetector(new LocalFileDetector());
                     break;
 
                 case "Firefox" :
                     driver = new RemoteWebDriver(
                             new URL("http://" + remoteExecutionHost + ":" + remoteExecutionPort + "/wd/hub")
                             ,getFireFoxOptions());
+                    driver.setFileDetector(new LocalFileDetector());
                     break;
 
                 case "Edge" :
                     driver = new RemoteWebDriver(
                             new URL("http://" + remoteExecutionHost + ":" + remoteExecutionPort + "/wd/hub")
                             ,getEdgeOptions());
+                    driver.setFileDetector(new LocalFileDetector());
                     break;
                 default:
                     System.out.println("Wrong driver name");

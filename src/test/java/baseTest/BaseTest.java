@@ -28,7 +28,7 @@ public class BaseTest {
     public ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();;
 
     //Open Browser by read Browser Type from Properties file
- /*   @BeforeMethod
+    @BeforeMethod
     public void setUpAndOpenBrowserFromPropertiesFile() throws IOException, ParseException {
         //Open Browser
         driver = openBrowser();
@@ -41,10 +41,10 @@ public class BaseTest {
 
         //Set the CustomSoftAssert Class with the driver
         CustomSoftAssert.softAssertDriver = driver;
-    }*/
+    }
 
     //Open Browser by read Browser Type from TestNG XML File
-    @BeforeMethod
+    /*@BeforeMethod
     @Parameters({"BrowserType"})
     public void setUpAndOpenBrowserFromTestngFile(String browserType) throws IOException, ParseException {
         //Open Browser
@@ -57,7 +57,7 @@ public class BaseTest {
 
         //Set the CustomSoftAssert Class with the driver
         CustomSoftAssert.softAssertDriver = driver;
-    }
+    }*/
 
     @AfterMethod
     public void getScreenshots(ITestResult result) throws IOException, InterruptedException {

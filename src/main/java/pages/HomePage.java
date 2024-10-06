@@ -22,11 +22,11 @@ public class HomePage {
     By logoButton = By.xpath("//div[contains(@class,'logo')]/descendant::img");
     By homePageButton = RelativeLocator.with(By.tagName("a")).toRightOf(logoButton);
     By productsPageButton = By.partialLinkText("Products");
-    By cartPageButton = By.linkText("Cart");
-    By signupLoginPageButton = By.linkText("Login");
-    By contactusPageButton = By.linkText("Contact us");
-    By logOutButton = By.linkText("Logout");
-    By deleteButton = By.linkText("Delete Account");
+    By cartPageButton = By.partialLinkText("Cart");
+    By signupLoginPageButton = By.partialLinkText("Login");
+    By contactusPageButton = By.partialLinkText("Contact us");
+    By logOutButton = By.partialLinkText("Logout");
+    By deleteButton = By.partialLinkText("Delete Account");
     By loggedInButton = By.partialLinkText("Logged in");
 
     //Locators of Footer

@@ -201,11 +201,19 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M7</version>
                     <configuration>
-                        <suiteXmlFiles>
-                            <suiteXmlFile>src/test/resources/TestNG_XML_Files/ExecuteTestsOnOneBrowser.xml</suiteXmlFile>
-                        </suiteXmlFiles>
+                        <properties>
+                            <property>
+                                <name>usedefaultlisteners</name>
+                                <value>false</value> <!-- disabling default listeners is optional -->
+                            </property>
+                            <property>
+                                <name>listener</name>
+                                <value>prepareTestData.TestNGListners</value>
+                            </property>
+                        </properties>
                     </configuration>
                 </plugin>
+
             </plugins>
         </pluginManagement>
     </build>

@@ -3,7 +3,7 @@
 <suite name="Login Suit">
     <test name="Chrome Login"> <parameter name = "BrowserType" value = "Chrome"/>
         <classes>
-            <class name = "testCases.LoginTests">
+            <class name = "testCases.LoginTests.LoginWithNonExistingUserOnGUI">
                 <methods>
                     <include name="loginWithExistingUserThroughGUI" />
                 </methods>
