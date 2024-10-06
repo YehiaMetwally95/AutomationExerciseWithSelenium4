@@ -61,4 +61,4 @@ jobs:
           EOF
 
       - name: Run tests
-        run: mvn clean test -Dtest="YourTestClass" -DbrowserType="Chrome" -Ddb.url="${{ env.DB_URL }}" -Ddb.user="${{ env.DB_USER }}" -Ddb.password="${{ env.DB_PASSWORD }}"
+        run: mvn clean test -Dtest="LoginTests.LoginWithExistingUserOnGUI" -DbrowserType="Chrome" -Ddb.url="${{ env.DB_URL }}" -Ddb.user="${{ env.DB_USER }}" -Ddb.password="${{ env.DB_PASSWORD }}"
