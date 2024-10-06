@@ -27,9 +27,10 @@ public class BaseTest {
 
     public ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();;
 
-    //Open Browser by read Browser Type from Properties file
+    //Open Browser by read Browser Type from Properties files
     @BeforeMethod
     public void setUpAndOpenBrowserFromPropertiesFile() throws IOException, ParseException {
+
         //Open Browser
         driver = openBrowser();
 
