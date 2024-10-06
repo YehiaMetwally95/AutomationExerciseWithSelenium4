@@ -12,7 +12,7 @@ jobs:
         image: mysql:5.7
         env:
           MYSQL_ROOT_PASSWORD: yehia
-          MYSQL_DATABASE: jdbc:mysql://127.0.0.1:3306/automationexercise
+          MYSQL_DATABASE: automationexercise
         ports:
           - 3306:3306
         options: >-
