@@ -53,9 +53,9 @@ public class SearchForProductOnAPI extends BaseTest {
                 .sendRequestOfSearchForProduct()
                 .validateResponseCodeFromResponse(200)
         // The Data Validation on product details is done on API Layer
-                .validateProductDetailsFromResponse(json.getData("Products[3].ID"),json.getData("Products[3].Name"),
-                        json.getData("Products[3].Price"),json.getData("Products[3].Brand"),
-                        json.getData("Products[3].Category"),json.getData("Products[3].Subcategory"))
+                .validateProductDetailsFromResponse(json.getData("Products[1].ID"),json.getData("Products[1].Name"),
+                        json.getData("Products[1].Price"),json.getData("Products[1].Brand"),
+                        json.getData("Products[1].Category"),json.getData("Products[1].Subcategory"))
                 .getResponsePojoObject();
 
         // Open Product Details Page By Url and Add them to Cart On GUI Layer
