@@ -48,17 +48,5 @@ jobs:
             sleep 2
           done
 
-      - name: Create Database Schema
-        run: |
-          echo "Creating database schema..."
-          mysql -h 127.0.0.1 -u root -pyehia automationexercise <<EOF
-          CREATE TABLE IF NOT EXISTS products (
-              id INT AUTO_INCREMENT PRIMARY KEY,
-              name VARCHAR(255) NOT NULL,
-              price DECIMAL(10, 2) NOT NULL,
-              description TEXT
-          );
-          EOF
-
       - name: Run tests
         run: mvn clean test -Dtest="LoginTests.LoginWithExistingUserOnGUI" -DbrowserType="Chrome" -Ddb.url="${{ env.DB_URL }}" -Ddb.user="${{ env.DB_USER }}" -Ddb.password="${{ env.DB_PASSWORD }}"
