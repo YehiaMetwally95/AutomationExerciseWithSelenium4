@@ -27,8 +27,8 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
     }
 
     public void onStart (ISuite suite) {
-        //Load Properties File
-        LoadPropertiesFile.loadPropertiesFile();
+        /*//Load Properties File
+        LoadPropertiesFile.loadPropertiesFile();*/
 
         /*//Load Test Data from DB & Set Json Files Test Data
         try {
@@ -42,16 +42,16 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
             throw new RuntimeException(e);
         }*/
 
-        //Clear Old Screenshots & Allure Results before Every Run
+       /* //Clear Old Screenshots & Allure Results before Every Run
         File file1 = new File("src/test/resources/Screenshots");
         File file2 = new File("allure-results");
         deleteFiles(file1);
-        deleteFiles(file2);
+        deleteFiles(file2);*/
     }
 
     public void onFinish(ISuite suite) {
-        //Print Out All Assertion Errors after Every Run
-        softAssert.assertAll("The Soft Assertion Errors are listed below: ");
+        /*//Print Out All Assertion Errors after Every Run
+        softAssert.assertAll("The Soft Assertion Errors are listed below: ");*/
     }
 
     public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
