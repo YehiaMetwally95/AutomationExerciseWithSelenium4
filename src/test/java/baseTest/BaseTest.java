@@ -5,11 +5,17 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import prepareTestData.LoadProductsFromDB;
+import prepareTestData.LoadPropertiesFile;
+import prepareTestData.LoadUsersFromDB;
 import utils.CustomSoftAssert;
 
+import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 
 import static utils.BrowserFactory.*;
+import static utils.DeleteDirectoryFiles.deleteFiles;
 import static utils.Screenshot.*;
 import static utils.WindowManager.*;
 import static utils.ThreadDriver.*;
@@ -30,6 +36,27 @@ public class BaseTest {
     //Open Browser by read Browser Type from Properties files
     @BeforeMethod
     public void setUpAndOpenBrowserFromPropertiesFile() throws IOException, ParseException {
+
+        //Load Properties File
+        LoadPropertiesFile.loadPropertiesFile();
+
+        //Load Test Data from DB & Set Json Files Test Data
+        try {
+            LoadProductsFromDB.prepareProductsFromDB();
+        } catch (SQLException | IOException | ParseException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            LoadUsersFromDB.prepareUsersFromDB();
+        } catch (SQLException | IOException | ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        //Clear Old Screenshots & Allure Results before Every Run
+        File file1 = new File("src/test/resources/Screenshots");
+        File file2 = new File("allure-results");
+        deleteFiles(file1);
+        deleteFiles(file2);
 
         //Open Browser
         driver = openBrowser();

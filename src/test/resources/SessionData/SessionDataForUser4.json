@@ -6,8 +6,8 @@
       "name": "FCNEC",
       "isHttpOnly": false,
       "isSecure": false,
-      "expiry": "Oct 6, 2025, 6:27:42 PM",
-      "value": "%5B%5B%22AKsRol81qonSl7g8jSY2dUxzrTZhhMbNI4AMOPa76OrJcyEQHfjW-XLsGgSL2aGcXmigwQmO4JLuOqPl93YX5YAMUfZ7-BSgxxAkhtP1hxdCYNC5k4VI5W16kr68o1F_cXWEbIq1OZRWY6LUwT_qiLqRMj8ZpB5t8Q%3D%3D%22%5D%5D"
+      "expiry": "Oct 6, 2025, 6:52:15 PM",
+      "value": "%5B%5B%22AKsRol-qW6UMprXPW6_BovPhGrshInRAVVfDphL8Fuop66hm1CA2Z41j8ZPjouag4qtxbr49XxbjRqPWJGeS_hdF5agzf6QTkkbLsM4-7eyf_1bPRYikEU3jxHHo6P1HDGVtf7DCBa6t_MeyTfW-UItGyuPYyRBvOw%3D%3D%22%5D%5D"
     },
     {
       "path": "/",
@@ -15,8 +15,8 @@
       "name": "__gpi",
       "isHttpOnly": false,
       "isSecure": true,
-      "expiry": "Oct 31, 2025, 5:27:40 PM",
-      "value": "UID\u003d00000f042ad2ed5c:T\u003d1728228460:RT\u003d1728228460:S\u003dALNI_MZDkQsM5vjKUQKW3cupMx4tvUpnzw"
+      "expiry": "Oct 31, 2025, 5:52:13 PM",
+      "value": "UID\u003d00000f042cd4d987:T\u003d1728229933:RT\u003d1728229933:S\u003dALNI_MaQIBpi7Ps8zqoIXTYrcfhj0fLnQA"
     },
     {
       "path": "/",
@@ -24,17 +24,8 @@
       "name": "__eoi",
       "isHttpOnly": false,
       "isSecure": true,
-      "expiry": "Apr 4, 2025, 5:27:40 PM",
-      "value": "ID\u003d88dc273845f64732:T\u003d1728228460:RT\u003d1728228460:S\u003dAA-AfjZFAmRqR1b83Y-vDPrSp8JX"
-    },
-    {
-      "path": "/",
-      "domain": ".automationexercise.com",
-      "name": "__gsas",
-      "isHttpOnly": false,
-      "isSecure": false,
-      "expiry": "Oct 31, 2025, 5:27:41 PM",
-      "value": "ID\u003df6a06b3a131174d9:T\u003d1728228461:RT\u003d1728228461:S\u003dALNI_MZhm_XZBdFil-m8J2tRDMhAJQHamQ"
+      "expiry": "Apr 4, 2025, 5:52:13 PM",
+      "value": "ID\u003ddc6665267695f120:T\u003d1728229933:RT\u003d1728229933:S\u003dAA-AfjaxPJ5MjVRB9eKqQ9jvNkCQ"
     },
     {
       "path": "/",
@@ -42,8 +33,8 @@
       "name": "sessionid",
       "isHttpOnly": true,
       "isSecure": false,
-      "expiry": "Oct 20, 2024, 6:27:42 PM",
-      "value": "igwc7zfikkza8ddllvig4tibiqj6negu"
+      "expiry": "Oct 20, 2024, 6:52:15 PM",
+      "value": "e6ssfdg86eekcpnmonu70g99lej01djk"
     },
     {
       "path": "/",
@@ -51,8 +42,8 @@
       "name": "csrftoken",
       "isHttpOnly": false,
       "isSecure": false,
-      "expiry": "Oct 5, 2025, 6:27:43 PM",
-      "value": "R0MKVjNnVytetrGAjv8HQ4PJOCDgVpPHl4Bi5FHkaNp67v0zNFqHWFOc9RkfniyJ"
+      "expiry": "Oct 5, 2025, 6:52:15 PM",
+      "value": "lAtsLj4bOAyX11VjYyLtqkcfWRUFCnGyR5SAkg4csOspzoAZ7dRlcNFhhjAp5NIu"
     },
     {
       "path": "/",
@@ -60,8 +51,8 @@
       "name": "__gads",
       "isHttpOnly": false,
       "isSecure": true,
-      "expiry": "Oct 31, 2025, 5:27:40 PM",
-      "value": "ID\u003d083a142eda30c88b:T\u003d1728228460:RT\u003d1728228460:S\u003dALNI_Maiz96W9jrmjKGX_sWL6lVAfVpAPg"
+      "expiry": "Oct 31, 2025, 5:52:13 PM",
+      "value": "ID\u003df659ce6f02bd2d1c:T\u003d1728229933:RT\u003d1728229933:S\u003dALNI_MZnzamdSkcdXUSOeTFTHLAs7jTteg"
     }
   ],
   "username": "Test2720747"
