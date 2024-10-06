@@ -18,4 +18,4 @@ jobs:
           java-version: '21'
           
       - name: Run tests
-        run: mvn clean test -Dtest="LoginTests.LoginWithExistingUserOnGUI" -DbrowserType="Chrome"
+        run: mvn clean test -Dtest="LoginTests.LoginWithExistingUserOnGUI" -DbrowserType="Chrome" -DisHeadless="true"
