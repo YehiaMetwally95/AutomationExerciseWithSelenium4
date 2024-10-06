@@ -3,15 +3,15 @@ name: test1
 on:
   push:
     branches: 
-      "master"
+      - master
 
 jobs:
   run_test_1:
     runs-on: ubuntu-latest
-    
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v4.2.0
 
-    - name: run test
-      run: mvn clean test -Dtest="LoginTests.LoginWithExistingUserOnGUI" -DbrowserType="Chrome"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.0
+
+      - name: Run test
+        run: mvn clean test -Dtest="LoginTests.LoginWithExistingUserOnGUI" -DbrowserType="Chrome"
