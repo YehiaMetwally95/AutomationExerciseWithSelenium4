@@ -37,27 +37,6 @@ public class BaseTest {
     @BeforeMethod
     public void setUpAndOpenBrowserFromPropertiesFile() throws IOException, ParseException {
 
-        //Load Properties File
-        LoadPropertiesFile.loadPropertiesFile();
-
-        //Load Test Data from DB & Set Json Files Test Data
-        try {
-            LoadProductsFromDB.prepareProductsFromDB();
-        } catch (SQLException | IOException | ParseException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            LoadUsersFromDB.prepareUsersFromDB();
-        } catch (SQLException | IOException | ParseException e) {
-            throw new RuntimeException(e);
-        }
-
-        //Clear Old Screenshots & Allure Results before Every Run
-        File file1 = new File("src/test/resources/Screenshots");
-        File file2 = new File("allure-results");
-        deleteFiles(file1);
-        deleteFiles(file2);
-
         //Open Browser
         driver = openBrowser();
 
