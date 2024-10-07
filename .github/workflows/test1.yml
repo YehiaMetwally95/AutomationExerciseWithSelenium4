@@ -22,7 +22,8 @@ jobs:
     
       - name: Check running containers
         run: docker ps
-      
+      - name: Publish Report
+        continue-on-error: true
       - name: Run tests
         run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
         
