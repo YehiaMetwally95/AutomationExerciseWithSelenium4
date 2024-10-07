@@ -40,3 +40,22 @@ services:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
+
+  mysql:
+    image: mysql/mysql-server
+    environment:
+      MYSQL_ROOT_PASSWORD: yehia    # Change to a secure password
+      MYSQL_DATABASE: automationexercise                 # Name of the database to create
+    ports:
+      - "3306:3306"                          # Map host port 3306 to container port 3306
+    networks:
+      - my-network
+    volumes:
+      - mysql_data:/var/lib/mysql           # Persist data
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
