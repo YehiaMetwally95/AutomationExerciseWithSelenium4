@@ -82,5 +82,6 @@ public class BaseTest {
 
         //Remove the Isolated Driver from Memory
         removeIsolatedDriver(threadDriver);
+
     }
 }

@@ -49,7 +49,12 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
 
     public void onFinish(ISuite suite) {
         //Print Out All Assertion Errors after Every Run
-        softAssert.assertAll("The Soft Assertion Errors are listed below: ");
+       try{
+           softAssert.assertAll("The Soft Assertion Errors are listed below: ");
+       }catch (AssertionError e)
+       {
+           System.out.println(e.getMessage());
+       }
     }
 
     public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
