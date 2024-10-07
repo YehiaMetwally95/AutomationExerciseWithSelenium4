@@ -1,7 +1,9 @@
 package prepareTestData;
 
+import io.qameta.allure.Step;
 import org.json.simple.parser.ParseException;
 import org.testng.*;
+import utils.CustomSoftAssert;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +32,7 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
         //Load Properties File
         LoadPropertiesFile.loadPropertiesFile();
 
-      /*  //Load Test Data from DB & Set Json Files Test Data
+        //Load Test Data from DB & Set Json Files Test Data
         try {
             LoadProductsFromDB.prepareProductsFromDB();
         } catch (SQLException | IOException | ParseException e) {
@@ -40,7 +42,7 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
             LoadUsersFromDB.prepareUsersFromDB();
         } catch (SQLException | IOException | ParseException e) {
             throw new RuntimeException(e);
-        }*/
+        }
 
         //Clear Old Screenshots & Allure Results before Every Run
         File file1 = new File("src/test/resources/Screenshots");
@@ -49,12 +51,7 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
 
     public void onFinish(ISuite suite) {
         //Print Out All Assertion Errors after Every Run
-       try{
-           softAssert.assertAll("The Soft Assertion Errors are listed below: ");
-       }catch (AssertionError e)
-       {
-           System.out.println(e.getMessage());
-       }
+        CustomSoftAssert.reportSoftAssertionErrors();
     }
 
     public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
