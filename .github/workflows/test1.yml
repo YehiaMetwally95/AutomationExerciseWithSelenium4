@@ -6,43 +6,10 @@ on:
 jobs:
   run_tests:
     runs-on: ubuntu-latest
-
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: yehia
-          MYSQL_DATABASE: automationexercise
-          
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping -h localhost -u root --password=yehia"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4.2.0
-
-        
-      - name: Set up MySQL Client
-        run: |
-          sudo apt-get install mysql-client
-
-      - name: Wait for MySQL to be ready
-        run: |
-          until mysqladmin ping -h 127.0.0.1 -u root --password=yehia; do
-            echo "Waiting for MySQL to be ready..."
-            sleep 2
-          done
-
-      - name: Run Database Commands
-        run: |
-          # Connect to the existing database
-          mysql -h 127.0.0.1 -u root --password=yehia automationexercise -e "SHOW TABLES;"
-          
+        uses: actions/checkout@v4.2.0     
 
       - name: Setup JDK 21
         uses: actions/setup-java@v4
