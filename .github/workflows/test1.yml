@@ -16,6 +16,35 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '21'
+
+
+
+
+      - name: Set up Docker
+        run: |
+          docker run --name dockerDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql
+
+      - name: Wait for MySQL to be ready
+        run: |
+          for i in {1..30}; do
+            if docker exec dockerDB mysql -u root -pyehia -e "SELECT 1;" >/dev/null 2>&1; then
+              echo "MySQL is up!"
+              break
+            fi
+            echo "Waiting for MySQL..."
+            sleep 1
+          done
+
+      - name: Copy SQL file to Docker container
+        run: |
+          docker cp src/test/resources/DBFiles/ProductsAndUsers.sql dockerDB:/ProductsAndUsers.sql
+
+      - name: Import SQL file into MySQL
+        run: |
+          docker exec -i dockerDB mysql -u root -pyehia -e "SOURCE /ProductsAndUsers.sql"
+
+
+
           
       - name: Set up Selenium Grid with Docker Containers
         run: docker compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=4 --scale edge=0 --scale firefox=0 -d
