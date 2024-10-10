@@ -1,6 +1,6 @@
 {
   "Details": {
-    "FilePath": "\\src\\test\\resources\\FilesToBeUploaded\\Mattresses.pdf",
+    "FilePath": "/src/test/resources/FilesToBeUploaded/Mattresses.pdf",
     "Email": "Yehia@gmail.com",
     "Description": "Payment is failed while checkout more than 50 products",
     "Subject": "Complaint",
