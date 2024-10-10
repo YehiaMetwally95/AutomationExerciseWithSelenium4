@@ -46,6 +46,7 @@ services:
     container_name: dockerDB
     environment:
       MYSQL_ROOT_PASSWORD: yehia
+      MYSQL_DATABASE: automationexercise
     ports:
       - "3306:3306"
     volumes:
