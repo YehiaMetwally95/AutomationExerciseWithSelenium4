@@ -53,3 +53,8 @@ jobs:
         with:
           name: Allure Report
           path: "target/site/allure-maven-plugin"
+
+      - name: Cleanup Docker Containers
+        if: always()
+        run: |
+          docker-compose down
