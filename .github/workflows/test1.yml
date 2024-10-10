@@ -18,7 +18,7 @@ jobs:
           java-version: '21'
 
       - name: Set up DataBase
-        run: docker start dockerDB
+        run: docker run --name TestDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql
           
       - name: Set up Selenium Grid with Docker Containers
         run: docker compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=4 --scale edge=0 --scale firefox=0 -d
