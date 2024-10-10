@@ -79,42 +79,6 @@ public class BrowserFactory {
         return driver;
     }
 
-    public static ChromeOptions getChromeOptions()
-    {
-        ChromeOptions option = new ChromeOptions();
-        option.addArguments("--disable-infobars");
-        option.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
-        if (isMaximized.equalsIgnoreCase("true"))
-            option.addArguments("--start-maximized");
-        if (isHeadless.equalsIgnoreCase("true"))
-            option.addArguments("--headless");
-
-        return option;
-    }
-
-    public static EdgeOptions getEdgeOptions()
-    {
-        EdgeOptions option = new EdgeOptions();
-        option.addArguments("--disable-infobars");
-        option.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
-        if (isMaximized.equalsIgnoreCase("true"))
-            option.addArguments("--start-maximized");
-        if (isHeadless.equalsIgnoreCase("true"))
-            option.addArguments("--headless");
-
-        return option;
-    }
-
-    public static FirefoxOptions getFireFoxOptions()
-    {
-        FirefoxOptions option = new FirefoxOptions();
-        if (isMaximized.equalsIgnoreCase("true"))
-            option.addArguments("--start-minimized");
-        if (isHeadless.equalsIgnoreCase("true"))
-            option.addArguments("--headless");
-        return option;
-    }
-
     public static WebDriver openBrowser() throws MalformedURLException {
         RemoteWebDriver driver = null;
 
@@ -167,5 +131,41 @@ public class BrowserFactory {
             }
         }
         return driver;
+    }
+
+    public static ChromeOptions getChromeOptions()
+    {
+        ChromeOptions option = new ChromeOptions();
+        option.addArguments("--disable-infobars");
+        option.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
+        if (isMaximized.equalsIgnoreCase("true"))
+            option.addArguments("--start-maximized");
+        if (isHeadless.equalsIgnoreCase("true"))
+            option.addArguments("--headless");
+
+        return option;
+    }
+
+    public static EdgeOptions getEdgeOptions()
+    {
+        EdgeOptions option = new EdgeOptions();
+        option.addArguments("--disable-infobars");
+        option.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
+        if (isMaximized.equalsIgnoreCase("true"))
+            option.addArguments("--start-maximized");
+        if (isHeadless.equalsIgnoreCase("true"))
+            option.addArguments("--headless");
+
+        return option;
+    }
+
+    public static FirefoxOptions getFireFoxOptions()
+    {
+        FirefoxOptions option = new FirefoxOptions();
+        if (isMaximized.equalsIgnoreCase("true"))
+            option.addArguments("--start-minimized");
+        if (isHeadless.equalsIgnoreCase("true"))
+            option.addArguments("--headless");
+        return option;
     }
 }
