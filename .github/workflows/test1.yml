@@ -60,4 +60,4 @@ jobs:
       - name: Cleanup Docker Containers
         if: always()
         run: |
-          docker-compose -f src/main/resources/docker-compose-v3.yml down && docker stop dockerDB
+          docker compose -f src/main/resources/docker-compose-v3.yml down && docker stop dockerDB
