@@ -14,7 +14,8 @@ import java.io.*;
 import static io.restassured.RestAssured.form;
 import static io.restassured.RestAssured.given;
 
-public class LinearTests {
+@Listeners(TestNGListners.class)
+public class LinearTests extends BaseTest {
 
     @Test
     public void test1() throws IOException, InterruptedException {
