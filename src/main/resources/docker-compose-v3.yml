@@ -49,4 +49,5 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./src/test/resources/DBFiles:/docker-entrypoint-initdb.d
+      - ./src/test/resources/DBFiles/ProductsAndUsers.sql:/docker-entrypoint-initdb.d/ProductsAndUsers.sql
+    restart: always
