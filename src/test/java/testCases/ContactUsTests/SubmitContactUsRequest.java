@@ -1,4 +1,4 @@
-package testCases;
+package testCases.ContactUsTests;
 
 import baseTest.BaseTest;
 import io.qameta.allure.*;
@@ -20,7 +20,7 @@ import static utils.ThreadDriver.getIsolatedDriver;
 @Feature("Contact Us")
 @Story("Verify User can Submit Contact Us Form")
 @Listeners(TestNGListners.class)
-public class ContactusTests extends BaseTest {
+public class SubmitContactUsRequest extends BaseTest {
 
     static String jsonFilePathForContactus = "src/test/resources/TestDataJsonFiles/ContactusTestData.json";
     JsonManager json = new JsonManager(jsonFilePathForContactus);

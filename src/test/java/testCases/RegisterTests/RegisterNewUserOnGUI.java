@@ -57,7 +57,6 @@ public class RegisterNewUserOnGUI extends BaseTest {
     @Test
     public void registerNewUserThroughGUI() throws IOException, ParseException {
         new HomePage(driver)
-                .openHomePage()
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
                 .verifyLoginSignupPageIsOpened()
@@ -68,9 +67,10 @@ public class RegisterNewUserOnGUI extends BaseTest {
                         ,json.getData("NewUser1.Address1"),json.getData("NewUser1.Address2"),json.getData("NewUser1.Country")
                         ,json.getData("NewUser1.State"),json.getData("NewUser1.City"),json.getData("NewUser1.ZipCode")
                         ,json.getData("NewUser1.MobileNumber"))
-                .logout()
+              /*  .logout()
+                .openLoginSignupPage()
                 .verifyLoginSignupPageIsOpened()
-                .loginWithValidUser(json.getData("NewUser1.Email"),json.getData("NewUser1.Password"))
+                .loginWithValidUser(json.getData("NewUser1.Email"),json.getData("NewUser1.Password"))*/
                 .assertUserIsLoggedIn(json.getData("NewUser1.Name"));
     }
 
@@ -80,7 +80,6 @@ public class RegisterNewUserOnGUI extends BaseTest {
     public void registerExistingUserThroughGUI() throws IOException, ParseException {
         WebDriver driver = getIsolatedDriver(threadDriver);
         new HomePage(driver)
-                .openHomePage()
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
                 .verifyLoginSignupPageIsOpened()

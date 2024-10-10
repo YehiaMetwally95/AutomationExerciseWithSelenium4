@@ -3,7 +3,7 @@
 <suite name="Login Suit">
     <test name="Chrome Login"> <parameter name = "BrowserType" value = "Firefox"/>
         <classes>
-            <class name = "testCases.ContactusTests">
+            <class name = "testCases.ContactUsTests.SubmitContactUsRequest">
             </class>
         </classes>
     </test>

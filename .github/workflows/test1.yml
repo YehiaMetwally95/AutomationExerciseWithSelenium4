@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  run_tests:
+  Chrome_Linux_Test:
     runs-on: ubuntu-latest
     
     steps:
@@ -43,7 +43,7 @@ jobs:
         run: docker ps
         
       - name: Run tests
-        run: mvn clean test -Dtest="RegisterTests.RegisterNewUserOnGUI.registerNewUserThroughGUI" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnAPI" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
         
       - name: Generate Allure report
         run: mvn allure:report

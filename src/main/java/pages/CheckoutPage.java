@@ -87,7 +87,6 @@ public class CheckoutPage extends HomePage{
         }
         totalPrice = Integer.toString(total);
         CustomSoftAssert.softAssert.assertTrue(bot.readText(totalPriceLocator).contains(totalPrice));
-        System.out.println(totalPrice);
         return this;
     }
 

@@ -19,7 +19,7 @@
     <test name="Edge Test"> <parameter name = "BrowserType" value = "Edge"/>
         <classes>
             <class name = "testCases.AddToCartTests.RemoveFromCartWithSearchOnAPI"> </class>
-            <class name = "testCases.ContactusTests"> </class>
+            <class name = "testCases.ContactUsTests.SubmitContactUsRequest"> </class>
         </classes>
     </test>
 </suite>
