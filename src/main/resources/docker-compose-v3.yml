@@ -40,3 +40,13 @@ services:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
+
+  mysql:
+    image: mysql:latest
+    container_name: dockerDB
+    environment:
+      MYSQL_ROOT_PASSWORD: yehia
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./src/test/resources/DBFiles:/docker-entrypoint-initdb.d
