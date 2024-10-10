@@ -52,7 +52,7 @@ jobs:
       - name: Check files in the allure-maven-plugin folder
         run: ls target/site/allure-maven-plugin
       - name: Upload Allure Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Allure Report
           path: "target/site/allure-maven-plugin"
