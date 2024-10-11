@@ -1,18 +1,21 @@
 package prepareTestData;
 
-import io.qameta.allure.Step;
+import lombok.SneakyThrows;
 import org.json.simple.parser.ParseException;
 import org.testng.*;
 import utils.CustomSoftAssert;
+import utils.PropertiesManager;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static utils.CustomSoftAssert.softAssert;
+import static prepareTestData.LoadProductsFromDB.loadProductsFromDB;
+import static prepareTestData.LoadUsersFromDB.loadUsersFromDB;
 import static utils.DeleteDirectoryFiles.deleteFiles;
 
 public class TestNGListners implements ITestListener , IInvokedMethodListener , ISuiteListener {
+    static String propertiesFilePath = "src/main/resources/Configurations.properties";
 
     public void onTestStart(ITestResult result) {
         // not implemented
@@ -28,20 +31,20 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
         // not implemented
     }
 
+    @SneakyThrows
     public void onStart (ISuite suite) {
         //Load Properties File
-        LoadPropertiesFile.loadPropertiesFile();
-
-        //Load Test Data from DB & Set Json Files Test Data
+        PropertiesManager.filePath = propertiesFilePath;
         try {
-            LoadProductsFromDB.prepareProductsFromDB();
-        } catch (SQLException | IOException | ParseException e) {
+            PropertiesManager.loadProperties();
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        try {
-            LoadUsersFromDB.prepareUsersFromDB();
-        } catch (SQLException | IOException | ParseException e) {
-            throw new RuntimeException(e);
+
+        // Sync with Database to Load Latest Products and Users and Update Test Data Json Files
+        if (System.getProperty("syncWithDB").equalsIgnoreCase("true")) {
+            loadProductsFromDB();
+            loadUsersFromDB();
         }
 
         //Clear Old Screenshots & Allure Results before Every Run

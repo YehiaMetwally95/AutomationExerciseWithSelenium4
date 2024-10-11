@@ -1,6 +1,10 @@
 package prepareTestData;
 
+import io.qameta.allure.Description;
 import org.json.simple.parser.ParseException;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
 import utils.JDBCManager;
 
 import java.io.IOException;
@@ -11,7 +15,9 @@ public class LoadProductsFromDB {
     static String jsonFilePathForCheckout = "src/test/resources/TestDataJsonFiles/CheckoutTestData.json";
     static String jsonFilePathForSearchProduct = "src/test/resources/TestDataJsonFiles/SearchProductTestData.json";
 
-    public static void prepareProductsFromDB() throws SQLException, IOException, ParseException {
+    @Description("Load The Latest Products from DB and Update them into Test Data Json Files")
+    @Test
+    public static void loadProductsFromDB() throws SQLException, IOException, ParseException {
         String dbQuery = "SELECT Id,Name,Category,Subcategory,Price,Availability,Situation,Brand,Quantity,TotalPrice FROM automationexercise.products Order by Id Asc;";
 
         //JsonKeys shall be filled by the same order of table columns of database query

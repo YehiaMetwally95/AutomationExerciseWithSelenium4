@@ -1,6 +1,9 @@
 package prepareTestData;
 
+import io.qameta.allure.Description;
 import org.json.simple.parser.ParseException;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
 import utils.JDBCManager;
 
 import java.io.IOException;
@@ -13,7 +16,9 @@ public class LoadUsersFromDB {
     static String jsonFilePathForLogin = "src/test/resources/TestDataJsonFiles/LoginTestData.json";
     static String jsonFilePathForContactus = "src/test/resources/TestDataJsonFiles/ContactusTestData.json";
 
-    public static void prepareUsersFromDB() throws SQLException, IOException, ParseException {
+    @Description("Load The Latest User from DB and Update them into Test Data Json Files")
+    @Test
+    public static void loadUsersFromDB() throws SQLException, IOException, ParseException {
         String dbQuery = "SELECT Title,Username,Email,Password,DayofBirth,MonthofBirth,YearofBirth,FirstName,LastName,Company,Address1,Address2,Country,State,City,ZipCode,MobileNumber FROM automationexercise.users Order By Username Asc;";
 
         //JsonKeys shall be filled by the same order of table columns of database query
