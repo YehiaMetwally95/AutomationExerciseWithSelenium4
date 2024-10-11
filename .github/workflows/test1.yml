@@ -22,11 +22,8 @@ jobs:
         with:
           maven-version: 3.9.4
 
-      - name: Check Running Containers
-        run: docker ps
-
       - name: Run tests
-        run: mvn clean test -Dtest="ContactUsTests.SubmitContactUsRequest" -DexecutionType="Local" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="ContactUsTests.SubmitContactUsRequest"
 
       - name: Upload Allure Report as Artifact
         uses: actions/upload-artifact@v4
