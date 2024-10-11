@@ -68,7 +68,7 @@ jobs:
         run: |
           for ($i = 1; $i -le 30; $i++) {
             try {
-              mysql -h ${{ needs.Set_Up_MySQL.outputs.mysql_host }} -P ${{ needs.Set_Up_MySQL.outputs.mysql_port }} -u root -pyehia -e "SELECT 1;" | Out-Null
+              mysql -h 127.0.0.1 -P 3306 -u root -pyehia -e "SELECT 1;" | Out-Null
               Write-Host "MySQL is up!"
               break
             } catch {
