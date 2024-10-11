@@ -1,52 +1,11 @@
-name: Java Maven Selenium Tests
+name: Test
 
 on:
   workflow_dispatch:
 
 jobs:
-
-  Set_Up_MySQL:
-    runs-on: ubuntu-latest
-    outputs:
-      mysql_host: ${{ steps.mysql_output.outputs.host }}
-      mysql_port: ${{ steps.mysql_output.outputs.port }}
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4.2.0
-
-      - name: Set up Docker
-        run: |
-          docker run --name dockerDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql
-
-      - name: Wait for MySQL to be ready
-        run: |
-          for i in {1..30}; do
-            if docker exec dockerDB mysql -u root -pyehia -e "SELECT 1;" >/dev/null 2>&1; then
-              echo "MySQL is up!"
-              break
-            fi
-            echo "Waiting for MySQL..."
-            sleep 1
-          done
-
-      - name: Copy SQL file to Docker container
-        run: |
-          docker cp src/test/resources/DBFiles/ProductsAndUsers.sql dockerDB:/ProductsAndUsers.sql
-
-      - name: Import SQL file into MySQL
-        run: |
-          docker exec -i dockerDB mysql -u root -pyehia -e "SOURCE /ProductsAndUsers.sql"
-
-      - name: Set output variables
-        id: mysql_output
-        run: |
-          echo "::set-output name=host::127.0.0.1"
-          echo "::set-output name=port::3306"
-
-  Chrome_Windows_Test:
+  Edge_Windows_Test:
     runs-on: windows-latest
-    needs: Set_Up_MySQL
 
     steps:
       - name: Checkout code
@@ -63,22 +22,8 @@ jobs:
         with:
           maven-version: 3.9.4
 
-      - name: Wait for MySQL to be ready
-        shell: pwsh
-        run: |
-          for ($i = 1; $i -le 30; $i++) {
-            try {
-              mysql -h 127.0.0.1 -P 3306 -u root -pyehia -e "SELECT 1;" | Out-Null
-              Write-Host "MySQL is up!"
-              break
-            } catch {
-              Write-Host "Waiting for MySQL..."
-              Start-Sleep -Seconds 1
-            }
-          }
-
       - name: Run tests
-        run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnGUI" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
       - name: Generate Allure report
         run: mvn allure:report
@@ -89,10 +34,56 @@ jobs:
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: Allure_Report_Chrome_Ubuntu
+          name: Allure_Report_Edge_Windows
           path: "target/site/allure-maven-plugin"
 
-      - name: Cleanup Docker Containers
+      - name: Upload Allure Report as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Edge_Grid_Allure
+          path: "allure-report/*_AllureReport.html"
+
+      - name: Publish Test Results
+        continue-on-error: true
+        uses: EnricoMi/publish-unit-test-result-action/composite@v2
         if: always()
-        run: |
-          docker compose -f src/main/resources/docker-compose-v3.yml down && docker stop dockerDB
+        with:
+          check_name: "Tests Results Edge_Grid"
+          files: |
+            target/surefire-reports/TEST-*.xml          
+
+  Firefox_Windows_Test:
+    runs-on: windows-2019
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.0
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '21'
+
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.4
+
+      - name: Run tests
+        run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
+
+      - name: Upload Allure Report as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Firefox_Grid_Allure
+          path: "allure-report/*_AllureReport.html"
+
+      - name: Publish Test Results
+        continue-on-error: true
+        uses: EnricoMi/publish-unit-test-result-action/composite@v2
+        if: always()
+        with:
+          check_name: "Tests Results Firefox_Grid"
+          files: |
+            target/surefire-reports/TEST-*.xml
