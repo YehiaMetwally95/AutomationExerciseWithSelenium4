@@ -4,12 +4,38 @@ on:
   workflow_dispatch:
 
 jobs:
-  Chrome_Linux_Test:
-    runs-on: windows-latest
-    
+
+  Set_Up_Docker:
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4.2.0     
+        uses: actions/checkout@v4.2.0
+
+      - name: Set up MySQL Server with Docker Containers
+        run: docker run --name dockerDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql:5.7 && \sleep 10 && \docker cp src/test/resources/DBFiles/ProductsAndUsers.sql dockerDB:/ProductsAndUsers.sql && \docker exec -i dockerDB mysql -u root -p'yehia' -e "SOURCE /ProductsAndUsers.sql;"
+
+      - name: Set up Selenium Grid with Docker Containers
+        run: docker compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=2 --scale edge=0 --scale firefox=0 -d
+
+      - name: Wait for MySQL to be ready
+        run: |
+          for i in {1..30}; do
+            if docker exec dockerDB mysql -u root -pyehia -e "SELECT 1;" >/dev/null 2>&1; then
+              echo "MySQL is up!"
+              break
+            fi
+            echo "Waiting for MySQL..."
+            sleep 1
+          done
+
+  Chrome_Ubuntu_Test:
+    runs-on: ubuntu-latest
+    needs: Set_Up_Docker
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.0
 
       - name: Setup JDK 21
         uses: actions/setup-java@v4
@@ -22,46 +48,12 @@ jobs:
         with:
           maven-version: 3.9.4
 
-      - name: Set up Docker
-        run: |
-          docker pull mysql:5.7  # Pull the MySQL image
-
-      - name: Set up MySQL Server with Docker Containers
-        run: |
-          docker run --name dockerDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql:5.7
-          # Wait for MySQL to be ready
-          for i in {30..0}; do
-            if docker exec dockerDB mysql -u root -pyehia -e "SELECT 1;" &> /dev/null; then
-              break
-            fi
-            echo 'Waiting for MySQL...'
-            sleep 1
-          done
-          docker cp src/test/resources/DBFiles/ProductsAndUsers.sql dockerDB:/ProductsAndUsers.sql
-          docker exec -i dockerDB mysql -u root -pyehia -e "SOURCE /ProductsAndUsers.sql;"
-
-
-
-      - name: Set up Selenium Grid with Docker Containers
-        run: docker compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=4 --scale edge=0 --scale firefox=0 -d
-
-      - name: Wait for MySQL to be ready
-        run: |
-          for i in {1..30}; do
-            if docker exec dockerDB mysql -u root -pyehia -e "SELECT 1;" >/dev/null 2>&1; then
-              echo "MySQL is up!"
-              break
-            fi
-            echo "Waiting for MySQL..."
-            sleep 1
-          done
-    
       - name: Check Running Containers
         run: docker ps
-        
+
       - name: Run tests
-        run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnAPI" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
-        
+        run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnGUI" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
+
       - name: Generate Allure report
         run: mvn allure:report
       - name: Copy patch file to allure-maven-plugin folder
@@ -71,7 +63,7 @@ jobs:
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: Allure Report
+          name: Allure_Report_Chrome_Ubuntu
           path: "target/site/allure-maven-plugin"
 
       - name: Cleanup Docker Containers
