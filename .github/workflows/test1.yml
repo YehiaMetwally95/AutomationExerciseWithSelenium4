@@ -5,7 +5,7 @@ on:
 
 jobs:
   Edge_Windows_Test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -53,7 +53,7 @@ jobs:
             target/surefire-reports/TEST-*.xml          
 
   Firefox_Windows_Test:
-    runs-on: windows-2019
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
