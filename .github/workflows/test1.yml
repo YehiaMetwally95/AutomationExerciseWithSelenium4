@@ -65,12 +65,6 @@ jobs:
         with:
           maven-version: 3.9.4
 
-      - name: Set up Selenium Grid with Docker Containers
-        run: docker compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=2 --scale edge=0 --scale firefox=0 -d
-
-      - name: Check Running Containers
-        run: docker ps
-
       - name: Run tests
         run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnGUI" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
