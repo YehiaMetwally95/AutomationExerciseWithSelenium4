@@ -24,7 +24,7 @@ jobs:
 
       - name: Install Allure
         run: |
-          curl -o allure.zip -L "https://github.com/allure-framework/allure2/releases/latest/download/allure-2.19.0.zip"
+          curl -o allure-2.30.0.zip -L "https://github.com/allure-framework/allure2/releases"
           unzip allure.zip -d allure
           sudo mv allure/bin/* /usr/local/bin/
 
@@ -60,7 +60,7 @@ jobs:
 
       - name: Install Allure
         run: |
-          curl -o allure.zip -L "https://github.com/allure-framework/allure2/releases/latest/download/allure-2.19.0.zip"
+          curl -o allure-2.30.0.zip -L "https://github.com/allure-framework/allure2/releases"
           unzip allure.zip -d allure
           sudo mv allure/bin/* /usr/local/bin/
 
