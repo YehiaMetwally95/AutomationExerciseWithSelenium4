@@ -34,6 +34,13 @@ jobs:
       - name: Generate Allure report
         run: mvn allure:report
 
+      - name: Publish Allure test results
+        uses: EnricoMi/publish-unit-test-result-action/composite@v2
+        with:
+          test-results: target/allure-results
+          name: Allure Report
+          fail-on-error: true
+
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
@@ -61,15 +68,16 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
-      - name: Upload target directory
-        uses: actions/upload-artifact@v4
-        with:
-           name: target-directory
-           path: target/
-
 
       - name: Generate Allure report
         run: mvn allure:report
+
+      - name: Publish Allure test results
+        uses: EnricoMi/publish-unit-test-result-action/composite@v2
+        with:
+          test-results: target/allure-results
+          name: Allure Report
+          fail-on-error: true
 
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
