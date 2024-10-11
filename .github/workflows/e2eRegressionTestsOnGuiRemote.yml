@@ -295,7 +295,7 @@ jobs:
           docker compose -f src/main/resources/docker-compose-v3.yml down && docker stop dockerDB
 
   Firefox_Windows_Test:
-    runs-on: windows-latest
+    runs-on: windows-2019
 
     steps:
       - name: Checkout code
