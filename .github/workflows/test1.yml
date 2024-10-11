@@ -22,8 +22,11 @@ jobs:
         with:
           maven-version: 3.9.4
 
+      - name: Set up Selenium Grid with Docker Containers
+        run: docker compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=0 --scale edge=2 --scale firefox=0 -d
+
       - name: Run tests
-        run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Remote" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
       - name: Generate Allure report
         run: mvn allure:report
@@ -70,8 +73,11 @@ jobs:
         with:
           maven-version: 3.9.4
 
+      - name: Set up Selenium Grid with Docker Containers
+        run: docker compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=0 --scale edge=0 --scale firefox=2 -d
+
       - name: Run tests
-        run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Remote" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
       - name: Upload Allure Report as Artifact
         uses: actions/upload-artifact@v4
