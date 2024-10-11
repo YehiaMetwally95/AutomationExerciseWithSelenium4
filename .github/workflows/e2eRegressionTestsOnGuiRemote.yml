@@ -43,7 +43,7 @@ jobs:
         run: docker ps
         
       - name: Run tests
-        run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnGUI" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -DsyncWithDB="true"
+        run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnGUI" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
         
       - name: Upload Allure Report as Artifact
         uses: actions/upload-artifact@v4
@@ -104,7 +104,7 @@ jobs:
         run: docker ps
 
       - name: Run tests
-        run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnGUI" -DexecutionType="Remote" -DbrowserType="Edge" -DisHeadless="true" -DsyncWithDB="true"
+        run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnGUI" -DexecutionType="Remote" -DbrowserType="Edge" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
 
       - name: Upload Allure Report as Artifact
         uses: actions/upload-artifact@v4
@@ -165,7 +165,7 @@ jobs:
         run: docker ps
 
       - name: Run tests
-        run: mvn clean test -Dtest="ContactUsTests.SubmitContactUsRequest" -DexecutionType="Remote" -DbrowserType="Firefox" -DisHeadless="true" -DsyncWithDB="true"
+        run: mvn clean test -Dtest="ContactUsTests.SubmitContactUsRequest" -DexecutionType="Remote" -DbrowserType="Firefox" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
 
       - name: Upload Allure Report as Artifact
         uses: actions/upload-artifact@v4
@@ -206,7 +206,7 @@ jobs:
           maven-version: 3.9.4
 
       - name: Run tests
-        run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnAPI" -DexecutionType="Local" -DbrowserType="Chrome" -DsyncWithDB="false" -DisHeadless="true"
+        run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnAPI" -DexecutionType="Local" -DbrowserType="Chrome" -DsyncWithDB="false" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
       - name: Upload Allure Report as Artifact
         uses: actions/upload-artifact@v4
@@ -222,17 +222,6 @@ jobs:
           check_name: "Tests Results Chrome_Windows"
           files: |
             target/surefire-reports/TEST-*.xml
-
-      - name: List Surefire reports directory
-        run: |
-          echo "Listing contents of the Surefire reports directory:"
-          ls -l target/*
-
-      - name: Upload Surefire reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: surefire-reports
-          path: target/*
 
   Edge_Windows_Test:
     runs-on: windows-latest
@@ -253,7 +242,7 @@ jobs:
           maven-version: 3.9.4
 
       - name: Run tests
-        run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true"
+        run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
       - name: Upload Allure Report as Artifact
         uses: actions/upload-artifact@v4
@@ -269,17 +258,6 @@ jobs:
           check_name: "Tests Results Edge_Windows"
           files: |
             target/surefire-reports/TEST-*.xml
-
-      - name: List Surefire reports directory
-        run: |
-          echo "Listing contents of the Surefire reports directory:"
-          ls -l target/*
-
-      - name: Upload Surefire reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: surefire-reports
-          path: target/*
 
   Firefox_Windows_Test:
     runs-on: windows-latest
@@ -300,7 +278,7 @@ jobs:
           maven-version: 3.9.4
 
       - name: Run tests
-        run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true"
+        run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
       - name: Upload Allure Report as Artifact
         uses: actions/upload-artifact@v4
@@ -316,14 +294,3 @@ jobs:
           check_name: "Tests Results Firefox_Windows"
           files: |
             target/surefire-reports/TEST-*.xml
-
-      - name: List Surefire reports directory
-        run: |
-          echo "Listing contents of the Surefire reports directory:"
-          ls -l target/*
-
-      - name: Upload Surefire reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: surefire-reports
-          path: target/*
