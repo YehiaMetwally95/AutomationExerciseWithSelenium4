@@ -25,21 +25,8 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
-      - name: Upload target directory
-        uses: actions/upload-artifact@v4
-        with:
-          name: target-directory
-          path: target/
-
       - name: Generate Allure report
-        run: mvn allure:report
-
-      - name: Publish Allure test results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
-        with:
-          test-results: target/allure-results
-          name: Allure Report
-          fail-on-error: true
+        run: allure generate target/allure-results --output target/site/allure-maven-plugin
 
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
@@ -68,15 +55,11 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
+      - name: Generate Allure report
+        run: allure generate target/allure-results --output target/site/allure-maven-plugin
+
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
           name: Allure_Report_Firefox_Linux
-          path: "target/allure-results/*"
-
-      - name: Publish Allure test results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
-        with:
-          name: Allure Report
-          files: |
-            target/surefire-reports/TEST-*.xml
+          path: "target/site/allure-maven-plugin"
