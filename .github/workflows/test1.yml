@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  Edge_Windows_Test:
-    runs-on: windows-latest
+  Edge_Linux_Test:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -31,11 +31,11 @@ jobs:
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: Allure_Report_Edge_Windows
+          name: Allure_Report_Edge_Linux
           path: "target/site/allure-maven-plugin"
 
-  Firefox_Windows_Test:
-    runs-on: windows-latest
+  Firefox_Linux_Test:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -61,5 +61,5 @@ jobs:
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: Allure_Report_Edge_Windows
+          name: Allure_Report_Firefox_Linux
           path: "target/site/allure-maven-plugin"
