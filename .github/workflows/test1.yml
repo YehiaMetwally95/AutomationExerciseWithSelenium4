@@ -26,7 +26,8 @@ jobs:
         run: |
           curl -o allure.zip -L "https://github.com/allure-framework/allure2/releases/latest/download/allure-2.30.0.zip"
           unzip allure.zip -d allure
-          sudo mv allure/bin/* /usr/local/bin/
+          # Add to PATH
+          echo "::add-path::$(pwd)/allure/allure-2.13.2/bin"
 
       - name: Run tests
         run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
@@ -62,7 +63,8 @@ jobs:
         run: |
           curl -o allure.zip -L "https://github.com/allure-framework/allure2/releases/latest/download/allure-2.30.0.zip"
           unzip allure.zip -d allure
-          sudo mv allure/bin/* /usr/local/bin/
+          # Add to PATH
+          echo "::add-path::$(pwd)/allure/allure-2.13.2/bin"
 
       - name: Run tests
         run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
