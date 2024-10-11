@@ -29,7 +29,7 @@ jobs:
           unzip allure.zip -d allure
           # Add Allure to PATH
           echo "ALLURE_HOME=$(pwd)/allure/allure-2.13.2" >> $GITHUB_ENV
-          echo "$ALLURE_HOME/bin" >> $GITHUB_PATH
+          echo "$(pwd)/allure/allure-2.13.2/bin" >> $GITHUB_PATH
 
       - name: Run tests
         run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
@@ -68,7 +68,7 @@ jobs:
           unzip allure.zip -d allure
           # Add Allure to PATH
           echo "ALLURE_HOME=$(pwd)/allure/allure-2.13.2" >> $GITHUB_ENV
-          echo "$ALLURE_HOME/bin" >> $GITHUB_PATH
+          echo "$(pwd)/allure/allure-2.13.2/bin" >> $GITHUB_PATH
 
       - name: Run tests
         run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
