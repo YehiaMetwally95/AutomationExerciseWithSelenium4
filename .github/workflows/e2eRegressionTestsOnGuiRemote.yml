@@ -1,4 +1,4 @@
-name: Java Maven Selenium Tests
+name: E2E Regression Tests On Gui Remotely
 
 on:
   workflow_dispatch:
