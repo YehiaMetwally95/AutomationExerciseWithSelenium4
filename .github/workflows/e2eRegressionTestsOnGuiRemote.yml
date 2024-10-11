@@ -54,7 +54,7 @@ jobs:
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: Allure Report
+          name: Allure_Report_Chrome_Ubuntu
           path: "target/site/allure-maven-plugin"
 
       - name: Cleanup Docker Containers
@@ -112,7 +112,7 @@ jobs:
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: Allure Report
+          name: Allure_Report_Edge_Ubuntu
           path: "target/site/allure-maven-plugin"
 
       - name: Cleanup Docker Containers
@@ -170,7 +170,7 @@ jobs:
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: Allure Report
+          name: Allure_Report_Firefox_Ubuntu
           path: "target/site/allure-maven-plugin"
 
       - name: Cleanup Docker Containers
