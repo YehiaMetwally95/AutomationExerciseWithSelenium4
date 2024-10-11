@@ -31,7 +31,6 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
         // not implemented
     }
 
-    @SneakyThrows
     public void onStart (ISuite suite) {
         //Load Properties File
         PropertiesManager.filePath = propertiesFilePath;
@@ -41,11 +40,11 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
             throw new RuntimeException(e);
         }
 
-        // Sync with Database to Load Latest Products and Users and Update Test Data Json Files
+      /*  // Sync with Database to Load Latest Products and Users and Update Test Data Json Files
         if (System.getProperty("syncWithDB").equalsIgnoreCase("true")) {
             loadProductsFromDB();
             loadUsersFromDB();
-        }
+        }*/
 
         //Clear Old Screenshots & Allure Results before Every Run
         File file1 = new File("src/test/resources/Screenshots");
