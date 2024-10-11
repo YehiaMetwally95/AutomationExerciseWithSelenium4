@@ -30,8 +30,9 @@ public class ProductsPage extends HomePage{
 
     private By viewProductButtonLocator (String productName)
     {
-        return By.xpath("//div[contains(@class,'productinfo')]/descendant::*[.='"+productName+"']/ancestor::div[contains(@class,'single-products')]/following-sibling::div/descendant::a[contains(@href,'product_details')]");
+        //return By.xpath("//div[contains(@class,'productinfo')]/descendant::*[.='"+productName+"']/ancestor::div[contains(@class,'single-products')]/following-sibling::div/descendant::a[contains(@href,'product_details')]");
         //return RelativeLocator.with(By.linkText("View Product")).below(productNameOuterLocator(productName));
+        return By.linkText("View Product");
     }
 
     private By addToCartInnerLocator (String productName)
