@@ -223,6 +223,17 @@ jobs:
           files: |
             target/surefire-reports/TEST-*.xml
 
+      - name: List Surefire reports directory
+        run: |
+          echo "Listing contents of the Surefire reports directory:"
+          ls -l target/*
+
+      - name: Upload Surefire reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: target/*
+
   Edge_Windows_Test:
     runs-on: windows-latest
 
@@ -259,6 +270,17 @@ jobs:
           files: |
             target/surefire-reports/TEST-*.xml
 
+      - name: List Surefire reports directory
+        run: |
+          echo "Listing contents of the Surefire reports directory:"
+          ls -l target/*
+
+      - name: Upload Surefire reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: target/*
+
   Firefox_Windows_Test:
     runs-on: windows-latest
 
@@ -294,3 +316,14 @@ jobs:
           check_name: "Tests Results Firefox_Windows"
           files: |
             target/surefire-reports/TEST-*.xml
+
+      - name: List Surefire reports directory
+        run: |
+          echo "Listing contents of the Surefire reports directory:"
+          ls -l target/*
+
+      - name: Upload Surefire reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: target/*

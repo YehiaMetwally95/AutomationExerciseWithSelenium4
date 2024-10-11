@@ -26,14 +26,12 @@ jobs:
         run: mvn clean test -Dtest="LinearTest"
 
       - name: List Surefire reports directory
-        if: failure()  # This step runs if the previous step fails
         run: |
           echo "Listing contents of the Surefire reports directory:"
-          ls -l target/surefire-reports || true  # Prevents failure
+          ls -l target/surefire-reports
 
       - name: Upload Surefire reports
-        if: failure()  # This step also runs if the tests fail
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v2
         with:
           name: surefire-reports
-          path: target/surefire-reports/*
+          path: target/*
