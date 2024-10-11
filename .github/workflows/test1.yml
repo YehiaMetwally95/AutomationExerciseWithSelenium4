@@ -25,6 +25,8 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
+      - name: Generate Allure report
+        run: mvn allure:report
       - name: Copy patch file to allure-maven-plugin folder
         run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
       - name: Check files in the allure-maven-plugin folder
@@ -56,10 +58,9 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
-      - name: Copy patch file to allure-maven-plugin folder
-        run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
-      - name: Check files in the allure-maven-plugin folder
-        run: ls target/site/allure-maven-plugin
+      - name: Generate Allure report
+        run: mvn allure:report
+
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
