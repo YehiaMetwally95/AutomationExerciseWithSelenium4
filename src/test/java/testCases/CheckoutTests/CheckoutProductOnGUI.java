@@ -57,9 +57,9 @@ public class CheckoutProductOnGUI extends BaseTest {
                 .continueShopping()
 
                 .openProductsPage()
-                .searchForProduct(json.getData("Products[4].Name"))
-                .openProductDetailsPage(json.getData("Products[4].Name"))
-                .setProductQuantity(json.getData("Products[4].Quantity"))
+                .searchForProduct(json.getData("Products[2].Name"))
+                .openProductDetailsPage(json.getData("Products[2].Name"))
+                .setProductQuantity(json.getData("Products[2].Quantity"))
                 .addProductToCart()
                 .continueShopping()
 
