@@ -7,21 +7,13 @@ jobs:
 
   Set_Up_MySQL:
     runs-on: ubuntu-latest
+    outputs:
+      mysql_host: ${{ steps.mysql_output.outputs.host }}
+      mysql_port: ${{ steps.mysql_output.outputs.port }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4.2.0
-
-      - name: Setup JDK 21
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version: '21'
-
-      - name: Set up Maven
-        uses: stCarolas/setup-maven@v5
-        with:
-          maven-version: 3.9.4
 
       - name: Set up Docker
         run: |
@@ -46,6 +38,12 @@ jobs:
         run: |
           docker exec -i dockerDB mysql -u root -pyehia -e "SOURCE /ProductsAndUsers.sql"
 
+      - name: Set output variables
+        id: mysql_output
+        run: |
+          echo "::set-output name=host::127.0.0.1"
+          echo "::set-output name=port::3306"
+
   Chrome_Windows_Test:
     runs-on: windows-latest
     needs: Set_Up_MySQL
@@ -64,6 +62,17 @@ jobs:
         uses: stCarolas/setup-maven@v5
         with:
           maven-version: 3.9.4
+
+      - name: Wait for MySQL to be ready
+        run: |
+          for i in {1..30}; do
+            if mysql -h ${{ needs.Set_Up_MySQL.outputs.mysql_host }} -P ${{ needs.Set_Up_MySQL.outputs.mysql_port }} -u root -pyehia -e "SELECT 1;" >/dev/null 2>&1; then
+              echo "MySQL is up!"
+              break
+            fi
+            echo "Waiting for MySQL..."
+            sleep 1
+          done          
 
       - name: Run tests
         run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnGUI" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
