@@ -25,6 +25,12 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
+      - name: Upload target directory
+        uses: actions/upload-artifact@v2
+        with:
+          name: target-directory
+          path: target/
+
       - name: Generate Allure report
         run: mvn allure:report
 
@@ -54,6 +60,13 @@ jobs:
 
       - name: Run tests
         run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
+
+      - name: Upload target directory
+        uses: actions/upload-artifact@v2
+        with:
+           name: target-directory
+           path: target/
+
 
       - name: Generate Allure report
         run: mvn allure:report
