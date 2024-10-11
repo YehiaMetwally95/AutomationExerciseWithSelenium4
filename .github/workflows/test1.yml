@@ -42,8 +42,3 @@ jobs:
           check_name: "Tests Results Firefox_Linux"
           files: |
             target/surefire-reports/TEST-*.xml
-
-      - name: Cleanup Docker Containers
-        if: always()
-        run: |
-          docker compose -f src/main/resources/docker-compose-v3.yml down && docker stop dockerDB
