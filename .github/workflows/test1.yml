@@ -29,8 +29,8 @@ jobs:
             sleep 1
           done
 
-  Chrome_Ubuntu_Test:
-    runs-on: ubuntu-latest
+  Chrome_Windows_Test:
+    runs-on: windows-latest
     needs: Set_Up_Docker
 
     steps:
