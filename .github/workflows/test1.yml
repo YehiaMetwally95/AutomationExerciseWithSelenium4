@@ -28,33 +28,6 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Remote" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
-      - name: Generate Allure report
-        run: mvn allure:report
-      - name: Copy patch file to allure-maven-plugin folder
-        run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
-      - name: Check files in the allure-maven-plugin folder
-        run: ls target/site/allure-maven-plugin
-      - name: Upload Allure Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: Allure_Report_Edge_Windows
-          path: "target/site/allure-maven-plugin"
-
-      - name: Upload Allure Report as Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Edge_Grid_Allure
-          path: "allure-report/*_AllureReport.html"
-
-      - name: Publish Test Results
-        continue-on-error: true
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
-        if: always()
-        with:
-          check_name: "Tests Results Edge_Grid"
-          files: |
-            target/surefire-reports/TEST-*.xml          
-
   Firefox_Windows_Test:
     runs-on: ubuntu-latest
 
@@ -79,17 +52,3 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Remote" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
-      - name: Upload Allure Report as Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Firefox_Grid_Allure
-          path: "allure-report/*_AllureReport.html"
-
-      - name: Publish Test Results
-        continue-on-error: true
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
-        if: always()
-        with:
-          check_name: "Tests Results Firefox_Grid"
-          files: |
-            target/surefire-reports/TEST-*.xml
