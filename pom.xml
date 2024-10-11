@@ -217,7 +217,9 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.5.0</version>
                     <configuration>
-
+                        <argLine>
+                            -javaagent:${user.home}/.m2/repository/org/aspectj/aspectjweaver/1.9.22.1/aspectjweaver-1.9.22.1.jar
+                        </argLine>
                         <properties>
                             <property>
                                 <name>usedefaultlisteners</name>

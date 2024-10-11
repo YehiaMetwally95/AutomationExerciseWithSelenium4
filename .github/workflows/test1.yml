@@ -25,17 +25,15 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="LinearTest"
 
-      - name: Upload Allure Report as Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Firefox_Linux_Allure
-          path: "allure-report/*_AllureReport.html"
+      - name: List Surefire reports directory
+        if: failure()  # This step runs if the previous step fails
+        run: |
+          echo "Listing contents of the Surefire reports directory:"
+          ls -l target/surefire-reports || true  # Prevents failure
 
-      - name: Publish Test Results
-        continue-on-error: true
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
-        if: always()
+      - name: Upload Surefire reports
+        if: failure()  # This step also runs if the tests fail
+        uses: actions/upload-artifact@v2
         with:
-          check_name: "Tests Results Firefox_Linux"
-          files: |
-            target/surefire-reports/TEST-*.xml
+          name: surefire-reports
+          path: target/surefire-reports/*
