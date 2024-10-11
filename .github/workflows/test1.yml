@@ -22,20 +22,11 @@ jobs:
         with:
           maven-version: 3.9.4
 
-      - name: Install Allure
-        run: |
-          curl -o allure.zip -L "https://github.com/allure-framework/allure2/releases/latest/download/allure-2.30.0.zip"
-          # Unzip the package
-          unzip allure.zip -d allure
-          # Add Allure to PATH
-          echo "ALLURE_HOME=$(pwd)/allure/allure-2.13.2" >> $GITHUB_ENV
-          echo "$(pwd)/allure/allure-2.13.2/bin" >> $GITHUB_PATH
-
       - name: Run tests
         run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
       - name: Generate Allure report
-        run: allure generate target/allure-results --clean --output target/site/allure-maven-plugin
+        run: mvn allure:report
 
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
@@ -61,20 +52,11 @@ jobs:
         with:
           maven-version: 3.9.4
 
-      - name: Install Allure
-        run: |
-          curl -o allure.zip -L "https://github.com/allure-framework/allure2/releases/latest/download/allure-2.30.0.zip"
-          # Unzip the package
-          unzip allure.zip -d allure
-          # Add Allure to PATH
-          echo "ALLURE_HOME=$(pwd)/allure/allure-2.13.2" >> $GITHUB_ENV
-          echo "$(pwd)/allure/allure-2.13.2/bin" >> $GITHUB_PATH
-
       - name: Run tests
         run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
       - name: Generate Allure report
-        run: allure generate target/allure-results --clean --output target/site/allure-maven-plugin
+        run: mvn allure:report
 
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
