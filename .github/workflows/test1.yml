@@ -25,9 +25,11 @@ jobs:
       - name: Install Allure
         run: |
           curl -o allure.zip -L "https://github.com/allure-framework/allure2/releases/latest/download/allure-2.30.0.zip"
+          # Unzip the package
           unzip allure.zip -d allure
-          # Add to PATH
-          echo "::add-path::$(pwd)/allure/allure-2.13.2/bin"
+          # Add Allure to PATH
+          echo "ALLURE_HOME=$(pwd)/allure/allure-2.13.2" >> $GITHUB_ENV
+          echo "$ALLURE_HOME/bin" >> $GITHUB_PATH
 
       - name: Run tests
         run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
@@ -62,9 +64,11 @@ jobs:
       - name: Install Allure
         run: |
           curl -o allure.zip -L "https://github.com/allure-framework/allure2/releases/latest/download/allure-2.30.0.zip"
+          # Unzip the package
           unzip allure.zip -d allure
-          # Add to PATH
-          echo "::add-path::$(pwd)/allure/allure-2.13.2/bin"
+          # Add Allure to PATH
+          echo "ALLURE_HOME=$(pwd)/allure/allure-2.13.2" >> $GITHUB_ENV
+          echo "$ALLURE_HOME/bin" >> $GITHUB_PATH
 
       - name: Run tests
         run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
