@@ -25,14 +25,11 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
-      - name: Generate Allure report
-        run: mvn allure:report
-
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: Allure_Report_Edge_Linux
-          path: "target/site/allure-maven-plugin"
+          name: allure-results-edge
+          path: target/allure-results
 
   Firefox_Linux_Test:
     runs-on: ubuntu-latest
@@ -55,43 +52,43 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
-      - name: Generate Allure report
-        run: mvn allure:report
-
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: Allure_Report_Firefox_Linux
-          path: "target/site/allure-maven-plugin"
+          name: allure-results-firefox
+          path: target/allure-results
 
   Combine_Allure_Reports:
     runs-on: ubuntu-latest
     needs: [Edge_Linux_Test, Firefox_Linux_Test]
 
     steps:
-      - name: Download Edge Allure Results
+      - name: Set up Allure
+        uses: allure-tools/allure-action@v2  # Use the latest version available
+
+      - name: Download Allure results from Edge
         uses: actions/download-artifact@v4
         with:
-          name: Allure_Report_Edge_Linux
-          path: edge-results
+          name: allure-results-edge
+          path: ./allure-results-edge
 
-      - name: Download Firefox Allure Results
+      - name: Download Allure results from Firefox
         uses: actions/download-artifact@v4
         with:
-          name: Allure_Report_Firefox_Linux
-          path: firefox-results
+          name: allure-results-firefox
+          path: ./allure-results-firefox
 
-      - name: Combine Allure Results
+      - name: Combine Allure results
         run: |
-          mkdir -p combined-results
-          cp -r edge-results/target/allure-results/* combined-results/
-          cp -r firefox-results/target/allure-results/* combined-results/
+          mkdir -p ./allure-results
+          cp -r ./allure-results-edge/* ./allure-results/
+          cp -r ./allure-results-firefox/* ./allure-results/
 
-      - name: Generate Combined Allure Report
-        run: allure generate combined-results --clean --output combined-report
+      - name: Generate Allure report
+        run: allure generate ./allure-results --clean -o ./allure-report
 
       - name: Upload Combined Allure Report
         uses: actions/upload-artifact@v4
         with:
           name: Combined_Allure_Report
-          path: combined-report
+          path: ./allure-report
