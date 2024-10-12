@@ -258,38 +258,63 @@ jobs:
           sudo mv allure-2.30.0 /opt/allure  # Move the whole directory
           echo "/opt/allure/bin" >> $GITHUB_PATH  # Add Allure to the PATH
 
+# When If the Allure File is Generated after the job is done in the Artifact before downloading it
+      - name: Check for Allure results directories
+        id: check_artifacts
+        run: |
+          echo "chrome_ubuntu_exists=false" >> $GITHUB_ENV
+          echo "edge_ubuntu_exists=false" >> $GITHUB_ENV
+          echo "firefox_ubuntu_exists=false" >> $GITHUB_ENV
+          
+          echo "chrome_windows_exists=false" >> $GITHUB_ENV
+          echo "edge_windows_exists=false" >> $GITHUB_ENV
+          echo "firefox_windows_exists=false" >> $GITHUB_ENV
+          
+          [ -d "./allure-results-chrome_ubuntu" ] && echo "chrome_ubuntu_exists=true" >> $GITHUB_ENV
+          [ -d "./allure-results-edge_ubuntu" ] && echo "edge_ubuntu_exists=true" >> $GITHUB_ENV
+          [ -d "./allure-results-firefox_ubuntu" ] && echo "firefox_ubuntu_exists=true" >> $GITHUB_ENV
+          [ -d "./allure-results-chrome_windows" ] && echo "chrome_windows_exists=true" >> $GITHUB_ENV
+          [ -d "./allure-results-edge_windows" ] && echo "edge_windows_exists=true" >> $GITHUB_ENV
+          [ -d "./allure-results-firefox_windows" ] && echo "firefox_windows_exists=true" >> $GITHUB_ENV
+
 # Download all Allure Files generated after every job
       - name: Download Allure results from Chrome Ubuntu
+        if: env.chrome_ubuntu_exists == 'true'
         uses: actions/download-artifact@v4
         with:
           name: allure-results-chrome_ubuntu
           path: ./allure-results-chrome_ubuntu
 
       - name: Download Allure results from Edge Ubuntu
+        if: env.edge_ubuntu_exists == 'true'
         uses: actions/download-artifact@v4
         with:
           name: allure-results-edge_ubuntu
           path: ./allure-results-edge_ubuntu
 
       - name: Download Allure results from Firefox Ubuntu
+        if: env.firefox_ubuntu_exists == 'true'
         uses: actions/download-artifact@v4
         with:
           name: allure-results-firefox_ubuntu
           path: ./allure-results-firefox_ubuntu
 
       - name: Download Allure results from Chrome Windows
+        if: env.chrome_windows_exists == 'true'
         uses: actions/download-artifact@v4
         with:
           name: allure-results-chrome_windows
           path: ./allure-results-chrome_windows
 
       - name: Download Allure results from Edge Windows
+        if: env.edge_windows_exists == 'true'
         uses: actions/download-artifact@v4
         with:
           name: allure-results-edge_windows
           path: ./allure-results-edge_windows
 
       - name: Download Allure results from Firefox Windows
+        if: env.firefox_windows_exists == 'true'
         uses: actions/download-artifact@v4
         with:
           name: allure-results-firefox_windows
@@ -299,12 +324,34 @@ jobs:
       - name: Combine Allure results
         run: |
           mkdir -p ./allure-results
+          if [ "$chrome_ubuntu_exists" = "true" ]; then
           cp -r ./allure-results-chrome_ubuntu/* ./allure-results/
+          fi
+          
+          mkdir -p ./allure-results
+          if [ "$edge_ubuntu_exists" = "true" ]; then
           cp -r ./allure-results-edge_ubuntu/* ./allure-results/
+          fi
+          
+          mkdir -p ./allure-results
+          if [ "$firefox_ubuntu_exists" = "true" ]; then
           cp -r ./allure-results-firefox_ubuntu/* ./allure-results/
-          cp -r ./allure-results-chrome_windows/* ./allure-results/          
+          fi          
+          
+          mkdir -p ./allure-results
+          if [ "$chrome_windows_exists" = "true" ]; then
+          cp -r ./allure-results-windows_ubuntu/* ./allure-results/
+          fi          
+          
+          mkdir -p ./allure-results
+          if [ "$edge_windows_exists" = "true" ]; then
           cp -r ./allure-results-edge_windows/* ./allure-results/
-          cp -r ./allure-results-firefox_windows/* ./allure-results/          
+          fi          
+          
+          mkdir -p ./allure-results
+          if [ "$firefox_windows_exists" = "true" ]; then
+          cp -r ./allure-results-firefox_windows/* ./allure-results/
+          fi          
 
       - name: Generate Allure report
         run: allure generate ./allure-results --clean -o ./allure-report
