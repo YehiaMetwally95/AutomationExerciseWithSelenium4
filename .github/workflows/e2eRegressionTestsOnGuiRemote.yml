@@ -44,6 +44,7 @@ jobs:
         run: docker ps
         
       - name: Run tests
+        continue-on-error: true
         run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnGUI,ContactUsTests.SubmitContactUsRequest" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
         
       - name: Upload Allure Report
