@@ -45,20 +45,11 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnGUI" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
         
-      - name: Upload Allure Report as Artifact
+      - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: Chrome_Linux_Allure
-          path: "allure-report/*_AllureReport.html"
-
-      - name: Publish Test Results
-        continue-on-error: true
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
-        if: always()
-        with:
-          check_name: "Tests Results Chrome_Linux"
-          files: |
-            target/surefire-reports/TEST-*.xml
+          name: allure-results-chrome_ubuntu
+          path: target/allure-results
 
       - name: Cleanup Docker Containers
         if: always()
@@ -106,20 +97,11 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnGUI" -DexecutionType="Remote" -DbrowserType="Edge" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
 
-      - name: Upload Allure Report as Artifact
+      - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: Edge_Linux_Allure
-          path: "allure-report/*_AllureReport.html"
-
-      - name: Publish Test Results
-        continue-on-error: true
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
-        if: always()
-        with:
-          check_name: "Tests Results Edge_Linux"
-          files: |
-            target/surefire-reports/TEST-*.xml
+          name: allure-results-edge_ubuntu
+          path: target/allure-results
 
       - name: Cleanup Docker Containers
         if: always()
@@ -167,20 +149,11 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="ContactUsTests.SubmitContactUsRequest" -DexecutionType="Remote" -DbrowserType="Firefox" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
 
-      - name: Upload Allure Report as Artifact
+      - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: Firefox_Linux_Allure
-          path: "allure-report/*_AllureReport.html"
-
-      - name: Publish Test Results
-        continue-on-error: true
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
-        if: always()
-        with:
-          check_name: "Tests Results Firefox_Linux"
-          files: |
-            target/surefire-reports/TEST-*.xml
+          name: allure-results-firefox_ubuntu
+          path: target/allure-results
 
       - name: Cleanup Docker Containers
         if: always()
@@ -208,20 +181,11 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnAPI" -DexecutionType="Local" -DbrowserType="Chrome" -DsyncWithDB="false" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
-      - name: Upload Allure Report as Artifact
+      - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: Chrome_Windows_Allure
-          path: "allure-report/*_AllureReport.html"
-
-      - name: Publish Test Results
-        continue-on-error: true
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
-        if: always()
-        with:
-          check_name: "Tests Results Chrome_Windows"
-          files: |
-            target/surefire-reports/TEST-*.xml
+          name: allure-results-chrome_windows
+          path: target/allure-results
 
   Edge_Windows_Test:
     runs-on: windows-latest
@@ -244,20 +208,11 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
-      - name: Upload Allure Report as Artifact
+      - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: Edge_Windows_Allure
-          path: "allure-report/*_AllureReport.html"
-
-      - name: Publish Test Results
-        continue-on-error: true
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
-        if: always()
-        with:
-          check_name: "Tests Results Edge_Windows"
-          files: |
-            target/surefire-reports/TEST-*.xml
+          name: allure-results-edge_windows
+          path: target/allure-results
 
   Firefox_Windows_Test:
     runs-on: windows-latest
@@ -280,17 +235,82 @@ jobs:
       - name: Run tests
         run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
-      - name: Upload Allure Report as Artifact
+      - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: Firefox_Windows_Allure
-          path: "allure-report/*_AllureReport.html"
+          name: allure-results-firefox_windows
+          path: target/allure-results
 
-      - name: Publish Test Results
-        continue-on-error: true
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
-        if: always()
+  Combine_Allure_Reports:
+    runs-on: ubuntu-latest
+    needs: [Chrome_Ubuntu_Test,Edge_Ubuntu_Test,Firefox_Ubuntu_Test,Chrome_Windows_Test,Edge_Windows_Test,Firefox_Windows_Test]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.0
+
+      - name: Install Allure
+        run: |
+          # Download and unzip Allure
+          curl -o allure.zip -L "https://github.com/allure-framework/allure2/releases/latest/download/allure-2.30.0.zip"
+          unzip allure.zip
+          sudo mv allure-2.30.0 /opt/allure  # Move the whole directory
+          echo "/opt/allure/bin" >> $GITHUB_PATH  # Add Allure to the PATH
+
+      - name: Download Allure results from Chrome Ubuntu
+        uses: actions/download-artifact@v4
         with:
-          check_name: "Tests Results Firefox_Windows"
-          files: |
-            target/surefire-reports/TEST-*.xml
+          name: allure-results-chrome_ubuntu
+          path: ./allure-results-chrome_ubuntu
+
+      - name: Download Allure results from Edge Ubuntu
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results-edge_ubuntu
+          path: ./allure-results-edge_ubuntu
+
+      - name: Download Allure results from Firefox Ubuntu
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results-firefox_ubuntu
+          path: ./allure-results-firefox_ubuntu
+
+      - name: Download Allure results from Chrome Windows
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results-chrome_windows
+          path: ./allure-results-chrome_windows
+
+      - name: Download Allure results from Edge Windows
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results-edge_windows
+          path: ./allure-results-edge_windows
+
+      - name: Download Allure results from Firefox Windows
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results-firefox_windows
+          path: ./allure-results-firefox_windows
+
+      - name: Combine Allure results
+        run: |
+          mkdir -p ./allure-results
+          cp -r ./allure-results-chrome_ubuntu/* ./allure-results/
+          cp -r ./allure-results-edge_ubuntu/* ./allure-results/
+          cp -r ./allure-results-firefox_ubuntu/* ./allure-results/
+          cp -r ./allure-results-chrome_windows/* ./allure-results/          
+          cp -r ./allure-results-edge_windows/* ./allure-results/
+          cp -r ./allure-results-firefox_windows/* ./allure-results/          
+
+      - name: Generate Allure report
+        run: allure generate ./allure-results --clean -o ./allure-report
+
+      - name: Copy patch file to allure-maven-plugin folder
+        run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat ./allure-report
+
+      - name: Upload Combined Allure Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: Combined_Allure_Report
+          path: ./allure-report
