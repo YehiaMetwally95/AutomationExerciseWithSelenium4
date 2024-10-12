@@ -244,6 +244,7 @@ jobs:
   Combine_Allure_Reports:
     runs-on: ubuntu-latest
     needs: [Chrome_Ubuntu_Test,Edge_Ubuntu_Test,Firefox_Ubuntu_Test,Chrome_Windows_Test,Edge_Windows_Test,Firefox_Windows_Test]
+    if: always()
 
     steps:
       - name: Checkout code
@@ -257,6 +258,7 @@ jobs:
           sudo mv allure-2.30.0 /opt/allure  # Move the whole directory
           echo "/opt/allure/bin" >> $GITHUB_PATH  # Add Allure to the PATH
 
+# Download all Allure Files generated after every job
       - name: Download Allure results from Chrome Ubuntu
         uses: actions/download-artifact@v4
         with:
@@ -293,6 +295,7 @@ jobs:
           name: allure-results-firefox_windows
           path: ./allure-results-firefox_windows
 
+# Combine all Allure Files of the Jobs into one directory
       - name: Combine Allure results
         run: |
           mkdir -p ./allure-results
