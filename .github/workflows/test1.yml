@@ -63,6 +63,9 @@ jobs:
     needs: [Edge_Linux_Test, Firefox_Linux_Test]
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.0
+
       - name: Install Allure
         run: |
           # Download and unzip Allure
