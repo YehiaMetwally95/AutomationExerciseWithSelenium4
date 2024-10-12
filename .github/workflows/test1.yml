@@ -25,7 +25,7 @@ jobs:
 
       - name: Run tests
         continue-on-error: true
-        run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results/edge"
+        run: mvn clean test -Dtest="ContactUsTests.SubmitContactUsRequest" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results/edge"
 
   Firefox_Windows_Test:
     runs-on: ubuntu-latest
