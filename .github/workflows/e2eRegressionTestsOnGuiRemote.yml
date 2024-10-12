@@ -265,26 +265,44 @@ jobs:
           echo "/opt/allure/bin" >> $GITHUB_PATH  # Add Allure to the PATH
 
 # Check If the Allure File is Generated after the job is done in the Artifact before downloading it
-      - name: Check for Allure results directories
+      - name: Check if artifacts exist
         id: check_artifacts
         run: |
+          # Initialize environment variables
           echo "chrome_ubuntu_exists=false" >> $GITHUB_ENV
           echo "edge_ubuntu_exists=false" >> $GITHUB_ENV
           echo "firefox_ubuntu_exists=false" >> $GITHUB_ENV
-          
           echo "chrome_windows_exists=false" >> $GITHUB_ENV
           echo "edge_windows_exists=false" >> $GITHUB_ENV
           echo "firefox_windows_exists=false" >> $GITHUB_ENV
           
-          [ -d "./allure-results-chrome_ubuntu" ] && echo "chrome_ubuntu_exists=true" >> $GITHUB_ENV
-          [ -d "./allure-results-edge_ubuntu" ] && echo "edge_ubuntu_exists=true" >> $GITHUB_ENV
-          [ -d "./allure-results-firefox_ubuntu" ] && echo "firefox_ubuntu_exists=true" >> $GITHUB_ENV
-          [ -d "./allure-results-chrome_windows" ] && echo "chrome_windows_exists=true" >> $GITHUB_ENV
-          [ -d "./allure-results-edge_windows" ] && echo "edge_windows_exists=true" >> $GITHUB_ENV
-          [ -d "./allure-results-firefox_windows" ] && echo "firefox_windows_exists=true" >> $GITHUB_ENV
+          # Check for Chrome Ubuntu artifact
+          if gh api repos/${{ github.repository }}/actions/artifacts | jq -e '.artifacts[] | select(.name == "allure-results-chrome_ubuntu")'; then
+            echo "chrome_ubuntu_exists=true" >> $GITHUB_ENV
+          fi
+          # Check for Edge Ubuntu artifact
+          if gh api repos/${{ github.repository }}/actions/artifacts | jq -e '.artifacts[] | select(.name == "allure-results-edge_ubuntu")'; then
+            echo "edge_ubuntu_exists=true" >> $GITHUB_ENV
+          fi
+          # Check for Firefox Ubuntu artifact
+          if gh api repos/${{ github.repository }}/actions/artifacts | jq -e '.artifacts[] | select(.name == "allure-results-firefox_ubuntu")'; then
+            echo "firefox_ubuntu_exists=true" >> $GITHUB_ENV
+          fi
+          # Check for Chrome Windows artifact
+          if gh api repos/${{ github.repository }}/actions/artifacts | jq -e '.artifacts[] | select(.name == "allure-results-chrome_windows")'; then
+            echo "chrome_windows_exists=true" >> $GITHUB_ENV
+          fi    
+          # Check for Edge Windows artifact
+          if gh api repos/${{ github.repository }}/actions/artifacts | jq -e '.artifacts[] | select(.name == "allure-results-edge_windows")'; then
+            echo "edge_windows_exists=true" >> $GITHUB_ENV
+          fi
+          # Check for Firefox Windows artifact
+          if gh api repos/${{ github.repository }}/actions/artifacts | jq -e '.artifacts[] | select(.name == "allure-results-firefox_windows")'; then
+            echo "firefox_windows_exists=true" >> $GITHUB_ENV
+          fi
         continue-on-error: true
 
-      # Download all Allure Files generated after every job
+# Download all Allure Files generated after every job
       - name: Download Allure results from Chrome Ubuntu
         if: env.chrome_ubuntu_exists == 'true'
         uses: actions/download-artifact@v4
