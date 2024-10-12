@@ -264,47 +264,8 @@ jobs:
           sudo mv allure-2.30.0 /opt/allure  # Move the whole directory
           echo "/opt/allure/bin" >> $GITHUB_PATH  # Add Allure to the PATH
 
-# Check If the Allure File is Generated after the job is done in the Artifact before downloading it
-      - name: Check if artifacts exist
-        id: check_artifacts
-        run: |
-          # Initialize environment variables
-          echo "chrome_ubuntu_exists=false" >> $GITHUB_ENV
-          echo "edge_ubuntu_exists=false" >> $GITHUB_ENV
-          echo "firefox_ubuntu_exists=false" >> $GITHUB_ENV
-          echo "chrome_windows_exists=false" >> $GITHUB_ENV
-          echo "edge_windows_exists=false" >> $GITHUB_ENV
-          echo "firefox_windows_exists=false" >> $GITHUB_ENV
-          
-          # Check for Chrome Ubuntu artifact
-          if gh api repos/${{ github.repository }}/actions/artifacts | jq -e '.artifacts[] | select(.name == "allure-results-chrome_ubuntu")'; then
-            echo "chrome_ubuntu_exists=true" >> $GITHUB_ENV
-          fi
-          # Check for Edge Ubuntu artifact
-          if gh api repos/${{ github.repository }}/actions/artifacts | jq -e '.artifacts[] | select(.name == "allure-results-edge_ubuntu")'; then
-            echo "edge_ubuntu_exists=true" >> $GITHUB_ENV
-          fi
-          # Check for Firefox Ubuntu artifact
-          if gh api repos/${{ github.repository }}/actions/artifacts | jq -e '.artifacts[] | select(.name == "allure-results-firefox_ubuntu")'; then
-            echo "firefox_ubuntu_exists=true" >> $GITHUB_ENV
-          fi
-          # Check for Chrome Windows artifact
-          if gh api repos/${{ github.repository }}/actions/artifacts | jq -e '.artifacts[] | select(.name == "allure-results-chrome_windows")'; then
-            echo "chrome_windows_exists=true" >> $GITHUB_ENV
-          fi    
-          # Check for Edge Windows artifact
-          if gh api repos/${{ github.repository }}/actions/artifacts | jq -e '.artifacts[] | select(.name == "allure-results-edge_windows")'; then
-            echo "edge_windows_exists=true" >> $GITHUB_ENV
-          fi
-          # Check for Firefox Windows artifact
-          if gh api repos/${{ github.repository }}/actions/artifacts | jq -e '.artifacts[] | select(.name == "allure-results-firefox_windows")'; then
-            echo "firefox_windows_exists=true" >> $GITHUB_ENV
-          fi
-        continue-on-error: true
-
 # Download all Allure Files generated after every job
       - name: Download Allure results from Chrome Ubuntu
-        if: env.chrome_ubuntu_exists == 'true'
         uses: actions/download-artifact@v4
         with:
           name: allure-results-chrome_ubuntu
@@ -312,7 +273,6 @@ jobs:
         continue-on-error: true
 
       - name: Download Allure results from Edge Ubuntu
-        if: env.edge_ubuntu_exists == 'true'
         uses: actions/download-artifact@v4
         with:
           name: allure-results-edge_ubuntu
@@ -320,7 +280,6 @@ jobs:
         continue-on-error: true
 
       - name: Download Allure results from Firefox Ubuntu
-        if: env.firefox_ubuntu_exists == 'true'
         uses: actions/download-artifact@v4
         with:
           name: allure-results-firefox_ubuntu
@@ -328,7 +287,6 @@ jobs:
         continue-on-error: true
 
       - name: Download Allure results from Chrome Windows
-        if: env.chrome_windows_exists == 'true'
         uses: actions/download-artifact@v4
         with:
           name: allure-results-chrome_windows
@@ -336,7 +294,6 @@ jobs:
         continue-on-error: true
 
       - name: Download Allure results from Edge Windows
-        if: env.edge_windows_exists == 'true'
         uses: actions/download-artifact@v4
         with:
           name: allure-results-edge_windows
@@ -344,7 +301,6 @@ jobs:
         continue-on-error: true
 
       - name: Download Allure results from Firefox Windows
-        if: env.firefox_windows_exists == 'true'
         uses: actions/download-artifact@v4
         with:
           name: allure-results-firefox_windows
@@ -352,32 +308,35 @@ jobs:
         continue-on-error: true
 
 # Combine all Allure Files of the Jobs into one directory
-      - name: Combine Allure results
+      - name: Combine Chrome Ubuntu Allure results into Combined Directory
         run: |
           mkdir -p ./allure-results
-          if [ "$chrome_ubuntu_exists" = "true" ]; then
           cp -r ./allure-results-chrome_ubuntu/* ./allure-results/
-          fi
-          
-          if [ "$edge_ubuntu_exists" = "true" ]; then
+        continue-on-error: true
+      - name: Combine Edge Ubuntu Allure results into Combined Directory
+        run: |
+          mkdir -p ./allure-results
           cp -r ./allure-results-edge_ubuntu/* ./allure-results/
-          fi
-          
-          if [ "$firefox_ubuntu_exists" = "true" ]; then
+        continue-on-error: true
+      - name: Combine Firefox Ubuntu Allure results into Combined Directory
+        run: |
+          mkdir -p ./allure-results
           cp -r ./allure-results-firefox_ubuntu/* ./allure-results/
-          fi        
-          
-          if [ "$chrome_windows_exists" = "true" ]; then
+        continue-on-error: true
+      - name: Combine Chrome Windows Allure results into Combined Directory
+        run: |
+          mkdir -p ./allure-results
           cp -r ./allure-results-chrome_windows/* ./allure-results/
-          fi       
-          
-          if [ "$edge_windows_exists" = "true" ]; then
+        continue-on-error: true
+      - name: Combine Edge Windows Allure results into Combined Directory
+        run: |
+          mkdir -p ./allure-results
           cp -r ./allure-results-edge_windows/* ./allure-results/
-          fi          
-          
-          if [ "$firefox_windows_exists" = "true" ]; then
+        continue-on-error: true
+      - name: Combine Firefox Windows Allure results into Combined Directory
+        run: |
+          mkdir -p ./allure-results
           cp -r ./allure-results-firefox_windows/* ./allure-results/
-          fi
         continue-on-error: true
 
       - name: Generate Allure report
