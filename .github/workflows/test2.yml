@@ -63,6 +63,9 @@ jobs:
     needs: [Edge_Linux_Test, Firefox_Linux_Test]
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.0
+
       - name: Setup JDK 21 for Maven
         uses: actions/setup-java@v4
         with:
