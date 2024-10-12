@@ -284,6 +284,7 @@ jobs:
         with:
           name: allure-results-chrome_ubuntu
           path: ./allure-results-chrome_ubuntu
+        continue-on-error: true
 
       - name: Download Allure results from Edge Ubuntu
         if: env.edge_ubuntu_exists == 'true'
@@ -291,6 +292,7 @@ jobs:
         with:
           name: allure-results-edge_ubuntu
           path: ./allure-results-edge_ubuntu
+          continue-on-error: true
 
       - name: Download Allure results from Firefox Ubuntu
         if: env.firefox_ubuntu_exists == 'true'
@@ -298,6 +300,7 @@ jobs:
         with:
           name: allure-results-firefox_ubuntu
           path: ./allure-results-firefox_ubuntu
+        continue-on-error: true
 
       - name: Download Allure results from Chrome Windows
         if: env.chrome_windows_exists == 'true'
@@ -305,6 +308,7 @@ jobs:
         with:
           name: allure-results-chrome_windows
           path: ./allure-results-chrome_windows
+        continue-on-error: true
 
       - name: Download Allure results from Edge Windows
         if: env.edge_windows_exists == 'true'
@@ -312,6 +316,7 @@ jobs:
         with:
           name: allure-results-edge_windows
           path: ./allure-results-edge_windows
+        continue-on-error: true
 
       - name: Download Allure results from Firefox Windows
         if: env.firefox_windows_exists == 'true'
@@ -319,6 +324,7 @@ jobs:
         with:
           name: allure-results-firefox_windows
           path: ./allure-results-firefox_windows
+        continue-on-error: true
 
 # Combine all Allure Files of the Jobs into one directory
       - name: Combine Allure results
