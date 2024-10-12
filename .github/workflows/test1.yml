@@ -67,12 +67,8 @@ jobs:
           sudo mv allure-2.30.0 /opt/allure  # Move the whole directory
           echo "/opt/allure/bin" >> $GITHUB_PATH  # Add Allure to the PATH
 
-      - name: Combine Allure results
-        run: |
-          allure got merge target/allure-results/edge target/allure-results/firefox -o target/allure-results/combined
-
       - name: Generate Combined Allure report
-        run: allure generate target/allure-results/combined --clean -o ./allure-report
+        run: allure generate target/allure-results/edge target/allure-results/firefox --clean -o ./allure-report
 
       - name: Copy patch file to allure-maven-plugin folder
         run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat ./allure-report
