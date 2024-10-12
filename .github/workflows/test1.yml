@@ -69,7 +69,7 @@ jobs:
 
       - name: Combine Allure results
         run: |
-          allure merge target/allure-results/edge target/allure-results/firefox -o target/allure-results/combined
+          allure got merge target/allure-results/edge target/allure-results/firefox -o target/allure-results/combined
 
       - name: Generate Combined Allure report
         run: allure generate target/allure-results/combined --clean -o ./allure-report
