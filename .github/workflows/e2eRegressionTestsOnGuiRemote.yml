@@ -258,7 +258,7 @@ jobs:
           sudo mv allure-2.30.0 /opt/allure  # Move the whole directory
           echo "/opt/allure/bin" >> $GITHUB_PATH  # Add Allure to the PATH
 
-# When If the Allure File is Generated after the job is done in the Artifact before downloading it
+# Check If the Allure File is Generated after the job is done in the Artifact before downloading it
       - name: Check for Allure results directories
         id: check_artifacts
         run: |
