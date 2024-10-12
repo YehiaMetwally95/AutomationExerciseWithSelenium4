@@ -358,7 +358,8 @@ jobs:
           mkdir -p ./allure-results
           if [ "$firefox_windows_exists" = "true" ]; then
           cp -r ./allure-results-firefox_windows/* ./allure-results/
-          fi          
+          fi
+        continue-on-error: true
 
       - name: Generate Allure report
         run: allure generate ./allure-results --clean -o ./allure-report
