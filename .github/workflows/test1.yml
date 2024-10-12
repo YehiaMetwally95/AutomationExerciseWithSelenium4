@@ -82,13 +82,13 @@ jobs:
 
     steps:
       - name: Download Edge Allure report
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: allure-results-edge
           path: edge-results
 
       - name: Download Firefox Allure report
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: allure-results-firefox
           path: firefox-results
