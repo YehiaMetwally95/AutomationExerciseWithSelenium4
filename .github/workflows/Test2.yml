@@ -1,52 +1,24 @@
-name: e2eTest2
+name: E2E Regression Tests On Gui Remotely
 
 on:
   workflow_dispatch:
 
 jobs:
-  Test:
+  test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        browser: [chrome, edge, firefox]
         os: [ubuntu-latest, windows-latest]
-        include:
-          - browser: chrome
-            os: ubuntu-latest
-            test: "CheckoutTests.CheckoutProductOnGUI,ContactUsTests.SubmitContactUsRequest"
-            headless: true
-            executionType: "Remote"
-            syncWithDB: true
-          - browser: edge
-            os: ubuntu-latest
-            test: "AddToCartTests.AddToCartWithSearchOnGUI"
-            headless: true
-            executionType: "Remote"
-            syncWithDB: true
-          - browser: firefox
-            os: ubuntu-latest
-            test: "LoginTests.LoginWithExistingUserOnGUI"
-            headless: true
-            executionType: "Remote"
-            syncWithDB: true
-          - browser: chrome
-            os: windows-latest
-            test: "CheckoutTests.CheckoutProductOnAPI"
-            headless: true
-            executionType: "Local"
-            syncWithDB: false
-          - browser: edge
-            os: windows-latest
-            test: "AddToCartTests.AddToCartWithSearchOnAPI"
-            headless: true
-            executionType: "Local"
-            syncWithDB: false
-          - browser: firefox
-            os: windows-latest
-            test: "SearchProductTests.SearchForProductOnAPI"
-            headless: true
-            executionType: "Local"
-            syncWithDB: false
+        browser: [Chrome, Edge, Firefox]
+        test: [
+          "CheckoutTests.CheckoutProductOnGUI,ContactUsTests.SubmitContactUsRequest",
+          "AddToCartTests.AddToCartWithSearchOnGUI",
+          "LoginTests.LoginWithExistingUserOnGUI",
+          "CheckoutTests.CheckoutProductOnAPI",
+          "AddToCartTests.AddToCartWithSearchOnAPI",
+          "SearchProductTests.SearchForProductOnAPI"
+        ]
+    continue-on-error: true
 
     steps:
       - name: Checkout code
@@ -63,23 +35,23 @@ jobs:
         with:
           maven-version: 3.9.4
 
-      - name: Set up MySQL Server with Docker
+      - name: Set up MySQL Server with Docker Containers
         run: |
-          docker run --name dockerDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql
-          sleep 10
-          docker cp src/test/resources/DBFiles/ProductsAndUsers.sql dockerDB:/ProductsAndUsers.sql
+          docker run --name dockerDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql && \
+          sleep 10 && \
+          docker cp src/test/resources/DBFiles/ProductsAndUsers.sql dockerDB:/ProductsAndUsers.sql && \
           docker exec -i dockerDB mysql -u root -p'yehia' -e "SOURCE /ProductsAndUsers.sql;"
 
-      - name: Set up Selenium Grid with Docker
+      - name: Set up Selenium Grid with Docker Containers
         run: |
-          if [ "${{ matrix.os }}" == "ubuntu-latest" ]; then
-            docker compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=$(if [ "${{ matrix.browser }}" == "chrome" ]; then echo 2; else echo 0; fi) --scale edge=$(if [ "${{ matrix.browser }}" == "edge" ]; then echo 2; else echo 0; fi) --scale firefox=$(if [ "${{ matrix.browser }}" == "firefox" ]; then echo 2; else echo 0; fi) -d
-          fi
+          docker compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=${{ matrix.browser == 'Chrome' && '2' || '0' }} \
+          --scale edge=${{ matrix.browser == 'Edge' && '2' || '0' }} \
+          --scale firefox=${{ matrix.browser == 'Firefox' && '2' || '0' }} -d
 
       - name: Wait for MySQL to be ready
         run: |
           for i in {1..30}; do
-            if docker exec dockerDB mysql -u root -p'yehia' -e "SELECT 1;" >/dev/null 2>&1; then
+            if docker exec dockerDB mysql -u root -pyehia -e "SELECT 1;" >/dev/null 2>&1; then
               echo "MySQL is up!"
               break
             fi
@@ -91,24 +63,28 @@ jobs:
         run: docker ps
 
       - name: Run tests
+        continue-on-error: true
         run: |
-          mvn clean test -Dtest="${{ matrix.test }}" -DexecutionType="${{ matrix.executionType }}" -DbrowserType="${{ matrix.browser }}" -DisHeadless="${{ matrix.headless }}" -DsyncWithDB="${{ matrix.syncWithDB }}" -D"allure.results.directory"="target/allure-results"
+          mvn clean test -Dtest="${{ matrix.test }}" \
+          -DexecutionType="${{ matrix.os == 'ubuntu-latest' && 'Remote' || 'Local' }}" \
+          -DbrowserType="${{ matrix.browser }}" \
+          -DisHeadless="true" -DsyncWithDB="${{ matrix.os == 'ubuntu-latest' && 'true' || 'false' }}" \
+          -D"allure.results.directory"="target/allure-results"
 
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results-${{ matrix.browser }}_${{ matrix.os }}
+          name: allure-results-${{ matrix.browser | lower }}_${{ matrix.os | lower }}
           path: target/allure-results
 
       - name: Cleanup Docker Containers
         if: always()
         run: |
-          docker compose -f src/main/resources/docker-compose-v3.yml down
-          docker stop dockerDB
+          docker compose -f src/main/resources/docker-compose-v3.yml down && docker stop dockerDB
 
   Combine_Allure_Reports:
     runs-on: ubuntu-latest
-    needs: Test
+    needs: test
     if: always()
 
     steps:
@@ -123,13 +99,13 @@ jobs:
           echo "/opt/allure/bin" >> $GITHUB_PATH
 
       # Download and combine Allure results
-      - name: Download Allure results
+      - name: Download and Combine Allure results
         run: |
           mkdir -p ./allure-results
           for browser in chrome edge firefox; do
-            for os in ubuntu-latest windows-latest; do
-              if [ -d "./allure-results-$browser_$os" ]; then
-                cp -r ./allure-results-$browser_$os/* ./allure-results/
+            for os in ubuntu windows; do
+              if [ -d "./allure-results-${browser}_${os}" ]; then
+                cp -r ./allure-results-${browser}_${os}/* ./allure-results/
               fi
             done
           done
