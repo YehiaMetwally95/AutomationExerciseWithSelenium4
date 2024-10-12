@@ -63,6 +63,12 @@ jobs:
     needs: [Edge_Linux_Test, Firefox_Linux_Test]
 
     steps:
+      - name: Setup JDK 21 for Maven
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '21'
+
       - name: Download Allure results from Edge
         uses: actions/download-artifact@v4
         with:
@@ -82,10 +88,10 @@ jobs:
           cp -r ./allure-results-firefox/* ./allure-results/
 
       - name: Generate Allure report
-        run: mvn allure:report
+        run: mvn allure:report -Dallure.results.directory=./allure-results -DoutputDirectory=./allure-report
 
       - name: Upload Combined Allure Report
         uses: actions/upload-artifact@v4
         with:
           name: Combined_Allure_Report
-          path: "target/site/allure-maven-plugin"
+          path: ./allure-report
