@@ -1,13 +1,12 @@
-name: Test
+name: E2E Regression Tests On Gui Remotely
 
 on:
   workflow_dispatch:
 
 jobs:
-  Edge_Linux_Test:
-    runs-on: ubuntu-latest
-    outputs:
-      allure-results: ${{ steps.upload-results.outputs.allure-results }}
+  Edge_Windows_Test:
+    runs-on: windows-latest
+    continue-on-error: true
 
     steps:
       - name: Checkout code
@@ -24,90 +23,12 @@ jobs:
         with:
           maven-version: 3.9.4
 
-      - name: Run Edge tests
+      - name: Run tests
+        continue-on-error: true
         run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
-      - name: Generate Edge Allure report
+      - name: Generate Allure report
         run: mvn allure:report
-
-      - name: Copy patch file to allure-maven-plugin folder
-        run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
-
-      - name: Upload Edge Allure Report
-        id: upload-results
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-results-edge
-          path: target/site/allure-maven-plugin
-
-  Firefox_Linux_Test:
-    runs-on: ubuntu-latest
-    outputs:
-      allure-results: ${{ steps.upload-results.outputs.allure-results }}
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4.2.0
-
-      - name: Setup JDK 21
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version: '21'
-
-      - name: Set up Maven
-        uses: stCarolas/setup-maven@v5
-        with:
-          maven-version: 3.9.4
-
-      - name: Run Firefox tests
-        run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
-
-      - name: Generate Firefox Allure report
-        run: mvn allure:report
-
-      - name: Copy patch file to allure-maven-plugin folder
-        run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
-
-      - name: Upload Firefox Allure Report
-        id: upload-results
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-results-firefox
-          path: target/site/allure-maven-plugin
-
-  Combine_Allure_Reports:
-    runs-on: ubuntu-latest
-    needs: [Edge_Linux_Test, Firefox_Linux_Test]
-
-    steps:
-      - name: Download Edge Allure results
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-results-edge
-          path: edge-results
-
-      - name: Download Firefox Allure results
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-results-firefox
-          path: firefox-results
-
-      - name: Combine Allure JSON results
-        run: |
-          mkdir -p combined-results
-          cp -r edge-results/* combined-results/
-          cp -r firefox-results/* combined-results/
-          
-          # Combine JSON files
-          # Assumes JSON files are in 'combined-results' folder under 'results' subdirectory
-          mkdir -p combined-results/results
-          cp -r combined-results/*/results/* combined-results/results/
-          # Remove individual results folders
-          rm -rf combined-results/*/results
-
-      - name: Generate Combined Allure report
-        run: mvn allure:report -Dallure.results.directory=combined-results/results
 
       - name: Copy patch file to allure-maven-plugin folder
         run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
@@ -116,4 +37,39 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Combined_Allure_Report
-          path: target/site/allure-maven-plugin
+          path: "target/site/allure-maven-plugin"
+
+  Firefox_Windows_Test:
+    runs-on: windows-latest
+    continue-on-error: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.0
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '21'
+
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.4
+
+      - name: Run tests
+        continue-on-error: true
+        run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
+
+      - name: Generate Allure report
+        run: mvn allure:report
+
+      - name: Copy patch file to allure-maven-plugin folder
+        run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
+
+      - name: Upload Combined Allure Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: Combined_Allure_Report
+          path: "target/site/allure-maven-plugin"

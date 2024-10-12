@@ -1,23 +1,11 @@
-name: E2E Regression Tests On Gui Remotely
+name: test2
 
 on:
   workflow_dispatch:
 
 jobs:
-  test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        browser: [Chrome, Edge, Firefox]
-        test: [
-          "CheckoutTests.CheckoutProductOnGUI,ContactUsTests.SubmitContactUsRequest",
-          "AddToCartTests.AddToCartWithSearchOnGUI",
-          "LoginTests.LoginWithExistingUserOnGUI",
-          "CheckoutTests.CheckoutProductOnAPI",
-          "AddToCartTests.AddToCartWithSearchOnAPI",
-          "SearchProductTests.SearchForProductOnAPI"
-        ]
+  Chrome_Ubuntu_Test:
+    runs-on: ubuntu-latest
     continue-on-error: true
 
     steps:
@@ -36,17 +24,10 @@ jobs:
           maven-version: 3.9.4
 
       - name: Set up MySQL Server with Docker Containers
-        run: |
-          docker run --name dockerDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql && \
-          sleep 10 && \
-          docker cp src/test/resources/DBFiles/ProductsAndUsers.sql dockerDB:/ProductsAndUsers.sql && \
-          docker exec -i dockerDB mysql -u root -p'yehia' -e "SOURCE /ProductsAndUsers.sql;"
+        run: docker run --name dockerDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql && \sleep 10 && \docker cp src/test/resources/DBFiles/ProductsAndUsers.sql dockerDB:/ProductsAndUsers.sql && \docker exec -i dockerDB mysql -u root -p'yehia' -e "SOURCE /ProductsAndUsers.sql;"
 
       - name: Set up Selenium Grid with Docker Containers
-        run: |
-          docker compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=${{ matrix.browser == 'Chrome' && '2' || '0' }} \
-          --scale edge=${{ matrix.browser == 'Edge' && '2' || '0' }} \
-          --scale firefox=${{ matrix.browser == 'Firefox' && '2' || '0' }} -d
+        run: docker compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=2 --scale edge=0 --scale firefox=0 -d
 
       - name: Wait for MySQL to be ready
         run: |
@@ -64,17 +45,12 @@ jobs:
 
       - name: Run tests
         continue-on-error: true
-        run: |
-          mvn clean test -Dtest="${{ matrix.test }}" \
-          -DexecutionType="${{ matrix.os == 'ubuntu-latest' && 'Remote' || 'Local' }}" \
-          -DbrowserType="${{ matrix.browser }}" \
-          -DisHeadless="true" -DsyncWithDB="${{ matrix.os == 'ubuntu-latest' && 'true' || 'false' }}" \
-          -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnGUI,ContactUsTests.SubmitContactUsRequest" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
 
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results-${{ matrix.browser | lower }}_${{ matrix.os | lower }}
+          name: allure-results-chrome_ubuntu
           path: target/allure-results
 
       - name: Cleanup Docker Containers
@@ -82,10 +58,206 @@ jobs:
         run: |
           docker compose -f src/main/resources/docker-compose-v3.yml down && docker stop dockerDB
 
+  Edge_Ubuntu_Test:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.0
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '21'
+
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.4
+
+      - name: Set up MySQL Server with Docker Containers
+        run: docker run --name dockerDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql && \sleep 10 && \docker cp src/test/resources/DBFiles/ProductsAndUsers.sql dockerDB:/ProductsAndUsers.sql && \docker exec -i dockerDB mysql -u root -p'yehia' -e "SOURCE /ProductsAndUsers.sql;"
+
+      - name: Set up Selenium Grid with Docker Containers
+        run: docker compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=0 --scale edge=2 --scale firefox=0 -d
+
+      - name: Wait for MySQL to be ready
+        run: |
+          for i in {1..30}; do
+            if docker exec dockerDB mysql -u root -pyehia -e "SELECT 1;" >/dev/null 2>&1; then
+              echo "MySQL is up!"
+              break
+            fi
+            echo "Waiting for MySQL..."
+            sleep 1
+          done
+
+      - name: Check Running Containers
+        run: docker ps
+
+      - name: Run tests
+        continue-on-error: true
+        run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnGUI" -DexecutionType="Remote" -DbrowserType="Edge" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
+
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-edge_ubuntu
+          path: target/allure-results
+
+      - name: Cleanup Docker Containers
+        if: always()
+        run: |
+          docker compose -f src/main/resources/docker-compose-v3.yml down && docker stop dockerDB
+
+  Firefox_Ubuntu_Test:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.0
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '21'
+
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.4
+
+      - name: Set up MySQL Server with Docker Containers
+        run: docker run --name dockerDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql && \sleep 10 && \docker cp src/test/resources/DBFiles/ProductsAndUsers.sql dockerDB:/ProductsAndUsers.sql && \docker exec -i dockerDB mysql -u root -p'yehia' -e "SOURCE /ProductsAndUsers.sql;"
+
+      - name: Set up Selenium Grid with Docker Containers
+        run: docker compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=0 --scale edge=0 --scale firefox=2 -d
+
+      - name: Wait for MySQL to be ready
+        run: |
+          for i in {1..30}; do
+            if docker exec dockerDB mysql -u root -pyehia -e "SELECT 1;" >/dev/null 2>&1; then
+              echo "MySQL is up!"
+              break
+            fi
+            echo "Waiting for MySQL..."
+            sleep 1
+          done
+
+      - name: Check Running Containers
+        run: docker ps
+
+      - name: Run tests
+        continue-on-error: true
+        run: mvn clean test -Dtest="LoginTests.LoginWithExistingUserOnGUI" -DexecutionType="Remote" -DbrowserType="Firefox" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
+
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-firefox_ubuntu
+          path: target/allure-results
+
+      - name: Cleanup Docker Containers
+        if: always()
+        run: |
+          docker compose -f src/main/resources/docker-compose-v3.yml down && docker stop dockerDB
+
+  Chrome_Windows_Test:
+    runs-on: windows-latest
+    continue-on-error: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.0
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '21'
+
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.4
+
+      - name: Run tests
+        continue-on-error: true
+        run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnAPI" -DexecutionType="Local" -DbrowserType="Chrome" -DsyncWithDB="false" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
+
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-chrome_windows
+          path: target/allure-results
+
+  Edge_Windows_Test:
+    runs-on: windows-latest
+    continue-on-error: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.0
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '21'
+
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.4
+
+      - name: Run tests
+        continue-on-error: true
+        run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
+
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-edge_windows
+          path: target/allure-results
+
+  Firefox_Windows_Test:
+    runs-on: windows-latest
+    continue-on-error: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.0
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '21'
+
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.4
+
+      - name: Run tests
+        continue-on-error: true
+        run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
+
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-firefox_windows
+          path: target/allure-results
+
   Combine_Allure_Reports:
     runs-on: ubuntu-latest
-    needs: test
+    needs: [Chrome_Ubuntu_Test,Edge_Ubuntu_Test,Firefox_Ubuntu_Test,Chrome_Windows_Test,Edge_Windows_Test,Firefox_Windows_Test]
     if: always()
+    # Define a list of browsers and environments
 
     steps:
       - name: Checkout code
@@ -93,25 +265,20 @@ jobs:
 
       - name: Install Allure
         run: |
+          # Download and unzip Allure
           curl -o allure.zip -L "https://github.com/allure-framework/allure2/releases/latest/download/allure-2.30.0.zip"
           unzip allure.zip
-          sudo mv allure-2.30.0 /opt/allure
-          echo "/opt/allure/bin" >> $GITHUB_PATH
+          sudo mv allure-2.30.0 /opt/allure  # Move the whole directory
+          echo "/opt/allure/bin" >> $GITHUB_PATH  # Add Allure to the PATH
 
-      # Download and combine Allure results
-      - name: Download and Combine Allure results
-        run: |
-          mkdir -p ./allure-results
-          for browser in chrome edge firefox; do
-            for os in ubuntu windows; do
-              if [ -d "./allure-results-${browser}_${os}" ]; then
-                cp -r ./allure-results-${browser}_${os}/* ./allure-results/
-              fi
-            done
-          done
+        
 
+      # Generate the Allure Report from the Combined Directory
       - name: Generate Allure report
         run: allure generate ./allure-results --clean -o ./allure-report
+
+      - name: Copy patch file to allure-maven-plugin folder
+        run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat ./allure-report
 
       - name: Upload Combined Allure Report
         uses: actions/upload-artifact@v4
