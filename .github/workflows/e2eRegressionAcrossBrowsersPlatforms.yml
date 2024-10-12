@@ -335,42 +335,42 @@ jobs:
       - name: Download Allure results from Chrome Ubuntu
         uses: actions/download-artifact@v4
         with:
-          name: allure-results-chrome_ubuntu
+          name: target-allure-results-chrome_ubuntu
           path: ./target-allure-results-chrome_ubuntu
         continue-on-error: true
 
       - name: Download Allure results from Edge Ubuntu
         uses: actions/download-artifact@v4
         with:
-          name: allure-results-edge_ubuntu
+          name: target-allure-results-edge_ubuntu
           path: ./target-allure-results-edge_ubuntu
         continue-on-error: true
 
       - name: Download Allure results from Firefox Ubuntu
         uses: actions/download-artifact@v4
         with:
-          name: allure-results-firefox_ubuntu
+          name: target-allure-results-firefox_ubuntu
           path: ./target-allure-results-firefox_ubuntu
         continue-on-error: true
 
       - name: Download Allure results from Chrome Windows
         uses: actions/download-artifact@v4
         with:
-          name: allure-results-chrome_windows
+          name: target-allure-results-chrome_windows
           path: ./target-allure-results-chrome_windows
         continue-on-error: true
 
       - name: Download Allure results from Edge Windows
         uses: actions/download-artifact@v4
         with:
-          name: allure-results-edge_windows
+          name: target-allure-results-edge_windows
           path: ./target-allure-results-edge_windows
         continue-on-error: true
 
       - name: Download Allure results from Firefox Windows
         uses: actions/download-artifact@v4
         with:
-          name: allure-results-firefox_windows
+          name: target-allure-results-firefox_windows
           path: ./target-allure-results-firefox_windows
         continue-on-error: true
 

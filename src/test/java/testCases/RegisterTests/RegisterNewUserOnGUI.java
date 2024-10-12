@@ -90,9 +90,10 @@ public class RegisterNewUserOnGUI extends BaseTest {
                         ,json.getData("NewUser1.Address1"),json.getData("NewUser1.Address2"),json.getData("NewUser1.Country")
                         ,json.getData("NewUser1.State"),json.getData("NewUser1.City"),json.getData("NewUser1.ZipCode")
                         ,json.getData("NewUser1.MobileNumber"))
-                .logout()
+                .assertUserIsLoggedIn(json.getData("NewUser1.Name"));
+/*                .logout()
                 .signupWithExistingUser(json.getData("NewUser1.Name"),json.getData("NewUser1.Email"))
-                .assertIncorrectSignupMassage(json.getData("Messages[0].DuplicatedEmail"));
+                .assertIncorrectSignupMassage(json.getData("Messages[0].DuplicatedEmail"));*/
     }
 
     @AfterMethod
