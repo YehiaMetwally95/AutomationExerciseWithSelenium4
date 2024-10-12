@@ -8,10 +8,12 @@ public class DeleteDirectoryFiles {
         File filesList[] = dirPath.listFiles();
         if (filesList != null) {
             for(File file : filesList) {
-                if(file.isFile()) {
-                    file.delete();
-                } else {
-                    deleteFiles(file);
+                if (!file.getName().equals("file.gitkeep")) {
+                    if (file.isFile()) {
+                        file.delete();
+                    } else {
+                        deleteFiles(file);
+                    }
                 }
             }
         }
