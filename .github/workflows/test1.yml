@@ -81,34 +81,33 @@ jobs:
     needs: [Edge_Linux_Test, Firefox_Linux_Test]
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4.2.0
-
-      - name: Set up Maven
-        uses: stCarolas/setup-maven@v5
-        with:
-          maven-version: 3.9.4
-
-      - name: Download Edge Allure report
+      - name: Download Edge Allure results
         uses: actions/download-artifact@v4
         with:
           name: allure-results-edge
           path: edge-results
 
-      - name: Download Firefox Allure report
+      - name: Download Firefox Allure results
         uses: actions/download-artifact@v4
         with:
           name: allure-results-firefox
           path: firefox-results
 
-      - name: Combine Allure results
+      - name: Combine Allure JSON results
         run: |
           mkdir -p combined-results
           cp -r edge-results/* combined-results/
           cp -r firefox-results/* combined-results/
+          
+          # Combine JSON files
+          # Assumes JSON files are in 'combined-results' folder under 'results' subdirectory
+          mkdir -p combined-results/results
+          cp -r combined-results/*/results/* combined-results/results/
+          # Remove individual results folders
+          rm -rf combined-results/*/results
 
       - name: Generate Combined Allure report
-        run: mvn allure:report -Dallure.results.directory=combined-results
+        run: mvn allure:report -Dallure.results.directory=combined-results/results
 
       - name: Copy patch file to allure-maven-plugin folder
         run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
