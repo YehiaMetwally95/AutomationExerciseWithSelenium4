@@ -339,6 +339,7 @@ jobs:
           cp -r ./allure-results-firefox_windows/* ./allure-results/
         continue-on-error: true
 
+# Generate the Allure Report from the Combined Directory
       - name: Generate Allure report
         run: allure generate ./allure-results --clean -o ./allure-report
 
