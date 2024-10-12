@@ -276,8 +276,9 @@ jobs:
           [ -d "./allure-results-chrome_windows" ] && echo "chrome_windows_exists=true" >> $GITHUB_ENV
           [ -d "./allure-results-edge_windows" ] && echo "edge_windows_exists=true" >> $GITHUB_ENV
           [ -d "./allure-results-firefox_windows" ] && echo "firefox_windows_exists=true" >> $GITHUB_ENV
+        continue-on-error: true
 
-# Download all Allure Files generated after every job
+      # Download all Allure Files generated after every job
       - name: Download Allure results from Chrome Ubuntu
         if: env.chrome_ubuntu_exists == 'true'
         uses: actions/download-artifact@v4
