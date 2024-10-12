@@ -55,7 +55,7 @@ public class RegisterNewUserOnAPI extends BaseTest {
                 .setData("NewUser2.MobileNumber",generateUniqueInteger());
     }
 
-    //Test Scripts
+    //Test Script
     @Description("Register New User On API")
     @Severity(SeverityLevel.CRITICAL)
     @Test
