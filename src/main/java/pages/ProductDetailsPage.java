@@ -21,7 +21,7 @@ public class ProductDetailsPage extends HomePage {
     By productQuantityTextBox = By.id("quantity");
     //By addToCartButton = RelativeLocator.with(By.tagName("button")).near(productQuantityTextBox);
     By addToCartButton = By.xpath("//button[contains(@class,'cart')]");
-    By continueShoppingButton = By.xpath("//button[@date-dismiss='modal']");
+    By continueShoppingButton = By.xpath("//button[@data-dismiss='modal']");
     By viewCartButton = By.xpath("//div[@id='cartModal']/descendant::a");
 
     //Constructor
