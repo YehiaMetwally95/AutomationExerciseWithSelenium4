@@ -97,7 +97,7 @@ jobs:
         run: docker ps
 
       - name: Run tests
-        run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnGUI" -DexecutionType="Remote" -DbrowserType="Edge" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnGUI" -DexecutionType="Remote" -DbrowserType="Edge" -DisHeadless="true" -DsyncWithDB="false" -D"allure.results.directory"="target/allure-results"
 
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
@@ -268,20 +268,20 @@ jobs:
       - name: Check for Allure results directories
         id: check_artifacts
         run: |
-          echo "chrome_ubuntu_exists=true" >> $GITHUB_ENV
-          echo "edge_ubuntu_exists=true" >> $GITHUB_ENV
-          echo "firefox_ubuntu_exists=true" >> $GITHUB_ENV
+          echo "chrome_ubuntu_exists=false" >> $GITHUB_ENV
+          echo "edge_ubuntu_exists=false" >> $GITHUB_ENV
+          echo "firefox_ubuntu_exists=false" >> $GITHUB_ENV
           
-          echo "chrome_windows_exists=true" >> $GITHUB_ENV
-          echo "edge_windows_exists=true" >> $GITHUB_ENV
-          echo "firefox_windows_exists=true" >> $GITHUB_ENV
+          echo "chrome_windows_exists=false" >> $GITHUB_ENV
+          echo "edge_windows_exists=false" >> $GITHUB_ENV
+          echo "firefox_windows_exists=false" >> $GITHUB_ENV
           
-          [ -d "./allure-results-chrome_ubuntu" ] && echo "chrome_ubuntu_exists=false" >> $GITHUB_ENV
-          [ -d "./allure-results-edge_ubuntu" ] && echo "edge_ubuntu_exists=false" >> $GITHUB_ENV
-          [ -d "./allure-results-firefox_ubuntu" ] && echo "firefox_ubuntu_exists=false" >> $GITHUB_ENV
-          [ -d "./allure-results-chrome_windows" ] && echo "chrome_windows_exists=false" >> $GITHUB_ENV
-          [ -d "./allure-results-edge_windows" ] && echo "edge_windows_exists=false" >> $GITHUB_ENV
-          [ -d "./allure-results-firefox_windows" ] && echo "firefox_windows_exists=false" >> $GITHUB_ENV
+          [ -d "./allure-results-chrome_ubuntu" ] && echo "chrome_ubuntu_exists=true" >> $GITHUB_ENV
+          [ -d "./allure-results-edge_ubuntu" ] && echo "edge_ubuntu_exists=true" >> $GITHUB_ENV
+          [ -d "./allure-results-firefox_ubuntu" ] && echo "firefox_ubuntu_exists=true" >> $GITHUB_ENV
+          [ -d "./allure-results-chrome_windows" ] && echo "chrome_windows_exists=true" >> $GITHUB_ENV
+          [ -d "./allure-results-edge_windows" ] && echo "edge_windows_exists=true" >> $GITHUB_ENV
+          [ -d "./allure-results-firefox_windows" ] && echo "firefox_windows_exists=true" >> $GITHUB_ENV
         continue-on-error: true
 
       # Download all Allure Files generated after every job
