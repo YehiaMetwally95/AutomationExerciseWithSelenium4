@@ -98,9 +98,6 @@ jobs:
       - name: Copy patch file to allure-maven-plugin folder
         run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat ./allure-report
 
-      - name: Check files in the allure-maven-plugin folder
-        run: ls target/site/allure-maven-plugin
-
       - name: Upload Combined Allure Report
         uses: actions/upload-artifact@v4
         with:
