@@ -333,29 +333,24 @@ jobs:
           mkdir -p ./allure-results
           if [ "$chrome_ubuntu_exists" = "true" ]; then
           cp -r ./allure-results-chrome_ubuntu/* ./allure-results/
-          fi
           
-          mkdir -p ./allure-results
+          
           if [ "$edge_ubuntu_exists" = "true" ]; then
           cp -r ./allure-results-edge_ubuntu/* ./allure-results/
-          fi
           
-          mkdir -p ./allure-results
+          
           if [ "$firefox_ubuntu_exists" = "true" ]; then
           cp -r ./allure-results-firefox_ubuntu/* ./allure-results/
-          fi          
+                  
           
-          mkdir -p ./allure-results
           if [ "$chrome_windows_exists" = "true" ]; then
           cp -r ./allure-results-chrome_windows/* ./allure-results/
-          fi          
+                 
           
-          mkdir -p ./allure-results
           if [ "$edge_windows_exists" = "true" ]; then
           cp -r ./allure-results-edge_windows/* ./allure-results/
-          fi          
+                    
           
-          mkdir -p ./allure-results
           if [ "$firefox_windows_exists" = "true" ]; then
           cp -r ./allure-results-firefox_windows/* ./allure-results/
           fi
