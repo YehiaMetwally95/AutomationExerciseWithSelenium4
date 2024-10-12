@@ -6,6 +6,8 @@ on:
 jobs:
   Edge_Linux_Test:
     runs-on: ubuntu-latest
+    outputs:
+      allure-results: ${{ steps.upload-results.outputs.allure-results }}
 
     steps:
       - name: Checkout code
@@ -22,17 +24,26 @@ jobs:
         with:
           maven-version: 3.9.4
 
-      - name: Run tests
+      - name: Run Edge tests
         run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
-      - name: Upload Allure Report
+      - name: Generate Edge Allure report
+        run: mvn allure:report
+
+      - name: Copy patch file to allure-maven-plugin folder
+        run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
+
+      - name: Upload Edge Allure Report
+        id: upload-results
         uses: actions/upload-artifact@v4
         with:
           name: allure-results-edge
-          path: target/allure-results
+          path: target/site/allure-maven-plugin
 
   Firefox_Linux_Test:
     runs-on: ubuntu-latest
+    outputs:
+      allure-results: ${{ steps.upload-results.outputs.allure-results }}
 
     steps:
       - name: Checkout code
@@ -49,57 +60,53 @@ jobs:
         with:
           maven-version: 3.9.4
 
-      - name: Run tests
+      - name: Run Firefox tests
         run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
-      - name: Upload Allure Report
+      - name: Generate Firefox Allure report
+        run: mvn allure:report
+
+      - name: Copy patch file to allure-maven-plugin folder
+        run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
+
+      - name: Upload Firefox Allure Report
+        id: upload-results
         uses: actions/upload-artifact@v4
         with:
           name: allure-results-firefox
-          path: target/allure-results
+          path: target/site/allure-maven-plugin
 
   Combine_Allure_Reports:
     runs-on: ubuntu-latest
     needs: [Edge_Linux_Test, Firefox_Linux_Test]
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4.2.0
-
-      - name: Install Allure
-        run: |
-          # Download and unzip Allure
-          curl -o allure.zip -L "https://github.com/allure-framework/allure2/releases/latest/download/allure-2.30.0.zip"
-          unzip allure.zip
-          sudo mv allure-2.30.0 /opt/allure  # Move the whole directory
-          echo "/opt/allure/bin" >> $GITHUB_PATH  # Add Allure to the PATH
-
-      - name: Download Allure results from Edge
-        uses: actions/download-artifact@v4
+      - name: Download Edge Allure report
+        uses: actions/download-artifact@v2
         with:
           name: allure-results-edge
-          path: ./allure-results-edge
+          path: edge-results
 
-      - name: Download Allure results from Firefox
-        uses: actions/download-artifact@v4
+      - name: Download Firefox Allure report
+        uses: actions/download-artifact@v2
         with:
           name: allure-results-firefox
-          path: ./allure-results-firefox
+          path: firefox-results
 
       - name: Combine Allure results
         run: |
-          mkdir -p ./allure-results
-          cp -r ./allure-results-edge/* ./allure-results/
-          cp -r ./allure-results-firefox/* ./allure-results/
+          mkdir -p combined-results
+          cp -r edge-results/* combined-results/
+          cp -r firefox-results/* combined-results/
 
-      - name: Generate Allure report
-        run: allure generate ./allure-results --clean -o ./allure-report
+      - name: Generate Combined Allure report
+        run: mvn allure:report -Dallure.results.directory=combined-results
 
       - name: Copy patch file to allure-maven-plugin folder
-        run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat ./allure-report
+        run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
 
       - name: Upload Combined Allure Report
         uses: actions/upload-artifact@v4
         with:
           name: Combined_Allure_Report
-          path: ./allure-report
+          path: target/site/allure-maven-plugin
