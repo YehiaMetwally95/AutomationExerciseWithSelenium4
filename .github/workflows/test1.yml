@@ -63,14 +63,6 @@ jobs:
     needs: [Edge_Linux_Test, Firefox_Linux_Test]
 
     steps:
-      - name: Install Allure
-        run: |
-          curl -o allure.zip -L "https://github.com/allure-framework/allure2/releases/latest/download/allure-2.30.0.zip" # Update to the latest version
-          unzip allure.zip
-          sudo mv allure-2.30.0/bin/allure /usr/local/bin/allure
-          sudo chmod +x /usr/local/bin/allure
-          echo "/usr/local/bin" >> $GITHUB_PATH  # Add Allure to the PATH
-
       - name: Download Allure results from Edge
         uses: actions/download-artifact@v4
         with:
