@@ -81,6 +81,14 @@ jobs:
     needs: [Edge_Linux_Test, Firefox_Linux_Test]
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.0
+
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.4
+
       - name: Download Edge Allure report
         uses: actions/download-artifact@v4
         with:
