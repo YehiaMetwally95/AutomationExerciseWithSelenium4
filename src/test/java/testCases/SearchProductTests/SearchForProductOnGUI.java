@@ -24,22 +24,6 @@ public class SearchForProductOnGUI extends BaseTest {
     String jsonFilePathForSearchProduct = "src/test/resources/TestDataJsonFiles/SearchProductTestData.json";
     JsonManager json = new JsonManager(jsonFilePathForSearchProduct);
 
-    //Apply Saved Cookies to Current Session to ByPass Login
-    @BeforeMethod
-    public void byPassLogin() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
-        new SessionManager(driver, jsonFilePathForSessionDataUser2).applyCookiesToCurrentSession();
-    }
-
-    //Reset Cart and Remove any old products
-    @BeforeMethod (dependsOnMethods = "byPassLogin")
-    public void resetCart() throws IOException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
-        new HomePage(driver)
-                .openCartPage()
-                .removeAllOldProductsFromCart();
-    }
-
     @Description("Search For Product And Open Product Page On GUI")
     @Severity(SeverityLevel.CRITICAL)
     @Test
