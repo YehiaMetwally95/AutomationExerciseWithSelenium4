@@ -347,7 +347,7 @@ jobs:
           
           mkdir -p ./allure-results
           if [ "$chrome_windows_exists" = "true" ]; then
-          cp -r ./allure-results-windows_ubuntu/* ./allure-results/
+          cp -r ./allure-results-chrome_windows/* ./allure-results/
           fi          
           
           mkdir -p ./allure-results
