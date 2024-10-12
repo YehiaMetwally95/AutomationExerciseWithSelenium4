@@ -89,6 +89,12 @@ jobs:
           cp -r ./allure-results-edge/* ./allure-results/
           cp -r ./allure-results-firefox/* ./allure-results/
 
+      - name: List Allure results
+        run: ls -R ./allure-results
+
+      - name: Check Allure version
+        run: allure --version
+
       - name: Generate Allure report
         run: allure generate ./allure-results --clean -o ./allure-report
 
