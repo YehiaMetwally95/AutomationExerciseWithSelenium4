@@ -5,7 +5,7 @@ on:
 
 jobs:
   Edge_Windows_Test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     continue-on-error: true
 
     steps:
@@ -28,7 +28,7 @@ jobs:
         run: mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results/edge"
 
   Firefox_Windows_Test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     continue-on-error: true
 
     steps:
@@ -51,7 +51,7 @@ jobs:
         run: mvn clean test -Dtest="SearchProductTests.SearchForProductOnAPI" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results/firefox"
 
   Combine_Allure_Reports:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: [Edge_Windows_Test, Firefox_Windows_Test]
     continue-on-error: true
 
