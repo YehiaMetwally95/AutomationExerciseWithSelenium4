@@ -73,3 +73,36 @@ jobs:
         with:
           name: allure_report_firefox_windows
           path: "target/site/allure-maven-plugin"
+
+  Combine_Allure_Reports:
+    runs-on: windows-latest
+    needs: [Edge_Windows_Test, Firefox_Windows_Test]
+    continue-on-error: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.0
+
+      - name: Install Allure
+        run: |
+          # Download and unzip Allure
+          curl -o allure.zip -L "https://github.com/allure-framework/allure2/releases/latest/download/allure-2.30.0.zip"
+          unzip allure.zip
+          sudo mv allure-2.30.0 /opt/allure  # Move the whole directory
+          echo "/opt/allure/bin" >> $GITHUB_PATH  # Add Allure to the PATH
+
+      - name: Combine Allure results
+        run: |
+          allure merge target/allure-results/edge target/allure-results/firefox -o target/allure-results/combined
+
+      - name: Generate Combined Allure report
+        run: allure generate target/allure-results/combined --clean -o ./allure-report
+
+      - name: Copy patch file to allure-maven-plugin folder
+        run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat ./allure-report
+
+      - name: Upload Combined Allure Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: Combined_Allure_Report
+          path: ./allure-report
