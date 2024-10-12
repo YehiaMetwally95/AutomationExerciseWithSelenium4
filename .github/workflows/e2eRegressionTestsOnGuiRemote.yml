@@ -293,7 +293,7 @@ jobs:
         with:
           name: allure-results-edge_ubuntu
           path: ./allure-results-edge_ubuntu
-          continue-on-error: true
+        continue-on-error: true
 
       - name: Download Allure results from Firefox Ubuntu
         if: env.firefox_ubuntu_exists == 'true'
