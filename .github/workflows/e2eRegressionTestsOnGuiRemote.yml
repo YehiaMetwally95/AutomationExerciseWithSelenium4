@@ -44,7 +44,7 @@ jobs:
         run: docker ps
         
       - name: Run tests
-        run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnGUI" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="CheckoutTests.CheckoutProductOnGUI,ContactUsTests.SubmitContactUsRequest" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
         
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
