@@ -1,9 +1,17 @@
-### Overveiw
-- Using Automation Exercise Website as the Application Under Test
-- Very Simple script based on Selenium 4 by Java and Maven Project, without using loops, conditions or any complex logics
+# Overveiw
+- Test Automation Script with Selenium 4 by Java and Maven Project to simulate E2E User Scenarios
+- Implement number of Best Practices either in Project Structure ,Synchronizations and Validations 
 - Using TestNG as the Testing Framework
-- Using Fluent Page Object Model Design Pattern in writing test script and page actions, thus chaining the scenario steps and validations in one line of code"
-
+- Using Fluent Page Object Model Design Pattern in writing test script and page actions, thus chaining the scenario steps and validations in one line of code
+- Data Driven framework such that store test data in Database and Json Files
+- Generating Very Detailed Allure Reports for communicating test results with Screenshots
+- Perform Parallel Execution with CI/CD Pipeline with Github Actions, thus reduce execution time reachs 90 seconds only to run 14 tests
+- Bypass UI Login, thus reduce execution time
+- Implement the Test Automation Pyramid
+  
+## Application Under Test
+- Automation Exercise Website https://automationexercise.com/
+  
 ### Structure of "main folder"
 - Using the HomePage as Parent of all pages that inherit locators and actions of Header & Footer from Homepage also for defining common variables that are commonly used across all pages, Thus achieving the right purpose of Inheritance
 - Synchronizing the Elements identification and Actions on elements inside Fluent Wait with lambda expression, thus waiting till action is taken not just till finding the element
