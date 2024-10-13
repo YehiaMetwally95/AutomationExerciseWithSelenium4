@@ -6,7 +6,7 @@
 - Designing Powerful Util Class for Different Actions with Web Elements and Bot Pattern for Abstracting Multiple interactions with Web Element
 - Data Driven framework such that store All Test data in Json Files and Retrieve the Updated Test Data of Products and Users from MySQL Database
 - Generating Very Detailed Allure Reports with All Scenario Steps And Screenshots for Passed/Hard-Assertion-Failed/Soft-Assersion-Failed Tests, For better communicating the test results
-- Performing Parallel Execution with CI/CD Pipeline with Github Actions, thus reduce execution time to reachs 90 seconds only to run 14 tests
+- Performing Parallel Execution with CI/CD Pipeline with Github Actions with 12 Tests runs at the same time, thus reduce execution time to reachs 90 seconds only to run 14 tests
 - Bypassing UI Login for All Tests, Thus Reducing Execution time
 - Docker & Selenium Grid
 - Implementing the Test Automation Pyramid such that Run Tests Over API besides the UI, Thus Reduce the Full Dependancy on UI and Element Identification and Reduce Execution Time
