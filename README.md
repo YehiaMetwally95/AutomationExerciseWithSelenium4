@@ -1,6 +1,6 @@
 ## Overveiw
 - Test Automation Script with Selenium 4 by Java and Maven Project to simulate E2E User Scenarios
-- Implement number of Best Practices either in Project Structure, Synchronizations with Fluent Wait Strategy and without any Thread Sleep and Validations 
+- Implement number of Best Practices either in Project Structure, Synchronizations with Fluent Wait Strategy and without any Thread Sleep and Validations (Azabat el Line Da)
 - Using TestNG as the Testing Framework
 - Using Fluent Page Object Model Design Pattern in writing Test script and Page actions, thus chaining the Scenario steps and validations in one line of code
 - Designing Powerful Util Class for Different Actions with Web Elements and Bot Pattern for Abstracting Multiple interactions with Web Element
@@ -8,6 +8,7 @@
 - Generating Very Detailed Allure Reports with All Scenario Steps And Screenshots for Passed/Hard-Assertion-Failed/Soft-Assersion-Failed Tests, For better communicating the test results
 - Performing Parallel Execution with CI/CD Pipeline with Github Actions, thus reduce execution time to reachs 90 seconds only to run 14 tests
 - Bypassing UI Login for All Tests, Thus Reducing Execution time
+- Docker & Selenium Grid
 - Implementing the Test Automation Pyramid such that Run Tests Over API besides the UI, Thus Reduce the Full Dependancy on UI and Element Identification and Reduce Execution Time
   
 ## Application Under Test
