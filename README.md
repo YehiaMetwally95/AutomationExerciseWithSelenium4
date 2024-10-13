@@ -1,8 +1,8 @@
-### Overveiw
+# Overveiw
 - Using Automation Exercise Website as the Application Under Test
 - Very Simple script based on Selenium 4 by Java and Maven Project, without using loops, conditions or any complex logics
 - Using TestNG as the Testing Framework
-- Using Fluent Page Object Model Design Pattern in writing test script and page actions, thus chaining the scenario steps and validations in one line of code"
+- Using Fluent Page Object Model Design Pattern in writing test script and page actions, thus chaining the scenario steps and validations in one line of code
 
 ### Structure of "main folder"
 - Using the HomePage as Parent of all pages that inherit locators and actions of Header & Footer from Homepage also for defining common variables that are commonly used across all pages, Thus achieving the right purpose of Inheritance
