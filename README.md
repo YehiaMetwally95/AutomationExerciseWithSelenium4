@@ -5,9 +5,9 @@
 - Using Fluent Page Object Model Design Pattern in writing test script and page actions, thus chaining the scenario steps and validations in one line of code
 - Data Driven framework such that store test data in Database and Json Files
 - Generating Very Detailed Allure Reports for communicating test results with Screenshots
-- Perform Parallel Execution with CI/CD Pipeline with Github Actions, thus reduce execution time reachs 90 seconds only to run 14 tests
-- Bypass UI Login, thus reduce execution time
-- Implement the Test Automation Pyramid
+- Performing Parallel Execution with CI/CD Pipeline with Github Actions, thus reduce execution time reachs 90 seconds only to run 14 tests
+- Bypassing UI Login, thus reduce execution time
+- Implementing the Test Automation Pyramid
   
 ## Application Under Test
 - Automation Exercise Website https://automationexercise.com/
@@ -17,7 +17,7 @@
 ```bash
 docker run --name dockerDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql; Start-Sleep -Seconds 20; docker cp src/test/resources/DBFiles/ProductsAndUsers.sql dockerDB:/ProductsAndUsers.sql; docker exec -i dockerDB mysql -u root -p'yehia' -e "SOURCE /ProductsAndUsers.sql;" 
 ```
-- The .sql File is located in resources Directory, You can edit it using any IDE as MySQL Workbench
+- The .sql file is located in resources Directory, You can edit it using any IDE as MySQL Workbench
 - To Sync The Tests With MySQL Database to get the Updated Products and Users Data, The flag "syncWithDB" in Configuration.properties shall be set with "true", otherwise, it can be set with "false" 
 #### 2- To Setup Selenium Grid with Docker Container in order to Run Tests Remotely, Just run the following command in Intellij Terminal
 ```bash
@@ -53,7 +53,7 @@ Using Bypass UI Login Method by Login only once for first time and store Session
 - Data Validation on Product Details is done over API
 - Data Validation on Address /User Details is done over API
 - Data Validation on all retrieved Products in Product Page over API instead of Validating them on GUI (Not Implemented yet)
-- Implementing API Tests Using RestAssured and Design Patterns, refer to (Post of Rest Assured)"
+- Implementing API Tests Using RestAssured and Design Patterns, refer to Readme File of RestAssured Project https://github.com/YehiaMetwally95/NotesApiWithRestassured/blob/master/README.md"
 
 #### Reporting Using Allure Report
 - Reporting Test Result & Taking Screenshots for Failed Tests and Successful Tests if needed
