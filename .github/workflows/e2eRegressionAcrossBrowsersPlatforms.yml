@@ -66,7 +66,7 @@ jobs:
       - name: Copy patch file to allure-maven-plugin folder
         run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
       - name: Upload Allure Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Allure Report Chrome Ubuntu
           path: "target/site/allure-maven-plugin"
@@ -130,7 +130,7 @@ jobs:
       - name: Copy patch file to allure-maven-plugin folder
         run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
       - name: Upload Allure Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Allure Report Edge Ubuntu
           path: "target/site/allure-maven-plugin"
@@ -194,7 +194,7 @@ jobs:
       - name: Copy patch file to allure-maven-plugin folder
         run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
       - name: Upload Allure Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Allure Report Firefox Ubuntu
           path: "target/site/allure-maven-plugin"
@@ -238,7 +238,7 @@ jobs:
       - name: Copy patch file to allure-maven-plugin folder
         run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
       - name: Upload Allure Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Allure Report Chrome Windows
           path: "target/site/allure-maven-plugin"
@@ -277,7 +277,7 @@ jobs:
       - name: Copy patch file to allure-maven-plugin folder
         run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
       - name: Upload Allure Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Allure Report Edge Windows
           path: "target/site/allure-maven-plugin"
@@ -317,7 +317,7 @@ jobs:
       - name: Copy patch file to allure-maven-plugin folder
         run: cp src/main/resources/allow-file-access_open-report_chrome_windows.bat target/site/allure-maven-plugin
       - name: Upload Allure Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Allure Report Firefox Windows
           path: "target/site/allure-maven-plugin"
