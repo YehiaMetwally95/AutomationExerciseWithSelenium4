@@ -35,22 +35,22 @@ public class RandomDataGenerator {
 
     public static String generateName()
     {
-       return new Faker().name().firstName();
+       return new Faker().name().firstName().replace("'", "''");
     }
 
     public static String generateCompany()
     {
-        return new Faker().company().name();
+        return new Faker().company().name().replace("'", "''");
     }
 
     public static String generateAddress()
     {
-        return new Faker().address().fullAddress();
+        return new Faker().address().fullAddress().replace("'", "''");
     }
 
     public static String generateCity()
     {
-        return new Faker().address().city();
+        return new Faker().address().city().replace("'", "''");
     }
 
     public static String generateZipCode()

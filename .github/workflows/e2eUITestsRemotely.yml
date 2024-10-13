@@ -56,7 +56,7 @@ jobs:
         run: >
           mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnGUI,
           CheckoutTests.CheckoutProductOnGUI,
-          RegisterTests.RegisterNewUserOnGUI.registerNewUserThroughGUI,
+          RegisterTests.RegisterNewUserOnGUI,
           SearchProductTests.SearchForProductOnGUI"
           -DexecutionType="Remote"
           -DbrowserType="Chrome"

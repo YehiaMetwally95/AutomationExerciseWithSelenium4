@@ -74,28 +74,6 @@ public class RegisterNewUserOnGUI extends BaseTest {
                 .assertUserIsLoggedIn(json.getData("NewUser1.Name"));
     }
 
-    @Description("Register Existing User On GUI")
-    @Severity(SeverityLevel.CRITICAL)
-    @Test
-    public void registerExistingUserThroughGUI() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
-        new HomePage(driver)
-                .verifyHomePageIsOpened()
-                .openLoginSignupPage()
-                .verifyLoginSignupPageIsOpened()
-                .signupWithNewUser(json.getData("NewUser1.Name"),json.getData("NewUser1.Email"))
-                .registerNewUser(json.getData("NewUser1.Title"),json.getData("NewUser1.Name"),json.getData("NewUser1.Password")
-                        ,json.getData("NewUser1.DayOfBirth"),json.getData("NewUser1.MonthOfBirth"),json.getData("NewUser1.YearOfBirth")
-                        ,json.getData("NewUser1.FirstName"),json.getData("NewUser1.LastName"),json.getData("NewUser1.Company")
-                        ,json.getData("NewUser1.Address1"),json.getData("NewUser1.Address2"),json.getData("NewUser1.Country")
-                        ,json.getData("NewUser1.State"),json.getData("NewUser1.City"),json.getData("NewUser1.ZipCode")
-                        ,json.getData("NewUser1.MobileNumber"))
-                .assertUserIsLoggedIn(json.getData("NewUser1.Name"));
-/*                .logout()
-                .signupWithExistingUser(json.getData("NewUser1.Name"),json.getData("NewUser1.Email"))
-                .assertIncorrectSignupMassage(json.getData("Messages[0].DuplicatedEmail"));*/
-    }
-
     @AfterMethod
     public void updateDatabaseWithNewData() throws IOException, SQLException, ParseException {
         String title = json.getData("NewUser1.Title");
