@@ -17,6 +17,8 @@
 ```bash
 docker run --name dockerDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql; Start-Sleep -Seconds 20; docker cp src/test/resources/DBFiles/ProductsAndUsers.sql dockerDB:/ProductsAndUsers.sql; docker exec -i dockerDB mysql -u root -p'yehia' -e "SOURCE /ProductsAndUsers.sql;" 
 ```
+The .sql File is located in resources Directory, You can edit it using any IDE as MySQL Workbench
+To Sync The Tests With MySQL Database to get the Updated Products and Users Data, The flag "syncWithDB" shall be set with "true", otherwise, it can be set with "false" 
 
 ### Structure of "main folder"
 - Using the HomePage as Parent of all pages that inherit locators and actions of Header & Footer from Homepage also for defining common variables that are commonly used across all pages, Thus achieving the right purpose of Inheritance
