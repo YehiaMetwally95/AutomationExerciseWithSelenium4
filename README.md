@@ -1,6 +1,6 @@
 ## Overveiw
 - Test Automation Script with Selenium 4 by Java and Maven Project to simulate E2E User Scenarios
-- Implement number of Best Practices either in Project Structure ,Synchronizations and Validations 
+- Implement number of Best Practices either in Project Structure, Synchronizations and Validations 
 - Using TestNG as the Testing Framework
 - Using Fluent Page Object Model Design Pattern in writing test script and page actions, thus chaining the scenario steps and validations in one line of code
 - Designing Powerful Util Class for Different Actions with Web Elements
