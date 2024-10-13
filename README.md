@@ -3,6 +3,7 @@
 - Implement number of Best Practices either in Project Structure ,Synchronizations and Validations 
 - Using TestNG as the Testing Framework
 - Using Fluent Page Object Model Design Pattern in writing test script and page actions, thus chaining the scenario steps and validations in one line of code
+- Designing Powerful Util Class for Different Actions with Web Elements
 - Data Driven framework such that store test data in Database and Json Files
 - Generating Very Detailed Allure Reports for communicating test results with Screenshots
 - Performing Parallel Execution with CI/CD Pipeline with Github Actions, thus reduce execution time reachs 90 seconds only to run 14 tests
