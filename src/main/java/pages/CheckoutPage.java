@@ -19,8 +19,8 @@ public class CheckoutPage extends HomePage{
     By productQuantityLocator;
     By productTotalPriceLocator;
     By totalPriceText = By.xpath("//b[.='Total Amount']");
-    //By totalPriceLocator = RelativeLocator.with(By.className("cart_total_price")).toRightOf(totalPriceText);
-    By totalPriceLocator = By.xpath("//h4[.='Total Amount']/parent::td/following-sibling::td/p[@class='cart_total_price']");
+    By totalPriceLocator = RelativeLocator.with(By.className("cart_total_price")).toRightOf(totalPriceText);
+    //By totalPriceLocator = By.xpath("//h4[.='Total Amount']/parent::td/following-sibling::td/p[@class='cart_total_price']");
     By addressTitleLocator = By.className("address_title");
     //By fullNameLocator = RelativeLocator.with(By.className("address_firstname")).below(addressTitleLocator);
     By fullNameLocator = By.cssSelector("#address_delivery .address_firstname");
