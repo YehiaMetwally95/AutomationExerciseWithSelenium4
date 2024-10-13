@@ -18,7 +18,7 @@ public class CheckoutPage extends HomePage{
     By productPriceLocator;
     By productQuantityLocator;
     By productTotalPriceLocator;
-    By totalPriceText = By.xpath("//b[.='Total Amount']");
+    By totalPriceText = By.xpath("//h4[contains(.,'Total Amount')]");
     By totalPriceLocator = RelativeLocator.with(By.tagName("p")).toRightOf(totalPriceText);
     //By totalPriceLocator = By.xpath("//h4[.='Total Amount']/parent::td/following-sibling::td/p[@class='cart_total_price']");
     By addressTitleLocator = By.className("address_title");
