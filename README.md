@@ -1,14 +1,14 @@
 ## Overveiw
 - Test Automation Script with Selenium 4 by Java and Maven Project to simulate E2E User Scenarios
-- Implement number of Best Practices either in Project Structure, Synchronizations and Validations 
+- Implement number of Best Practices either in Project Structure, Synchronizations with Fluent Wait Strategy and without any Thread Sleep and Validations 
 - Using TestNG as the Testing Framework
-- Using Fluent Page Object Model Design Pattern in writing test script and page actions, thus chaining the scenario steps and validations in one line of code
-- Designing Powerful Util Class for Different Actions with Web Elements
-- Data Driven framework such that store test data in Database and Json Files
-- Generating Very Detailed Allure Reports for communicating test results with Screenshots
-- Performing Parallel Execution with CI/CD Pipeline with Github Actions, thus reduce execution time reachs 90 seconds only to run 14 tests
-- Bypassing UI Login, thus reduce execution time
-- Implementing the Test Automation Pyramid
+- Using Fluent Page Object Model Design Pattern in writing Test script and Page actions, thus chaining the Scenario steps and validations in one line of code
+- Designing Powerful Util Class for Different Actions with Web Elements and Bot Pattern for Abstracting Multiple interactions with Web Element
+- Data Driven framework such that store All Test data in Json Files and Retrieve the Updated Test Data of Products and Users from MySQL Database
+- Generating Very Detailed Allure Reports with All Scenario Steps And Screenshots for Passed/Hard-Assertion-Failed/Soft-Assersion-Failed Tests, For better communicating the test results
+- Performing Parallel Execution with CI/CD Pipeline with Github Actions, thus reduce execution time to reachs 90 seconds only to run 14 tests
+- Bypassing UI Login for All Tests, Thus Reducing Execution time
+- Implementing the Test Automation Pyramid such that Run Tests Over API besides the UI, Thus Reduce the Full Dependancy on UI and Element Identification and Reduce Execution Time
   
 ## Application Under Test
 - Automation Exercise Website https://automationexercise.com/
@@ -43,10 +43,10 @@ docker compose -f src/main/resources/docker-compose-v3.yml down ; docker stop do
 - Using Base Test Class for defining Annotations to Open and Close Browser, such that all Test Classes inherit from it
 - Start each Test from a clean state by Setting and Tearing down Brower for Every Test Case
 - Using TestNG Listeners, to perform actions before and after running every suite"
-"Using Assertions as follows:
-- All Assertions are implemented in Page Class to allow the Fluency of Scenarios Steps with Validations like (Navigate.Writesteps..SoftAssertions.HardAssertions)
-- Using Hard assertions after every test & Soft assertions for doing verifications within the test"
-Using Bypass UI Login Method by Login only once for first time and store Session data on Json file, then use them to Run all next Tests with already logged-in user without need to Perform Login before each test
+- "Using Assertions as follows:
+   - All Assertions are implemented in Page Class to allow the Fluency of Scenarios Steps with Validations like (Navigate.Writesteps..SoftAssertions.HardAssertions)
+   - Using Hard assertions after every test & Soft assertions for doing verifications within the test"
+- Using Bypass UI Login Method by Login only once for first time and store Session data on Json file, then use them to Run all next Tests with already logged-in user without need to Perform Login before each test
 
 #### Implementing Tests over API layer besides UI Tests to achieve the Automation Test Pyramid
 - User Registeration is done over API, then Login is done over GUI once, then Bypass login for all next Tests
