@@ -4,20 +4,18 @@ import org.json.simple.parser.ParseException;
 import org.openqa.selenium.*;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import prepareTestData.LoadProductsFromDB;
+import prepareTestData.TestNGListners;
 import utils.CustomSoftAssert;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
-import static prepareTestData.LoadProductsFromDB.loadProductsFromDB;
-import static prepareTestData.LoadUsersFromDB.loadUsersFromDB;
 import static utils.BrowserFactory.*;
 import static utils.Screenshot.*;
 import static utils.WindowManager.*;
 import static utils.ThreadDriver.*;
 import static utils.PropertiesManager.*;
 
+@Listeners(TestNGListners.class)
 public class BaseTest {
 
     //Variables
@@ -30,10 +28,10 @@ public class BaseTest {
     public String jsonFilePathForSessionDataUser3 = "src/test/resources/SessionData/SessionDataForUser3.json";
     public String jsonFilePathForSessionDataUser4 = "src/test/resources/SessionData/SessionDataForUser4.json";
 
-    //Open Browser by read Browser Type from Properties files
+    //Open Browser
+    @Parameters({"BrowserType"})
     @BeforeMethod
-    public void setUpAndOpenBrowserFromPropertiesFile() throws IOException, ParseException {
-
+    public void setUpAndOpenBrowser(@Optional String browserType) throws IOException, ParseException {
         //Open Browser
         driver = openBrowser();
 
@@ -46,22 +44,6 @@ public class BaseTest {
         //Set the CustomSoftAssert Class with the driver
         CustomSoftAssert.softAssertDriver = driver;
     }
-
-    //Open Browser by read Browser Type from TestNG XML File
-    /*@BeforeMethod
-    @Parameters({"BrowserType"})
-    public void setUpAndOpenBrowserFromTestngFile(String browserType) throws IOException, ParseException {
-        //Open Browser
-        driver = openBrowser(browserType);
-        //Generate Isolated Driver from ThreadDriver
-        setIsolatedDriver(threadDriver,driver);
-
-        //Perform actions on Window
-        navigateToURL(driver,getPropertiesValue("baseUrl"));
-
-        //Set the CustomSoftAssert Class with the driver
-        CustomSoftAssert.softAssertDriver = driver;
-    }*/
 
     @AfterMethod
     public void getScreenshots(ITestResult result) throws IOException, InterruptedException {
@@ -79,7 +61,6 @@ public class BaseTest {
 
         //Remove the Isolated Driver from Memory
         removeIsolatedDriver(threadDriver);
-
     }
 
 
