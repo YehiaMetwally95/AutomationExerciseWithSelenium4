@@ -16,6 +16,7 @@
 - Automation Exercise Website https://automationexercise.com/
 
 ## Installation
+### Note : In Case of Local Execution and Without Sync from Database, You Don't have to Install Docker or Setup any of the Below 
 #### 1- To Setup MySQL Database that store data of Products & Users, Just run the following command in Intellij Terminal
 ```bash
 docker run --name dockerDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql; Start-Sleep -Seconds 20; docker cp src/test/resources/DBFiles/ProductsAndUsers.sql dockerDB:/ProductsAndUsers.sql; docker exec -i dockerDB mysql -u root -p'yehia' -e "SOURCE /ProductsAndUsers.sql;" 
