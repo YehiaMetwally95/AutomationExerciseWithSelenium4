@@ -13,12 +13,21 @@
 - Automation Exercise Website https://automationexercise.com/
 
 ## Installation
-1- To Setup MySQL Database that store data of Products & Users, just run the following command in Intellij Terminal
+# To Setup MySQL Database that store data of Products & Users, Just run the following command in Intellij Terminal
 ```bash
 docker run --name dockerDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql; Start-Sleep -Seconds 20; docker cp src/test/resources/DBFiles/ProductsAndUsers.sql dockerDB:/ProductsAndUsers.sql; docker exec -i dockerDB mysql -u root -p'yehia' -e "SOURCE /ProductsAndUsers.sql;" 
 ```
-The .sql File is located in resources Directory, You can edit it using any IDE as MySQL Workbench
-To Sync The Tests With MySQL Database to get the Updated Products and Users Data, The flag "syncWithDB" shall be set with "true", otherwise, it can be set with "false" 
+- The .sql File is located in resources Directory, You can edit it using any IDE as MySQL Workbench
+- To Sync The Tests With MySQL Database to get the Updated Products and Users Data, The flag "syncWithDB" in Configuration.properties shall be set with "true", otherwise, it can be set with "false" 
+# To Setup Selenium Grid with Docker Container in order to Run Tests Remotely, Just run the following command in Intellij Terminal
+```bash
+docker compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=5 --scale edge=5 --scale firefox=5 -d 
+```
+- After The Setup, To be Able to Run Remotely, The flags "executionType" & "isHeadless" in Configuration.properties shall be set with "Remote" & "true"
+- After Finish the Test Execution, Its Better to CleanUp and Stop running the Docker Containers by running the following command in Terminal
+```bash
+docker compose -f src/main/resources/docker-compose-v3.yml down ; docker stop dockerDB 
+```  
 
 ### Structure of "main folder"
 - Using the HomePage as Parent of all pages that inherit locators and actions of Header & Footer from Homepage also for defining common variables that are commonly used across all pages, Thus achieving the right purpose of Inheritance
