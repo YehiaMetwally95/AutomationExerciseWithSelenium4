@@ -78,25 +78,27 @@ public class RegisterNewUserOnAPI extends BaseTest {
 
     @AfterMethod
     public void updateDatabaseWithNewData() throws IOException, SQLException, ParseException {
-        String title = json.getData("NewUser2.Title");
-        String name = json.getData("NewUser2.Name");
-        String email = json.getData("NewUser2.Email");
-        String password = json.getData("NewUser2.Password");
-        String dayOfBirth = json.getData("NewUser2.DayOfBirth");
-        String monthOfBirth = json.getData("NewUser2.MonthOfBirth");
-        String yearOfBirth = json.getData("NewUser2.YearOfBirth");
-        String firstName = json.getData("NewUser2.FirstName");
-        String LastName = json.getData("NewUser2.LastName");
-        String company = json.getData("NewUser2.Company");
-        String address1 = json.getData("NewUser2.Address1");
-        String address2 = json.getData("NewUser2.Address2");
-        String country = json.getData("NewUser2.Country");
-        String state = json.getData("NewUser2.State");
-        String city = json.getData("NewUser2.City");
-        String zipCode = json.getData("NewUser2.ZipCode");
-        String mobileNumber = json.getData("NewUser2.MobileNumber");
+        if (System.getProperty("syncWithDB").equalsIgnoreCase("true")) {
+            String title = json.getData("NewUser2.Title");
+            String name = json.getData("NewUser2.Name");
+            String email = json.getData("NewUser2.Email");
+            String password = json.getData("NewUser2.Password");
+            String dayOfBirth = json.getData("NewUser2.DayOfBirth");
+            String monthOfBirth = json.getData("NewUser2.MonthOfBirth");
+            String yearOfBirth = json.getData("NewUser2.YearOfBirth");
+            String firstName = json.getData("NewUser2.FirstName");
+            String LastName = json.getData("NewUser2.LastName");
+            String company = json.getData("NewUser2.Company");
+            String address1 = json.getData("NewUser2.Address1");
+            String address2 = json.getData("NewUser2.Address2");
+            String country = json.getData("NewUser2.Country");
+            String state = json.getData("NewUser2.State");
+            String city = json.getData("NewUser2.City");
+            String zipCode = json.getData("NewUser2.ZipCode");
+            String mobileNumber = json.getData("NewUser2.MobileNumber");
 
-        String query = "INSERT INTO automationexercise.users VALUES ('"+title+"','" +name+ "','" +email+ "','" +password+ "','"+dayOfBirth+"','"+monthOfBirth+"','"+yearOfBirth+"','"+firstName+"','"+LastName+"','"+company+"','"+address1+"','"+address2+"','"+country+"','"+state+"','"+city+"','"+zipCode+"','"+mobileNumber+"')";
-        JDBCManager.insertNewRecordToDatabase(query);
+            String query = "INSERT INTO automationexercise.users VALUES ('" + title + "','" + name + "','" + email + "','" + password + "','" + dayOfBirth + "','" + monthOfBirth + "','" + yearOfBirth + "','" + firstName + "','" + LastName + "','" + company + "','" + address1 + "','" + address2 + "','" + country + "','" + state + "','" + city + "','" + zipCode + "','" + mobileNumber + "')";
+            JDBCManager.insertNewRecordToDatabase(query);
+        }
     }
 }
