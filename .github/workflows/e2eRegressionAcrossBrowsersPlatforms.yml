@@ -42,7 +42,7 @@ jobs:
 
       - name: Run tests
         continue-on-error: true
-        run: mvn clean test -Dtest="AddToCartTests.**" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="CheckoutTests.**" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
 
       - name: Upload allure-results file in Target Directory
         uses: actions/upload-artifact@v4
@@ -63,7 +63,8 @@ jobs:
       - name: Cleanup Docker Containers
         if: always()
         run: |
-          docker compose -f src/main/resources/docker-compose-v3.yml down && docker stop dockerDB
+          docker compose -f src/main/resources/docker-compose-grid-v3.yml down && docker compose -f src/main/resources/docker-compose-mysql-v3.yml down
+
 
   Edge_Ubuntu_Test:
     runs-on: ubuntu-latest
@@ -116,7 +117,7 @@ jobs:
       - name: Cleanup Docker Containers
         if: always()
         run: |
-          docker compose -f src/main/resources/docker-compose-v3.yml down && docker stop dockerDB
+          docker compose -f src/main/resources/docker-compose-grid-v3.yml down && docker compose -f src/main/resources/docker-compose-mysql-v3.yml down
 
   Firefox_Ubuntu_Test:
     runs-on: ubuntu-latest
@@ -148,7 +149,7 @@ jobs:
 
       - name: Run tests
         continue-on-error: true
-        run: mvn clean test -Dtest="CheckoutTests.**" -DexecutionType="Remote" -DbrowserType="Firefox" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="AddToCartTests.**" -DexecutionType="Remote" -DbrowserType="Firefox" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
 
       - name: Upload allure-results file in Target Directory
         uses: actions/upload-artifact@v4
@@ -169,7 +170,7 @@ jobs:
       - name: Cleanup Docker Containers
         if: always()
         run: |
-          docker compose -f src/main/resources/docker-compose-v3.yml down && docker stop dockerDB
+          docker compose -f src/main/resources/docker-compose-grid-v3.yml down && docker compose -f src/main/resources/docker-compose-mysql-v3.yml down
 
   Chrome_Windows_Test:
     runs-on: windows-latest
