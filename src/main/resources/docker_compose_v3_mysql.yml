@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  yehiaDB:
+    image: mysql
+    container_name: yehiaDB
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "yehia"
+    volumes:
+      - ./src/test/resources/DBFiles:/docker-entrypoint-initdb.d
+    restart: always
