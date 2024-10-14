@@ -8,7 +8,7 @@
 - Data Driven framework such that store All Test data in Json Files and Retrieve the Updated Test Data of Products and Users from MySQL Database
 - Generating Very Detailed Allure Reports with All Scenario Steps And Screenshots for Passed/Hard-Assertion-Failed/Soft-Assersion-Failed Tests, For better communicating the test results
 - Perform Test Execution On Local / Headless / Remotely using Selenium Grid with Docker Containers
-- Performing Parallel Execution from CI/CD Pipeline with Github Actions, Supplied by Selenium Grid with Docker, To Run 15 Parallel Tests at same time, thus Reducing Execution time to reaches 90 seconds only to run all the 18 tests
+- Performing Parallel Execution from CI/CD Pipeline with Github Actions, Supplied by Selenium Grid with Docker, To Run 15 Parallel Tests at same time, thus Reducing Execution time to reaches 90 seconds only to run all the 17 tests
 - Bypassing UI Login for All Tests, Thus Reducing Execution time
 - Implementing the Test Automation Pyramid such that Run Tests Over API besides the UI, Thus Reduce the Full Dependancy on UI and Element Identification and Reduce Execution Time
   
@@ -82,7 +82,7 @@ docker compose -f src/main/resources/docker-compose-grid-v3.yml down ; docker co
 #### Using TestNG XML File to Trigger Tests on (Locally/Remotey) & On(Different Browsers) & (Sequencially/ In Parallel)
 
 #### Create CI/CD Pipeline with Github Actions
-- Workflow that run all the 18 E2E Tests in Parallel within 90 seconds only, In 2-Tiers of Parallelization 
+- Workflow that run all the 17 E2E Tests in Parallel within 90 seconds only, In 2-Tiers of Parallelization 
     - 1st Tier --> Parallel Execution across 6 Jobs, each one runs on different platforms (ubuntu/windows) and browsers (chrome/edge/firefox)
     - 2nd Tier --> Parallel Execution inside each Job with help of Selenium grid and Docker containers 
 - Two Workflows, One to run Tests over UI and the other to run the Same Tests over API which is much faster
