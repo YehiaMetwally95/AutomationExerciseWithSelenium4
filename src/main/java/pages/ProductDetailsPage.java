@@ -23,6 +23,7 @@ public class ProductDetailsPage extends HomePage {
     By addToCartButton = By.xpath("//button[contains(@class,'cart')]");
     By continueShoppingButton = By.xpath("//button[@data-dismiss='modal']");
     By viewCartButton = By.xpath("//div[@id='cartModal']/descendant::a");
+    By writeYourReviewSection = By.linkText("Write Your Review");
 
     //Constructor
     public ProductDetailsPage(WebDriver driver) {
@@ -70,8 +71,8 @@ public class ProductDetailsPage extends HomePage {
     }
 
     @Step("Verify Product Details Page is Opened")
-    public ProductDetailsPage verifyProductDetailsPageIsOpened(String pageTitle) {
-        verifyProductPageTitle(pageTitle);
+    public ProductDetailsPage verifyProductDetailsPageIsOpened(String reviewSectionHeader) throws IOException {
+        verifyReviewSection(reviewSectionHeader);
         return this;
     }
 
@@ -129,9 +130,9 @@ public class ProductDetailsPage extends HomePage {
         return this;
     }
 
-    @Step("Verify Product Page Title")
-    private ProductDetailsPage verifyProductPageTitle(String title) {
-        CustomSoftAssert.softAssert.assertEquals(driver.getTitle(),title);
+    @Step("Verify Review Section Header")
+    private ProductDetailsPage verifyReviewSection(String reviewSectionHeader) throws IOException {
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(writeYourReviewSection),reviewSectionHeader);
         return this;
     }
 

@@ -37,7 +37,7 @@ public class SearchForProductOnGUI extends BaseTest {
                 .verifySearchedProduct(json.getData("Products[0].Name"))
                 // Open Product Details Page On GUI
                 .openProductDetailsPage(json.getData("Products[0].Name"))
-                .verifyProductDetailsPageIsOpened(json.getData("PageTitles[0].ProductDetailsPage"))
+                .verifyProductDetailsPageIsOpened(json.getData("Headers[0].ReviewSection"))
                 // The Data Validation on product details is done on GUI Layer
                 .verifyAllProductDetails(json.getData("Products[0].Name")
                         ,json.getData("Products[0].Price"),json.getData("Products[0].Availability")

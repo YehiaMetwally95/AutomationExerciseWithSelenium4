@@ -181,5 +181,10 @@
     {
       "ProductDetailsPage": "Automation Exercise - Product Details"
     }
+  ],
+  "Headers": [
+    {
+      "ReviewSection": "Write Your Review"
+    }
   ]
 }
