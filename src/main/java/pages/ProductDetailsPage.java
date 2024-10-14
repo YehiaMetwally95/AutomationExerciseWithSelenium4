@@ -23,7 +23,7 @@ public class ProductDetailsPage extends HomePage {
     By addToCartButton = By.xpath("//button[contains(@class,'cart')]");
     By continueShoppingButton = By.xpath("//button[@data-dismiss='modal']");
     By viewCartButton = By.xpath("//div[@id='cartModal']/descendant::a");
-    By writeYourReviewSection = By.linkText("Write Your Review");
+    By writeYourReviewSection = By.xpath("//a[contains(.,'Review')]");
 
     //Constructor
     public ProductDetailsPage(WebDriver driver) {
