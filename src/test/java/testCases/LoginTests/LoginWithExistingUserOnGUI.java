@@ -27,7 +27,75 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
     @Description("Login With Existing User")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void loginWithExistingUserThroughGUI() throws IOException, ParseException {
+    public void loginWithExistingUser_0ThroughGUI() throws IOException, ParseException {
+        WebDriver driver = getIsolatedDriver(threadDriver);
+        new HomePage(driver)
+                .verifyHomePageIsOpened()
+                .openLoginSignupPage()
+                .verifyLoginSignupPageIsOpened()
+                .loginWithValidUser(json.getData("Users[0].Email"),json.getData("Users[0].Password"))
+                .assertUserIsLoggedIn(json.getData("Users[0].Name"));
+
+        //Store Cookies into Json File for the next tests to bypass login
+        new SessionManager(driver, jsonFilePathForSessionDataUser0)
+                .storeSessionCookies(json.getData("Users[0].Name"));
+    }
+
+    @Description("Login With Existing User")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test
+    public void loginWithExistingUser_1ThroughGUI() throws IOException, ParseException {
+        WebDriver driver = getIsolatedDriver(threadDriver);
+        new HomePage(driver)
+                .verifyHomePageIsOpened()
+                .openLoginSignupPage()
+                .verifyLoginSignupPageIsOpened()
+                .loginWithValidUser(json.getData("Users[1].Email"),json.getData("Users[1].Password"))
+                .assertUserIsLoggedIn(json.getData("Users[1].Name"));
+
+        //Store Cookies into Json File for the next tests to bypass login
+        new SessionManager(driver, jsonFilePathForSessionDataUser1)
+                .storeSessionCookies(json.getData("Users[1].Name"));
+    }
+
+    @Description("Login With Existing User")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test
+    public void loginWithExistingUser_2ThroughGUI() throws IOException, ParseException {
+        WebDriver driver = getIsolatedDriver(threadDriver);
+        new HomePage(driver)
+                .verifyHomePageIsOpened()
+                .openLoginSignupPage()
+                .verifyLoginSignupPageIsOpened()
+                .loginWithValidUser(json.getData("Users[2].Email"),json.getData("Users[2].Password"))
+                .assertUserIsLoggedIn(json.getData("Users[2].Name"));
+
+        //Store Cookies into Json File for the next tests to bypass login
+        new SessionManager(driver, jsonFilePathForSessionDataUser2)
+                .storeSessionCookies(json.getData("Users[2].Name"));
+    }
+
+    @Description("Login With Existing User")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test
+    public void loginWithExistingUser_3ThroughGUI() throws IOException, ParseException {
+        WebDriver driver = getIsolatedDriver(threadDriver);
+        new HomePage(driver)
+                .verifyHomePageIsOpened()
+                .openLoginSignupPage()
+                .verifyLoginSignupPageIsOpened()
+                .loginWithValidUser(json.getData("Users[3].Email"),json.getData("Users[3].Password"))
+                .assertUserIsLoggedIn(json.getData("Users[3].Name"));
+
+        //Store Cookies into Json File for the next tests to bypass login
+        new SessionManager(driver, jsonFilePathForSessionDataUser3)
+                .storeSessionCookies(json.getData("Users[3].Name"));
+    }
+
+    @Description("Login With Existing User")
+    @Severity(SeverityLevel.CRITICAL)
+    @Test
+    public void loginWithExistingUser_4ThroughGUI() throws IOException, ParseException {
         WebDriver driver = getIsolatedDriver(threadDriver);
         new HomePage(driver)
                 .verifyHomePageIsOpened()

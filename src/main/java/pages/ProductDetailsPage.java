@@ -131,7 +131,7 @@ public class ProductDetailsPage extends HomePage {
 
     @Step("Verify Product Page Title")
     private ProductDetailsPage verifyProductPageTitle(String title) {
-        CustomSoftAssert.softAssert.assertTrue(driver.getTitle().contains(title));
+        CustomSoftAssert.softAssert.assertEquals(driver.getTitle(),title);
         return this;
     }
 

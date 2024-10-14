@@ -89,14 +89,14 @@ jobs:
         run: docker compose -f src/main/resources/docker-compose-mysql-v3.yml up -d
 
       - name: Set up Selenium Grid with Docker Containers
-        run: docker compose -f src/main/resources/docker-compose-grid-v3.yml up --scale chrome=0 --scale edge=4 --scale firefox=0 -d
+        run: docker compose -f src/main/resources/docker-compose-grid-v3.yml up --scale chrome=0 --scale edge=7 --scale firefox=0 -d
 
       - name: Check Running Containers
         run: docker ps
 
       - name: Run tests
         continue-on-error: true
-        run: mvn clean test -Dtest="RegisterTests.**" -DexecutionType="Remote" -DbrowserType="Edge" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="LoginTests.**" -DexecutionType="Remote" -DbrowserType="Edge" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
 
       - name: Upload allure-results file in Target Directory
         uses: actions/upload-artifact@v4
@@ -232,7 +232,7 @@ jobs:
 
       - name: Run tests
         continue-on-error: true
-        run: mvn clean test -Dtest="LoginTests.**" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="RegisterTests.**" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
 
       - name: Upload allure-results file in Target Directory
         uses: actions/upload-artifact@v4
