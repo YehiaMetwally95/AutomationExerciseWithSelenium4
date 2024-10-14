@@ -26,12 +26,12 @@ docker run --name dockerDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql; S
 - To Sync The Tests With MySQL Database to get the Updated Products and Users Data, The flag "syncWithDB" in Configuration.properties shall be set with "true", otherwise, it can be set with "false" 
 #### 3- To Setup Selenium Grid with Docker Container in order to Run Tests Remotely, Just run the following command in Intellij Terminal
 ```bash
-docker compose -f src/main/resources/docker-compose-v3.yml up --scale chrome=5 --scale edge=5 --scale firefox=5 -d 
+docker compose -f src/main/resources/docker-compose_grid-v3.yml up --scale chrome=5 --scale edge=5 --scale firefox=5 -d 
 ```
 - After The Setup, To be Able to Run Remotely, The flags "executionType" & "isHeadless" in Configuration.properties shall be set with "Remote" & "true"
 - After Finish the Test Execution, Its Better to CleanUp and Stop running the Docker Containers by running the following command in Terminal
 ```bash
-docker compose -f src/main/resources/docker-compose-v3.yml down ; docker stop dockerDB 
+docker compose -f src/main/resources/docker-compose_grid-v3.yml down ; docker stop dockerDB 
 ```  
 
 ## Features
