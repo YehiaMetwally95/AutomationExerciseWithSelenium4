@@ -4,13 +4,11 @@ import baseTest.BaseTest;
 import io.qameta.allure.*;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import prepareTestData.TestNGListners;
 import utils.JsonManager;
-import utils.SessionManager;
 
 import java.io.IOException;
 
@@ -28,7 +26,7 @@ public class AddtoCartWithoutSearch extends BaseTest {
     @Description("Search for Product On GUI then Add Product To Cart")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void addProductToCartWithSearchOnGUI() throws IOException, ParseException {
+    public void addProductToCartWithoutSearchOnGUI() throws IOException, ParseException {
         WebDriver driver = getIsolatedDriver(threadDriver);
         new HomePage(driver)
                 .verifyHomePageIsOpened()
