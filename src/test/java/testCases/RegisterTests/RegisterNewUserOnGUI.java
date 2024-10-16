@@ -3,7 +3,6 @@ package testCases.RegisterTests;
 import baseTest.BaseTest;
 import io.qameta.allure.*;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 import pages.HomePage;
 import pages.RegisterPage;
@@ -12,7 +11,7 @@ import utils.JDBCManager;
 import utils.JsonManager;
 import static utils.RandomDataGenerator.*;
 import static utils.RandomDataGenerator.generateUniqueEmail;
-import static utils.ThreadDriver.getIsolatedDriver;
+import static utils.ThreadDriver.getDriver;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -56,7 +55,7 @@ public class RegisterNewUserOnGUI extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void registerNewUserThroughGUI() throws IOException, ParseException {
-        new HomePage(driver)
+        new HomePage(getDriver(isolatedDriver))
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
                 .verifyLoginSignupPageIsOpened()

@@ -4,17 +4,15 @@ import baseTest.BaseTest;
 import io.qameta.allure.*;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import prepareTestData.TestNGListners;
 import utils.JsonManager;
-import utils.SessionManager;
 
 import java.io.IOException;
 
-import static utils.ThreadDriver.getIsolatedDriver;
+import static utils.ThreadDriver.getDriver;
 
 @Epic("Automation Exercise Features")
 @Feature("Product Search")
@@ -28,8 +26,7 @@ public class SearchForProductOnGUI extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void searchForProductAndOpenProductPageOnGUI() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
-        new HomePage(driver)
+        new HomePage(getDriver(isolatedDriver))
                 .openProductsPage()
                 .verifyProductPageIsOpened()
                 // Search For Product is done On GUI Layer

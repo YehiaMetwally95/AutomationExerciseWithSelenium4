@@ -3,7 +3,6 @@ package testCases.AddToCartTests;
 import baseTest.BaseTest;
 import io.qameta.allure.*;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -12,7 +11,7 @@ import utils.JsonManager;
 
 import java.io.IOException;
 
-import static utils.ThreadDriver.getIsolatedDriver;
+import static utils.ThreadDriver.getDriver;
 
 @Epic("Automation Exercise Features")
 @Feature("AddToCart")
@@ -27,8 +26,7 @@ public class AddtoCartWithoutSearch extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void addProductToCartWithoutSearchOnGUI() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
-        new HomePage(driver)
+        new HomePage(getDriver(isolatedDriver))
                 .verifyHomePageIsOpened()
                 .openProductsPage()
                 .verifyProductPageIsOpened()

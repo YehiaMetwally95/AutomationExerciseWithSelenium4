@@ -5,17 +5,15 @@ import io.qameta.allure.*;
 import objectModelsForAPIs.SearchProductRequestModel;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import prepareTestData.TestNGListners;
 import utils.JsonManager;
-import utils.SessionManager;
 
 import java.io.IOException;
 
-import static utils.ThreadDriver.getIsolatedDriver;
+import static utils.ThreadDriver.getDriver;
 
 @Epic("Automation Exercise Features")
 @Feature("Product Search")
@@ -30,7 +28,6 @@ public class SearchForProductOnAPI extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void searchForProductAndOpenProductPageOnAPI() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
         // Search For Product is done On API Layer
         var searchProductResponse = new SearchProductRequestModel()
                 .addProductNameToRequestBody(json.getData("Products[1].Name"))
@@ -43,7 +40,7 @@ public class SearchForProductOnAPI extends BaseTest {
                 .getResponsePojoObject();
 
         // Open Product Details Page By Url and Add them to Cart On GUI Layer
-        new HomePage(driver)
+        new HomePage(getDriver(isolatedDriver))
                 .openProductDetailsPageByUrl(searchProductResponse.getProducts().get(0).getId())
                 .verifyProductDetailsPageIsOpened(json.getData("Headers[0].ReviewSection"))
         // The Data Validation Again on product details But is done on GUI Layer

@@ -15,7 +15,7 @@ import utils.SessionManager;
 
 import java.io.IOException;
 
-import static utils.ThreadDriver.getIsolatedDriver;
+import static utils.ThreadDriver.getDriver;
 
 @Epic("Automation Exercise Features")
 @Feature("AddToCart")
@@ -28,15 +28,13 @@ public class RemoveFromCartWithSearchOnAPI extends BaseTest {
     //Apply Saved Cookies to Current Session to ByPass Login
     @BeforeMethod
     public void byPassLogin() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
-        new SessionManager(driver, jsonFilePathForSessionDataUser2).applyCookiesToCurrentSession();
+        new SessionManager(getDriver(isolatedDriver), jsonFilePathForSessionDataUser2).applyCookiesToCurrentSession();
     }
 
     //Reset Cart and Remove any old products
     @BeforeMethod (dependsOnMethods = "byPassLogin")
     public void resetCart() throws IOException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
-        new HomePage(driver)
+        new HomePage(getDriver(isolatedDriver))
                 .openCartPage()
                 .removeAllOldProductsFromCart();
     }
@@ -46,7 +44,6 @@ public class RemoveFromCartWithSearchOnAPI extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void removeProductFromCartWithSearchOnAPI() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
     //Search for 3 Products On API
         var searchProductResponse1 = new SearchProductRequestModel()
                 .addProductNameToRequestBody(json.getData("Products[0].Name"))
@@ -67,7 +64,7 @@ public class RemoveFromCartWithSearchOnAPI extends BaseTest {
                 .getResponsePojoObject();
 
     // Open Product Details Page By Url and Add them to Cart On GUI Layer
-        new HomePage(driver)
+        new HomePage(getDriver(isolatedDriver))
                 .openProductDetailsPageByUrl(searchProductResponse1.getProducts().get(0).getId())
                 .setProductQuantity(json.getData("Products[0].Quantity"))
                 .addProductToCart()

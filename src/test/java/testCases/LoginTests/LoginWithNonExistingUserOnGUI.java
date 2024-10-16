@@ -12,7 +12,7 @@ import utils.JsonManager;
 
 import java.io.IOException;
 
-import static utils.ThreadDriver.getIsolatedDriver;
+import static utils.ThreadDriver.getDriver;
 
 @Epic("Automation Exercise Features")
 @Feature("User Login")
@@ -28,8 +28,7 @@ public class LoginWithNonExistingUserOnGUI extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void loginWithNonExistingUserThroughGUI() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
-        new HomePage(driver)
+        new HomePage(getDriver(isolatedDriver))
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
                 .verifyLoginSignupPageIsOpened()

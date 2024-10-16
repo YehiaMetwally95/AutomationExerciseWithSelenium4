@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import static utils.RandomDataGenerator.*;
-import static utils.ThreadDriver.getIsolatedDriver;
+import static utils.ThreadDriver.getDriver;
 
 
 @Epic("Automation Exercise Features")
@@ -60,7 +60,6 @@ public class RegisterNewUserOnAPI extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void registerNewUserThroughAPI() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
         var registerRequestObject = new RegistrationRequestModel()
                 .prepareRegistrationRequestBody(json.getData("NewUser2"))
                 .sendRequestRegisterNewUser()
@@ -68,7 +67,7 @@ public class RegisterNewUserOnAPI extends BaseTest {
                 .validateMassageFromResponse("User created!")
                 .getRequestPojoObject();
 
-        new HomePage(driver)
+        new HomePage(getDriver(isolatedDriver))
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
                 .verifyLoginSignupPageIsOpened()

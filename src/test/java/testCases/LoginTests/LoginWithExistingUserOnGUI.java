@@ -13,7 +13,7 @@ import utils.SessionManager;
 
 import java.io.IOException;
 
-import static utils.ThreadDriver.getIsolatedDriver;
+import static utils.ThreadDriver.getDriver;
 
 @Epic("Automation Exercise Features")
 @Feature("User Login")
@@ -28,7 +28,7 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void loginWithExistingUser_0ThroughGUI() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
+        WebDriver driver = getDriver(isolatedDriver);
         new HomePage(driver)
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
@@ -45,7 +45,7 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void loginWithExistingUser_1ThroughGUI() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
+        WebDriver driver = getDriver(isolatedDriver);
         new HomePage(driver)
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
@@ -62,7 +62,7 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void loginWithExistingUser_2ThroughGUI() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
+        WebDriver driver = getDriver(isolatedDriver);
         new HomePage(driver)
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
@@ -79,7 +79,7 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void loginWithExistingUser_3ThroughGUI() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
+        WebDriver driver = getDriver(isolatedDriver);
         new HomePage(driver)
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
@@ -96,7 +96,7 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void loginWithExistingUser_4ThroughGUI() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
+        WebDriver driver = getDriver(isolatedDriver);
         new HomePage(driver)
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()

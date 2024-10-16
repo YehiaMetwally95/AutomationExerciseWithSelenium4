@@ -19,8 +19,7 @@ import static utils.PropertiesManager.*;
 public class BaseTest {
 
     //Variables
-    public WebDriver driver;
-    public ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();;
+    protected ThreadLocal<WebDriver> isolatedDriver = new ThreadLocal<>();;
 
     public String jsonFilePathForSessionDataUser0 = "src/test/resources/SessionData/SessionDataForUser0.json";
     public String jsonFilePathForSessionDataUser1 = "src/test/resources/SessionData/SessionDataForUser1.json";
@@ -33,34 +32,34 @@ public class BaseTest {
     @BeforeMethod
     public void setUpAndOpenBrowser(@Optional String browserType) throws IOException, ParseException {
         //Open Browser
-        driver = openBrowser();
+        WebDriver driver = openBrowser();
 
-        //Generate Isolated Driver from ThreadDriver
-        setIsolatedDriver(threadDriver,driver);
+        //Generate an Isolated Driver by ThreadLocal
+        isolateWebDriver(driver,isolatedDriver);
 
         //Perform actions on Window
-        navigateToURL(driver,getPropertiesValue("baseUrl"));
+        navigateToURL(getDriver(isolatedDriver),getPropertiesValue("baseUrl"));
 
         //Set the CustomSoftAssert Class with the driver
-        CustomSoftAssert.softAssertDriver = driver;
+        CustomSoftAssert.softAssertDriver = getDriver(isolatedDriver);
     }
 
     @AfterMethod
     public void getScreenshots(ITestResult result) throws IOException, InterruptedException {
         //Take Screenshot after every successful test
-        captureSuccess(getIsolatedDriver(threadDriver),result);
+        captureSuccess(getDriver(isolatedDriver),result);
 
         //Take Screenshot after every failed test
-        captureFailure(getIsolatedDriver(threadDriver), result);
+        captureFailure(getDriver(isolatedDriver), result);
     }
 
     @AfterMethod (dependsOnMethods = "getScreenshots")
     public void tearDownBrowser(){
         //Close Browser after every test
-        closeAllWindows(getIsolatedDriver(threadDriver));
+        closeAllWindows(getDriver(isolatedDriver));
 
         //Remove the Isolated Driver from Memory
-        removeIsolatedDriver(threadDriver);
+        removeIsolatedDriver(isolatedDriver);
     }
 
 

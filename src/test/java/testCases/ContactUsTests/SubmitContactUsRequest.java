@@ -14,7 +14,7 @@ import utils.SessionManager;
 
 import java.io.IOException;
 
-import static utils.ThreadDriver.getIsolatedDriver;
+import static utils.ThreadDriver.getDriver;
 
 @Epic("Automation Exercise Features")
 @Feature("Contact Us")
@@ -28,8 +28,7 @@ public class SubmitContactUsRequest extends BaseTest {
     //Apply Saved Cookies to Current Session to ByPass Login
     @BeforeMethod
     public void byPassLogin() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
-        new SessionManager(driver, jsonFilePathForSessionDataUser0).applyCookiesToCurrentSession();
+        new SessionManager(getDriver(isolatedDriver), jsonFilePathForSessionDataUser0).applyCookiesToCurrentSession();
     }
 
     //Test Scripts
@@ -37,8 +36,7 @@ public class SubmitContactUsRequest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void submitContactusRequest() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
-        new HomePage(driver)
+        new HomePage(getDriver(isolatedDriver))
                 .openContactUsPage()
                 .verifyContactUsPageIsOpened()
                 .submitContactUsRequest(json.getData("Details.Name"),

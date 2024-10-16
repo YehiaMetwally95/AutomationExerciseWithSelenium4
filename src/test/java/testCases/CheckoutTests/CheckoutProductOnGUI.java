@@ -14,7 +14,7 @@ import utils.SessionManager;
 
 import java.io.IOException;
 
-import static utils.ThreadDriver.getIsolatedDriver;
+import static utils.ThreadDriver.getDriver;
 
 @Epic("Automation Exercise Features")
 @Feature("Checkout")
@@ -27,15 +27,13 @@ public class CheckoutProductOnGUI extends BaseTest {
     //Apply Saved Cookies to Current Session to ByPass Login
     @BeforeMethod
     public void byPassLogin() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
-        new SessionManager(driver, jsonFilePathForSessionDataUser4).applyCookiesToCurrentSession();
+        new SessionManager(getDriver(isolatedDriver), jsonFilePathForSessionDataUser4).applyCookiesToCurrentSession();
     }
 
     //Reset Cart and Remove any old products
     @BeforeMethod (dependsOnMethods = "byPassLogin")
     public void resetCart() throws IOException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
-        new HomePage(driver)
+        new HomePage(getDriver(isolatedDriver))
                 .openCartPage()
                 .removeAllOldProductsFromCart();
     }
@@ -45,8 +43,7 @@ public class CheckoutProductOnGUI extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Test
     public void checkoutProductsOnGUI() throws IOException, ParseException {
-        WebDriver driver = getIsolatedDriver(threadDriver);
-        new HomePage(driver)
+        new HomePage(getDriver(isolatedDriver))
                 .verifyHomePageIsOpened()
         // Search for Products and Add them to Cart On GUI Layer
                 .openProductsPage()
