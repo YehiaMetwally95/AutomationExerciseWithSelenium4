@@ -34,7 +34,7 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
                 .openLoginSignupPage()
                 .verifyLoginSignupPageIsOpened(json.getData("Messages.LoginHeader"),json.getData("Messages.SignupHeader"))
                 .loginWithValidUser(json.getData("Users[0].Email"),json.getData("Users[0].Password"))
-                .assertUserIsLoggedIn(json.getData("Users[0].Name"));
+                .assertUserIsLoggedIn(json.getData("Users[1].Name"));
 
         //Store Cookies into Json File for the next tests to bypass login
         new SessionManager(driver, jsonFilePathForSessionDataUser0)
