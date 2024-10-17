@@ -19,7 +19,6 @@ public class ProductDetailsPage extends HomePage {
     By productConditionLocator = By.xpath("//div[@class='product-details']/descendant::p[contains(.,'Condition')]");
     By productBrandLocator = By.xpath("//div[@class='product-details']/descendant::p[contains(.,'Brand')]");
     By productQuantityTextBox = By.id("quantity");
-    //By addToCartButton = RelativeLocator.with(By.tagName("button")).near(productQuantityTextBox);
     By addToCartButton = By.xpath("//button[contains(@class,'cart')]");
     By continueShoppingButton = By.xpath("//button[@data-dismiss='modal']");
     By viewCartButton = By.xpath("//div[@id='cartModal']/descendant::a");
@@ -79,54 +78,40 @@ public class ProductDetailsPage extends HomePage {
     //Private Methods
     @Step("Verify Product Name")
     private ProductDetailsPage verifyProductName(String productName) throws IOException {
-        CustomSoftAssert.softAssert.assertEquals(
-                bot.readText(productNameLocator),productName
-        );
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(productNameLocator),productName);
         return this;
     }
 
     @Step("Verify Product Price")
     private ProductDetailsPage verifyProductPrice(String price) throws IOException {
-        CustomSoftAssert.softAssert.assertEquals(
-                bot.readText(productPriceLocator),price
-        );
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(productPriceLocator),price);
         return this;
     }
 
     @Step("Verify Product Availability")
     private ProductDetailsPage verifyProductAvailability(String availability) throws IOException {
-        CustomSoftAssert.softAssert.assertTrue(
-                bot.readText(productAvailabilityLocator).contains(availability)
-        );
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(productAvailabilityLocator),("Availability: "+availability));
         return this;
     }
 
     @Step("Verify Product Condition")
     private ProductDetailsPage verifyProductCondition(String condition) throws IOException {
-        CustomSoftAssert.softAssert.assertTrue(
-                bot.readText(productConditionLocator).contains(condition)
-        );
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(productConditionLocator),("Condition: "+condition));
         return this;    }
 
     @Step("Verify Product Brand")
     private ProductDetailsPage verifyProductBrand(String brand) throws IOException {
-        CustomSoftAssert.softAssert.assertTrue(
-                bot.readText(productBrandLocator).contains(brand)
-        );
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(productBrandLocator),("Brand: "+brand));
         return this;    }
 
     @Step("Verify Product Category")
     private ProductDetailsPage verifyProductCategory(String category) throws IOException {
-        CustomSoftAssert.softAssert.assertTrue(
-                bot.readText(productCategorizationLocator).contains(category)
-        );
+        CustomSoftAssert.softAssert.assertTrue(bot.readText(productCategorizationLocator).contains(category));
         return this;    }
 
     @Step("Verify Product SubCategory")
     private ProductDetailsPage verifyProductSubCategory(String subCategory) throws IOException {
-        CustomSoftAssert.softAssert.assertTrue(
-                bot.readText(productCategorizationLocator).contains(subCategory)
-        );
+        CustomSoftAssert.softAssert.assertTrue(bot.readText(productCategorizationLocator).contains(subCategory));
         return this;
     }
 

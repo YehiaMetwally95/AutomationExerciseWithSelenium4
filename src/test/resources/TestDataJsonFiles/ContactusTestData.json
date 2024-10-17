@@ -6,11 +6,10 @@
     "Subject": "Complaint",
     "Name": "Yehia Metwally"
   },
-  "Messages": [
-    {
-      "RequestSubmitted": "Success! Your details have been submitted successfully."
-    }
-  ],
+  "Messages": {
+    "ContactUsHeader": "CONTACT US",
+    "RequestSubmitted": "Success! Your details have been submitted successfully."
+  },
   "Users": [
     {
       "Company": "Lakin, Windler and Hagenes",

@@ -1,8 +1,6 @@
 package pages;
 
 import io.qameta.allure.Step;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
@@ -13,58 +11,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import static utils.RandomDataGenerator.*;
-import static utils.RandomDataGenerator.generateName;
 
 public class RegisterPage extends HomePage{
-
-    /*@AllArgsConstructor
-    @Getter
-    public enum Title {
-    Mr ("Mr"),
-    Mrs ("Mrs");
-    private String title;
-    }
-
-    @AllArgsConstructor
-    @Getter
-    public enum Month {
-        January ("January"),
-        February ("February"),
-        March ("March"),
-        April ("April"),
-        May ("May"),
-        June ("June"),
-        July ("July"),
-        August ("August"),
-        September ("September"),
-        October ("October"),
-        November ("November"),
-        December ("December");
-
-        private String month;
-    }
-
-    @AllArgsConstructor
-    @Getter
-    public enum Country {
-        India ("India"),
-        UnitedStates ("United States"),
-        Canada ("Canada"),
-        Australia("Australia"),
-        NewZealand ("New Zealand"),
-        Singapore ("Singapore");
-
-        private String country;
-    }*/
-
     //Variables
 
     //Locators
-    By accountInfoHeader = By.cssSelector(".login-form h2");
-    By addressInfoHeader = RelativeLocator.with(By.tagName("h2")).below(accountInfoHeader);
+    By accountInfoHeaderLocator = By.cssSelector(".login-form h2");
+    By addressInfoHeaderLocator = RelativeLocator.with(By.tagName("h2")).below(accountInfoHeaderLocator);
     By titleLocator;
     By nameLocator = By.id("name");
-    By emailLocator= By.id("email");
     By passwordLocator= By.id("password");
     By dayLocator = By.id("days");
     By monthLocator= RelativeLocator.with(By.tagName("select")).toRightOf(dayLocator);
@@ -105,8 +60,8 @@ public class RegisterPage extends HomePage{
 
     //Validations
     @Step("Verify Register Page is Opened")
-    public RegisterPage verifyRegisterPageIsOpened() {
-      verifyAccountInfoHeaderDisplayed();
+    public RegisterPage verifyRegisterPageIsOpened(String accountHeader,String addressHeader) throws IOException {
+      verifyAccountInfoHeader(accountHeader).verifyAddressInfoHeader(addressHeader);
         return this;
     }
 
@@ -165,10 +120,15 @@ public class RegisterPage extends HomePage{
         return new AccountCreatedPage(driver);
     }
 
-    @Step("Verify Account Info Header Displayed")
-    private RegisterPage verifyAccountInfoHeaderDisplayed() {
-        CustomSoftAssert.softAssert.assertTrue(bot.isElementDisplayed(accountInfoHeader));
-        CustomSoftAssert.softAssert.assertTrue(bot.isElementDisplayed(addressInfoHeader));
+    @Step("Verify Account Info Header")
+    private RegisterPage verifyAccountInfoHeader(String accountHeader) throws IOException {
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(accountInfoHeaderLocator),accountHeader);
+        return this;
+    }
+
+    @Step("Verify Address Info Header")
+    private RegisterPage verifyAddressInfoHeader(String addressHeader) throws IOException {
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(addressInfoHeaderLocator),addressHeader);
         return this;
     }
 

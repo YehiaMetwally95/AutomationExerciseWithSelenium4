@@ -26,8 +26,8 @@ public class RegistrationRequestModel {
     JsonMapper mapper;
 
     //ObjectsFromPojoClasses
-    RegistrationRequestPojo requestObject;
-    RegistrationResponsePojo responseObject;
+    RegistrationRequestPojo requestPojoObject;
+    RegistrationResponsePojo responsePojoObject;
 
     //Method to set Request Body by reading from Json File
     @Step("Prepare Registration Request Body From Json File")
@@ -36,7 +36,7 @@ public class RegistrationRequestModel {
         jsonBodyAsString = userJsonObject;
 
         mapper = new JsonMapper();
-        requestObject = mapper.readValue(jsonBodyAsString, RegistrationRequestPojo.class);
+        requestPojoObject = mapper.readValue(jsonBodyAsString, RegistrationRequestPojo.class);
         return this;
     }
 
@@ -44,13 +44,13 @@ public class RegistrationRequestModel {
     @Step("Send Request of Register New User")
     public RegistrationResponseModel sendRequestRegisterNewUser() throws JsonProcessingException {
         response =
-                MakeRequest("Post", registerEndpoint,requestObject, "application/x-www-form-urlencoded");
+                MakeRequest("Post", registerEndpoint, requestPojoObject, "application/x-www-form-urlencoded");
         jsonBodyAsString = getResponseBody(response);
 
         mapper = new JsonMapper();
-        responseObject = mapper.readValue(jsonBodyAsString, RegistrationResponsePojo.class);
+        responsePojoObject = mapper.readValue(jsonBodyAsString, RegistrationResponsePojo.class);
 
-        return new RegistrationResponseModel(requestObject,responseObject);
+        return new RegistrationResponseModel(requestPojoObject, responsePojoObject);
     }
 
 }

@@ -9,7 +9,8 @@ import java.io.IOException;
 
 public class AccountCreatedPage extends HomePage{
         //Locator
-        By continueButton = By.xpath("//a[contains(@data-qa,'continue')]");
+        private By continueButton = By.xpath("//a[contains(@data-qa,'continue')]");
+        private By successMessage= By.xpath("//*[@data-qa='account-created']");
 
         //Constructor
         public AccountCreatedPage(WebDriver driver) {
@@ -24,18 +25,9 @@ public class AccountCreatedPage extends HomePage{
         }
 
         //Validation
-        @Step("Verify Account Created Page is Opened")
-        public AccountCreatedPage verifyAccountCreatedPageIsOpened(String pageTitle) {
-            verifyAccountCreatedPageTitle(pageTitle);
+        @Step("Verify Account Created Success Message")
+        public AccountCreatedPage verifyAccountCreatedMessage(String message) throws IOException {
+            CustomSoftAssert.softAssert.assertEquals(bot.readText(successMessage),message);
             return this;
         }
-
-        //Private Methods
-        @Step("Verify Account Created Page Title")
-        private AccountCreatedPage verifyAccountCreatedPageTitle(String title) {
-        CustomSoftAssert.softAssert.assertEquals(bot.getPageTitle(),title);
-        return this;
-        }
-
-
 }

@@ -12,7 +12,7 @@ public class ContactusPage extends HomePage {
     //Variables
 
     //Locators
-    By getInTouchHeaderLocator = By.cssSelector(".contact-form h2");
+    By contactUsHeaderLocator = By.cssSelector(".col-sm-12 h2");
     By nameLocator = By.name("name");
     By emailLocator = By.name("email");
     By subjectLocator = By.name("subject");
@@ -37,8 +37,8 @@ public class ContactusPage extends HomePage {
 
     //Validations
     @Step("Verify Contact Us Page is Opened")
-    public ContactusPage verifyContactUsPageIsOpened() throws IOException {
-        verifyGetInTouchHeaderDisplayed();
+    public ContactusPage verifyContactUsPageIsOpened(String header) throws IOException {
+        verifyContactUsHeader(header);
         return this;
     }
 
@@ -71,9 +71,9 @@ public class ContactusPage extends HomePage {
         return this;
     }
 
-    @Step("Verify Get In Touch Header Displayed")
-    private ContactusPage verifyGetInTouchHeaderDisplayed() throws IOException {
-        CustomSoftAssert.softAssert.assertTrue(bot.isElementDisplayed(getInTouchHeaderLocator));
+    @Step("Verify Contact Us Header")
+    private ContactusPage verifyContactUsHeader(String header) throws IOException {
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(contactUsHeaderLocator),header);
         return this;
     }
 

@@ -8,7 +8,7 @@
 - Test Data Management such that store All Test data in Json Files and Retrieve the Updated Test Data of Products and Users from MySQL Database
 - Generating Very Detailed Allure Reports with All Scenario Steps And Screenshots for Passed/Hard-Assertion-Failed/Soft-Assersion-Failed Tests
 - Perform Test Execution On Local / Headless / Remotely using Selenium Grid with Docker Containers
-- Performing Parallel Execution from CI/CD Pipeline with GitHub Actions, Supplied by Selenium Grid with Docker, To Run 15 Parallel Tests at same time, thus Reducing Execution time to reaches 90 seconds only to run all the 17 tests
+- Performing Parallel Execution from CI/CD Pipeline with GitHub Actions, Supplied by Selenium Grid with Docker, To Run 15 Parallel Tests at same time, thus Reducing Execution time to reaches 90 seconds only to run all the 17 tests instead of 12 minutes when run sequentially
 - Bypassing UI Login for All Tests, Thus Reducing Execution time
 - Implementing the Test Automation Pyramid such that Run Tests Over API besides the UI, Thus Reduce the full Dependancy on Element Identifications and Allow Data Validations on API, Thus Reduce the possibility of Script failure, Reduce execution time, Reduce dependency on all system features to be working and Provide better test coverage
   

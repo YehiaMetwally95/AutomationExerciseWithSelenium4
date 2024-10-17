@@ -61,6 +61,10 @@
       "Name": "Lace Top For Women"
     }
   ],
+  "Messages": {
+    "ShoppingCartHeader": "Shopping Cart",
+    "AllProductsHeader": "ALL PRODUCTS"
+  },
   "Users": [
     {
       "Company": "Lakin, Windler and Hagenes",

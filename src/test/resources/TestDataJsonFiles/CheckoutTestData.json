@@ -61,11 +61,12 @@
       "Name": "Lace Top For Women"
     }
   ],
-  "Messages": [
-    {
-      "OrderPlaced": "ORDER PLACED!"
-    }
-  ],
+  "Messages": {
+    "OrderPlaced": "ORDER PLACED!",
+    "ReviewOrderHeader": "Review Your Order",
+    "PaymentHeader": "Payment",
+    "PaymentSuccess": "Your order has been placed successfully!"
+  },
   "CreditCards": [
     {
       "CVC": "123",
@@ -193,12 +194,6 @@
       "LastName": "Marsha",
       "Password": "Test@%^2723127",
       "DayofBirth": "8"
-    }
-  ],
-  "PageTitles": [
-    {
-      "PaymentPage": "Payment",
-      "CheckoutPage": "Checkout"
     }
   ]
 }

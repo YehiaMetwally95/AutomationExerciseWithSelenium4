@@ -3,7 +3,6 @@ package testCases.AddToCartTests;
 import baseTest.BaseTest;
 import io.qameta.allure.*;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -67,9 +66,10 @@ public class AddToCartWithSearchOnGUI extends BaseTest {
                 .addProductToCart()
         // Open Cart Page and Validate Products are Added to Cart On GUI
                 .viewCart()
-                .verifyProductIsAddedToCart(json.getData("Products[1].Name"))
-                .verifyProductIsAddedToCart(json.getData("Products[2].Name"))
-                .verifyProductIsAddedToCart(json.getData("Products[3].Name"))
+                .verifyCartPageIsOpened(json.getData("Messages.ShoppingCartHeader"))
+                .assertProductIsAddedToCart(json.getData("Products[1].Name"))
+                .assertProductIsAddedToCart(json.getData("Products[2].Name"))
+                .assertProductIsAddedToCart(json.getData("Products[3].Name"))
         // The Data Validation on product details is done on GUI Layer
                 .verifyAllProductDetails(json.getData("Products[1].Name")
                         ,json.getData("Products[1].Price")

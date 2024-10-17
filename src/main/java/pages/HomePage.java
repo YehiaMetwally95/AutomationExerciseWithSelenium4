@@ -107,8 +107,8 @@ public class HomePage {
 
     @Step("Assert User is Logged In")
     public HomePage assertUserIsLoggedIn(String username) throws IOException {
-        Assert.assertTrue(
-                bot.readText(loggedInButton).contains(username)
+        Assert.assertEquals(
+                bot.readText(loggedInButton),("Logged in as "+username)
         );
         return this;
     }

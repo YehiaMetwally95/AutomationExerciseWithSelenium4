@@ -32,7 +32,7 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
         new HomePage(driver)
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
-                .verifyLoginSignupPageIsOpened()
+                .verifyLoginSignupPageIsOpened(json.getData("Messages.LoginHeader"),json.getData("Messages.SignupHeader"))
                 .loginWithValidUser(json.getData("Users[0].Email"),json.getData("Users[0].Password"))
                 .assertUserIsLoggedIn(json.getData("Users[0].Name"));
 
@@ -49,7 +49,7 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
         new HomePage(driver)
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
-                .verifyLoginSignupPageIsOpened()
+                .verifyLoginSignupPageIsOpened(json.getData("Messages.LoginHeader"),json.getData("Messages.SignupHeader"))
                 .loginWithValidUser(json.getData("Users[1].Email"),json.getData("Users[1].Password"))
                 .assertUserIsLoggedIn(json.getData("Users[1].Name"));
 
@@ -66,7 +66,7 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
         new HomePage(driver)
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
-                .verifyLoginSignupPageIsOpened()
+                .verifyLoginSignupPageIsOpened(json.getData("Messages.LoginHeader"),json.getData("Messages.SignupHeader"))
                 .loginWithValidUser(json.getData("Users[2].Email"),json.getData("Users[2].Password"))
                 .assertUserIsLoggedIn(json.getData("Users[2].Name"));
 
@@ -83,7 +83,7 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
         new HomePage(driver)
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
-                .verifyLoginSignupPageIsOpened()
+                .verifyLoginSignupPageIsOpened(json.getData("Messages.LoginHeader"),json.getData("Messages.SignupHeader"))
                 .loginWithValidUser(json.getData("Users[3].Email"),json.getData("Users[3].Password"))
                 .assertUserIsLoggedIn(json.getData("Users[3].Name"));
 
@@ -100,7 +100,7 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
         new HomePage(driver)
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
-                .verifyLoginSignupPageIsOpened()
+                .verifyLoginSignupPageIsOpened(json.getData("Messages.LoginHeader"),json.getData("Messages.SignupHeader"))
                 .loginWithValidUser(json.getData("Users[4].Email"),json.getData("Users[4].Password"))
                 .assertUserIsLoggedIn(json.getData("Users[4].Name"));
 

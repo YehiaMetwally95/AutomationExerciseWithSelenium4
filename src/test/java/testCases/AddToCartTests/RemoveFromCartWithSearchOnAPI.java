@@ -4,7 +4,6 @@ import baseTest.BaseTest;
 import io.qameta.allure.*;
 import objectModelsForAPIs.SearchProductRequestModel;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -77,11 +76,13 @@ public class RemoveFromCartWithSearchOnAPI extends BaseTest {
                 .addProductToCart()
     // Open Cart Page and Remove 2 Products On GUI Layer
                 .viewCart()
+                .verifyCartPageIsOpened(json.getData("Messages.ShoppingCartHeader"))
                 .removeProductFromCart(json.getData("Products[0].Name"))
                 .removeProductFromCart(json.getData("Products[4].Name"))
-    // Validate the Added and Removed Products on Cart On GUI Layer
-                .verifyProductIsRemovedFromCart(json.getData("Products[0].Name"))
-                .verifyProductIsRemovedFromCart(json.getData("Products[4].Name"))
-                .verifyProductIsAddedToCart(json.getData("Products[3].Name"));
+                .removeProductFromCart(json.getData("Products[3].Name"))
+                // Validate the Added and Removed Products on Cart On GUI Layer
+                .assertProductIsRemovedFromCart(json.getData("Products[0].Name"))
+                .assertProductIsRemovedFromCart(json.getData("Products[4].Name"))
+                .assertProductIsRemovedFromCart(json.getData("Products[3].Name"));
     }
 }

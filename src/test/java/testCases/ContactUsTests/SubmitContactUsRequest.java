@@ -38,10 +38,10 @@ public class SubmitContactUsRequest extends BaseTest {
     public void submitContactusRequest() throws IOException, ParseException {
         new HomePage(getDriver(isolatedDriver))
                 .openContactUsPage()
-                .verifyContactUsPageIsOpened()
+                .verifyContactUsPageIsOpened(json.getData("Messages.ContactUsHeader"))
                 .submitContactUsRequest(json.getData("Details.Name"),
                         json.getData("Details.Email"),json.getData("Details.Subject"),
                         json.getData("Details.Description"),json.getData("Details.FilePath"))
-                .assertContactSuccessMassage(json.getData("Messages[0].RequestSubmitted"));
+                .assertContactSuccessMassage(json.getData("Messages.RequestSubmitted"));
     }
 }

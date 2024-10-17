@@ -58,7 +58,7 @@ public class RegisterNewUserOnGUI extends BaseTest {
         new HomePage(getDriver(isolatedDriver))
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
-                .verifyLoginSignupPageIsOpened()
+                .verifyLoginSignupPageIsOpened(json.getData("Messages.LoginHeader"),json.getData("Messages.SignupHeader"))
                 .signupWithNewUser(json.getData("NewUser1.Name"),json.getData("NewUser1.Email"))
                 .registerNewUser(json.getData("NewUser1.Title"),json.getData("NewUser1.Name"),json.getData("NewUser1.Password")
                         ,json.getData("NewUser1.DayOfBirth"),json.getData("NewUser1.MonthOfBirth"),json.getData("NewUser1.YearOfBirth")

@@ -68,8 +68,16 @@ public class CheckoutProductOnGUI extends BaseTest {
         // Open Cart Page and Proceed to Checkout Page On GUI
                 .viewCart()
                 .proceedToCheckOut()
-                .verifyCheckOutPageIsOpened(json.getData("PageTitles[0].CheckoutPage"))
+                .verifyCheckOutPageIsOpened(json.getData("Messages.ReviewOrderHeader"))
         // The Data Validation on Product Details is done on GUI Layer
+                .verifyAllProductDetails(json.getData("Products[1].Name")
+                        ,json.getData("Products[1].Price")
+                        ,json.getData("Products[1].Quantity")
+                        ,json.getData("Products[1].TotalPrice"))
+                .verifyAllProductDetails(json.getData("Products[2].Name")
+                        ,json.getData("Products[2].Price")
+                        ,json.getData("Products[2].Quantity")
+                        ,json.getData("Products[2].TotalPrice"))
                 .verifyAllProductDetails(json.getData("Products[3].Name")
                         ,json.getData("Products[3].Price")
                         ,json.getData("Products[3].Quantity")
@@ -85,11 +93,11 @@ public class CheckoutProductOnGUI extends BaseTest {
                 .verifyTotalPriceOfAllProducts()
         // Proceed to Payment Page and Perform Payment On GUI Layer
                 .placeOrder()
-                .verifyPaymentPageIsOpened(json.getData("PageTitles[0].PaymentPage"))
+                .verifyPaymentPageIsOpened(json.getData("Messages.PaymentHeader"))
                 .performPayment(json.getData("CreditCards[0].Name"),json.getData("CreditCards[0].Number"),
                         json.getData("CreditCards[0].CVC"),json.getData("CreditCards[0].ExpiryMonth")
                         ,json.getData("CreditCards[0].ExpiryYear"))
         // Assert On Order Confirm Message
-                .assertOrderConfirmMessage(json.getData("Messages[0].OrderPlaced"));
+                .assertOrderConfirmMessage(json.getData("Messages.OrderPlaced"));
     }
 }

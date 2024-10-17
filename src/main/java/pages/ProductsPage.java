@@ -30,8 +30,6 @@ public class ProductsPage extends HomePage{
 
     private By viewProductButtonLocator (String productName)
     {
-        //return By.xpath("//div[contains(@class,'productinfo')]/descendant::*[.='"+productName+"']/ancestor::div[contains(@class,'single-products')]/following-sibling::div/descendant::a[contains(@href,'product_details')]");
-        //return RelativeLocator.with(By.linkText("View Product")).below(productNameOuterLocator(productName));
         return By.linkText("View Product");
     }
 
@@ -51,15 +49,6 @@ public class ProductsPage extends HomePage{
     }
 
     //Actions
-    private void setLocatorsByProductName(String productName)
-    {
-        //productNameLocator = By.xpath("//div[contains(@class,'overlay-content')]/p[.='"+productName+"']");
-        //viewProductButtonLocator = RelativeLocator.with(By.partialLinkText("View Product")).below(productNameLocator);
-        //viewProductButtonLocator = By.xpath("//div[contains(@class,'overlay-content')]/p[.='"+productName+"']/ancestor::div[contains(@class,'single-products')]/following-sibling::div/descendant::a[contains(@href,'product_details')]");
-        //addToCartButton = RelativeLocator.with(By.partialLinkText("Add to cart")).below(productNameLocator);
-       // addToCartButton = By.xpath("//div[contains(@class,'productinfo')]/p[.='"+productName+"']/following-sibling::a[contains(@class,'add-to-cart')]");
-    }
-
     @Step("Search For A Product")
     public ProductsPage searchForProduct(String productName) throws IOException {
         bot.
@@ -95,8 +84,8 @@ public class ProductsPage extends HomePage{
 
     //Validations
     @Step("Verify Product Page is Opened")
-    public ProductsPage verifyProductPageIsOpened() {
-        verifyProductsHeaderDisplayed();
+    public ProductsPage verifyProductPageIsOpened(String header) throws IOException {
+        verifyProductsHeader(header);
         return this;
     }
 
@@ -107,9 +96,9 @@ public class ProductsPage extends HomePage{
     }
 
     //Private Methods
-    @Step("Verify Products Header Displayed")
-    private ProductsPage verifyProductsHeaderDisplayed() {
-        CustomSoftAssert.softAssert.assertTrue(bot.isElementDisplayed(allProductsHeaderLocator));
+    @Step("Verify Products Header")
+    private ProductsPage verifyProductsHeader(String header) throws IOException {
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(allProductsHeaderLocator),header);
         return this;
     }
 }

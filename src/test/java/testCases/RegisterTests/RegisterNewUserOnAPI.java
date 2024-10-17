@@ -70,7 +70,7 @@ public class RegisterNewUserOnAPI extends BaseTest {
         new HomePage(getDriver(isolatedDriver))
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
-                .verifyLoginSignupPageIsOpened()
+                .verifyLoginSignupPageIsOpened(json.getData("Messages.LoginHeader"),json.getData("Messages.SignupHeader"))
                 .loginWithValidUser(registerRequestObject.getEmail(), registerRequestObject.getPassword())
                 .assertUserIsLoggedIn(registerRequestObject.getName());
     }

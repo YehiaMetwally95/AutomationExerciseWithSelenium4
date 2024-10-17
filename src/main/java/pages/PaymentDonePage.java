@@ -37,12 +37,6 @@ public class PaymentDonePage extends HomePage {
     }
 
     //Validation
-    @Step("Verify Payment Done Page Is Opened")
-    public PaymentDonePage verifyPaymentDonePageIsOpened(String pageTitle) throws IOException {
-        verifyPaymentDonePageTitle(pageTitle);
-        return this;
-    }
-
     @Step("Assert Order Confirm Message")
     public PaymentDonePage assertOrderConfirmMessage(String message) throws IOException {
         Assert.assertEquals(bot.readText(orderConfirmMessageLocator),message);
@@ -66,13 +60,6 @@ public class PaymentDonePage extends HomePage {
             }
         }
         CustomSoftAssert.softAssert.assertTrue(isDownloadComplete);
-        return this;
-    }
-
-    //Private Methods
-    @Step("Verify Payment Done Page Title")
-    private PaymentDonePage verifyPaymentDonePageTitle(String title) throws IOException {
-        CustomSoftAssert.softAssert.assertTrue(bot.getPageTitle().contains(title));
         return this;
     }
 }

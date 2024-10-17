@@ -25,11 +25,11 @@ public class AddtoCartWithoutSearch extends BaseTest {
     @Description("Search for Product On GUI then Add Product To Cart")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void addProductToCartWithoutSearchOnGUI() throws IOException, ParseException {
+    public void addProductToCartWithoutSearch() throws IOException, ParseException {
         new HomePage(getDriver(isolatedDriver))
                 .verifyHomePageIsOpened()
                 .openProductsPage()
-                .verifyProductPageIsOpened()
+                .verifyProductPageIsOpened(json.getData("Messages.AllProductsHeader"))
                 // Add Products to Cart Directly from Products Page
                 .addProductToCart(json.getData("Products[0].Name"))
                 .continueShopping()
@@ -42,9 +42,10 @@ public class AddtoCartWithoutSearch extends BaseTest {
                 .addProductToCart(json.getData("Products[4].Name"))
                 // Open Cart Page and Validate Products are Added to Cart On GUI
                 .viewCart()
-                .verifyProductIsAddedToCart(json.getData("Products[0].Name"))
-                .verifyProductIsAddedToCart(json.getData("Products[1].Name"))
-                .verifyProductIsAddedToCart(json.getData("Products[4].Name"))
+                .verifyCartPageIsOpened(json.getData("Messages.ShoppingCartHeader"))
+                .assertProductIsAddedToCart(json.getData("Products[0].Name"))
+                .assertProductIsAddedToCart(json.getData("Products[1].Name"))
+                .assertProductIsAddedToCart(json.getData("Products[4].Name"))
                 // The Data Validation on product details is done on GUI Layer
                 .verifyAllProductDetails(json.getData("Products[0].Name")
                         ,json.getData("Products[0].Price")

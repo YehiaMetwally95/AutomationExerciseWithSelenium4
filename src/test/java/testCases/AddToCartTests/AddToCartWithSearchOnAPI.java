@@ -4,7 +4,6 @@ import baseTest.BaseTest;
 import io.qameta.allure.*;
 import objectModelsForAPIs.SearchProductRequestModel;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -81,8 +80,9 @@ public class AddToCartWithSearchOnAPI extends BaseTest {
                 .addProductToCart()
     // Open Cart Page and Validate Products are Added to Cart On GUI
                 .viewCart()
-                .verifyProductIsAddedToCart(json.getData("Products[0].Name"))
-                .verifyProductIsAddedToCart(json.getData("Products[2].Name"))
-                .verifyProductIsAddedToCart(json.getData("Products[3].Name"));
+                .verifyCartPageIsOpened(json.getData("Messages.ShoppingCartHeader"))
+                .assertProductIsAddedToCart(json.getData("Products[0].Name"))
+                .assertProductIsAddedToCart(json.getData("Products[2].Name"))
+                .assertProductIsAddedToCart(json.getData("Products[3].Name"));
     }
 }

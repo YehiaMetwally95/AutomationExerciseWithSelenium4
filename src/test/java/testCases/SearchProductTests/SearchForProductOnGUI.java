@@ -28,13 +28,13 @@ public class SearchForProductOnGUI extends BaseTest {
     public void searchForProductAndOpenProductPageOnGUI() throws IOException, ParseException {
         new HomePage(getDriver(isolatedDriver))
                 .openProductsPage()
-                .verifyProductPageIsOpened()
+                .verifyProductPageIsOpened(json.getData("Messages.AllProductsHeader"))
                 // Search For Product is done On GUI Layer
                 .searchForProduct(json.getData("Products[0].Name"))
                 .verifySearchedProduct(json.getData("Products[0].Name"))
                 // Open Product Details Page On GUI
                 .openProductDetailsPage(json.getData("Products[0].Name"))
-                .verifyProductDetailsPageIsOpened(json.getData("Headers[0].ReviewSection"))
+                .verifyProductDetailsPageIsOpened(json.getData("Messages.ReviewSection"))
                 // The Data Validation on product details is done on GUI Layer
                 .verifyAllProductDetails(json.getData("Products[0].Name")
                         ,json.getData("Products[0].Price"),json.getData("Products[0].Availability")

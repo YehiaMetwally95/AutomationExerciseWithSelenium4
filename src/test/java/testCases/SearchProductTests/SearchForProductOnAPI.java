@@ -42,7 +42,7 @@ public class SearchForProductOnAPI extends BaseTest {
         // Open Product Details Page By Url and Add them to Cart On GUI Layer
         new HomePage(getDriver(isolatedDriver))
                 .openProductDetailsPageByUrl(searchProductResponse.getProducts().get(0).getId())
-                .verifyProductDetailsPageIsOpened(json.getData("Headers[0].ReviewSection"))
+                .verifyProductDetailsPageIsOpened(json.getData("Messages.ReviewSection"))
         // The Data Validation Again on product details But is done on GUI Layer
                 .verifyAllProductDetails(json.getData("Products[1].Name")
                 ,json.getData("Products[1].Price"),json.getData("Products[1].Availability")

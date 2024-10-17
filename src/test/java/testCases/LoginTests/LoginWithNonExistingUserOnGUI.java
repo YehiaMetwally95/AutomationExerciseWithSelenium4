@@ -31,9 +31,9 @@ public class LoginWithNonExistingUserOnGUI extends BaseTest {
         new HomePage(getDriver(isolatedDriver))
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
-                .verifyLoginSignupPageIsOpened()
+                .verifyLoginSignupPageIsOpened(json.getData("Messages.LoginHeader"),json.getData("Messages.SignupHeader"))
                 .loginWithInvalidUser(json.getData("Users[0].Email"),json.getData("Users[1].Password"))
-                .assertIncorrectLoginMassage(json.getData("Messages[0].InvalidCredentials"));
+                .assertIncorrectLoginMassage(json.getData("Messages.InvalidCredentials"));
     }
 
 }

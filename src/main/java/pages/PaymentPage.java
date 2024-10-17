@@ -12,13 +12,14 @@ public class PaymentPage extends HomePage{
     //Variables
 
     //Locators
-    By cardNameText = By.xpath("//input[contains(@data-qa,'name')] | //input[contains(@name,'name')]");
-    By cardNumberText = By.xpath("//input[contains(@data-qa,'number')] | //input[contains(@name,'number')]");
-    By cardCVCText = By.xpath("//input[contains(@data-qa,'cvc')] | //input[contains(@name,'cvc')]");
-    By cardExpirationMonthText = By.xpath("//input[contains(@data-qa,'month')] | //input[contains(@name,'month')]");
-    By cartExpirationYearText = By.xpath("//input[contains(@data-qa,'year')] | //input[contains(@name,'year')]");
+    By cardNameText = By.name("name_on_card");
+    By cardNumberText = By.name("card_number");
+    By cardCVCText = By.name("cvc");
+    By cardExpirationMonthText = By.name("expiry_month");
+    By cartExpirationYearText = By.name("expiry_year");
     By confirmOrderButton = By.id("submit");
     By successMessageLocator = By.cssSelector("#success_message .alert");
+    By paymentHeaderLocator=By.className("heading");
 
     //Constructor
     public PaymentPage(WebDriver driver) {
@@ -39,17 +40,14 @@ public class PaymentPage extends HomePage{
 
     //Validations
     @Step("Verify Payment Page is Opened")
-    public PaymentPage verifyPaymentPageIsOpened(String pageTitle) throws IOException {
-        verifyPaymentPageTitle(pageTitle);
+    public PaymentPage verifyPaymentPageIsOpened(String header) throws IOException {
+        verifyPaymentHeader(header);
         return this;
     }
 
     @Step("Assert Payment Success Massage")
     public PaymentPage assertPaymentSuccessMassage(String message) throws IOException {
-        Assert.assertEquals(
-                bot.readText(successMessageLocator)
-                ,message
-        );
+        Assert.assertEquals(bot.readText(successMessageLocator),message);
         return this;
     }
 
@@ -90,9 +88,9 @@ public class PaymentPage extends HomePage{
         return this;
     }
 
-    @Step("Verify Payment Page Title")
-    private PaymentPage verifyPaymentPageTitle(String title) throws IOException {
-        CustomSoftAssert.softAssert.assertTrue(bot.getPageTitle().contains(title));
+    @Step("Verify Payment Header")
+    private PaymentPage verifyPaymentHeader(String header) throws IOException {
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(paymentHeaderLocator),header);
         return this;
     }
 }

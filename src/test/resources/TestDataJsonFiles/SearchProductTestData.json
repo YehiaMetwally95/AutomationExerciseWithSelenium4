@@ -61,6 +61,10 @@
       "Name": "Lace Top For Women"
     }
   ],
+  "Messages": {
+    "AllProductsHeader": "ALL PRODUCTS",
+    "ReviewSection": "WRITE YOUR REVIEW"
+  },
   "Users": [
     {
       "Company": "Lakin, Windler and Hagenes",
@@ -175,16 +179,6 @@
       "LastName": "Marsha",
       "Password": "Test@%^2723127",
       "DayofBirth": "8"
-    }
-  ],
-  "PageTitles": [
-    {
-      "ProductDetailsPage": "Automation Exercise - Product Details"
-    }
-  ],
-  "Headers": [
-    {
-      "ReviewSection": "Write Your Review"
     }
   ]
 }

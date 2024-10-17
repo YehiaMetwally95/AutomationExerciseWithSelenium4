@@ -1,9 +1,9 @@
 {
-  "Messages": [
-    {
-      "InvalidCredentials": "Your email or password is incorrect!"
-    }
-  ],
+  "Messages": {
+    "SignupHeader": "New User Signup!",
+    "InvalidCredentials": "Your email or password is incorrect!",
+    "LoginHeader": "Login to your account"
+  },
   "Users": [
     {
       "Company": "Lakin, Windler and Hagenes",

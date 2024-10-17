@@ -19,8 +19,8 @@ public class LoginSignupPage extends HomePage{
     By signUpEmailText = By.xpath("//input[@data-qa='signup-email']");
     By loginButton = By.xpath("//button[@data-qa='login-button']");
     By signUpButton = By.xpath("//button[@data-qa='signup-button']");
-    By loginHeader = RelativeLocator.with(By.tagName("h2")).above(loginButton);
-    By signupHeader = RelativeLocator.with(By.tagName("h2")).above(signUpNameText);
+    By loginHeaderLocator = RelativeLocator.with(By.tagName("h2")).above(loginButton);
+    By signupHeaderLocator = RelativeLocator.with(By.tagName("h2")).above(signUpNameText);
     By loginErrorMassage = By.xpath("//form[@action = '/login']/p[@style='color: red;']");
     By signupErrorMassage = By.xpath("//form[@action = '/signup']/p[@style='color: red;']");
 
@@ -65,9 +65,8 @@ public class LoginSignupPage extends HomePage{
 
     //Validations
     @Step("Verify Login Signup Page is Opened")
-    public LoginSignupPage verifyLoginSignupPageIsOpened()
-    {
-        verifyLoginHeaderDisplayed().verifySignupHeaderDisplayed();
+    public LoginSignupPage verifyLoginSignupPageIsOpened(String loginHeader,String signupHeader) throws IOException {
+        verifyLoginHeader(loginHeader).verifySignupHeader(signupHeader);
         return this;
     }
 
@@ -138,17 +137,15 @@ public class LoginSignupPage extends HomePage{
         return this;
     }
 
-    @Step("Verify Login Header Displayed")
-    private LoginSignupPage verifyLoginHeaderDisplayed()
-    {
-        CustomSoftAssert.softAssert.assertTrue(bot.isElementDisplayed(loginHeader));
+    @Step("Verify Login Header")
+    private LoginSignupPage verifyLoginHeader(String loginHeader) throws IOException {
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(loginHeaderLocator),loginHeader);
         return this;
     }
 
-    @Step("Verify Signup Header Displayed")
-    private LoginSignupPage verifySignupHeaderDisplayed()
-    {
-        CustomSoftAssert.softAssert.assertTrue(bot.isElementDisplayed(signupHeader));
+    @Step("Verify Signup Header")
+    private LoginSignupPage verifySignupHeader(String signupHeader) throws IOException {
+        CustomSoftAssert.softAssert.assertEquals(bot.readText(signupHeaderLocator),signupHeader);
         return this;
     }
 

@@ -25,60 +25,6 @@ public class BrowserFactory {
     private static String remoteExecutionHost = System.getProperty("remoteExecutionHost");
     private static String remoteExecutionPort = System.getProperty("remoteExecutionPort");
 
-    public static WebDriver openBrowser(String browserType) throws MalformedURLException {
-        RemoteWebDriver driver = null;
-
-        if (executionType.equalsIgnoreCase("Local"))
-        {
-            switch (browserType)
-            {
-                case "Chrome" :
-                    driver = new ChromeDriver(getChromeOptions());
-                    break;
-
-                case "Firefox" :
-                    driver = new FirefoxDriver(getFireFoxOptions());
-                    break;
-
-                case "Edge" :
-                    driver = new EdgeDriver(getEdgeOptions());
-                    break;
-                default:
-                    System.out.println("Wrong driver name");
-            }
-        }
-
-        else if (executionType.equalsIgnoreCase("Remote"))
-        {
-            switch (browserType)
-            {
-                case "Chrome" :
-                    driver = new RemoteWebDriver(
-                            new URL("http://" + remoteExecutionHost + ":" + remoteExecutionPort + "/wd/hub")
-                            ,getChromeOptions());
-                    driver.setFileDetector(new LocalFileDetector());
-                    break;
-
-                case "Firefox" :
-                    driver = new RemoteWebDriver(
-                            new URL("http://" + remoteExecutionHost + ":" + remoteExecutionPort + "/wd/hub")
-                            ,getFireFoxOptions());
-                    driver.setFileDetector(new LocalFileDetector());
-                    break;
-
-                case "Edge" :
-                    driver = new RemoteWebDriver(
-                            new URL("http://" + remoteExecutionHost + ":" + remoteExecutionPort + "/wd/hub")
-                            ,getEdgeOptions());
-                    driver.setFileDetector(new LocalFileDetector());
-                    break;
-                default:
-                    System.out.println("Wrong driver name");
-            }
-        }
-        return driver;
-    }
-
     public static WebDriver openBrowser() throws MalformedURLException {
         RemoteWebDriver driver = null;
 

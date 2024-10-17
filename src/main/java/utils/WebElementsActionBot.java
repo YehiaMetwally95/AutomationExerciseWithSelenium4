@@ -99,6 +99,11 @@ public class WebElementsActionBot {
         return driver.findElement(locator).getText().replace("\n","");
     }
 
+    public String readText(WebElement element) throws IOException {
+        //takeElementScreenshot(driver,locator,retrievedTextPath,generateUniqueInteger());
+        return element.getText();
+    }
+
         //ActionBot5  for Verify Element is Displayed
     public boolean isElementDisplayed(By locator){
         try{
