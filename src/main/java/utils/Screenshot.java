@@ -1,9 +1,6 @@
 package utils;
 
-import io.appium.java_client.AppiumDriver;
-import io.cucumber.java.Scenario;
 import io.qameta.allure.Allure;
-import io.qameta.allure.Attachment;
 import org.openqa.selenium.*;
 import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestResult;
@@ -41,31 +38,6 @@ public class Screenshot {
 
             var screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             Allure.addAttachment(result.getName(),new ByteArrayInputStream(screenshot));
-        }
-    }
-
-    public static void captureSuccess(WebDriver driver, Scenario cucumberResult) throws IOException {
-        //Increment ScreenshotFileNumber
-        if (!cucumberResult.isFailed()) {
-
-            File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            File destination = new File("src/test/resources/Screenshots/SuccessfulTests/"+cucumberResult.getName()+".png");
-            org.openqa.selenium.io.FileHandler.copy(source, destination);
-
-            var screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            Allure.addAttachment(cucumberResult.getName(),new ByteArrayInputStream(screenshot));
-        }
-    }
-
-    public static void captureFailure(WebDriver driver, Scenario cucumberResult) throws IOException {
-        if (cucumberResult.isFailed()) {
-
-            File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            File destination = new File("src/test/resources/Screenshots/FailedTests/"+cucumberResult.getName()+".png");
-            org.openqa.selenium.io.FileHandler.copy(source, destination);
-
-            var screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            Allure.addAttachment(cucumberResult.getName(),new ByteArrayInputStream(screenshot));
         }
     }
 
