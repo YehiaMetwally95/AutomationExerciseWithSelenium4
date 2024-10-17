@@ -10,7 +10,6 @@ import prepareTestData.TestNGListners;
 import utils.JDBCManager;
 import utils.JsonManager;
 import static utils.RandomDataGenerator.*;
-import static utils.RandomDataGenerator.generateUniqueEmail;
 import static utils.ThreadDriver.getDriver;
 
 import java.io.IOException;

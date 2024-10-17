@@ -1,6 +1,5 @@
 package utils;
 
-import org.apache.groovy.json.internal.Chr;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -14,7 +13,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
-import static utils.PropertiesManager.*;
 
 public class BrowserFactory {
 

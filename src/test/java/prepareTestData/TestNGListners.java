@@ -1,14 +1,12 @@
 package prepareTestData;
 
 import lombok.SneakyThrows;
-import org.json.simple.parser.ParseException;
 import org.testng.*;
 import utils.CustomSoftAssert;
 import utils.PropertiesManager;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
 
 import static prepareTestData.LoadProductsFromDB.loadProductsFromDB;
 import static prepareTestData.LoadUsersFromDB.loadUsersFromDB;

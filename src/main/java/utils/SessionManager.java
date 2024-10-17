@@ -7,7 +7,6 @@ import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import static utils.CookiesManager.*;

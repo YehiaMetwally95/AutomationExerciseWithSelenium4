@@ -2,7 +2,6 @@ package prepareTestData;
 
 import io.qameta.allure.Description;
 import org.json.simple.parser.ParseException;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import utils.JDBCManager;
 

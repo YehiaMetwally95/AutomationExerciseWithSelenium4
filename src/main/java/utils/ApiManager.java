@@ -1,8 +1,6 @@
 package utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import io.restassured.RestAssured;
@@ -15,8 +13,6 @@ import org.json.JSONObject;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
-import static utils.JsonManager.convertJsonStringToMap;
 
 public class ApiManager {
 

@@ -8,7 +8,6 @@ import utils.CustomSoftAssert;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 public class PaymentDonePage extends HomePage {
     //Variables

@@ -2,8 +2,6 @@ package objectModelsForAPIs;
 
 import io.qameta.allure.Step;
 import org.testng.Assert;
-import pojoClassesForAPIs.SearchProductRequestPojo;
-import pojoClassesForAPIs.SearchProductResponsePojo;
 import pojoClassesForAPIs.UserDetailsRequestPojo;
 import pojoClassesForAPIs.UserDetailsResponsePojo;
 import utils.CustomSoftAssert;

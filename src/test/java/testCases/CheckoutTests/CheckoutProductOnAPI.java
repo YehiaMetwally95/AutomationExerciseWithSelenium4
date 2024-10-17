@@ -5,7 +5,6 @@ import io.qameta.allure.*;
 import objectModelsForAPIs.SearchProductRequestModel;
 import objectModelsForAPIs.UserDetailsRequestModel;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;

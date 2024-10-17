@@ -1,7 +1,5 @@
 package utils;
 
-import io.appium.java_client.AppiumDriver;
-import io.qameta.allure.Step;
 import lombok.SneakyThrows;
 import org.openqa.selenium.WebDriver;
 import org.testng.asserts.IAssert;
