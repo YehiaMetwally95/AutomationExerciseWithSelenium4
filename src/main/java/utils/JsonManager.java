@@ -70,7 +70,7 @@ public class JsonManager {
             int index = Integer.parseInt(arrofSTG_3[0]);
 
             JSONArray array = (JSONArray) readJsonFile().get(arrofSTG_2[0]);
-            Object object = null;
+            Object object = (array).get(index);
             if (arrofSTG.length==2) {
                 object = (array).get(index);
                 object = ((JSONObject) object).get(arrofSTG[1]);

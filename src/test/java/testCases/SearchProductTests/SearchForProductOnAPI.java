@@ -29,8 +29,8 @@ public class SearchForProductOnAPI extends BaseTest {
     public void searchForProductAndOpenProductPageOnAPI() throws IOException, ParseException {
         // Search For Product is done On API Layer
         var searchProductResponse = new SearchProductRequestModel()
-                .addProductNameToRequestBody(json.getData("Products[1].Name"))
-                .sendRequestOfSearchForProduct()
+                .prepareSearchProductRequest(json.getData("Products[1].Name"))
+                .sendSearchProductRequest()
                 .validateResponseCodeFromResponse(200)
         // The Data Validation on product details is done on API Layer
                 .validateProductDetailsFromResponse(json.getData("Products[1].ID"),json.getData("Products[1].Name"),

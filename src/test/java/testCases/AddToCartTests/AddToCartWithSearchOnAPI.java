@@ -44,20 +44,20 @@ public class AddToCartWithSearchOnAPI extends BaseTest {
     public void addProductToCartWithSearchOnAPI() throws IOException, ParseException {
     // Search for Products On API Layer
         var searchProductResponse1 = new SearchProductRequestModel()
-                .addProductNameToRequestBody(json.getData("Products[0].Name"))
-                .sendRequestOfSearchForProduct()
+                .prepareSearchProductRequest(json.getData("Products[0].Name"))
+                .sendSearchProductRequest()
                 .validateResponseCodeFromResponse(200)
                 .getResponsePojoObject();
 
         var searchProductResponse2 = new SearchProductRequestModel()
-                .addProductNameToRequestBody(json.getData("Products[2].Name"))
-                .sendRequestOfSearchForProduct()
+                .prepareSearchProductRequest(json.getData("Products[2].Name"))
+                .sendSearchProductRequest()
                 .validateResponseCodeFromResponse(200)
                 .getResponsePojoObject();
 
         var searchProductResponse3 = new SearchProductRequestModel()
-                .addProductNameToRequestBody(json.getData("Products[3].Name"))
-                .sendRequestOfSearchForProduct()
+                .prepareSearchProductRequest(json.getData("Products[3].Name"))
+                .sendSearchProductRequest()
                 .validateResponseCodeFromResponse(200)
     // The Data Validation on product details is done on API Layer
                 .validateProductDetailsFromResponse(json.getData("Products[3].ID"),json.getData("Products[3].Name"),

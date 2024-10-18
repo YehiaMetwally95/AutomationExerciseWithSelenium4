@@ -3,6 +3,7 @@ package utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import io.restassured.parsing.Parser;
@@ -14,11 +15,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import static utils.Screenshot.logApiRequestsToAllureReport;
+
 public class ApiManager {
 
     public static Response MakeRequest(String requestType,String endpoint,Object requestBody,String contentType) throws JsonProcessingException {
         RestAssured.registerParser("text/html", Parser.JSON);
-        RequestSpecification request = RestAssured.given();
+        RequestSpecification request = RestAssured.given().filter(logApiRequestsToAllureReport());
         Response response = null;
 
         if(contentType != null)
@@ -60,7 +63,7 @@ public class ApiManager {
     public static Response MakeAuthRequest(String requestType,String endpoint,Object requestBody,String contentType,
                                            String authType,String authUser,String authPass, String token) throws JsonProcessingException {
         RestAssured.registerParser("text/html", Parser.JSON);
-        RequestSpecification request = RestAssured.given();
+        RequestSpecification request = RestAssured.given().filter(logApiRequestsToAllureReport());
         Response response = null;
 
         if(contentType != null)
@@ -122,7 +125,7 @@ public class ApiManager {
 
     public static Response GetRequest(String endpoint,Map queryParameters)
     {
-        RequestSpecification request = RestAssured.given();
+        RequestSpecification request = RestAssured.given().filter(logApiRequestsToAllureReport());
         Response response = null;
 
         if (queryParameters != null)
@@ -135,7 +138,7 @@ public class ApiManager {
     public static Response GetAuthRequest(String endpoint,Map queryParameters,
                                           String authType,String authUser,String authPass, String token)
     {
-        RequestSpecification request = RestAssured.given();
+        RequestSpecification request = RestAssured.given().filter(logApiRequestsToAllureReport());
         Response response = null;
 
         if (queryParameters != null)

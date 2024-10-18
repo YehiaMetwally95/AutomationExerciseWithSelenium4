@@ -60,8 +60,8 @@ public class RegisterNewUserOnAPI extends BaseTest {
     @Test
     public void registerNewUserThroughAPI() throws IOException, ParseException {
         var registerRequestObject = new RegistrationRequestModel()
-                .prepareRegistrationRequestBody(json.getData("NewUser2"))
-                .sendRequestRegisterNewUser()
+                .prepareRegisterRequest(json.getData("NewUser2"))
+                .sendRegisterRequest()
                 .validateCodeFromResponse(201)
                 .validateMassageFromResponse("User created!")
                 .getRequestPojoObject();

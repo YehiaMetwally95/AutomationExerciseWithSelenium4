@@ -1,6 +1,7 @@
 package utils;
 
 import io.qameta.allure.Allure;
+import io.qameta.allure.restassured.AllureRestAssured;
 import org.openqa.selenium.*;
 import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestResult;
@@ -68,5 +69,11 @@ public class Screenshot {
 
         FileHandler.copy(source,destination);
     }
+
+    public static AllureRestAssured logApiRequestsToAllureReport(){
+        return new AllureRestAssured()
+                .setRequestAttachmentName("Request Details")
+                .setResponseAttachmentName("Response Details");
     }
+}
 

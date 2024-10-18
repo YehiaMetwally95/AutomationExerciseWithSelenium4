@@ -45,20 +45,20 @@ public class RemoveFromCartWithSearchOnAPI extends BaseTest {
     public void removeProductFromCartWithSearchOnAPI() throws IOException, ParseException {
     //Search for 3 Products On API
         var searchProductResponse1 = new SearchProductRequestModel()
-                .addProductNameToRequestBody(json.getData("Products[0].Name"))
-                .sendRequestOfSearchForProduct()
+                .prepareSearchProductRequest(json.getData("Products[0].Name"))
+                .sendSearchProductRequest()
                 .validateResponseCodeFromResponse(200)
                 .getResponsePojoObject();
 
         var searchProductResponse2 = new SearchProductRequestModel()
-                .addProductNameToRequestBody(json.getData("Products[4].Name"))
-                .sendRequestOfSearchForProduct()
+                .prepareSearchProductRequest(json.getData("Products[4].Name"))
+                .sendSearchProductRequest()
                 .validateResponseCodeFromResponse(200)
                 .getResponsePojoObject();
 
         var searchProductResponse3 = new SearchProductRequestModel()
-                .addProductNameToRequestBody(json.getData("Products[3].Name"))
-                .sendRequestOfSearchForProduct()
+                .prepareSearchProductRequest(json.getData("Products[3].Name"))
+                .sendSearchProductRequest()
                 .validateResponseCodeFromResponse(200)
                 .getResponsePojoObject();
 

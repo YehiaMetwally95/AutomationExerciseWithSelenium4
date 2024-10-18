@@ -47,20 +47,20 @@ public class CheckoutProductOnAPI extends BaseTest {
     public void checkoutProductsOnAPI() throws IOException, ParseException {
     // Search for Products On API Layer
         var searchProductResponse1 = new SearchProductRequestModel()
-                .addProductNameToRequestBody(json.getData("Products[0].Name"))
-                .sendRequestOfSearchForProduct()
+                .prepareSearchProductRequest(json.getData("Products[0].Name"))
+                .sendSearchProductRequest()
                 .validateResponseCodeFromResponse(200)
                 .getResponsePojoObject();
 
         var searchProductResponse2 = new SearchProductRequestModel()
-                .addProductNameToRequestBody(json.getData("Products[2].Name"))
-                .sendRequestOfSearchForProduct()
+                .prepareSearchProductRequest(json.getData("Products[2].Name"))
+                .sendSearchProductRequest()
                 .validateResponseCodeFromResponse(200)
                 .getResponsePojoObject();
 
         var searchProductResponse3 = new SearchProductRequestModel()
-                .addProductNameToRequestBody(json.getData("Products[3].Name"))
-                .sendRequestOfSearchForProduct()
+                .prepareSearchProductRequest(json.getData("Products[3].Name"))
+                .sendSearchProductRequest()
                 .validateResponseCodeFromResponse(200)
     // The Data Validation on product details is done on API Layer
                 .validateProductDetailsFromResponse(json.getData("Products[3].ID"),json.getData("Products[3].Name"),
@@ -71,8 +71,8 @@ public class CheckoutProductOnAPI extends BaseTest {
 
     //Get User Details On API Layer
         var userDetailsResponse = new UserDetailsRequestModel()
-                .setRequestParameterByUserEmail(json.getData("Users[3].Email"))
-                .sendRequestOfGetUserDetails()
+                .prepareUserDetailsRequest(json.getData("Users[3].Email"))
+                .sendUserDetailsRequest()
                 .validateResponseCodeFromResponse(200)
     // The Data Validation on Address Details is done on API Layer
                 .validateAddressDetailsFromResponse(json.getData("Users[3].Name"),json.getData("Users[3].Title"),

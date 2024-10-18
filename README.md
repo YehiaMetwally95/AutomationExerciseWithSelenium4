@@ -11,7 +11,8 @@
 - Performing Parallel Execution from CI/CD Pipeline with GitHub Actions, Supplied by Selenium Grid with Docker, To Run 15 Parallel Tests at same time, thus Reducing Execution time to reaches 90 seconds only to run all the 17 tests instead of 12 minutes when run sequentially
 - Bypassing UI Login for All Tests, Thus Reducing Execution time
 - Implementing the Test Automation Pyramid such that Run Tests Over API besides the UI, Thus Reduce the full Dependancy on Element Identifications and Allow Data Validations on API, Thus Reduce the possibility of Script failure, Reduce execution time, Reduce dependency on all system features to be working and Provide better test coverage
-  
+- Using Dynamic Locators for Identifying Tabular data instead of complicated xpath expressions
+ 
 ## Application Under Test
 - Automation Exercise Website https://automationexercise.com/
 

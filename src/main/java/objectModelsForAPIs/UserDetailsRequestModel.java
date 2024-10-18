@@ -30,7 +30,7 @@ public class UserDetailsRequestModel {
 
     //Method to set Request Parameter by User Email
     @Step("Set Request Parameters by User Email")
-    public UserDetailsRequestModel setRequestParameterByUserEmail(String userEmail) throws IOException, ParseException {
+    public UserDetailsRequestModel prepareUserDetailsRequest(String userEmail) throws IOException, ParseException {
         queryParam = new HashMap<>();
         queryParam.put("email",userEmail);
         return this;
@@ -38,7 +38,7 @@ public class UserDetailsRequestModel {
 
     //Method to Execute User Details Request
     @Step("Send Request of Get User Details")
-    public UserDetailsResponseModel sendRequestOfGetUserDetails() throws JsonProcessingException {
+    public UserDetailsResponseModel sendUserDetailsRequest() throws JsonProcessingException {
         response =
                 GetRequest(userDetailsEndpoint,queryParam);
         jsonBodyAsString = getResponseBody(response);

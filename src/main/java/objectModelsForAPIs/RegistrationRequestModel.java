@@ -18,7 +18,6 @@ public class RegistrationRequestModel {
 
     //Variables
     String registerEndpoint = getPropertiesValue("baseUrlApi")+"createAccount";
-    String jsonFilePath = "src/test/resources/TestDataJsonFiles/RegisterTestData.json";
     JsonManager json;
 
     String jsonBodyAsString;
@@ -26,31 +25,28 @@ public class RegistrationRequestModel {
     JsonMapper mapper;
 
     //ObjectsFromPojoClasses
-    RegistrationRequestPojo requestPojoObject;
-    RegistrationResponsePojo responsePojoObject;
+    RegistrationRequestPojo requestObject;
+    RegistrationResponsePojo responseObject;
 
     //Method to set Request Body by reading from Json File
     @Step("Prepare Registration Request Body From Json File")
-    public RegistrationRequestModel prepareRegistrationRequestBody(String userJsonObject) throws IOException, ParseException {
-        json = new JsonManager(jsonFilePath);
-        jsonBodyAsString = userJsonObject;
-
+    public RegistrationRequestModel prepareRegisterRequest(String userData) throws IOException, ParseException {
         mapper = new JsonMapper();
-        requestPojoObject = mapper.readValue(jsonBodyAsString, RegistrationRequestPojo.class);
+        requestObject = mapper.readValue(userData, RegistrationRequestPojo.class);
         return this;
     }
 
     //Method to Execute Registration Request
     @Step("Send Request of Register New User")
-    public RegistrationResponseModel sendRequestRegisterNewUser() throws JsonProcessingException {
+    public RegistrationResponseModel sendRegisterRequest() throws JsonProcessingException {
         response =
-                MakeRequest("Post", registerEndpoint, requestPojoObject, "application/x-www-form-urlencoded");
+                MakeRequest("Post", registerEndpoint, requestObject, "application/x-www-form-urlencoded");
         jsonBodyAsString = getResponseBody(response);
 
         mapper = new JsonMapper();
-        responsePojoObject = mapper.readValue(jsonBodyAsString, RegistrationResponsePojo.class);
+        responseObject = mapper.readValue(jsonBodyAsString, RegistrationResponsePojo.class);
 
-        return new RegistrationResponseModel(requestPojoObject, responsePojoObject);
+        return new RegistrationResponseModel(requestObject, responseObject);
     }
 
 }
