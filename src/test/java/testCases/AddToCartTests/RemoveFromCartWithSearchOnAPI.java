@@ -42,7 +42,7 @@ public class RemoveFromCartWithSearchOnAPI extends BaseTest {
     @Description("Search for Product On API then Remove Product From Cart")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void removeProductFromCartWithSearchOnAPI() throws IOException, ParseException {
+    public void removeProductFromCartWithSearchOnAPI() throws IOException, ParseException, InterruptedException {
     //Search for 3 Products On API
         var searchProductResponse1 = new SearchProductRequestModel()
                 .prepareSearchProductRequest(json.getData("Products[0].Name"))
@@ -74,13 +74,16 @@ public class RemoveFromCartWithSearchOnAPI extends BaseTest {
                 .continueShopping().openProductDetailsPageByUrl(searchProductResponse3.getProducts().get(0).getId())
                 .setProductQuantity(json.getData("Products[3].Quantity"))
                 .addProductToCart()
-    // Open Cart Page and Remove 2 Products On GUI Layer
+    // Open Cart Page and Remove 3 Products On GUI Layer
                 .viewCart()
                 .verifyCartPageIsOpened(json.getData("Messages.ShoppingCartHeader"))
                 .removeProductFromCart(json.getData("Products[0].Name"))
                 .removeProductFromCart(json.getData("Products[4].Name"))
+                .removeProductFromCart(json.getData("Products[3].Name"))
+                .refreshCart()
                 // Validate the Added and Removed Products on Cart On GUI Layer
                 .assertProductIsRemovedFromCart(json.getData("Products[0].Name"))
-                .assertProductIsRemovedFromCart(json.getData("Products[4].Name"));
+                .assertProductIsRemovedFromCart(json.getData("Products[4].Name"))
+                .assertProductIsRemovedFromCart(json.getData("Products[3].Name"));
     }
 }

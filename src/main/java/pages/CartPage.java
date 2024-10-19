@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static utils.CustomSoftAssert.softAssert;
+import static utils.WindowManager.refreshWindow;
 
 public class CartPage extends HomePage {
     //Variables
@@ -102,7 +103,7 @@ public class CartPage extends HomePage {
     }
 
     @Step("Assert Product is Removed from Cart")
-    public CartPage assertProductIsRemovedFromCart(String productName) throws IOException {
+    public CartPage assertProductIsRemovedFromCart(String productName) throws IOException, InterruptedException {
         List<WebElement> elements = bot.getAllMatchedElements(productNamesLocator);
         List<String> productNames= new ArrayList<>();
         for (WebElement element : elements) {
@@ -146,6 +147,11 @@ public class CartPage extends HomePage {
     @Step("Verify Shopping Cart Header")
     private CartPage verifyShoppingCartHeader(String header) throws IOException {
         softAssert.assertEquals(bot.readText(ShoppingCartHeaderLocator),header);
+        return this;
+    }
+
+    public CartPage refreshCart() throws IOException {
+        refreshWindow(driver);
         return this;
     }
 
