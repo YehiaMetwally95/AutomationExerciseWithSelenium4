@@ -20,12 +20,12 @@ public class ProductsPage extends HomePage{
 
     private By productNameInnerLocator (String productName)
     {
-        return By.xpath("//div[contains(@class,'overlay-content')]/descendant::*[.='"+productName+"']");
+        return By.xpath("(//div[@class='features_items']/descendant::*[.='"+productName+"'])[2]");
     }
 
     private By productNameOuterLocator (String productName)
     {
-        return By.xpath("//div[@class='features_items']//div[contains(@class,'productinfo')]/descendant::*[.='"+productName+"']");
+        return By.xpath("(//div[@class='features_items']/descendant::*[.='"+productName+"'])[1]");
     }
 
     private By viewProductButtonLocator (String productName)

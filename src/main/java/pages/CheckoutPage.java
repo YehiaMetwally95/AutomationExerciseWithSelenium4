@@ -27,7 +27,7 @@ public class CheckoutPage extends HomePage{
     By mobileNumberLocator = RelativeLocator.with(By.className("address_phone")).below(deliveryAddressHeaderLocator);
     By totalAmountHeaderLocator = By.xpath("//h4[contains(.,'Total Amount')]");
     By totalPriceLocator = RelativeLocator.with(By.tagName("p")).toRightOf(totalAmountHeaderLocator);
-    By placeOrderButton = By.xpath("//a[contains(@class,'check_out')]");
+    By placeOrderButton = By.linkText("Place Order");
     By productPricesLocator = By.xpath("//tr[contains(@id,'product')]/descendant::p[@class='cart_total_price']");
     By productNamesLocator = By.cssSelector(".cart_description a");
 
