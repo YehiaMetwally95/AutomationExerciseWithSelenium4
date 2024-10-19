@@ -87,7 +87,7 @@ public class CheckoutProductOnGUI extends BaseTest {
                         json.getData("Users[4].Address1"), json.getData("Users[4].Address2"),
                         json.getData("Users[4].State"), json.getData("Users[4].City"),
                         json.getData("Users[4].ZipCode"), json.getData("Users[4].Country"),
-                        json.getData("Users[3].MobileNumber"))
+                        json.getData("Users[4].MobileNumber"))
         // Validate The Total Price of All Products On GUI Layer
                 .verifyTotalPriceOfAllProducts()
         // Proceed to Payment Page and Perform Payment On GUI Layer
