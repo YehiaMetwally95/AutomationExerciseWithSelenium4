@@ -6,35 +6,8 @@
       "name": "FCNEC",
       "isHttpOnly": false,
       "isSecure": false,
-      "expiry": "Oct 16, 2025, 4:52:32 PM",
-      "value": "%5B%5B%22AKsRol99unySw-J8yJoe5Q-LyEfLxQ2HgL5Kp4mWrCz4rxkpAEorqzPl3_MxqpVv6VAzBfAmYMtR-r-SQG36YsT0qRzFblbTWpuwtSlP8DEVQ1fwXjdUaKLi0FouX2HqeG4Ek_4eC6HT7Oankp-_gKIzt8HICAS33w%3D%3D%22%5D%5D"
-    },
-    {
-      "path": "/",
-      "domain": ".automationexercise.com",
-      "name": "__gpi",
-      "isHttpOnly": false,
-      "isSecure": true,
-      "expiry": "Nov 10, 2025, 3:52:31 PM",
-      "value": "UID\u003d00000f414eb50970:T\u003d1729086751:RT\u003d1729086751:S\u003dALNI_MaunD4Lw3IcAYcJl_1tB-OV9F8qLQ"
-    },
-    {
-      "path": "/",
-      "domain": ".automationexercise.com",
-      "name": "__eoi",
-      "isHttpOnly": false,
-      "isSecure": true,
-      "expiry": "Apr 14, 2025, 3:52:31 PM",
-      "value": "ID\u003ddcb7ace9ff047a37:T\u003d1729086751:RT\u003d1729086751:S\u003dAA-AfjYuWwvIvzcozSMDmnQNkQ1C"
-    },
-    {
-      "path": "/",
-      "domain": ".automationexercise.com",
-      "name": "__gsas",
-      "isHttpOnly": false,
-      "isSecure": false,
-      "expiry": "Nov 10, 2025, 3:52:40 PM",
-      "value": "ID\u003d91d13b4b9a6d078e:T\u003d1729086760:RT\u003d1729086760:S\u003dALNI_Ma9ytoitWNwVYfSa7_VkYwE_REXIw"
+      "expiry": "Oct 19, 2025, 4:26:54 AM",
+      "value": "%5B%5B%22AKsRol9X_WkdFD5AOYvsdNi77Wfso84C9sNUFLNGlfUEMtMWEm8TGJdpomoBOCRdcAOVZv0W0hDsNWQDELmtx9amQ15aS7SDzrj5Gj_-8HLyUeDffkY8NUkCceZ0h0bZYpZ2o1bgmTcbnB6WYdppEuqwabxV7XEONw%3D%3D%22%5D%5D"
     },
     {
       "path": "/",
@@ -42,8 +15,8 @@
       "name": "sessionid",
       "isHttpOnly": true,
       "isSecure": false,
-      "expiry": "Oct 30, 2024, 4:52:58 PM",
-      "value": "dnfmhw3rvajyk0lo763mt2hb9c7zrrce"
+      "expiry": "Nov 2, 2024, 3:26:55 AM",
+      "value": "ae5a9mjku9ijq8eyev02vil87dfni1hr"
     },
     {
       "path": "/",
@@ -51,17 +24,8 @@
       "name": "csrftoken",
       "isHttpOnly": false,
       "isSecure": false,
-      "expiry": "Oct 15, 2025, 4:52:58 PM",
-      "value": "CyWa10LopmH2wvXEwbUH3GzbXY2TG8lCVrAQqEqZuuE0FOUTwKaPCYIeDV98waYP"
-    },
-    {
-      "path": "/",
-      "domain": ".automationexercise.com",
-      "name": "__gads",
-      "isHttpOnly": false,
-      "isSecure": true,
-      "expiry": "Nov 10, 2025, 3:52:31 PM",
-      "value": "ID\u003d4bf3e6983123396f:T\u003d1729086751:RT\u003d1729086751:S\u003dALNI_MYaJYeNpx46GuTEYAXh2PM2UpHHwA"
+      "expiry": "Oct 18, 2025, 4:26:55 AM",
+      "value": "9ea3pPGmjs76FscibfriMVtZidw4YjsGpNLeZ6R2eNOwylbNguPKK7cTZSeAUFkN"
     }
   ],
   "username": "Test2605552"

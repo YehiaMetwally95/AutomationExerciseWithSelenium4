@@ -53,7 +53,7 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
     }
 
     public void onFinish(ISuite suite) {
-        //Print Out All Assertion Errors after Every Run
+        //Log All Soft Assertion Errors after Every Run with screenshot
         CustomSoftAssert.reportSoftAssertionErrors();
     }
 

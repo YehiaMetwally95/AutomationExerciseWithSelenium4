@@ -6,9 +6,9 @@
 - Using Fluent Wait Strategy to Synchronize all actions on elements without any Thread Sleep
 - Designing Powerful Util Class for Different Actions with Web Elements and Bot Pattern for Abstracting Successive interactions with Web Element
 - Test Data Management such that store All Test data in Json Files and Retrieve the Updated Test Data of Products and Users from MySQL Database
-- Generating Very Detailed Allure Reports with All Scenario Steps And Screenshots for Passed/Hard-Assertion-Failed/Soft-Assersion-Failed Tests
+- Generating Very Detailed Allure Reports with All Scenario Steps And Screenshots for Passed/Hard-Assertion-Failed/Soft-Assersion-Failed Tests and for API Requests and Responses
 - Perform Test Execution On Local / Headless / Remotely using Selenium Grid with Docker Containers
-- Performing Parallel Execution from CI/CD Pipeline with GitHub Actions, Supplied by Selenium Grid with Docker, To Run 15 Parallel Tests at same time, thus Reducing Execution time to reaches 90 seconds only to run all the 17 tests instead of 12 minutes when run sequentially
+- Performing Parallel Execution from CI/CD Pipeline with GitHub Actions, Supplied by Selenium Grid with Docker, To Run 15 Parallel Tests at same time, thus Reducing Execution time to reaches 90 seconds only to run all the 16 tests instead of 12 minutes when run sequentially
 - Bypassing UI Login for All Tests, Thus Reducing Execution time
 - Implementing the Test Automation Pyramid such that Run Tests Over API besides the UI, Thus Reduce the full Dependancy on Element Identifications and Allow Data Validations on API, Thus Reduce the possibility of Script failure, Reduce execution time, Reduce dependency on all system features to be working and Provide better test coverage
 - Using Dynamic Locators for Identifying Tabular data instead of complicated xpath expressions
@@ -18,7 +18,7 @@
 
 ## Installation
 ### Note : In Case of Local Execution and Without Sync from Database, You Don't have to Install Docker or Setup any of the Below 
-#### 1- Docker Must be Installed and Run on your machine and The Required Images are downloaded
+#### 1- Docker Must be Installed and Run on your machine
 #### 2- To Setup MySQL Database that store data of Products & Users, Just run the following command in Intellij Terminal
 ```bash
 docker compose -f src/main/resources/docker-compose-mysql-v3.yml up -d
@@ -65,6 +65,7 @@ docker compose -f src/main/resources/docker-compose-grid-v3.yml down ; docker co
 #### Reporting Using Allure Report
 - Reporting Test Result & Taking Screenshots for Failed Tests and Successful Tests
 - Reporting Soft assertion failures and Taking Screenshots for them 
+- Reporting All API Requests and Responses Sent, with a Screenshot for each
 - Logging All Scenario Steps and Test Validations, in form of main steps and expanding every main step to check its child steps
 - Defining Epics/Features/Stories
 
@@ -84,7 +85,7 @@ docker compose -f src/main/resources/docker-compose-grid-v3.yml down ; docker co
 #### Using TestNG XML File to Trigger Tests (Locally/Remotey) & On (Different Browsers) & (Sequencially/ In Parallel)
 
 #### Create CI/CD Pipeline with Github Actions
-- Workflow that run all the 17 E2E Tests in Parallel within 90 seconds only, In 2-Tiers of Parallelization 
+- Workflow that run all the 16 E2E Tests in Parallel within 90 seconds only, In 2-Tiers of Parallelization 
     - 1st Tier --> Parallel Execution across 6 Jobs, each one runs on different platforms (ubuntu/windows) and browsers (chrome/edge/firefox)
     - 2nd Tier --> Parallel Execution inside each Job with help of Selenium grid and Docker containers 
 - Two Workflows, One to run Tests over UI and the other to run the Same Tests over API which is much faster

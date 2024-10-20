@@ -39,25 +39,13 @@ public class WebElementsActionBot {
 
         //ActionBot2 for Pressing on Button or Link & Printing Button Name & Take Screenshot for Button
     public WebElementsActionBot press(By locator) throws IOException {
-
-        try {
-            Waits.getFluentWait(driver).until(f -> {
-                //System.out.println("Clicking On " + driver.findElement(locator).getText());
-            /*try {
-                takeElementScreenshot(driver,locator,pressedButtonsPath,generateUniqueInteger());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }*/
-                driver.findElement(locator).click();
+            Waits.getFluentWait(driver).until(f ->
+            {
+                ((JavascriptExecutor)driver).
+                        executeScript("arguments[0].click();", driver.findElement(locator));
                 return true;
             });
-        }catch (TimeoutException e)
-        //If Webdriver Click fails and fluent wait throw Timeout Exception, Try to click using JS
-        {
-            ((JavascriptExecutor)driver).executeScript("arguments[0].click();", driver.findElement(locator));
-        }
-
-        return this;
+            return this;
     }
 
     public WebElementsActionBot press(WebElement element) throws IOException {
@@ -128,15 +116,6 @@ public class WebElementsActionBot {
             return false;
         }
         return true;
-    }
-
-        //ActionBot7 for Get Page Title
-    public String getPageTitle(){
-            Waits.getFluentWait(driver).until(f -> {
-                driver.getTitle();
-                return true;
-            });
-        return driver.getTitle();
     }
 
         //ActionBot8 for Hover on Element

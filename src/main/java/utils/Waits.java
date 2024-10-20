@@ -34,6 +34,7 @@ public class Waits {
                 .ignoring(ElementNotInteractableException.class)
                 .ignoring(AssertionError.class)
                 .ignoring(StaleElementReferenceException.class)
-                .ignoring(JavascriptException.class);
+                .ignoring(JavascriptException.class)
+                .ignoring(ElementClickInterceptedException.class);
     }
 }
