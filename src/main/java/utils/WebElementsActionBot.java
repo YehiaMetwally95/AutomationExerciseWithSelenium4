@@ -39,17 +39,17 @@ public class WebElementsActionBot {
 
         //ActionBot2 for Pressing on Button or Link & Printing Button Name & Take Screenshot for Button
     public WebElementsActionBot press(By locator) throws IOException {
-
-        Waits.getFluentWait(driver).until(f -> {
-            //System.out.println("Clicking On " + driver.findElement(locator).getText());
+         Waits.getFluentWait(driver).until(f -> {
+                //System.out.println("Clicking On " + driver.findElement(locator).getText());
             /*try {
                 takeElementScreenshot(driver,locator,pressedButtonsPath,generateUniqueInteger());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }*/
-            driver.findElement(locator).click();
-            return true;
-        });
+                ((JavascriptExecutor)driver).executeScript("arguments[0].click();", driver.findElement(locator));
+                return true;
+            });
+
         return this;
     }
 
