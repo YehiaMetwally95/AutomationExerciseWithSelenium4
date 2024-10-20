@@ -65,7 +65,7 @@ public class WebElementsActionBot {
                 element.click();
                 return true;
             });
-        }catch (TimeoutException e)
+        }catch (ElementClickInterceptedException e)
         //If Webdriver Click fails and fluent wait throw Timeout Exception, Try to click using JS
         {
             ((JavascriptExecutor)driver).executeScript("arguments[0].click();", element);
