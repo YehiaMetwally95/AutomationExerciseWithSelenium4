@@ -54,7 +54,7 @@ public class WebElementsActionBot {
         }catch (TimeoutException e)
         //If Webdriver Click fails and fluent wait throw Timeout Exception, Try to click using JS
         {
-            e.getMessage();
+           System.out.println("Yehiaaaaaaaaaaaaa");
         }
         return this;
     }
