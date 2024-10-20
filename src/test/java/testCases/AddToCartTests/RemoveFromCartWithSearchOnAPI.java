@@ -77,8 +77,11 @@ public class RemoveFromCartWithSearchOnAPI extends BaseTest {
     // Open Cart Page and Remove 3 Products On GUI Layer
                 .viewCart()
                 .verifyCartPageIsOpened(json.getData("Messages.ShoppingCartHeader"))
+                .refreshCart()
                 .removeProductFromCart(json.getData("Products[0].Name"))
+                .refreshCart()
                 .removeProductFromCart(json.getData("Products[4].Name"))
+                .refreshCart()
                 .removeProductFromCart(json.getData("Products[3].Name"))
                 .refreshCart()
                 // Validate the Added and Removed Products on Cart On GUI Layer
