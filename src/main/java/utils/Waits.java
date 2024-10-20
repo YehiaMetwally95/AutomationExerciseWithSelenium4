@@ -31,7 +31,6 @@ public class Waits {
                         Integer.parseInt(getPropertiesValue("FluentWaitPolling")
                 )))
                 .ignoring(NotFoundException.class)
-                .ignoring(ElementNotInteractableException.class)
                 .ignoring(AssertionError.class)
                 .ignoring(StaleElementReferenceException.class)
                 .ignoring(JavascriptException.class);
