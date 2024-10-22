@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import org.json.simple.parser.ParseException;
 import pojoClassesForAPIs.RegistrationRequestPojo;
 import pojoClassesForAPIs.RegistrationResponsePojo;
 import utils.JsonManager;
@@ -30,7 +29,7 @@ public class RegistrationRequestModel {
 
     //Method to set Request Body by reading from Json File
     @Step("Prepare Registration Request Body From Json File")
-    public RegistrationRequestModel prepareRegisterRequest(String userData) throws IOException, ParseException {
+    public RegistrationRequestModel prepareRegisterRequest(String userData) throws IOException {
         mapper = new JsonMapper();
         requestObject = mapper.readValue(userData, RegistrationRequestPojo.class);
         return this;

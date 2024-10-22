@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import org.json.simple.parser.ParseException;
 import pojoClassesForAPIs.SearchProductRequestPojo;
 import pojoClassesForAPIs.SearchProductResponsePojo;
 
@@ -29,7 +28,7 @@ public class SearchProductRequestModel {
 
     //Method to set Request body by Product name
     @Step("Set a Product Name to Request Body")
-    public SearchProductRequestModel prepareSearchProductRequest(String productName) throws IOException, ParseException {
+    public SearchProductRequestModel prepareSearchProductRequest(String productName) {
         requestObject = SearchProductRequestPojo.builder()
                 .search_product(productName)
                 .build();

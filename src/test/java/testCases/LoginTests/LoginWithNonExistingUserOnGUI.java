@@ -2,7 +2,6 @@ package testCases.LoginTests;
 
 import baseTest.BaseTest;
 import io.qameta.allure.*;
-import org.json.simple.parser.ParseException;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -26,7 +25,7 @@ public class LoginWithNonExistingUserOnGUI extends BaseTest {
     @Description("Login With Non Existing User")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void loginWithNonExistingUserThroughGUI() throws IOException, ParseException {
+    public void loginWithNonExistingUserThroughGUI() throws IOException {
         new HomePage(getDriver(isolatedDriver))
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()

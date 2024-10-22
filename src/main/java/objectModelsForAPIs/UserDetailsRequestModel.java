@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import org.json.simple.parser.ParseException;
 import pojoClassesForAPIs.UserDetailsRequestPojo;
 import pojoClassesForAPIs.UserDetailsResponsePojo;
 
@@ -30,7 +29,7 @@ public class UserDetailsRequestModel {
 
     //Method to set Request Parameter by User Email
     @Step("Set Request Parameters by User Email")
-    public UserDetailsRequestModel prepareUserDetailsRequest(String userEmail) throws IOException, ParseException {
+    public UserDetailsRequestModel prepareUserDetailsRequest(String userEmail) {
         queryParam = new HashMap<>();
         queryParam.put("email",userEmail);
         return this;

@@ -2,7 +2,6 @@ package testCases.RegisterTests;
 
 import baseTest.BaseTest;
 import io.qameta.allure.*;
-import org.json.simple.parser.ParseException;
 import org.testng.annotations.*;
 import pages.HomePage;
 import pages.RegisterPage;
@@ -27,7 +26,7 @@ public class RegisterNewUserOnGUI extends BaseTest {
 
     //Test Data Preparation as setting registration inputs with random data
     @BeforeMethod
-    public void prepareTestData() throws IOException, ParseException {
+    public void prepareTestData() throws IOException {
         json = new JsonManager(jsonFilePath);
         json
                 .setData("NewUser1.Title",RegisterPage.getRandomTitle())
@@ -53,7 +52,7 @@ public class RegisterNewUserOnGUI extends BaseTest {
     @Description("Register New User On GUI")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void registerNewUserThroughGUI() throws IOException, ParseException {
+    public void registerNewUserThroughGUI() throws IOException {
         new HomePage(getDriver(isolatedDriver))
                 .verifyHomePageIsOpened()
                 .openLoginSignupPage()
@@ -73,7 +72,7 @@ public class RegisterNewUserOnGUI extends BaseTest {
     }
 
     @AfterMethod
-    public void updateDatabaseWithNewData() throws IOException, SQLException, ParseException {
+    public void updateDatabaseWithNewData() throws IOException, SQLException {
         if (System.getProperty("syncWithDB").equalsIgnoreCase("true")) {
             String title = json.getData("NewUser1.Title");
             String name = json.getData("NewUser1.Name");

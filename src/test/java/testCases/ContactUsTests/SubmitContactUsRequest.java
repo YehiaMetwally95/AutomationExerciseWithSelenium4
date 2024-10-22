@@ -2,7 +2,6 @@ package testCases.ContactUsTests;
 
 import baseTest.BaseTest;
 import io.qameta.allure.*;
-import org.json.simple.parser.ParseException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -26,7 +25,7 @@ public class SubmitContactUsRequest extends BaseTest {
 
     //Apply Saved Cookies to Current Session to ByPass Login
     @BeforeMethod
-    public void byPassLogin() throws IOException, ParseException {
+    public void byPassLogin() throws IOException {
         new SessionManager(getDriver(isolatedDriver), jsonFilePathForSessionDataUser0).applyCookiesToCurrentSession();
     }
 
@@ -34,7 +33,7 @@ public class SubmitContactUsRequest extends BaseTest {
     @Description("Submit Contact Us Request")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void submitContactusRequest() throws IOException, ParseException {
+    public void submitContactusRequest() throws IOException {
         new HomePage(getDriver(isolatedDriver))
                 .openContactUsPage()
                 .verifyContactUsPageIsOpened(json.getData("Messages.ContactUsHeader"))

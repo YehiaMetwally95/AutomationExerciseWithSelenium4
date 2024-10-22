@@ -2,7 +2,6 @@ package testCases.LoginTests;
 
 import baseTest.BaseTest;
 import io.qameta.allure.*;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -27,7 +26,7 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
     @Description("Login With Existing User")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void loginWithExistingUser_0ThroughGUI() throws IOException, ParseException {
+    public void loginWithExistingUser_0ThroughGUI() throws IOException {
         WebDriver driver = getDriver(isolatedDriver);
         new HomePage(driver)
                 .verifyHomePageIsOpened()
@@ -44,7 +43,7 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
     @Description("Login With Existing User")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void loginWithExistingUser_1ThroughGUI() throws IOException, ParseException {
+    public void loginWithExistingUser_1ThroughGUI() throws IOException {
         WebDriver driver = getDriver(isolatedDriver);
         new HomePage(driver)
                 .verifyHomePageIsOpened()
@@ -61,7 +60,7 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
     @Description("Login With Existing User")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void loginWithExistingUser_2ThroughGUI() throws IOException, ParseException {
+    public void loginWithExistingUser_2ThroughGUI() throws IOException {
         WebDriver driver = getDriver(isolatedDriver);
         new HomePage(driver)
                 .verifyHomePageIsOpened()
@@ -78,7 +77,7 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
     @Description("Login With Existing User")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void loginWithExistingUser_3ThroughGUI() throws IOException, ParseException {
+    public void loginWithExistingUser_3ThroughGUI() throws IOException {
         WebDriver driver = getDriver(isolatedDriver);
         new HomePage(driver)
                 .verifyHomePageIsOpened()
@@ -95,7 +94,7 @@ public class LoginWithExistingUserOnGUI extends BaseTest {
     @Description("Login With Existing User")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void loginWithExistingUser_4ThroughGUI() throws IOException, ParseException {
+    public void loginWithExistingUser_4ThroughGUI() throws IOException {
         WebDriver driver = getDriver(isolatedDriver);
         new HomePage(driver)
                 .verifyHomePageIsOpened()

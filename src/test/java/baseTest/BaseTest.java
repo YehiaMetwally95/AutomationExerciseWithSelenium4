@@ -1,6 +1,5 @@
 package baseTest;
 
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.*;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -30,7 +29,7 @@ public class BaseTest {
     //Open Browser
     @Parameters({"BrowserType"})
     @BeforeMethod
-    public void setUpAndOpenBrowser(@Optional String browserType) throws IOException, ParseException {
+    public void setUpAndOpenBrowser(@Optional String browserType) throws IOException {
         //Open Browser
         WebDriver driver = openBrowser();
 

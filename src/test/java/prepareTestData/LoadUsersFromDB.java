@@ -1,7 +1,6 @@
 package prepareTestData;
 
 import io.qameta.allure.Description;
-import org.json.simple.parser.ParseException;
 import org.testng.annotations.Test;
 import utils.JDBCManager;
 
@@ -17,7 +16,7 @@ public class LoadUsersFromDB {
 
     @Description("Load The Latest User from DB and Update them into Test Data Json Files")
     @Test
-    public static void loadUsersFromDB() throws SQLException, IOException, ParseException {
+    public static void loadUsersFromDB() throws SQLException, IOException {
         String dbQuery = "SELECT Title,Username,Email,Password,DayofBirth,MonthofBirth,YearofBirth,FirstName,LastName,Company,Address1,Address2,Country,State,City,ZipCode,MobileNumber FROM automationexercise.users Order By Username Asc;";
 
         //JsonKeys shall be filled by the same order of table columns of database query
@@ -29,10 +28,10 @@ public class LoadUsersFromDB {
         //In Case of writing JsonMainKey for every record, Each Record will represent an object value for the corresponding JsonMainKey,In this case JsonMainKeys shall be filled by the same order of table rows on database
         String jsonMainKeyForUsers = "Users";
 
-        JDBCManager.setJsonFileFromDBForNestedArrayOfJsonObjects(dbQuery, jsonFilePathForAddToCart, jsonKeysForUsers, jsonMainKeyForUsers);
-        JDBCManager.setJsonFileFromDBForNestedArrayOfJsonObjects(dbQuery, jsonFilePathForCheckout, jsonKeysForUsers, jsonMainKeyForUsers);
-        JDBCManager.setJsonFileFromDBForNestedArrayOfJsonObjects(dbQuery, jsonFilePathForSearchProduct, jsonKeysForUsers, jsonMainKeyForUsers);
-        JDBCManager.setJsonFileFromDBForNestedArrayOfJsonObjects(dbQuery, jsonFilePathForLogin, jsonKeysForUsers, jsonMainKeyForUsers);
-        JDBCManager.setJsonFileFromDBForNestedArrayOfJsonObjects(dbQuery, jsonFilePathForContactus, jsonKeysForUsers, jsonMainKeyForUsers);
+        JDBCManager.setJsonFileFromDBAsNestedArrayOfJsonObjects(dbQuery, jsonFilePathForAddToCart, jsonKeysForUsers, jsonMainKeyForUsers);
+        JDBCManager.setJsonFileFromDBAsNestedArrayOfJsonObjects(dbQuery, jsonFilePathForCheckout, jsonKeysForUsers, jsonMainKeyForUsers);
+        JDBCManager.setJsonFileFromDBAsNestedArrayOfJsonObjects(dbQuery, jsonFilePathForSearchProduct, jsonKeysForUsers, jsonMainKeyForUsers);
+        JDBCManager.setJsonFileFromDBAsNestedArrayOfJsonObjects(dbQuery, jsonFilePathForLogin, jsonKeysForUsers, jsonMainKeyForUsers);
+        JDBCManager.setJsonFileFromDBAsNestedArrayOfJsonObjects(dbQuery, jsonFilePathForContactus, jsonKeysForUsers, jsonMainKeyForUsers);
     }
 }

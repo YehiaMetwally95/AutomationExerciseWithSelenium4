@@ -2,7 +2,6 @@ package testCases.AddToCartTests;
 
 import baseTest.BaseTest;
 import io.qameta.allure.*;
-import org.json.simple.parser.ParseException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -25,7 +24,7 @@ public class AddToCartWithSearchOnGUI extends BaseTest {
 
     //Apply Saved Cookies to Current Session to ByPass Login
     @BeforeMethod
-    public void byPassLogin() throws IOException, ParseException {
+    public void byPassLogin() throws IOException {
         new SessionManager(getDriver(isolatedDriver), jsonFilePathForSessionDataUser1).applyCookiesToCurrentSession();
     }
 
@@ -41,7 +40,7 @@ public class AddToCartWithSearchOnGUI extends BaseTest {
     @Description("Search for Product On GUI then Add Product To Cart")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void addProductToCartWithSearchOnGUI() throws IOException, ParseException {
+    public void addProductToCartWithSearchOnGUI() throws IOException {
         new HomePage(getDriver(isolatedDriver))
                 .verifyHomePageIsOpened()
                 // Search for Products and Add them to Cart On GUI Layer

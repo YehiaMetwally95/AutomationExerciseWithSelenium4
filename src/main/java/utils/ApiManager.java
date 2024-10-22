@@ -1,20 +1,19 @@
 package utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import io.qameta.allure.restassured.AllureRestAssured;
+
+import com.google.gson.JsonObject;
 import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.json.JSONObject;
 
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import static utils.JsonManager.convertJsonStringToMap;
 import static utils.Screenshot.logApiRequestsToAllureReport;
 
 public class ApiManager {
@@ -34,10 +33,7 @@ public class ApiManager {
             else if (contentType.equalsIgnoreCase("application/x-www-form-urlencoded"))
             {
                 //convert requestObject to Map
-                Gson gson = new Gson();
-                String json = gson.toJson(requestBody);
-                Map<String, Object> map = gson.fromJson(json, new TypeToken<Map<String, Object>>() {}.getType());
-
+                Map<String, Object> map = convertJsonStringToMap(requestBody);
                 request = request.contentType(contentType + "; charset=utf-8").formParams(map);
             }
         }
@@ -76,9 +72,7 @@ public class ApiManager {
             else if (contentType.equalsIgnoreCase("application/x-www-form-urlencoded"))
             {
                 //convert requestObject to Map
-                Gson gson = new Gson();
-                String json = gson.toJson(requestBody);
-                Map<String, Object> map = gson.fromJson(json, new TypeToken<Map<String, Object>>() {}.getType());
+                Map<String, Object> map = convertJsonStringToMap(requestBody);
                 request = request.contentType(contentType + "; charset=utf-8").formParams(map);
             }
         }
@@ -178,11 +172,9 @@ public class ApiManager {
         return response.jsonPath().getString(jsonPath);
     }
 
-    public static JSONObject getJsonObjectfromResponse(Response response, String jsonPath)
+    public static JsonObject getJsonObjectfromResponse(Response response, String jsonPath)
     {
-        Map map = response.jsonPath().getJsonObject(jsonPath);
-        JSONObject object = new JSONObject(map);
-        return object;
+        return response.jsonPath().getJsonObject(jsonPath);
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////

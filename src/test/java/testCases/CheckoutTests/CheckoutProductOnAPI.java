@@ -4,7 +4,6 @@ import baseTest.BaseTest;
 import io.qameta.allure.*;
 import objectModelsForAPIs.SearchProductRequestModel;
 import objectModelsForAPIs.UserDetailsRequestModel;
-import org.json.simple.parser.ParseException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -27,7 +26,7 @@ public class CheckoutProductOnAPI extends BaseTest {
 
     //Apply Saved Cookies to Current Session to ByPass Login
     @BeforeMethod
-    public void byPassLogin() throws IOException, ParseException {
+    public void byPassLogin() throws IOException {
         new SessionManager(getDriver(isolatedDriver), jsonFilePathForSessionDataUser3)
                 .applyCookiesToCurrentSession();
     }
@@ -44,7 +43,7 @@ public class CheckoutProductOnAPI extends BaseTest {
     @Description("Search For Product On API then Add Products To Cart Then Checkout")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void checkoutProductsOnAPI() throws IOException, ParseException {
+    public void checkoutProductsOnAPI() throws IOException {
     // Search for Products On API Layer
         var searchProductResponse1 = new SearchProductRequestModel()
                 .prepareSearchProductRequest(json.getData("Products[0].Name"))

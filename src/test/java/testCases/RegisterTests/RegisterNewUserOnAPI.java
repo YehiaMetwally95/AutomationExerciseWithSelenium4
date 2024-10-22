@@ -3,7 +3,6 @@ package testCases.RegisterTests;
 import baseTest.BaseTest;
 import io.qameta.allure.*;
 import objectModelsForAPIs.RegistrationRequestModel;
-import org.json.simple.parser.ParseException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -32,7 +31,7 @@ public class RegisterNewUserOnAPI extends BaseTest {
 
     //Test Data Preparation as setting registration inputs with random data
     @BeforeMethod
-    public void prepareTestData() throws IOException, ParseException {
+    public void prepareTestData() throws IOException {
         json = new JsonManager(jsonFilePath);
         json
                 .setData("NewUser2.Title",RegisterPage.getRandomTitle())
@@ -58,7 +57,7 @@ public class RegisterNewUserOnAPI extends BaseTest {
     @Description("Register New User On API")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void registerNewUserThroughAPI() throws IOException, ParseException {
+    public void registerNewUserThroughAPI() throws IOException {
         var registerRequestObject = new RegistrationRequestModel()
                 .prepareRegisterRequest(json.getData("NewUser2"))
                 .sendRegisterRequest()
@@ -75,7 +74,7 @@ public class RegisterNewUserOnAPI extends BaseTest {
     }
 
     @AfterMethod
-    public void updateDatabaseWithNewData() throws IOException, SQLException, ParseException {
+    public void updateDatabaseWithNewData() throws IOException, SQLException {
         if (System.getProperty("syncWithDB").equalsIgnoreCase("true")) {
             String title = json.getData("NewUser2.Title");
             String name = json.getData("NewUser2.Name");

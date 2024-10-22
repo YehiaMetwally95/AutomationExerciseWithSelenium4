@@ -2,7 +2,6 @@ package testCases.SearchProductTests;
 
 import baseTest.BaseTest;
 import io.qameta.allure.*;
-import org.json.simple.parser.ParseException;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -24,7 +23,7 @@ public class SearchForProductOnGUI extends BaseTest {
     @Description("Search For Product And Open Product Page On GUI")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void searchForProductAndOpenProductPageOnGUI() throws IOException, ParseException {
+    public void searchForProductAndOpenProductPageOnGUI() throws IOException {
         new HomePage(getDriver(isolatedDriver))
                 .openProductsPage()
                 .verifyProductPageIsOpened(json.getData("Messages.AllProductsHeader"))

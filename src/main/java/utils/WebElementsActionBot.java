@@ -1,5 +1,6 @@
 package utils;
 
+import io.qameta.allure.Allure;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.WheelInput;
@@ -48,6 +49,7 @@ public class WebElementsActionBot {
                 throw new RuntimeException(e);
             }*/
                 driver.findElement(locator).click();
+                Allure.step("YehiaStep");
                 return true;
             });
         }catch (ElementNotInteractableException e)

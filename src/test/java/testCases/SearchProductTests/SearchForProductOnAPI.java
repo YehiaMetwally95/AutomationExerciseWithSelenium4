@@ -3,7 +3,6 @@ package testCases.SearchProductTests;
 import baseTest.BaseTest;
 import io.qameta.allure.*;
 import objectModelsForAPIs.SearchProductRequestModel;
-import org.json.simple.parser.ParseException;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -26,7 +25,7 @@ public class SearchForProductOnAPI extends BaseTest {
     @Description("Search For Product And Open Product Page On API")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void searchForProductAndOpenProductPageOnAPI() throws IOException, ParseException {
+    public void searchForProductAndOpenProductPageOnAPI() throws IOException {
         // Search For Product is done On API Layer
         var searchProductResponse = new SearchProductRequestModel()
                 .prepareSearchProductRequest(json.getData("Products[1].Name"))
