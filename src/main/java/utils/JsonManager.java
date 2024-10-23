@@ -1,11 +1,14 @@
 package utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.*;
 import com.jayway.jsonpath.*;
 
 import com.google.gson.reflect.TypeToken;
 
 import org.apache.commons.io.FileUtils;
+import org.testng.annotations.Test;
 
 import java.io.*;
 import java.util.HashMap;
@@ -22,17 +25,25 @@ public class JsonManager {
         this.filePath = filePath;
     }
 
-    //Method to Get JsonData by Key as String
+    //Method to Get JsonData as String using JsonPath Expression
     public String getData(String jsonPath) throws IOException {
-        return JsonPath.parse(new File(filePath)).read(jsonPath);
+        Object result = JsonPath.parse(new File(filePath)).read(jsonPath);
+        if (result.toString().contains("{"))
+            return JsonPath.parse(result).jsonString();
+        else
+            return result.toString();
     }
 
-    //Method to Get JsonData by Key expressed as Json Object
+    //Method to Get JsonData as Object using JsonPath Expression
     public Object getDataAsJson(String jsonPath) throws IOException {
-        return JsonPath.parse(new File(filePath)).read(jsonPath);
+        Object result = JsonPath.parse(new File(filePath)).read(jsonPath);
+        if (result.toString().contains("{"))
+            return JsonPath.parse(result).json();
+        else
+            return result;
     }
 
-    //Method to Get JsonData by Key expressed as Json Array
+    //Method to Get JsonData as JsonArray using JsonPath Expression
     public JsonArray getDataAsJsonArray(String jsonPath) throws IOException {
         List<Object> list = JsonPath.parse(new File(filePath)).read(jsonPath);
         return JsonParser.parseString(list.toString()).getAsJsonArray();
@@ -40,8 +51,13 @@ public class JsonManager {
 
     //Method to Set Key expressed in JsonPath with new value
     public JsonManager setData(String jsonPath, String value) throws IOException {
-        Object obj = readJsonFile(filePath);
-        JsonPath.parse(obj).set(jsonPath,value);
+        // Read the Json File and convert it to Json String
+        String jsonString = readJsonFile(filePath).toString();
+        // Parse the Json String and set the key with new value through jsonPath Expression
+        jsonString = JsonPath.parse(jsonString).set(jsonPath,value).jsonString();
+        // Convert the Updated Json String into Json Object
+        JsonObject obj = JsonParser.parseString(jsonString).getAsJsonObject();
+        // Set the Json File with the new Json Object
         createJsonFile(obj,filePath);
         return this;
     }
@@ -91,7 +107,6 @@ public class JsonManager {
                 gson.fromJson(jsonString, new TypeToken<Map<String, Object>>() {}.getType());
         return map;
     }
-
 }
 
 
