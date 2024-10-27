@@ -32,7 +32,7 @@ jobs:
           maven-version: 3.9.4
 
       - name: Set up MySQL Server with Docker Containers
-        run: docker run --name dockerDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yehia -d mysql && \sleep 10 && \docker cp src/test/resources/DBFiles/ProductsAndUsers.sql dockerDB:/ProductsAndUsers.sql && \docker exec -i dockerDB mysql -u root -p'yehia' -e "SOURCE /ProductsAndUsers.sql;"
+        run: docker compose -f src/main/resources/dockerFiles/docker-compose-mysql-v3.yml up -d
 
       - name: Set up Selenium Grid with Docker Containers
         run: docker compose -f src/main/resources/docker-compose-mysql-v3.yml up -d
@@ -67,4 +67,4 @@ jobs:
       - name: Cleanup Docker Containers
         if: always()
         run: |
-          docker compose -f src/main/resources/docker-compose-grid-v3.yml down && docker compose -f src/main/resources/docker-compose-mysql-v3.yml down
+          docker compose -f src/main/resources/dockerFiles/docker-compose-grid-v3.yml down ; docker compose -f src/main/resources/docker-compose-mysql-v3.yml down 
