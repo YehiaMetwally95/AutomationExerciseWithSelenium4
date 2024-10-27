@@ -37,12 +37,6 @@ public class BaseTest {
         }
     }
 
-    @AfterSuite
-    public void logAssertionErrors() throws SQLException, IOException {
-        //Log All Soft Assertion Errors after Every Run with screenshot
-        CustomSoftAssert.reportSoftAssertionErrors();
-    }
-
     //Open Browser
     @Parameters({"BrowserType"})
     @BeforeMethod

@@ -27,6 +27,7 @@ public class PropertiesManager {
                 properties.putAll(System.getProperties());
                 System.getProperties().putAll(properties);
             });
+            logInfo("Loading Properties File Data");
             return properties;
         }catch (Exception e)
         {

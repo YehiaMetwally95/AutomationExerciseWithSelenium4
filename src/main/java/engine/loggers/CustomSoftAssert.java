@@ -20,11 +20,6 @@ public class CustomSoftAssert extends SoftAssert{
 
     public static void reportSoftAssertionErrors()
     {
-        try{
-            softAssert.assertAll("The Soft Assertion Errors are listed below: ");
-        }catch (AssertionError e)
-        {
-            logError("Failed to Report Soft Assertion Errors",e);
-        }
+        softAssert.assertAll("The Soft Assertion Errors are listed below: ");
     }
 }
