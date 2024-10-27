@@ -2,10 +2,12 @@ package engine.loggers;
 
 import lombok.SneakyThrows;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.asserts.IAssert;
 import org.testng.asserts.SoftAssert;
 
 import static engine.loggers.LogHelper.logError;
+import static engine.loggers.LogHelper.logWarning;
 
 public class CustomSoftAssert extends SoftAssert{
 
@@ -20,6 +22,11 @@ public class CustomSoftAssert extends SoftAssert{
 
     public static void reportSoftAssertionErrors()
     {
-        softAssert.assertAll("The Soft Assertion Errors are listed below: ");
+        try{
+            softAssert.assertAll("The Soft Assertion Errors are listed below: ");
+        }catch (Exception e)
+        {
+            logError("Failed to Log the Soft Assertion Errors",e);
+        }
     }
 }
