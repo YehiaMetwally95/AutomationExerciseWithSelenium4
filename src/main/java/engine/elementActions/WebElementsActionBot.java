@@ -97,7 +97,7 @@ public class WebElementsActionBot {
     public boolean isElementDisplayed(By locator){
         try{
             //Wait until Element is Displayed on Page
-            WaitsManager.getFluentWait(driver).until(f -> driver.findElement(locator).isDisplayed());
+            WaitsManager.getExplicitWait(driver).until(f -> driver.findElement(locator).isDisplayed());
             //Get Element Accessible Name
             String elementName = getElementName(locator);
             logInfo("The Element [" + elementName + "] is Displayed");

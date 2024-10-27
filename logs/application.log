@@ -1,71 +1,104 @@
-[INFO] - Loading Properties File Data - - [03:45:38] - LogHelper 
-[INFO] - Retrieving Test Data From DB - - [03:45:39] - LogHelper 
-[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/AddToCartTestData.json] - - [03:45:39] - LogHelper 
-[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/AddToCartTestData.json] - - [03:45:39] - LogHelper 
-[INFO] - Storing DB Data into Json Test Data Files - - [03:45:39] - LogHelper 
-[INFO] - Retrieving Test Data From DB - - [03:45:39] - LogHelper 
-[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/CheckoutTestData.json] - - [03:45:39] - LogHelper 
-[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/CheckoutTestData.json] - - [03:45:39] - LogHelper 
-[INFO] - Storing DB Data into Json Test Data Files - - [03:45:39] - LogHelper 
-[INFO] - Retrieving Test Data From DB - - [03:45:39] - LogHelper 
-[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/SearchProductTestData.json] - - [03:45:39] - LogHelper 
-[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/SearchProductTestData.json] - - [03:45:39] - LogHelper 
-[INFO] - Storing DB Data into Json Test Data Files - - [03:45:39] - LogHelper 
-[INFO] - Retrieving Test Data From DB - - [03:45:39] - LogHelper 
-[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/AddToCartTestData.json] - - [03:45:39] - LogHelper 
-[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/AddToCartTestData.json] - - [03:45:39] - LogHelper 
-[INFO] - Storing DB Data into Json Test Data Files - - [03:45:39] - LogHelper 
-[INFO] - Retrieving Test Data From DB - - [03:45:39] - LogHelper 
-[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/CheckoutTestData.json] - - [03:45:39] - LogHelper 
-[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/CheckoutTestData.json] - - [03:45:39] - LogHelper 
-[INFO] - Storing DB Data into Json Test Data Files - - [03:45:39] - LogHelper 
-[INFO] - Retrieving Test Data From DB - - [03:45:39] - LogHelper 
-[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/SearchProductTestData.json] - - [03:45:39] - LogHelper 
-[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/SearchProductTestData.json] - - [03:45:39] - LogHelper 
-[INFO] - Storing DB Data into Json Test Data Files - - [03:45:39] - LogHelper 
-[INFO] - Retrieving Test Data From DB - - [03:45:40] - LogHelper 
-[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/LoginTestData.json] - - [03:45:40] - LogHelper 
-[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/LoginTestData.json] - - [03:45:40] - LogHelper 
-[INFO] - Storing DB Data into Json Test Data Files - - [03:45:40] - LogHelper 
-[INFO] - Retrieving Test Data From DB - - [03:45:40] - LogHelper 
-[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/ContactusTestData.json] - - [03:45:40] - LogHelper 
-[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/ContactusTestData.json] - - [03:45:40] - LogHelper 
-[INFO] - Storing DB Data into Json Test Data Files - - [03:45:40] - LogHelper 
-[INFO] - Starting Chrome Browser ............ - - [03:45:43] - LogHelper 
-[INFO] - Navigating to URL [https://automationexercise.com/] - - [03:45:46] - LogHelper 
-[DEBUG] - Evaluating path: $['cookies_data'] - [03:45:47] - CompiledPath 
-[INFO] - Getting Test Data [[{"path":"/","domain":".automationexercise.com","name":"__gpi","isHttpOnly":false,"isSecure":true,"expiry":"Nov 10, 2025, 3:51:48 PM","value":"UID=00000f0bb7b50b10:T=1729086708:RT=1729086708:S=ALNI_MbZfnmky38SV5F_07Aqw3xoUrNSxA"},{"path":"/","domain":".automationexercise.com","name":"__eoi","isHttpOnly":false,"isSecure":true,"expiry":"Apr 14, 2025, 3:51:48 PM","value":"ID=b0d59e407bffe5fb:T=1729086708:RT=1729086708:S=AA-AfjYrwDcohcTd69i9DwKXw6-g"},{"path":"/","domain":"automationexercise.com","name":"sessionid","isHttpOnly":true,"isSecure":false,"expiry":"Oct 30, 2024, 4:51:53 PM","value":"af4u7hvf7xorpb2llcjp5swwoknqy5re"},{"path":"/","domain":"automationexercise.com","name":"csrftoken","isHttpOnly":false,"isSecure":false,"expiry":"Oct 15, 2025, 4:51:53 PM","value":"zPMYogwiBhOiiSj0ecK8xKHvRvubqGofFF3QQtV9PpTrfFf8NW1xcfwSo2aNOJUm"},{"path":"/","domain":".automationexercise.com","name":"__gads","isHttpOnly":false,"isSecure":true,"expiry":"Nov 10, 2025, 3:51:48 PM","value":"ID=b8223b93bd719840:T=1729086708:RT=1729086708:S=ALNI_MaOvYZ3RgtPsop71Hkaj_n16AE1YA"}]] by Json Path [cookies_data] - - [03:45:47] - LogHelper 
-[INFO] - Applying Cookies to Current Browser Session - - [03:45:48] - LogHelper 
-[INFO] - Refreshing the current Browser Window - - [03:45:50] - LogHelper 
-[INFO] - Clicking on Element [ Contact us] - - [03:45:54] - LogHelper 
-[DEBUG] - Evaluating path: $['Messages']['RequestSubmitted'] - [03:45:54] - CompiledPath 
-[INFO] - Getting Test Data [Success! Your details have been submitted successfully.] by Json Path [Messages.RequestSubmitted] - - [03:45:54] - LogHelper 
-[INFO] - Getting Text [CONTACT US] from Element located by [By.cssSelector: .col-sm-12 h2] - - [03:45:55] - LogHelper 
-[INFO] - Capturing Screenshot for Soft Assertion Failure - - [03:45:56] - LogHelper 
-[DEBUG] - Evaluating path: $['Details']['Name'] - [03:45:56] - CompiledPath 
-[INFO] - Getting Test Data [Yehia Metwally] by Json Path [Details.Name] - - [03:45:56] - LogHelper 
-[DEBUG] - Evaluating path: $['Details']['Email'] - [03:45:56] - CompiledPath 
-[INFO] - Getting Test Data [Yehia@gmail.com] by Json Path [Details.Email] - - [03:45:56] - LogHelper 
-[DEBUG] - Evaluating path: $['Details']['Subject'] - [03:45:56] - CompiledPath 
-[INFO] - Getting Test Data [Complaint] by Json Path [Details.Subject] - - [03:45:56] - LogHelper 
-[DEBUG] - Evaluating path: $['Details']['Description'] - [03:45:56] - CompiledPath 
-[INFO] - Getting Test Data [Payment is failed while checkout more than 50 products] by Json Path [Details.Description] - - [03:45:56] - LogHelper 
-[DEBUG] - Evaluating path: $['Details']['FilePath'] - [03:45:56] - CompiledPath 
-[INFO] - Getting Test Data [\src\test\resources\FilesToBeUploaded\Mattresses.pdf] by Json Path [Details.FilePath] - - [03:45:56] - LogHelper 
-[INFO] - Clearing the Text on Element [Name] - - [03:45:57] - LogHelper 
-[INFO] - Typing [Yehia Metwally] on Element [Name] - - [03:45:57] - LogHelper 
-[INFO] - Clearing the Text on Element [Email] - - [03:45:58] - LogHelper 
-[INFO] - Typing [Yehia@gmail.com] on Element [Email] - - [03:45:58] - LogHelper 
-[INFO] - Clearing the Text on Element [Subject] - - [03:45:59] - LogHelper 
-[INFO] - Typing [Complaint] on Element [Subject] - - [03:45:59] - LogHelper 
-[INFO] - Clearing the Text on Element [Your Message Here] - - [03:45:59] - LogHelper 
-[INFO] - Typing [Payment is failed while checkout more than 50 products] on Element [Your Message Here] - - [03:46:00] - LogHelper 
-[INFO] - Clearing the Text on Element [Choose File] - - [03:46:00] - LogHelper 
-[INFO] - Typing [D:\AutomatestProject\AutomationExerciseBySelenium4\src\test\resources\FilesToBeUploaded\Mattresses.pdf] on Element [Choose File] - - [03:46:00] - LogHelper 
-[INFO] - Clicking on Element [Submit] - - [03:46:01] - LogHelper 
-[INFO] - Accepting the Alert - - [03:46:01] - LogHelper 
-[DEBUG] - Evaluating path: $['Messages']['RequestSubmitted'] - [03:46:01] - CompiledPath 
-[INFO] - Getting Test Data [Success! Your details have been submitted successfully.] by Json Path [Messages.RequestSubmitted] - - [03:46:01] - LogHelper 
-[INFO] - Getting Text [Success! Your details have been submitted successfully.] from Element located by [By.cssSelector: .contact-form .alert-success] - - [03:46:01] - LogHelper 
-[INFO] - Capturing Screenshot for Succeeded Scenario - - [03:46:03] - LogHelper 
-[INFO] - Closing All Browser Windows - - [03:46:07] - LogHelper 
+[INFO] - Loading Properties File Data - - [04:08:12] - LogHelper 
+[INFO] - Retrieving Test Data From DB - - [04:08:15] - LogHelper 
+[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/AddToCartTestData.json] - - [04:08:15] - LogHelper 
+[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/AddToCartTestData.json] - - [04:08:15] - LogHelper 
+[INFO] - Storing DB Data into Json Test Data Files - - [04:08:15] - LogHelper 
+[INFO] - Retrieving Test Data From DB - - [04:08:15] - LogHelper 
+[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/CheckoutTestData.json] - - [04:08:15] - LogHelper 
+[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/CheckoutTestData.json] - - [04:08:15] - LogHelper 
+[INFO] - Storing DB Data into Json Test Data Files - - [04:08:15] - LogHelper 
+[INFO] - Retrieving Test Data From DB - - [04:08:15] - LogHelper 
+[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/SearchProductTestData.json] - - [04:08:15] - LogHelper 
+[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/SearchProductTestData.json] - - [04:08:15] - LogHelper 
+[INFO] - Storing DB Data into Json Test Data Files - - [04:08:15] - LogHelper 
+[INFO] - Retrieving Test Data From DB - - [04:08:15] - LogHelper 
+[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/AddToCartTestData.json] - - [04:08:15] - LogHelper 
+[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/AddToCartTestData.json] - - [04:08:15] - LogHelper 
+[INFO] - Storing DB Data into Json Test Data Files - - [04:08:15] - LogHelper 
+[INFO] - Retrieving Test Data From DB - - [04:08:15] - LogHelper 
+[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/CheckoutTestData.json] - - [04:08:15] - LogHelper 
+[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/CheckoutTestData.json] - - [04:08:15] - LogHelper 
+[INFO] - Storing DB Data into Json Test Data Files - - [04:08:15] - LogHelper 
+[INFO] - Retrieving Test Data From DB - - [04:08:15] - LogHelper 
+[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/SearchProductTestData.json] - - [04:08:15] - LogHelper 
+[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/SearchProductTestData.json] - - [04:08:15] - LogHelper 
+[INFO] - Storing DB Data into Json Test Data Files - - [04:08:15] - LogHelper 
+[INFO] - Retrieving Test Data From DB - - [04:08:15] - LogHelper 
+[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/LoginTestData.json] - - [04:08:15] - LogHelper 
+[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/LoginTestData.json] - - [04:08:15] - LogHelper 
+[INFO] - Storing DB Data into Json Test Data Files - - [04:08:15] - LogHelper 
+[INFO] - Retrieving Test Data From DB - - [04:08:16] - LogHelper 
+[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/ContactusTestData.json] - - [04:08:16] - LogHelper 
+[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/ContactusTestData.json] - - [04:08:16] - LogHelper 
+[INFO] - Storing DB Data into Json Test Data Files - - [04:08:16] - LogHelper 
+[INFO] - Starting Chrome Browser ............ - - [04:08:19] - LogHelper 
+[INFO] - Navigating to URL [https://automationexercise.com/] - - [04:08:22] - LogHelper 
+[DEBUG] - Evaluating path: $['cookies_data'] - [04:08:23] - CompiledPath 
+[INFO] - Getting Test Data [[{"path":"/","domain":".automationexercise.com","name":"FCNEC","isHttpOnly":false,"isSecure":false,"expiry":"Oct 19, 2025, 4:26:54 AM","value":"%5B%5B%22AKsRol9X_WkdFD5AOYvsdNi77Wfso84C9sNUFLNGlfUEMtMWEm8TGJdpomoBOCRdcAOVZv0W0hDsNWQDELmtx9amQ15aS7SDzrj5Gj_-8HLyUeDffkY8NUkCceZ0h0bZYpZ2o1bgmTcbnB6WYdppEuqwabxV7XEONw%3D%3D%22%5D%5D"},{"path":"/","domain":"automationexercise.com","name":"sessionid","isHttpOnly":true,"isSecure":false,"expiry":"Nov 2, 2024, 3:26:55 AM","value":"ae5a9mjku9ijq8eyev02vil87dfni1hr"},{"path":"/","domain":"automationexercise.com","name":"csrftoken","isHttpOnly":false,"isSecure":false,"expiry":"Oct 18, 2025, 4:26:55 AM","value":"9ea3pPGmjs76FscibfriMVtZidw4YjsGpNLeZ6R2eNOwylbNguPKK7cTZSeAUFkN"}]] by Json Path [cookies_data] - - [04:08:23] - LogHelper 
+[INFO] - Applying Cookies to Current Browser Session - - [04:08:24] - LogHelper 
+[INFO] - Refreshing the current Browser Window - - [04:08:28] - LogHelper 
+[INFO] - Clicking on Element [ Cart] - - [04:08:35] - LogHelper 
+[INFO] - The Element located by [By.className: cart_quantity_delete] is not Displayed - - [04:08:41] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [04:08:41] - CompiledPath 
+[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [04:08:41] - LogHelper 
+[INFO] - Sending Post Request for URL [https://automationexercise.com/api/searchProduct] - - [04:08:45] - LogHelper 
+[INFO] - Request Body : {"search_product":"Blue Top"} - - [04:08:46] - LogHelper 
+[INFO] - Response Body : {"responseCode":200,"products":[{"id":1,"name":"Blue Top","price":"Rs. 500","brand":"Polo","category":{"usertype":{"usertype":"Women"},"category":"Tops"}}]} - - [04:08:46] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][4]['Name'] - [04:08:46] - CompiledPath 
+[INFO] - Getting Test Data [Lace Top For Women] by Json Path [Products[4].Name] - - [04:08:46] - LogHelper 
+[INFO] - Sending Post Request for URL [https://automationexercise.com/api/searchProduct] - - [04:08:47] - LogHelper 
+[INFO] - Request Body : {"search_product":"Lace Top For Women"} - - [04:08:47] - LogHelper 
+[INFO] - Response Body : {"responseCode":200,"products":[{"id":42,"name":"Lace Top For Women","price":"Rs. 1400","brand":"Mast & Harbour","category":{"usertype":{"usertype":"Women"},"category":"Tops"}}]} - - [04:08:47] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][3]['Name'] - [04:08:47] - CompiledPath 
+[INFO] - Getting Test Data [Regular Fit Straight Jeans] by Json Path [Products[3].Name] - - [04:08:47] - LogHelper 
+[INFO] - Sending Post Request for URL [https://automationexercise.com/api/searchProduct] - - [04:08:47] - LogHelper 
+[INFO] - Request Body : {"search_product":"Regular Fit Straight Jeans"} - - [04:08:47] - LogHelper 
+[INFO] - Response Body : {"responseCode":200,"products":[{"id":35,"name":"Regular Fit Straight Jeans","price":"Rs. 1200","brand":"H&M","category":{"usertype":{"usertype":"Men"},"category":"Jeans"}}]} - - [04:08:47] - LogHelper 
+[INFO] - Navigating to URL [https://automationexercise.com/product_details/1] - - [04:08:49] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][0]['Quantity'] - [04:08:49] - CompiledPath 
+[INFO] - Getting Test Data [3] by Json Path [Products[0].Quantity] - - [04:08:49] - LogHelper 
+[INFO] - Clearing the Text on Element [By.id: quantity] - - [04:08:49] - LogHelper 
+[INFO] - Typing [3] on Element [By.id: quantity] - - [04:08:49] - LogHelper 
+[INFO] - Clicking on Element [ Add to cart] - - [04:08:55] - LogHelper 
+[INFO] - Clicking on Element [Continue Shopping] - - [04:09:00] - LogHelper 
+[INFO] - Navigating to URL [https://automationexercise.com/product_details/42] - - [04:09:01] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][4]['Quantity'] - [04:09:01] - CompiledPath 
+[INFO] - Getting Test Data [1] by Json Path [Products[4].Quantity] - - [04:09:01] - LogHelper 
+[INFO] - Clearing the Text on Element [By.id: quantity] - - [04:09:01] - LogHelper 
+[INFO] - Typing [1] on Element [By.id: quantity] - - [04:09:01] - LogHelper 
+[INFO] - Clicking on Element [ Add to cart] - - [04:09:04] - LogHelper 
+[INFO] - Clicking on Element [Continue Shopping] - - [04:09:05] - LogHelper 
+[INFO] - Navigating to URL [https://automationexercise.com/product_details/35] - - [04:09:06] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][3]['Quantity'] - [04:09:06] - CompiledPath 
+[INFO] - Getting Test Data [5] by Json Path [Products[3].Quantity] - - [04:09:06] - LogHelper 
+[INFO] - Clearing the Text on Element [By.id: quantity] - - [04:09:07] - LogHelper 
+[INFO] - Typing [5] on Element [By.id: quantity] - - [04:09:07] - LogHelper 
+[INFO] - Clicking on Element [ Add to cart] - - [04:09:07] - LogHelper 
+[INFO] - Clicking on Element [View Cart] - - [04:09:09] - LogHelper 
+[DEBUG] - Evaluating path: $['Messages']['ShoppingCartHeader'] - [04:09:09] - CompiledPath 
+[INFO] - Getting Test Data [Shopping Cart] by Json Path [Messages.ShoppingCartHeader] - - [04:09:09] - LogHelper 
+[INFO] - Getting Text [Shopping Cart] from Element located by [By.className: active] - - [04:09:10] - LogHelper 
+[INFO] - Refreshing the current Browser Window - - [04:09:11] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [04:09:11] - CompiledPath 
+[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [04:09:11] - LogHelper 
+[INFO] - Clicking on Element [] - - [04:09:12] - LogHelper 
+[INFO] - Refreshing the current Browser Window - - [04:09:13] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][4]['Name'] - [04:09:13] - CompiledPath 
+[INFO] - Getting Test Data [Lace Top For Women] by Json Path [Products[4].Name] - - [04:09:13] - LogHelper 
+[INFO] - Clicking on Element [] - - [04:09:14] - LogHelper 
+[INFO] - Refreshing the current Browser Window - - [04:09:16] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][3]['Name'] - [04:09:16] - CompiledPath 
+[INFO] - Getting Test Data [Regular Fit Straight Jeans] by Json Path [Products[3].Name] - - [04:09:16] - LogHelper 
+[INFO] - Clicking on Element [] - - [04:09:16] - LogHelper 
+[INFO] - Refreshing the current Browser Window - - [04:09:17] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [04:09:17] - CompiledPath 
+[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [04:09:17] - LogHelper 
+[INFO] - The Element located by [By.cssSelector: .cart_description a] is not Displayed - - [04:09:23] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][4]['Name'] - [04:09:23] - CompiledPath 
+[INFO] - Getting Test Data [Lace Top For Women] by Json Path [Products[4].Name] - - [04:09:23] - LogHelper 
+[INFO] - The Element located by [By.cssSelector: .cart_description a] is not Displayed - - [04:09:28] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][3]['Name'] - [04:09:28] - CompiledPath 
+[INFO] - Getting Test Data [Regular Fit Straight Jeans] by Json Path [Products[3].Name] - - [04:09:28] - LogHelper 
+[INFO] - The Element located by [By.cssSelector: .cart_description a] is not Displayed - - [04:09:33] - LogHelper 
+[INFO] - Capturing Screenshot for Succeeded Scenario - - [04:09:35] - LogHelper 
+[INFO] - Closing All Browser Windows - - [04:09:36] - LogHelper 

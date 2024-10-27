@@ -109,12 +109,15 @@ public class CartPage extends HomePage {
 
     @Step("Assert Product is Removed from Cart")
     public CartPage assertProductIsRemovedFromCart(String productName) throws IOException, InterruptedException {
-        List<WebElement> elements = bot.getAllMatchedElements(productNamesLocator);
-        List<String> productNames= new ArrayList<>();
-        for (WebElement element : elements) {
-            productNames.add(bot.readText(element));
+        if (bot.isElementDisplayed(productNamesLocator))
+        {
+            List<WebElement> elements = bot.getAllMatchedElements(productNamesLocator);
+            List<String> productNames= new ArrayList<>();
+            for (WebElement element : elements) {
+                productNames.add(bot.readText(element));
+            }
+            Assert.assertListNotContainsObject(productNames,productName,"Element is Not Removed");
         }
-        Assert.assertListNotContainsObject(productNames,productName,"Element is Not Removed");
         return this;
     }
 
