@@ -6,12 +6,12 @@ import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import pojoClassesForAPIs.RegistrationRequestPojo;
 import pojoClassesForAPIs.RegistrationResponsePojo;
-import utils.JsonManager;
+import engine.managers.JsonManager;
 
 import java.io.IOException;
 
-import static utils.ApiManager.*;
-import static utils.PropertiesManager.getPropertiesValue;
+import static engine.managers.ApisManager.*;
+import static engine.managers.PropertiesManager.getPropertiesValue;
 
 public class RegistrationRequestModel {
 

@@ -6,13 +6,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import prepareTestData.TestNGListners;
-import utils.JsonManager;
-import utils.SessionManager;
+import engine.listeners.TestNGListners;
+import engine.managers.JsonManager;
+import engine.managers.SessionManager;
 
 import java.io.IOException;
 
-import static utils.ThreadDriver.getDriver;
+import static engine.driverManager.BrowserFactory.*;
 
 @Epic("Automation Exercise Features")
 @Feature("Contact Us")

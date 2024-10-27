@@ -9,15 +9,15 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.RegisterPage;
-import prepareTestData.TestNGListners;
-import utils.JDBCManager;
-import utils.JsonManager;
+import engine.listeners.TestNGListners;
+import engine.managers.JDBCManager;
+import engine.managers.JsonManager;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static utils.RandomDataGenerator.*;
-import static utils.ThreadDriver.getDriver;
+import static engine.utilities.RandomDataGenerator.*;
+import static engine.driverManager.BrowserFactory.*;
 
 
 @Epic("Automation Exercise Features")

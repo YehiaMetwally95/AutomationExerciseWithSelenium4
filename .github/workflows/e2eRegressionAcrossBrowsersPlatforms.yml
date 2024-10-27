@@ -42,7 +42,7 @@ jobs:
 
       - name: Run tests
         continue-on-error: true
-        run: mvn clean test -Dtest="AddToCartTests.**" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="AddToCartTests.**" -DexecutionType="Remote" -DbrowserType="Chrome" -DisHeadless="true" -DsyncWithDB="true"
 
       - name: Upload allure-results file in Target Directory
         uses: actions/upload-artifact@v4
@@ -96,7 +96,7 @@ jobs:
 
       - name: Run tests
         continue-on-error: true
-        run: mvn clean test -Dtest="RegisterTests.**" -DexecutionType="Remote" -DbrowserType="Edge" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="RegisterTests.**" -DexecutionType="Remote" -DbrowserType="Edge" -DisHeadless="true" -DsyncWithDB="true"
 
       - name: Upload allure-results file in Target Directory
         uses: actions/upload-artifact@v4
@@ -149,7 +149,7 @@ jobs:
 
       - name: Run tests
         continue-on-error: true
-        run: mvn clean test -Dtest="LoginTests.**" -DexecutionType="Remote" -DbrowserType="Firefox" -DisHeadless="true" -DsyncWithDB="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="LoginTests.**" -DexecutionType="Remote" -DbrowserType="Firefox" -DisHeadless="true" -DsyncWithDB="true"
 
       - name: Upload allure-results file in Target Directory
         uses: actions/upload-artifact@v4
@@ -193,7 +193,7 @@ jobs:
 
       - name: Run tests
         continue-on-error: true
-        run: mvn clean test -Dtest="CheckoutTests.**" -DexecutionType="Local" -DbrowserType="Chrome" -DsyncWithDB="false" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="CheckoutTests.**" -DexecutionType="Local" -DbrowserType="Chrome" -DsyncWithDB="false" -DisHeadless="true"
 
       - name: Upload allure-results file in Target Directory
         uses: actions/upload-artifact@v4
@@ -232,7 +232,7 @@ jobs:
 
       - name: Run tests
         continue-on-error: true
-        run: mvn clean test -Dtest="ContactUsTests.**" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="ContactUsTests.**" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Edge" -DisHeadless="true"
 
       - name: Upload allure-results file in Target Directory
         uses: actions/upload-artifact@v4
@@ -272,7 +272,7 @@ jobs:
 
       - name: Run tests
         continue-on-error: true
-        run: mvn clean test -Dtest="SearchProductTests.**" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true" -D"allure.results.directory"="target/allure-results"
+        run: mvn clean test -Dtest="SearchProductTests.**" -DexecutionType="Local" -DsyncWithDB="false" -DbrowserType="Firefox" -DisHeadless="true"
 
       - name: Upload allure-results file in Target Directory
         uses: actions/upload-artifact@v4

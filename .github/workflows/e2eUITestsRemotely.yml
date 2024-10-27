@@ -51,7 +51,6 @@ jobs:
           -DbrowserType="Chrome"
           -DisHeadless="true"
           -DsyncWithDB="true"
-          -D"allure.results.directory"="target/allure-results"
 
       - name: Generate Allure report
         run: mvn allure:report

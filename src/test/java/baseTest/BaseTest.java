@@ -3,16 +3,18 @@ package baseTest;
 import org.openqa.selenium.*;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import prepareTestData.TestNGListners;
-import utils.CustomSoftAssert;
+import engine.listeners.TestNGListners;
+import engine.loggers.CustomSoftAssert;
+import prepareTestData.LoadProductsFromDB;
+import prepareTestData.LoadUsersFromDB;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
-import static utils.BrowserFactory.*;
-import static utils.Screenshot.*;
-import static utils.WindowManager.*;
-import static utils.ThreadDriver.*;
-import static utils.PropertiesManager.*;
+import static engine.driverManager.BrowserFactory.*;
+import static engine.loggers.Screenshot.*;
+import static engine.browserActions.WindowManager.*;
+import static engine.managers.PropertiesManager.*;
 
 @Listeners(TestNGListners.class)
 public class BaseTest {
@@ -26,6 +28,15 @@ public class BaseTest {
     public String jsonFilePathForSessionDataUser3 = "src/test/resources/SessionData/SessionDataForUser3.json";
     public String jsonFilePathForSessionDataUser4 = "src/test/resources/SessionData/SessionDataForUser4.json";
 
+    // Sync with Database to Load Latest Products and Users and Update Test Data Json Files
+    @BeforeSuite
+    public void prepareTestData() throws SQLException, IOException {
+        if (System.getProperty("syncWithDB").equalsIgnoreCase("true")) {
+            LoadProductsFromDB.loadProductsFromDB();
+            LoadUsersFromDB.loadUsersFromDB();
+        }
+    }
+
     //Open Browser
     @Parameters({"BrowserType"})
     @BeforeMethod
@@ -37,7 +48,7 @@ public class BaseTest {
         isolateWebDriver(driver,isolatedDriver);
 
         //Perform actions on Window
-        navigateToURL(getDriver(isolatedDriver),getPropertiesValue("baseUrl"));
+        navigateToURL(getDriver(isolatedDriver),getPropertiesValue("baseUrlWeb"));
 
         //Set the CustomSoftAssert Class with the driver
         CustomSoftAssert.softAssertDriver = getDriver(isolatedDriver);

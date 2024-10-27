@@ -4,13 +4,13 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
-import utils.CustomSoftAssert;
+import engine.loggers.CustomSoftAssert;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import static utils.RandomDataGenerator.*;
+import static engine.utilities.RandomDataGenerator.*;
 
 public class RegisterPage extends HomePage{
     //Variables

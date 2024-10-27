@@ -2,7 +2,7 @@ package prepareTestData;
 
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
-import utils.JDBCManager;
+import engine.managers.JDBCManager;
 
 import java.io.IOException;
 import java.sql.SQLException;

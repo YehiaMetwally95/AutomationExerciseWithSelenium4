@@ -5,12 +5,12 @@ import io.qameta.allure.*;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import prepareTestData.TestNGListners;
-import utils.JsonManager;
+import engine.listeners.TestNGListners;
+import engine.managers.JsonManager;
 
 import java.io.IOException;
 
-import static utils.ThreadDriver.getDriver;
+import static engine.driverManager.BrowserFactory.*;
 
 @Epic("Automation Exercise Features")
 @Feature("User Login")

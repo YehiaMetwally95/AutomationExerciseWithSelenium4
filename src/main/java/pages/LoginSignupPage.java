@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import org.testng.Assert;
-import utils.CustomSoftAssert;
+import engine.loggers.CustomSoftAssert;
 
 import java.io.IOException;
 

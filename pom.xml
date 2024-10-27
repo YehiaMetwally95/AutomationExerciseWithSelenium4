@@ -37,6 +37,10 @@
         <aspectj-maven-plugin.version>1.14</aspectj-maven-plugin.version>
         <aspectjtools.version>1.9.22.1</aspectjtools.version>
         <maven-surefire-plugin.version>3.5.1</maven-surefire-plugin.version>
+        <log4j-core.version>2.24.1</log4j-core.version>
+        <log4j-api.version>2.24.1</log4j-api.version>
+        <slf4j-api.version>2.0.16</slf4j-api.version>
+        <slf4j-reload4j.version>2.0.16</slf4j-reload4j.version>
 
     </properties>
 
@@ -146,6 +150,31 @@
             <version>${allure-rest-assured.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j-core.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j2-impl</artifactId>
+            <version>2.24.1</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 
@@ -205,7 +234,7 @@
                             </property>
                             <property>
                                 <name>listener</name>
-                                <value>prepareTestData.TestNGListners</value>
+                                <value>engine.listeners.TestNGListners</value>
                             </property>
                         </properties>
                     </configuration>

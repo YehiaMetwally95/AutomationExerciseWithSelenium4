@@ -5,13 +5,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import org.testng.Assert;
-import utils.CustomSoftAssert;
-import utils.WebElementsActionBot;
+import engine.loggers.CustomSoftAssert;
+import engine.elementActions.WebElementsActionBot;
 
 import java.io.IOException;
 
-import static utils.PropertiesManager.getPropertiesValue;
-import static utils.WindowManager.navigateToURL;
+import static engine.managers.PropertiesManager.getPropertiesValue;
+import static engine.browserActions.WindowManager.navigateToURL;
 
 public class HomePage {
     //Variables
@@ -93,7 +93,7 @@ public class HomePage {
 
     @Step("Open Product Details Page by URL")
     public ProductDetailsPage openProductDetailsPageByUrl(int productId) throws IOException {
-      String url = getPropertiesValue("baseUrl") + "product_details/" + productId;
+      String url = getPropertiesValue("baseUrlWeb") + "product_details/" + productId;
         navigateToURL(driver,url);
         return new ProductDetailsPage(driver);
     }

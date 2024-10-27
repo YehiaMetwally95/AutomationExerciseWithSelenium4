@@ -5,11 +5,11 @@ import io.qameta.allure.*;
 import org.testng.annotations.*;
 import pages.HomePage;
 import pages.RegisterPage;
-import prepareTestData.TestNGListners;
-import utils.JDBCManager;
-import utils.JsonManager;
-import static utils.RandomDataGenerator.*;
-import static utils.ThreadDriver.getDriver;
+import engine.listeners.TestNGListners;
+import engine.managers.JDBCManager;
+import engine.managers.JsonManager;
+import static engine.utilities.RandomDataGenerator.*;
+import static engine.driverManager.BrowserFactory.*;
 
 import java.io.IOException;
 import java.sql.SQLException;

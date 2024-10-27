@@ -7,11 +7,9 @@ import io.restassured.response.Response;
 import pojoClassesForAPIs.SearchProductRequestPojo;
 import pojoClassesForAPIs.SearchProductResponsePojo;
 
-import java.io.IOException;
-
-import static utils.ApiManager.MakeRequest;
-import static utils.ApiManager.getResponseBody;
-import static utils.PropertiesManager.getPropertiesValue;
+import static engine.managers.ApisManager.MakeRequest;
+import static engine.managers.ApisManager.getResponseBody;
+import static engine.managers.PropertiesManager.getPropertiesValue;
 
 public class SearchProductRequestModel {
 

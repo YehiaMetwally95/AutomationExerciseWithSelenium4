@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static utils.CustomSoftAssert.softAssert;
-import static utils.WindowManager.refreshWindow;
+import static engine.loggers.CustomSoftAssert.softAssert;
+import static engine.browserActions.WindowManager.refreshWindow;
 
 public class CartPage extends HomePage {
     //Variables
@@ -68,12 +68,17 @@ public class CartPage extends HomePage {
 
     @Step("Remove All Old Products from Cart")
     public CartPage removeAllOldProductsFromCart() throws IOException {
-        List<WebElement> elements = bot.getAllMatchedElements(removeAllProductsFromCartButton);
-        for (WebElement element : elements) {
-            bot.press(element);
+        if (bot.isElementDisplayed(removeAllProductsFromCartButton))
+        {
+            List<WebElement> elements = bot.getAllMatchedElements(removeAllProductsFromCartButton);
+            for (WebElement element : elements) {
+                bot.press(element);
+            }
         }
         return this;
     }
+
+
 
     //Validations
     @Step("Verify Cart Page Is Opened")

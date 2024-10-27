@@ -4,7 +4,7 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 import pojoClassesForAPIs.UserDetailsRequestPojo;
 import pojoClassesForAPIs.UserDetailsResponsePojo;
-import utils.CustomSoftAssert;
+import engine.loggers.CustomSoftAssert;
 
 public class UserDetailsResponseModel {
     //ObjectsFromPojoClasses

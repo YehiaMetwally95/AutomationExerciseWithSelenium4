@@ -7,13 +7,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import prepareTestData.TestNGListners;
-import utils.JsonManager;
-import utils.SessionManager;
+import engine.listeners.TestNGListners;
+import engine.managers.JsonManager;
+import engine.managers.SessionManager;
+import static engine.driverManager.BrowserFactory.*;
 
 import java.io.IOException;
-
-import static utils.ThreadDriver.getDriver;
 
 @Epic("Automation Exercise Features")
 @Feature("AddToCart")

@@ -7,12 +7,11 @@ import io.restassured.response.Response;
 import pojoClassesForAPIs.UserDetailsRequestPojo;
 import pojoClassesForAPIs.UserDetailsResponsePojo;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static utils.ApiManager.*;
-import static utils.PropertiesManager.getPropertiesValue;
+import static engine.managers.ApisManager.*;
+import static engine.managers.PropertiesManager.getPropertiesValue;
 
 public class UserDetailsRequestModel {
 

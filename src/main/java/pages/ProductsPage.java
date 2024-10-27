@@ -4,7 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
-import utils.CustomSoftAssert;
+import engine.loggers.CustomSoftAssert;
 
 import java.io.IOException;
 
@@ -30,7 +30,8 @@ public class ProductsPage extends HomePage{
 
     private By viewProductButtonLocator (String productName)
     {
-        return By.linkText("View Product");
+
+        return RelativeLocator.with(By.linkText("View Product")).below(productImageOuterLocator(productName));
     }
 
     private By addToCartInnerLocator (String productName)
