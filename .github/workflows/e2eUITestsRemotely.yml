@@ -67,4 +67,4 @@ jobs:
       - name: Cleanup Docker Containers
         if: always()
         run: |
-          docker compose -f src/main/resources/dockerFiles/docker-compose-grid-v3.yml down ; docker compose -f src/main/resources/docker-compose-mysql-v3.yml down 
+          docker compose -f src/main/resources/dockerFiles/docker-compose-grid-v3.yml down ; docker compose -f src/main/resources/dockerFiles/docker-compose-mysql-v3.yml down 

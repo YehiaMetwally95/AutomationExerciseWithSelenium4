@@ -11,7 +11,6 @@ public class LogHelper {
     static Logger log = LogManager.getLogger();
    // static String callerMethodName = Thread.currentThread().getStackTrace()[4].getMethodName();
 
-    @Step("{Step}")
     public static void logInfo (String Step)
     {
         log.info(Step + " -");
