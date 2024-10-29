@@ -6,7 +6,8 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import static engine.managers.PropertiesManager.*;
+
+import static engine.managers.PropertiesManager.getPropertiesValue;
 
 public class WaitsManager {
 

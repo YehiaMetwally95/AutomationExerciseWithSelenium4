@@ -1,14 +1,16 @@
 package engine.managers;
 
+import engine.loggers.LogHelper;
 import org.apache.commons.io.FileUtils;
-import org.testng.annotations.Test;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Properties;
 
-import static engine.loggers.LogHelper.logError;
-import static engine.loggers.LogHelper.logInfo;
+import static engine.loggers.LogHelper.logInfoStep;
 
 public class PropertiesManager {
     private static final String propertiesPath = "src/main/resources/propertiesFiles/";
@@ -27,11 +29,11 @@ public class PropertiesManager {
                 properties.putAll(System.getProperties());
                 System.getProperties().putAll(properties);
             });
-            logInfo("Loading Properties File Data");
+            logInfoStep("Loading Properties File Data");
             return properties;
         }catch (Exception e)
         {
-            logError("Failed to Load Properties File Data",e);
+            LogHelper.logErrorStep("Failed to Load Properties File Data",e);
             return null;
         }
     }

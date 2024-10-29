@@ -1,7 +1,6 @@
 package baseTest;
 
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.ITestContext;
 import org.testng.annotations.*;
 import engine.listeners.TestNGListners;
 import prepareTestData.LoadProductsFromDB;
@@ -38,7 +37,7 @@ public class BaseTest {
     //Open Browser
     @Parameters({"BrowserType"})
     @BeforeMethod
-    public void setUpAndOpenBrowser(@Optional String browserType, ITestContext cont) throws IOException {
+    public void setUpAndOpenBrowser(@Optional String browserType) throws IOException {
         //Open Browser
         isolatedDriver = openBrowser();
 

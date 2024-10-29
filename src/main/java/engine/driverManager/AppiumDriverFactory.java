@@ -9,8 +9,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static engine.loggers.LogHelper.logError;
-import static engine.loggers.LogHelper.logInfo;
+import static engine.loggers.LogHelper.logErrorStep;
+import static engine.loggers.LogHelper.logInfoStep;
 
 public class AppiumDriverFactory {
     private static DesiredCapabilities cap;
@@ -28,18 +28,18 @@ public class AppiumDriverFactory {
         if (appType.equalsIgnoreCase("NativeAndroid")  || appType.equalsIgnoreCase("WebAppAndroid") )
         {
             driver =  new AndroidDriver(getAppiumServerURL(), getAndroidCapabilities());
-            logInfo("Starting "+ appName +" ............");
+            logInfoStep("Starting "+ appName +" ............");
         }
 
         else if (appType.equalsIgnoreCase("NativeIOS")  || appType.equalsIgnoreCase("WebAppIOS") )
         {
             driver =  new AndroidDriver(getAppiumServerURL(), getIOSCapabilities());
-            logInfo("Starting "+ appName +" ............");
+            logInfoStep("Starting "+ appName +" ............");
         }
 
         else
         {
-            logError("Failed to Start the Application, The Input App Type is Incorrect");
+            logErrorStep("Failed to Start the Application, The Input App Type is Incorrect");
         }
         return driver;
     }
@@ -49,7 +49,7 @@ public class AppiumDriverFactory {
         String appID =
                 (String)driver.getCapabilities().getCapability("appium:appPackage");
         ((InteractsWithApps)driver).terminateApp(appID);
-        logInfo("Terminating "+ appName +" ............");
+        logInfoStep("Terminating "+ appName +" ............");
     }
 
     private static DesiredCapabilities getAndroidCapabilities()
@@ -103,17 +103,17 @@ public class AppiumDriverFactory {
     }
 
     //ThreadLocal Driver
-    public static AppiumDriver getDriver(ThreadLocal<io.appium.java_client.AppiumDriver> isolatedDriver)
+    public static AppiumDriver getDriver(ThreadLocal<AppiumDriver> isolatedDriver)
     {
         return isolatedDriver.get();
     }
 
-    public static void isolateWebDriver(io.appium.java_client.AppiumDriver driver , ThreadLocal<io.appium.java_client.AppiumDriver> isolatedDriver)
+    public static void isolateWebDriver(AppiumDriver driver , ThreadLocal<AppiumDriver> isolatedDriver)
     {
         isolatedDriver.set(driver);
     }
 
-    public static void removeIsolatedDriver (ThreadLocal<io.appium.java_client.AppiumDriver> isolatedDriver)
+    public static void removeIsolatedDriver (ThreadLocal<AppiumDriver> isolatedDriver)
     {
         isolatedDriver.remove();
     }

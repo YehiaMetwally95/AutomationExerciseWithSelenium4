@@ -5,10 +5,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.WheelInput;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import static engine.loggers.LogHelper.*;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static engine.loggers.LogHelper.logErrorStep;
+import static engine.loggers.LogHelper.logInfoStep;
 
 public class WebElementsActionBot {
     //Variables
@@ -60,13 +63,13 @@ public class WebElementsActionBot {
         {
             try {
                 ((JavascriptExecutor)driver).executeScript("arguments[0].click();", driver.findElement(locator));
-                logInfo("Clicking on Element ["+elementName+"]");
+                logInfoStep("Clicking on Element ["+elementName+"]");
             }catch (Exception i)
             {
-                logError("Failed to Click on Element ["+elementName+"]",i);
+                logErrorStep("Failed to Click on Element ["+elementName+"]",i);
             }
         }
-        logInfo("Clicking on Element ["+elementName+"]");
+        logInfoStep("Clicking on Element ["+elementName+"]");
         return this;
     }
 
@@ -83,13 +86,13 @@ public class WebElementsActionBot {
         {
             try {
                 ((JavascriptExecutor)driver).executeScript("arguments[0].click();", element);
-                logInfo("Clicking on Element ["+elementName+"]");
+                logInfoStep("Clicking on Element ["+elementName+"]");
             }catch (Exception i)
             {
-                logError("Failed to Click on Element ["+elementName+"]",i);
+                logErrorStep("Failed to Click on Element ["+elementName+"]",i);
             }
         }
-        logInfo("Clicking on Element ["+elementName+"]");
+        logInfoStep("Clicking on Element ["+elementName+"]");
         return this;
     }
 
@@ -100,10 +103,10 @@ public class WebElementsActionBot {
             WaitsManager.getExplicitWait(driver).until(f -> driver.findElement(locator).isDisplayed());
             //Get Element Accessible Name
             String elementName = getElementName(locator);
-            logInfo("The Element [" + elementName + "] is Displayed");
+            logInfoStep("The Element [" + elementName + "] is Displayed");
 
         }catch(TimeoutException e){
-            logInfo("The Element located by [" + locator.toString() + "] is not Displayed");
+            logInfoStep("The Element located by [" + locator.toString() + "] is not Displayed");
             return false;
         }
         return true;
@@ -118,11 +121,11 @@ public class WebElementsActionBot {
         //Read Text from Element on Page
         try {
             String text = WaitsManager.getFluentWait(driver).until(f -> driver.findElement(locator).getText());
-            logInfo("Getting Text " + "[" + text + "] from Element located by [" + locator.toString() +"]");
+            logInfoStep("Getting Text " + "[" + text + "] from Element located by [" + locator.toString() +"]");
             return text.replace("\n","");
         }catch (Exception e)
         {
-            logError("Cannot Get Text from Element located by [" + locator+"]",e);
+            logErrorStep("Cannot Get Text from Element located by [" + locator+"]",e);
             return null;
         }
     }
@@ -131,11 +134,11 @@ public class WebElementsActionBot {
     public String readText(WebElement element) throws IOException {
         try {
             String text = element.getText();
-            logInfo("Getting Text " + "[" + text + "] from Web Element");
+            logInfoStep("Getting Text " + "[" + text + "] from Web Element");
             return text.replace("\n","");
         }catch (Exception e)
         {
-            logError("Cannot Get Text from Web Element",e);
+            logErrorStep("Cannot Get Text from Web Element",e);
             return null;
         }
     }
@@ -160,9 +163,9 @@ public class WebElementsActionBot {
             });
         }catch (Exception e)
         {
-            logError("Failed to Long Click on Element ["+elementName+"]",e);
+            logErrorStep("Failed to Long Click on Element ["+elementName+"]",e);
         }
-        logInfo("Long Clicking on Element ["+elementName+"]");
+        logInfoStep("Long Clicking on Element ["+elementName+"]");
         return this;
     }
 
@@ -185,9 +188,9 @@ public class WebElementsActionBot {
             });
         }catch (Exception e)
         {
-            logError("Failed to Hover on Element ["+elementName+"]",e);
+            logErrorStep("Failed to Hover on Element ["+elementName+"]",e);
         }
-        logInfo("Hovering on Element ["+elementName+"]");
+        logInfoStep("Hovering on Element ["+elementName+"]");
         return this;
     }
 
@@ -201,11 +204,11 @@ public class WebElementsActionBot {
         try {
             List<WebElement> list
                     = WaitsManager.getFluentWait(driver).until(f -> driver.findElements(locator));
-            logInfo("Retrieving All Matched Elements from the Element located by [" + locator + "]");
+            logInfoStep("Retrieving All Matched Elements from the Element located by [" + locator + "]");
             return list;
         }catch (Exception e)
         {
-            logError("Cannot Retrieve All Matched Elements from the Element located by " + locator,e);
+            logErrorStep("Cannot Retrieve All Matched Elements from the Element located by " + locator,e);
             return null;
         }
     }
@@ -217,9 +220,9 @@ public class WebElementsActionBot {
         String elementName = getElementName(dropdownLocator);
         try {
             dropDownElement(dropdownLocator).selectByValue(value);
-            logInfo("Selecting ["+ value +"] from" + elementName);
+            logInfoStep("Selecting ["+ value +"] from" + elementName);
         }catch (Exception e){
-            logError("Failed to Select ["+ value +"] from" + elementName,e);
+            logErrorStep("Failed to Select ["+ value +"] from" + elementName,e);
         }
         return this;
     }
@@ -229,9 +232,9 @@ public class WebElementsActionBot {
         String elementName = getElementName(dropdownLocator);
         try {
             dropDownElement(dropdownLocator).selectByIndex(index);
-            logInfo("Selecting ["+ index +"] from" + elementName);
+            logInfoStep("Selecting ["+ index +"] from" + elementName);
         }catch (Exception e){
-            logError("Failed to Select ["+ index +"] from" + elementName,e);
+            logErrorStep("Failed to Select ["+ index +"] from" + elementName,e);
         }
         return this;
     }
@@ -241,9 +244,9 @@ public class WebElementsActionBot {
         String elementName = getElementName(dropdownLocator);
         try {
             dropDownElement(dropdownLocator).selectByVisibleText(text);
-            logInfo("Selecting ["+ text +"] from" + elementName);
+            logInfoStep("Selecting ["+ text +"] from" + elementName);
         }catch (Exception e){
-            logError("Failed to Select ["+ text +"] from" + elementName,e);
+            logErrorStep("Failed to Select ["+ text +"] from" + elementName,e);
         }
         return this;
     }
@@ -253,10 +256,10 @@ public class WebElementsActionBot {
         String elementName = getElementName(dropdownLocator);
         try {
             List<WebElement> options = dropDownElement(dropdownLocator).getOptions();
-            logInfo("Retrieving All Options from List of " + elementName);
+            logInfoStep("Retrieving All Options from List of " + elementName);
             return options.stream().map(e->e.getText()).collect(Collectors.toList());
         }catch (Exception e){
-            logError("Failed to Retrieve All Options from List of " + elementName,e);
+            logErrorStep("Failed to Retrieve All Options from List of " + elementName,e);
             return null;
         }
     }
@@ -266,10 +269,10 @@ public class WebElementsActionBot {
         String elementName = getElementName(dropdownLocator);
         try {
             String text = dropDownElement(dropdownLocator).getFirstSelectedOption().getText();
-            logInfo("Retrieving Selected Option ["+text+"] from List of " + elementName);
+            logInfoStep("Retrieving Selected Option ["+text+"] from List of " + elementName);
             return text;
         }catch (Exception e){
-            logError("Failed to Retrieve Selected Option from List of " + elementName,e);
+            logErrorStep("Failed to Retrieve Selected Option from List of " + elementName,e);
             return null;
         }
     }
@@ -279,9 +282,9 @@ public class WebElementsActionBot {
         String elementName = getElementName(dropdownLocator);
         try {
             dropDownElement(dropdownLocator).deselectAll();
-            logInfo("Deselecting All Options from List of " + elementName);
+            logInfoStep("Deselecting All Options from List of " + elementName);
         }catch (Exception e){
-            logError("Failed to Deselect All Options from List of "+ elementName,e);
+            logErrorStep("Failed to Deselect All Options from List of "+ elementName,e);
         }
         return this;
     }
@@ -310,9 +313,9 @@ public class WebElementsActionBot {
                 .getElementName(elementLocator);
         try{
             new Actions(driver).scrollToElement(driver.findElement(elementLocator)).perform();
-            logInfo("Scrolling to element ["+elementName+"]");
+            logInfoStep("Scrolling to element ["+elementName+"]");
         }catch (Exception e){
-            logError("Failed to Scroll to element ["+elementName+"]",e);
+            logErrorStep("Failed to Scroll to element ["+elementName+"]",e);
         }
         return this;
     }
@@ -328,9 +331,9 @@ public class WebElementsActionBot {
             WheelInput.ScrollOrigin myOrigin =
                     WheelInput.ScrollOrigin.fromElement(driver.findElement(elementLocator));
             new Actions(driver).scrollFromOrigin(myOrigin,deltaX,deltaY).perform();
-            logInfo("Scrolling with " +deltaX +" & "+deltaY+ "from Element ["+elementName+"]");
+            logInfoStep("Scrolling with " +deltaX +" & "+deltaY+ "from Element ["+elementName+"]");
         }catch (Exception e){
-            logError("Failed to Scroll with " +deltaX +" & "+deltaY+ "from Element ["+elementName+"]",e);
+            logErrorStep("Failed to Scroll with " +deltaX +" & "+deltaY+ "from Element ["+elementName+"]",e);
         }
         return this;
     }
@@ -347,9 +350,9 @@ public class WebElementsActionBot {
                 driver.findElement(targetElement).isDisplayed();
                 return true;
             });
-            logInfo("Scrolling Into Page with till Element ["+elementName+"] is Displayed");
+            logInfoStep("Scrolling Into Page with till Element ["+elementName+"] is Displayed");
         }catch (Exception e){
-            logError("Failed to Scroll Into Page with till Element ["+elementName+"] is Displayed",e);
+            logErrorStep("Failed to Scroll Into Page with till Element ["+elementName+"] is Displayed",e);
         }
         return this;
     }
@@ -361,9 +364,9 @@ public class WebElementsActionBot {
         try{
             WaitsManager.getFluentWait(driver).until(ExpectedConditions.alertIsPresent());
             driver.switchTo().alert().accept();
-            logInfo("Accepting the Alert");
+            logInfoStep("Accepting the Alert");
         }catch (Exception e){
-            logError("Failed to accept the Alert",e);
+            logErrorStep("Failed to accept the Alert",e);
         }
     }
 
@@ -372,9 +375,9 @@ public class WebElementsActionBot {
         try{
             WaitsManager.getFluentWait(driver).until(ExpectedConditions.alertIsPresent());
             driver.switchTo().alert().dismiss();
-            logInfo("Dismissing the Alert");
+            logInfoStep("Dismissing the Alert");
         }catch (Exception e){
-            logError("Failed to dismiss the Alert",e);
+            logErrorStep("Failed to dismiss the Alert",e);
         }
     }
 
@@ -383,9 +386,9 @@ public class WebElementsActionBot {
         try{
             WaitsManager.getFluentWait(driver).until(ExpectedConditions.alertIsPresent());
             driver.switchTo().alert().sendKeys(text);
-            logInfo("Typing ["+text+"] in the Alert");
+            logInfoStep("Typing ["+text+"] in the Alert");
         }catch (Exception e){
-            logError("Failed to Type ["+text+"] in the Alert",e);
+            logErrorStep("Failed to Type ["+text+"] in the Alert",e);
         }
     }
 
@@ -399,9 +402,9 @@ public class WebElementsActionBot {
             action.keyDown(Keys.TAB).keyUp(Keys.TAB).perform();
             driver.switchTo().alert().sendKeys(text2);
 
-            logInfo("Typing ["+text1+" & "+text2+"] in the Alert");
+            logInfoStep("Typing ["+text1+" & "+text2+"] in the Alert");
         }catch (Exception e){
-            logError("Failed to Type ["+text1+" & "+text2+"] in the Alert",e);
+            logErrorStep("Failed to Type ["+text1+" & "+text2+"] in the Alert",e);
         }
     }
 
@@ -410,10 +413,10 @@ public class WebElementsActionBot {
         try{
             WaitsManager.getFluentWait(driver).until(ExpectedConditions.alertIsPresent());
             String text = driver.switchTo().alert().getText();
-            logInfo("Retrieving ["+text+"] from Alert");
+            logInfoStep("Retrieving ["+text+"] from Alert");
             return text;
         }catch (Exception e){
-            logError("Failed to Retrieve the text from Alert",e);
+            logErrorStep("Failed to Retrieve the text from Alert",e);
             return null;
         }
     }
@@ -426,7 +429,7 @@ public class WebElementsActionBot {
             WaitsManager.getFluentWait(driver).until(ExpectedConditions.presenceOfElementLocated(locator));
 
         } catch (Exception e) {
-            logError("Failed to Locate the element by Locator ["+locator+"]",e);
+            logErrorStep("Failed to Locate the element by Locator ["+locator+"]",e);
         }
         return this;
     }
@@ -442,7 +445,7 @@ public class WebElementsActionBot {
             WaitsManager.getFluentWait(driver).until(f -> driver.findElement(elementLocator).isDisplayed());
 
         }catch(TimeoutException e){
-            logError("The Element located by [" + elementLocator.toString() + "] is not Displayed",e);
+            logErrorStep("The Element located by [" + elementLocator.toString() + "] is not Displayed",e);
         }
         return this;
     }
@@ -461,7 +464,7 @@ public class WebElementsActionBot {
         try{
             WaitsManager.getFluentWait(driver).until(f -> driver.findElement(locator).isEnabled());
         }catch(TimeoutException e){
-            logError("The Element [" + elementName + "] is not Enabled",e);
+            logErrorStep("The Element [" + elementName + "] is not Enabled",e);
         }
         return this;
     }
@@ -471,7 +474,7 @@ public class WebElementsActionBot {
         try{
             element.isEnabled();
         }catch(TimeoutException e){
-            logError("The Element [" + elementName + "] is not Enabled",e);
+            logErrorStep("The Element [" + elementName + "] is not Enabled",e);
         }
         return this;
     }
@@ -490,11 +493,11 @@ public class WebElementsActionBot {
             ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('value', '" + text + "')",
                         driver.findElement(locator));
             }
-        logInfo("Typing ["+text+"] on Element ["+elementName+"]");
+        logInfoStep("Typing ["+text+"] on Element ["+elementName+"]");
 
         }catch (Exception e)
         {
-            logError("Failed to Type ["+text+"] on Element ["+elementName+"]",e);
+            logErrorStep("Failed to Type ["+text+"] on Element ["+elementName+"]",e);
         }
     }
 
@@ -505,10 +508,10 @@ public class WebElementsActionBot {
                 driver.findElement(locator).clear();
                 return true;
             });
-            logInfo("Clearing the Text on Element ["+elementName+"]");
+            logInfoStep("Clearing the Text on Element ["+elementName+"]");
         }catch (Exception e)
         {
-            logError("Failed to Clear the Text on Element ["+elementName+"]",e);
+            logErrorStep("Failed to Clear the Text on Element ["+elementName+"]",e);
         }
     }
 }

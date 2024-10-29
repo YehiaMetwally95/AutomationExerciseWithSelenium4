@@ -3,6 +3,7 @@ package engine.managers;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.mysql.cj.jdbc.Driver;
+import engine.loggers.LogHelper;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -10,10 +11,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static engine.loggers.LogHelper.logError;
-import static engine.loggers.LogHelper.logInfo;
-import static engine.managers.PropertiesManager.*;
-import static engine.managers.JsonManager.*;
+import static engine.loggers.LogHelper.logInfoStep;
+import static engine.managers.JsonManager.createJsonFile;
+import static engine.managers.JsonManager.readJsonFile;
+import static engine.managers.PropertiesManager.getPropertiesValue;
 
 public class JDBCManager {
     // Retrieve DB records and represent them as Array of JsonObjects with one Nested Key to the whole JsonArray
@@ -45,10 +46,10 @@ public class JDBCManager {
             }
             //assign the Json Array as value of the Main key
             mainKey.add(jsonMainKey, array);
-            logInfo("Retrieving Test Data From DB");
+            logInfoStep("Retrieving Test Data From DB");
             return mainKey;
         }catch (Exception e){
-            logError("Failed to Retrieve Test Data From DB",e);
+            LogHelper.logErrorStep("Failed to Retrieve Test Data From DB",e);
             return null;
         }
     }
@@ -81,10 +82,10 @@ public class JDBCManager {
             //Fill the Parent Json Object with main keys and the corresponding child object of each key
             mainRecord.add(jsonMainKeys[ rs.getRow()-1 ], record);
         }
-            logInfo("Retrieving Test Data From DB");
+            logInfoStep("Retrieving Test Data From DB");
             return mainRecord;
         }catch (Exception e){
-            logError("Failed to Retrieve Test Data From DB",e);
+            LogHelper.logErrorStep("Failed to Retrieve Test Data From DB",e);
             return null;
         }
     }
@@ -104,9 +105,9 @@ public class JDBCManager {
             //Combine the two Json objects into one Object then Write it to the JSON File
             object2.asMap().putAll(object1.asMap());
             createJsonFile(object2, jsonFilePath);
-            logInfo("Storing DB Data into Json Test Data Files");
+            logInfoStep("Storing DB Data into Json Test Data Files");
         }catch (Exception e){
-            logError("Failed to Store DB Data into Json Test Data Files",e);
+            LogHelper.logErrorStep("Failed to Store DB Data into Json Test Data Files",e);
         }
     }
 
@@ -123,9 +124,9 @@ public class JDBCManager {
         //Combine the two Json objects into one Object then Write it to the JSON File
         object2.asMap().putAll(object1.asMap());
         createJsonFile(object2,jsonFilePath);
-            logInfo("Storing DB Data into Json Test Data Files");
+            logInfoStep("Storing DB Data into Json Test Data Files");
         }catch (Exception e){
-            logError("Failed to Store DB Data into Json Test Data Files",e);
+            LogHelper.logErrorStep("Failed to Store DB Data into Json Test Data Files",e);
         }
     }
 
@@ -140,9 +141,9 @@ public class JDBCManager {
         Connection connection = DriverManager.getConnection(getPropertiesValue("dbUrl")
                 ,getPropertiesValue("dbUser"),getPropertiesValue("dbPassword"));
         connection.createStatement().executeUpdate(query);
-        logInfo("Updating DB with New Data from Test");
+        logInfoStep("Updating DB with New Data from Test");
        }catch (Exception e){
-           logError("Failed to Update DB with New Data from Test",e);
+           LogHelper.logErrorStep("Failed to Update DB with New Data from Test",e);
        }
     }
 }

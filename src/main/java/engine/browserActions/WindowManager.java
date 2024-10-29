@@ -1,19 +1,18 @@
 package engine.browserActions;
 
+import engine.loggers.LogHelper;
 import org.openqa.selenium.WebDriver;
 
-import static engine.loggers.LogHelper.logError;
-import static engine.loggers.LogHelper.logInfo;
-import static engine.loggers.Screenshot.captureSuccess;
+import static engine.loggers.LogHelper.logInfoStep;
 
 public class WindowManager {
 
     public static void navigateForward(WebDriver driver) {
         try{
             driver.navigate().forward();
-            logInfo("Navigating Forward to next Browser Page");
+            logInfoStep("Navigating Forward to next Browser Page");
         }catch (Exception e){
-            logError("Failed to Navigate Forward to next Browser Page",e);
+            LogHelper.logErrorStep("Failed to Navigate Forward to next Browser Page",e);
         }
     }
 
@@ -21,9 +20,9 @@ public class WindowManager {
     {
         try{
             driver.navigate().back();
-            logInfo("Navigating Backward to previous Browser Page");
+            logInfoStep("Navigating Backward to previous Browser Page");
         }catch (Exception e){
-            logError("Failed to Navigate Backward to previous Browser Page",e);
+            LogHelper.logErrorStep("Failed to Navigate Backward to previous Browser Page",e);
         }
     }
 
@@ -31,9 +30,9 @@ public class WindowManager {
     {
         try{
             driver.navigate().refresh();
-            logInfo("Refreshing the current Browser Window");
+            logInfoStep("Refreshing the current Browser Window");
         }catch (Exception e){
-            logError("Failed to Refresh the current Browser Window",e);
+            LogHelper.logErrorStep("Failed to Refresh the current Browser Window",e);
         }
     }
 
@@ -41,9 +40,9 @@ public class WindowManager {
     {
         try{
             driver.navigate().to(url);
-            logInfo("Navigating to URL ["+url+"]");
+            logInfoStep("Navigating to URL ["+url+"]");
         }catch (Exception e){
-            logError("Failed to Navigate to URL ["+url+"]",e);
+            LogHelper.logErrorStep("Failed to Navigate to URL ["+url+"]",e);
         }
     }
 
@@ -51,9 +50,9 @@ public class WindowManager {
     {
         try{
             driver.manage().window().maximize();
-            logInfo("Maximizing the Browser Window");
+            logInfoStep("Maximizing the Browser Window");
         }catch (Exception e){
-            logError("Failed to Maximize the Browser Window",e);
+            LogHelper.logErrorStep("Failed to Maximize the Browser Window",e);
         }
     }
 
@@ -61,9 +60,9 @@ public class WindowManager {
     {
         try{
             driver.manage().window().minimize();
-            logInfo("Minimizing the Browser Window");
+            logInfoStep("Minimizing the Browser Window");
         }catch (Exception e){
-            logError("Failed to Minimize the Browser Window",e);
+            LogHelper.logErrorStep("Failed to Minimize the Browser Window",e);
         }
     }
 
@@ -71,9 +70,9 @@ public class WindowManager {
     {
         try{
             driver.manage().window().fullscreen();
-            logInfo("FullScreen Browser Window");
+            logInfoStep("FullScreen Browser Window");
         }catch (Exception e){
-            logError("Failed to FullScreen Browser Window",e);
+            LogHelper.logErrorStep("Failed to FullScreen Browser Window",e);
         }
     }
 
@@ -81,9 +80,9 @@ public class WindowManager {
     {
         try{
             driver.close();
-            logInfo("Closing the current Browser Window");
+            logInfoStep("Closing the current Browser Window");
         }catch (Exception e){
-            logError("Failed to Close the current Browser Window",e);
+            LogHelper.logErrorStep("Failed to Close the current Browser Window",e);
         }
     }
 
@@ -91,9 +90,9 @@ public class WindowManager {
     {
         try{
             driver.quit();
-            logInfo("Closing All Browser Windows");
+            logInfoStep("Closing All Browser Windows");
         }catch (Exception e){
-            logError("Failed to Close All Browser Windows",e);
+            LogHelper.logErrorStep("Failed to Close All Browser Windows",e);
         }
     }
 

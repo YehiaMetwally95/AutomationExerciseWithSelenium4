@@ -1,70 +1,62 @@
-[INFO] - Loading Properties File Data - - [03:22:45] - LogHelper 
-[INFO] - Retrieving Test Data From DB - - [03:22:47] - LogHelper 
-[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/AddToCartTestData.json] - - [03:22:47] - LogHelper 
-[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/AddToCartTestData.json] - - [03:22:47] - LogHelper 
-[INFO] - Storing DB Data into Json Test Data Files - - [03:22:47] - LogHelper 
-[INFO] - Retrieving Test Data From DB - - [03:22:47] - LogHelper 
-[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/CheckoutTestData.json] - - [03:22:47] - LogHelper 
-[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/CheckoutTestData.json] - - [03:22:47] - LogHelper 
-[INFO] - Storing DB Data into Json Test Data Files - - [03:22:47] - LogHelper 
-[INFO] - Retrieving Test Data From DB - - [03:22:47] - LogHelper 
-[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/SearchProductTestData.json] - - [03:22:47] - LogHelper 
-[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/SearchProductTestData.json] - - [03:22:47] - LogHelper 
-[INFO] - Storing DB Data into Json Test Data Files - - [03:22:47] - LogHelper 
-[INFO] - Retrieving Test Data From DB - - [03:22:47] - LogHelper 
-[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/AddToCartTestData.json] - - [03:22:47] - LogHelper 
-[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/AddToCartTestData.json] - - [03:22:47] - LogHelper 
-[INFO] - Storing DB Data into Json Test Data Files - - [03:22:47] - LogHelper 
-[INFO] - Retrieving Test Data From DB - - [03:22:47] - LogHelper 
-[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/CheckoutTestData.json] - - [03:22:47] - LogHelper 
-[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/CheckoutTestData.json] - - [03:22:47] - LogHelper 
-[INFO] - Storing DB Data into Json Test Data Files - - [03:22:47] - LogHelper 
-[INFO] - Retrieving Test Data From DB - - [03:22:47] - LogHelper 
-[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/SearchProductTestData.json] - - [03:22:47] - LogHelper 
-[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/SearchProductTestData.json] - - [03:22:47] - LogHelper 
-[INFO] - Storing DB Data into Json Test Data Files - - [03:22:47] - LogHelper 
-[INFO] - Retrieving Test Data From DB - - [03:22:47] - LogHelper 
-[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/LoginTestData.json] - - [03:22:47] - LogHelper 
-[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/LoginTestData.json] - - [03:22:47] - LogHelper 
-[INFO] - Storing DB Data into Json Test Data Files - - [03:22:47] - LogHelper 
-[INFO] - Retrieving Test Data From DB - - [03:22:47] - LogHelper 
-[INFO] - Reading Json File from filePath [src/test/resources/TestDataJsonFiles/ContactusTestData.json] - - [03:22:47] - LogHelper 
-[INFO] - Writing Data Into Json File of filePath [src/test/resources/TestDataJsonFiles/ContactusTestData.json] - - [03:22:47] - LogHelper 
-[INFO] - Storing DB Data into Json Test Data Files - - [03:22:47] - LogHelper 
-[INFO] - Starting Chrome Browser ............ - - [03:22:50] - LogHelper 
-[INFO] - Navigating to URL [https://automationexercise.com/] - - [03:22:53] - LogHelper 
-[DEBUG] - Evaluating path: $['cookies_data'] - [03:22:54] - CompiledPath 
-[INFO] - Getting Test Data [[{"path":"/","domain":".automationexercise.com","name":"__gpi","isHttpOnly":false,"isSecure":true,"expiry":"Nov 10, 2025, 3:51:48 PM","value":"UID=00000f0bb7b50b10:T=1729086708:RT=1729086708:S=ALNI_MbZfnmky38SV5F_07Aqw3xoUrNSxA"},{"path":"/","domain":".automationexercise.com","name":"__eoi","isHttpOnly":false,"isSecure":true,"expiry":"Apr 14, 2025, 3:51:48 PM","value":"ID=b0d59e407bffe5fb:T=1729086708:RT=1729086708:S=AA-AfjYrwDcohcTd69i9DwKXw6-g"},{"path":"/","domain":"automationexercise.com","name":"sessionid","isHttpOnly":true,"isSecure":false,"expiry":"Oct 30, 2024, 4:51:53 PM","value":"af4u7hvf7xorpb2llcjp5swwoknqy5re"},{"path":"/","domain":"automationexercise.com","name":"csrftoken","isHttpOnly":false,"isSecure":false,"expiry":"Oct 15, 2025, 4:51:53 PM","value":"zPMYogwiBhOiiSj0ecK8xKHvRvubqGofFF3QQtV9PpTrfFf8NW1xcfwSo2aNOJUm"},{"path":"/","domain":".automationexercise.com","name":"__gads","isHttpOnly":false,"isSecure":true,"expiry":"Nov 10, 2025, 3:51:48 PM","value":"ID=b8223b93bd719840:T=1729086708:RT=1729086708:S=ALNI_MaOvYZ3RgtPsop71Hkaj_n16AE1YA"}]] by Json Path [cookies_data] - - [03:22:54] - LogHelper 
-[INFO] - Applying Cookies to Current Browser Session - - [03:22:55] - LogHelper 
-[INFO] - Refreshing the current Browser Window - - [03:22:57] - LogHelper 
-[INFO] - Clicking on Element [ Contact us] - - [03:23:00] - LogHelper 
-[DEBUG] - Evaluating path: $['Messages']['ContactUsHeader'] - [03:23:00] - CompiledPath 
-[INFO] - Getting Test Data [CONTACT US] by Json Path [Messages.ContactUsHeader] - - [03:23:00] - LogHelper 
-[INFO] - Getting Text [CONTACT US] from Element located by [By.cssSelector: .col-sm-12 h2] - - [03:23:00] - LogHelper 
-[DEBUG] - Evaluating path: $['Details']['Name'] - [03:23:00] - CompiledPath 
-[INFO] - Getting Test Data [Yehia Metwally] by Json Path [Details.Name] - - [03:23:00] - LogHelper 
-[DEBUG] - Evaluating path: $['Details']['Email'] - [03:23:00] - CompiledPath 
-[INFO] - Getting Test Data [Yehia@gmail.com] by Json Path [Details.Email] - - [03:23:00] - LogHelper 
-[DEBUG] - Evaluating path: $['Details']['Subject'] - [03:23:00] - CompiledPath 
-[INFO] - Getting Test Data [Complaint] by Json Path [Details.Subject] - - [03:23:00] - LogHelper 
-[DEBUG] - Evaluating path: $['Details']['Description'] - [03:23:00] - CompiledPath 
-[INFO] - Getting Test Data [Payment is failed while checkout more than 50 products] by Json Path [Details.Description] - - [03:23:00] - LogHelper 
-[DEBUG] - Evaluating path: $['Details']['FilePath'] - [03:23:00] - CompiledPath 
-[INFO] - Getting Test Data [\src\test\resources\FilesToBeUploaded\Mattresses.pdf] by Json Path [Details.FilePath] - - [03:23:00] - LogHelper 
-[INFO] - Clearing the Text on Element [Name] - - [03:23:00] - LogHelper 
-[INFO] - Typing [Yehia Metwally] on Element [Name] - - [03:23:01] - LogHelper 
-[INFO] - Clearing the Text on Element [Email] - - [03:23:01] - LogHelper 
-[INFO] - Typing [Yehia@gmail.com] on Element [Email] - - [03:23:01] - LogHelper 
-[INFO] - Clearing the Text on Element [Subject] - - [03:23:01] - LogHelper 
-[INFO] - Typing [Complaint] on Element [Subject] - - [03:23:01] - LogHelper 
-[INFO] - Clearing the Text on Element [Your Message Here] - - [03:23:02] - LogHelper 
-[INFO] - Typing [Payment is failed while checkout more than 50 products] on Element [Your Message Here] - - [03:23:02] - LogHelper 
-[INFO] - Clearing the Text on Element [Choose File] - - [03:23:02] - LogHelper 
-[INFO] - Typing [D:\AutomatestProject\AutomationExerciseBySelenium4\src\test\resources\FilesToBeUploaded\Mattresses.pdf] on Element [Choose File] - - [03:23:02] - LogHelper 
-[INFO] - Clicking on Element [Submit] - - [03:23:03] - LogHelper 
-[INFO] - Accepting the Alert - - [03:23:03] - LogHelper 
-[DEBUG] - Evaluating path: $['Messages']['RequestSubmitted'] - [03:23:03] - CompiledPath 
-[INFO] - Getting Test Data [Success! Your details have been submitted successfully.] by Json Path [Messages.RequestSubmitted] - - [03:23:03] - LogHelper 
-[INFO] - Getting Text [Success! Your details have been submitted successfully.] from Element located by [By.cssSelector: .contact-form .alert-success] - - [03:23:03] - LogHelper 
-[INFO] - Capturing Screenshot for Succeeded Scenario - - [03:23:04] - LogHelper 
-[INFO] - Closing All Browser Windows - - [03:23:05] - LogHelper 
+[INFO] - Loading Properties File Data - - [15:50:49] - LogHelper 
+[INFO] - Starting Chrome Browser ............ - - [15:50:53] - LogHelper 
+[INFO] - Navigating to URL [https://automationexercise.com/] - - [15:50:57] - LogHelper 
+[INFO] - Clicking on Element [ Products] - - [15:51:03] - LogHelper 
+[DEBUG] - Evaluating path: $['Messages']['AllProductsHeader'] - [15:51:03] - CompiledPath 
+[INFO] - Getting Test Data [ALL PRODUCTS] by Json Path [Messages.AllProductsHeader] - - [15:51:03] - LogHelper 
+[INFO] - Getting Text [ALL PRODUCTSBEACHWEAR] from Element located by [By.xpath: //h2[contains(@class,'title')]] - - [15:51:04] - LogHelper 
+[WARN] - Soft Assertion Failed: expected [ALL PRODUCTS] but found [ALL PRODUCTSBEACHWEAR] - - [15:51:04] - LogHelper 
+[WARN] - Capturing Screenshot for Soft Assertion Failure - - [15:51:04] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [15:51:04] - CompiledPath 
+[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [15:51:04] - LogHelper 
+[INFO] - Clearing the Text on Element [Search Product] - - [15:51:05] - LogHelper 
+[INFO] - Typing [Blue Top] on Element [Search Product] - - [15:51:05] - LogHelper 
+[INFO] - Clicking on Element [] - - [15:51:07] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [15:51:07] - CompiledPath 
+[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [15:51:07] - LogHelper 
+[INFO] - The Element [ecommerce website products] is Displayed - - [15:51:10] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [15:51:10] - CompiledPath 
+[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [15:51:10] - LogHelper 
+[INFO] - Clicking on Element [ View Product] - - [15:51:13] - LogHelper 
+[DEBUG] - Evaluating path: $['Messages']['AllProductsHeader'] - [15:51:13] - CompiledPath 
+[INFO] - Getting Test Data [ALL PRODUCTS] by Json Path [Messages.AllProductsHeader] - - [15:51:13] - LogHelper 
+[INFO] - Getting Text [WRITE YOUR REVIEW] from Element located by [By.xpath: //a[contains(.,'Review')]] - - [15:51:13] - LogHelper 
+[WARN] - Soft Assertion Failed: expected [ALL PRODUCTS] but found [WRITE YOUR REVIEW] - - [15:51:14] - LogHelper 
+[WARN] - Capturing Screenshot for Soft Assertion Failure - - [15:51:14] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [15:51:14] - CompiledPath 
+[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [15:51:14] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][2]['Price'] - [15:51:14] - CompiledPath 
+[INFO] - Getting Test Data [Rs. 679] by Json Path [Products[2].Price] - - [15:51:14] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][2]['Availability'] - [15:51:14] - CompiledPath 
+[INFO] - Getting Test Data [In Stock] by Json Path [Products[2].Availability] - - [15:51:14] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][2]['Condition'] - [15:51:14] - CompiledPath 
+[INFO] - Getting Test Data [New] by Json Path [Products[2].Condition] - - [15:51:14] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['Brand'] - [15:51:14] - CompiledPath 
+[INFO] - Getting Test Data [H&M] by Json Path [Products[1].Brand] - - [15:51:14] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][2]['Category'] - [15:51:14] - CompiledPath 
+[INFO] - Getting Test Data [Kids] by Json Path [Products[2].Category] - - [15:51:14] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['Subcategory'] - [15:51:14] - CompiledPath 
+[INFO] - Getting Test Data [Tshirts] by Json Path [Products[1].Subcategory] - - [15:51:14] - LogHelper 
+[INFO] - Getting Text [Blue Top] from Element located by [By.cssSelector: .product-information h2] - - [15:51:14] - LogHelper 
+[INFO] - Getting Text [Rs. 500] from Element located by [By.xpath: (//div[@class='product-details']/descendant::span[contains(.,'Rs')])[2]] - - [15:51:14] - LogHelper 
+[WARN] - Soft Assertion Failed: expected [Rs. 679] but found [Rs. 500] - - [15:51:15] - LogHelper 
+[WARN] - Capturing Screenshot for Soft Assertion Failure - - [15:51:15] - LogHelper 
+[INFO] - Getting Text [Availability: In Stock] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Availability')]] - - [15:51:15] - LogHelper 
+[INFO] - Getting Text [Condition: New] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Condition')]] - - [15:51:15] - LogHelper 
+[INFO] - Getting Text [Brand: Polo] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Brand')]] - - [15:51:15] - LogHelper 
+[WARN] - Soft Assertion Failed: expected [Brand: H&M] but found [Brand: Polo] - - [15:51:15] - LogHelper 
+[WARN] - Capturing Screenshot for Soft Assertion Failure - - [15:51:15] - LogHelper 
+[INFO] - Getting Text [Category: Women > Tops] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Category')]] - - [15:51:15] - LogHelper 
+[WARN] - Soft Assertion Failed: expected [true] but found [false] - - [15:51:16] - LogHelper 
+[WARN] - Capturing Screenshot for Soft Assertion Failure - - [15:51:16] - LogHelper 
+[INFO] - Getting Text [Category: Women > Tops] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Category')]] - - [15:51:16] - LogHelper 
+[WARN] - Soft Assertion Failed: expected [true] but found [false] - - [15:51:16] - LogHelper 
+[WARN] - Capturing Screenshot for Soft Assertion Failure - - [15:51:16] - LogHelper 
+[WARN] - Soft Assertions Summary:
+Soft Assertion Failed: expected [ALL PRODUCTS] but found [ALL PRODUCTSBEACHWEAR]
+Soft Assertion Failed: expected [ALL PRODUCTS] but found [WRITE YOUR REVIEW]
+Soft Assertion Failed: expected [Rs. 679] but found [Rs. 500]
+Soft Assertion Failed: expected [Brand: H&M] but found [Brand: Polo]
+Soft Assertion Failed: expected [true] but found [false]
+Soft Assertion Failed: expected [true] but found [false] - - [15:51:16] - LogHelper 
+[INFO] - Closing All Browser Windows - - [15:51:18] - LogHelper 

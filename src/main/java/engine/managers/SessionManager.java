@@ -3,15 +3,16 @@ package engine.managers;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import engine.browserActions.WindowManager;
+import engine.loggers.LogHelper;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
 import java.util.Date;
 
-import static engine.loggers.LogHelper.logError;
-import static engine.loggers.LogHelper.logInfo;
-import static engine.managers.CookiesManager.*;
+import static engine.loggers.LogHelper.logInfoStep;
+import static engine.managers.CookiesManager.addCookie;
+import static engine.managers.CookiesManager.deleteAllCookies;
 
 public class SessionManager {
     private WebDriver driver;
@@ -41,11 +42,11 @@ public class SessionManager {
                                 json.addProperty("isHttpOnly", x.isHttpOnly());
                                 cookies.add(json);
                             });
-            logInfo("Getting Cookies Data from Current Browser Session");
+            logInfoStep("Getting Cookies Data from Current Browser Session");
             return cookies;
         }catch (Exception e)
         {
-            logError("Failed to Get Cookies Data from Current Browser Session",e);
+            LogHelper.logErrorStep("Failed to Get Cookies Data from Current Browser Session",e);
             return null;
         }
     }
@@ -58,9 +59,9 @@ public class SessionManager {
             //sessionObj.put("createdAt", LocalDateTime.now());
             sessionObj.add("cookies_data", getCookiesData());
             JsonManager.createJsonFile(sessionObj, jsonFilePath);
-            logInfo("Storing Cookies Data Into Json Session Files");
+            logInfoStep("Storing Cookies Data Into Json Session Files");
         }catch (Exception e) {
-            logError("Failed to Store Cookies Data Into Json Session Files",e);
+            LogHelper.logErrorStep("Failed to Store Cookies Data Into Json Session Files",e);
         }
     }
 
@@ -85,11 +86,11 @@ public class SessionManager {
                                 .build();
                 addCookie(driver, ck);
             }
-            logInfo("Applying Cookies to Current Browser Session");
+            logInfoStep("Applying Cookies to Current Browser Session");
             //Refresh the Browser Page to check the Updates
             WindowManager.refreshWindow(driver);
         }catch (Exception e){
-            logError("Failed to Apply Cookies to Current Browser Session",e);
+            LogHelper.logErrorStep("Failed to Apply Cookies to Current Browser Session",e);
         }
     }
 }

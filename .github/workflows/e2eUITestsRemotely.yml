@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
       - master
@@ -35,7 +35,7 @@ jobs:
         run: docker compose -f src/main/resources/dockerFiles/docker-compose-mysql-v3.yml up -d
 
       - name: Set up Selenium Grid with Docker Containers
-        run: docker compose -f src/main/resources/docker-compose-mysql-v3.yml up -d
+        run: docker compose -f src/main/resources/dockerFiles/docker-compose-grid-v3.yml up --scale chrome=8 --scale edge=0 --scale firefox=0 -d
 
       - name: Check Running Containers
         run: docker ps
@@ -43,10 +43,7 @@ jobs:
       - name: Run tests
         continue-on-error: true
         run: >
-          mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnGUI,
-          CheckoutTests.CheckoutProductOnGUI,
-          RegisterTests.RegisterNewUserOnGUI,
-          SearchProductTests.SearchForProductOnGUI"
+          mvn clean test -Dtest="LoginTests.**"
           -DexecutionType="Remote"
           -DbrowserType="Chrome"
           -DisHeadless="true"

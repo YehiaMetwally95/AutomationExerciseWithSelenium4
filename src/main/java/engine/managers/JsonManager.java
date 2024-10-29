@@ -1,19 +1,20 @@
 package engine.managers;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.*;
-import com.jayway.jsonpath.*;
-
 import com.google.gson.reflect.TypeToken;
-
+import com.jayway.jsonpath.JsonPath;
+import engine.loggers.LogHelper;
 import org.apache.commons.io.FileUtils;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static engine.loggers.LogHelper.logError;
-import static engine.loggers.LogHelper.logInfo;
+import static engine.loggers.LogHelper.logInfoStep;
 
 public class JsonManager {
 
@@ -35,11 +36,11 @@ public class JsonManager {
         else
             data = result.toString();
 
-        logInfo("Getting Test Data ["+data+"] by Json Path ["+jsonPath+"]");
+        logInfoStep("Getting Test Data ["+data+"] by Json Path ["+jsonPath+"]");
         return data;
 
         }catch (Exception e){
-            logError("Failed to Read Test Data by Json Path ["+jsonPath+"]",e);
+            LogHelper.logErrorStep("Failed to Read Test Data by Json Path ["+jsonPath+"]",e);
             return null;
         }
     }
@@ -53,10 +54,10 @@ public class JsonManager {
                data = JsonPath.parse(result).json();
            else
                data = result;
-           logInfo("Getting Test Data ["+data+"] by Json Path ["+jsonPath+"]");
+           logInfoStep("Getting Test Data ["+data+"] by Json Path ["+jsonPath+"]");
            return data;
        }catch (Exception e){
-           logError("Failed to Read Test Data by Json Path ["+jsonPath+"]",e);
+           LogHelper.logErrorStep("Failed to Read Test Data by Json Path ["+jsonPath+"]",e);
            return null;
        }
     }
@@ -67,10 +68,10 @@ public class JsonManager {
             List<Object> list = JsonPath.parse(new File(filePath)).read(jsonPath);
             JsonArray data;
             data = JsonParser.parseString(list.toString()).getAsJsonArray();
-            logInfo("Getting Test Data ["+data+"] by Json Path ["+jsonPath+"]");
+            logInfoStep("Getting Test Data ["+data+"] by Json Path ["+jsonPath+"]");
             return data;
         }catch (Exception e){
-            logError("Failed to Get Test Data by Json Path ["+jsonPath+"]",e);
+            LogHelper.logErrorStep("Failed to Get Test Data by Json Path ["+jsonPath+"]",e);
             return null;
         }
     }
@@ -86,9 +87,9 @@ public class JsonManager {
             JsonObject obj = JsonParser.parseString(jsonString).getAsJsonObject();
             // Set the Json File with the new Json Object
             createJsonFile(obj, filePath);
-            logInfo("Update the Json Path ["+jsonPath+"] with new Test Data ["+value+"]");
+            logInfoStep("Update the Json Path ["+jsonPath+"] with new Test Data ["+value+"]");
         }catch (Exception e){
-            logInfo("Failed to Update the Json Path ["+jsonPath+"] with new Test Data ["+value+"]");
+            logInfoStep("Failed to Update the Json Path ["+jsonPath+"] with new Test Data ["+value+"]");
         }
         return this;
     }
@@ -101,10 +102,10 @@ public class JsonManager {
         //convert the json file to string
         String jsonString = FileUtils.readFileToString(filename, "UTF8");
         //parse the json string into Json Object (Deserialization)
-            logInfo("Reading Json File from filePath ["+filePath+"]");
+            logInfoStep("Reading Json File from filePath ["+filePath+"]");
             return JsonParser.parseString(jsonString).getAsJsonObject();
         }catch (Exception e){
-            logError("Failed to Read Json File from filePath ["+filePath+"]",e);
+            LogHelper.logErrorStep("Failed to Read Json File from filePath ["+filePath+"]",e);
             return null;
         }
     }
@@ -117,9 +118,9 @@ public class JsonManager {
             String formattedJson = gson.toJson(obj);
             file.write(formattedJson);
             file.close();
-            logInfo("Writing Data Into Json File of filePath ["+filePath+"]");
+            logInfoStep("Writing Data Into Json File of filePath ["+filePath+"]");
         }catch (Exception e){
-            logError("Failed to Write Data Into Json File Into filePath ["+filePath+"]",e);
+            LogHelper.logErrorStep("Failed to Write Data Into Json File Into filePath ["+filePath+"]",e);
         }
     }
 

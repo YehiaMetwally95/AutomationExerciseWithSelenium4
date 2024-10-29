@@ -1,12 +1,10 @@
 package engine.managers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.jayway.jsonpath.JsonPath;
+import engine.loggers.LogHelper;
 import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import io.restassured.parsing.Parser;
@@ -17,8 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import static engine.loggers.LogHelper.logError;
-import static engine.loggers.LogHelper.logInfo;
+import static engine.loggers.LogHelper.logInfoStep;
 import static engine.loggers.Screenshot.logApiRequestsToAllureReport;
 import static engine.managers.JsonManager.convertMapToJsonObject;
 
@@ -55,7 +52,7 @@ public class ApisManager {
                     break;
             }
 
-            logInfo("Sending "+requestType+" Request for URL ["+endpoint+"]");
+            logInfoStep("Sending "+requestType+" Request for URL ["+endpoint+"]");
 
             //Convert Request body and Response body to Objects
             Object responseBody = JsonParser.parseString(getResponseBody(response)).getAsJsonObject();
@@ -68,7 +65,7 @@ public class ApisManager {
             return response;
         }catch (Exception e)
         {
-            logError("Failed to Send "+requestType+" Request for URL ["+endpoint+"]",e);
+            LogHelper.logErrorStep("Failed to Send "+requestType+" Request for URL ["+endpoint+"]",e);
             return null;
         }
     }
@@ -132,7 +129,7 @@ public class ApisManager {
                 response = request.when().delete(endpoint);
                 break;
         }
-        logInfo("Sending Auth "+requestType+" Request for URL ["+endpoint+"]");
+        logInfoStep("Sending Auth "+requestType+" Request for URL ["+endpoint+"]");
            //Convert Request body and Response body to Objects
            Object responseBody = JsonParser.parseString(getResponseBody(response)).getAsJsonObject();
            String requestString = new JsonMapper().writeValueAsString(requestBody);
@@ -144,7 +141,7 @@ public class ApisManager {
         return response;
     }catch (Exception e)
        {
-        logError("Failed to Send Auth "+requestType+" Request for URL ["+endpoint+"]",e);
+        LogHelper.logErrorStep("Failed to Send Auth "+requestType+" Request for URL ["+endpoint+"]",e);
         return null;
        }
     }
@@ -160,7 +157,7 @@ public class ApisManager {
 
         response = request.when().get(endpoint);
 
-        logInfo("Sending Get Request for URL ["+endpoint+"]");
+        logInfoStep("Sending Get Request for URL ["+endpoint+"]");
             //Convert Request body and Response body to Objects
             Object responseBody = JsonParser.parseString(getResponseBody(response)).getAsJsonObject();
             Object requestBody = convertMapToJsonObject(queryParameters);
@@ -171,7 +168,7 @@ public class ApisManager {
         return response;
      } catch (Exception e)
         {
-         logError("Failed to Send Get Request for URL ["+endpoint+"]",e);
+         LogHelper.logErrorStep("Failed to Send Get Request for URL ["+endpoint+"]",e);
          return null;
         }
     }
@@ -206,7 +203,7 @@ public class ApisManager {
         }
 
         response = request.when().get(endpoint);
-        logInfo("Sending Auth Get Request for URL ["+endpoint+"]");
+        logInfoStep("Sending Auth Get Request for URL ["+endpoint+"]");
             //Convert Request body and Response body to Objects
             Object responseBody = JsonParser.parseString(getResponseBody(response)).getAsJsonObject();
             Object requestBody = convertMapToJsonObject(queryParameters);
@@ -218,7 +215,7 @@ public class ApisManager {
         return response;
     } catch (Exception e)
         {
-        logError("Failed to Send Auth Get Request for URL ["+endpoint+"]",e);
+        LogHelper.logErrorStep("Failed to Send Auth Get Request for URL ["+endpoint+"]",e);
         return null;
         }
     }
@@ -244,22 +241,22 @@ public class ApisManager {
     public static void logRequestBody(Object request)
     {
         try {
-            logInfo("Request Body : " + request.toString());
+            logInfoStep("Request Body : " + request.toString());
             System.out.println("*********************************************");
         }catch (Exception e)
         {
-            logError("Failed to Log the Request Body",e);
+            LogHelper.logErrorStep("Failed to Log the Request Body",e);
         }
     }
 
     public static void logResponseBody(Object response)
     {
         try {
-            logInfo("Response Body : " + response.toString());
+            logInfoStep("Response Body : " + response.toString());
             System.out.println("*********************************************\n");
         }catch (Exception e)
         {
-            logError("Failed to Log the Response Body",e);
+            LogHelper.logErrorStep("Failed to Log the Response Body",e);
         }
     }
 
