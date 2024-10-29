@@ -49,16 +49,16 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
             if(method.isTestMethod())
             {
-/*                //Log Screenshots for Successful and Failed Tests
+                //Log Screenshots for Successful and Failed Tests
                 ITestContext context = testResult.getTestContext();
                 WebDriver driver = (WebDriver) context.getAttribute("driver");
                 //Take Screenshot after every succeeded test
                 if (ITestResult.SUCCESS == testResult.getStatus() )
-                    captureSuccess(driver,testResult);
+                    captureSuccess(testResult);
 
                 //Take Screenshot after every failed test
-                else if (ITestResult.FAILURE == testResult.getStatus() && driver != null)
-                    captureFailure(driver,testResult);*/
+                else if (ITestResult.FAILURE == testResult.getStatus())
+                    captureFailure(testResult);
 
                 //Log All Soft Assertion Errors after Every Run
                 CustomSoftAssert.reportSoftAssertionErrors(method);
