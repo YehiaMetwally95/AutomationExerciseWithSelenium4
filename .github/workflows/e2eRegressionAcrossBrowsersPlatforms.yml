@@ -304,7 +304,7 @@ jobs:
           # Download and unzip Allure
           curl -o allure.zip -L "https://github.com/allure-framework/allure2/releases/latest/download/allure-2.32.0.zip"
           unzip allure.zip
-          sudo mv allure-2.31.0 /opt/allure  # Move the whole directory
+          sudo mv allure-2.32.0 /opt/allure  # Move the whole directory
           echo "/opt/allure/bin" >> $GITHUB_PATH  # Add Allure to the PATH
 
       # Download all Allure Files generated after every job

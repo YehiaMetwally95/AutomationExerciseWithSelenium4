@@ -1,60 +1,60 @@
-[INFO] - Loading Properties File Data - - [16:21:24] - LogHelper 
-[INFO] - Starting Chrome Browser ............ - - [16:21:28] - LogHelper 
-[INFO] - Navigating to URL [https://automationexercise.com/] - - [16:21:31] - LogHelper 
-[INFO] - Clicking on Element [ Products] - - [16:21:37] - LogHelper 
-[DEBUG] - Evaluating path: $['Messages']['AllProductsHeader'] - [16:21:37] - CompiledPath 
-[INFO] - Getting Test Data [ALL PRODUCTS] by Json Path [Messages.AllProductsHeader] - - [16:21:37] - LogHelper 
-[INFO] - Getting Text [ALL PRODUCTS] from Element located by [By.xpath: //h2[contains(@class,'title')]] - - [16:21:37] - LogHelper 
-[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [16:21:37] - CompiledPath 
-[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [16:21:37] - LogHelper 
-[INFO] - Clearing the Text on Element [Search Product] - - [16:21:38] - LogHelper 
-[INFO] - Typing [Blue Top] on Element [Search Product] - - [16:21:38] - LogHelper 
-[INFO] - Clicking on Element [] - - [16:21:41] - LogHelper 
-[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [16:21:41] - CompiledPath 
-[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [16:21:41] - LogHelper 
-[INFO] - The Element [ecommerce website products] is Displayed - - [16:21:42] - LogHelper 
-[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [16:21:42] - CompiledPath 
-[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [16:21:42] - LogHelper 
-[INFO] - Clicking on Element [ View Product] - - [16:21:45] - LogHelper 
-[DEBUG] - Evaluating path: $['Messages']['AllProductsHeader'] - [16:21:45] - CompiledPath 
-[INFO] - Getting Test Data [ALL PRODUCTS] by Json Path [Messages.AllProductsHeader] - - [16:21:45] - LogHelper 
-[INFO] - Getting Text [WRITE YOUR REVIEW] from Element located by [By.xpath: //a[contains(.,'Review')]] - - [16:21:46] - LogHelper 
-[WARN] - Soft Assertion Failed: expected [ALL PRODUCTS] but found [WRITE YOUR REVIEW] - - [16:21:46] - LogHelper 
-[WARN] - Capturing Screenshot for Soft Assertion Failure - - [16:21:46] - LogHelper 
-[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [16:21:46] - CompiledPath 
-[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [16:21:46] - LogHelper 
-[DEBUG] - Evaluating path: $['Products'][2]['Price'] - [16:21:46] - CompiledPath 
-[INFO] - Getting Test Data [Rs. 679] by Json Path [Products[2].Price] - - [16:21:46] - LogHelper 
-[DEBUG] - Evaluating path: $['Products'][2]['Availability'] - [16:21:46] - CompiledPath 
-[INFO] - Getting Test Data [In Stock] by Json Path [Products[2].Availability] - - [16:21:46] - LogHelper 
-[DEBUG] - Evaluating path: $['Products'][2]['Condition'] - [16:21:46] - CompiledPath 
-[INFO] - Getting Test Data [New] by Json Path [Products[2].Condition] - - [16:21:46] - LogHelper 
-[DEBUG] - Evaluating path: $['Products'][1]['Brand'] - [16:21:46] - CompiledPath 
-[INFO] - Getting Test Data [H&M] by Json Path [Products[1].Brand] - - [16:21:46] - LogHelper 
-[DEBUG] - Evaluating path: $['Products'][2]['Category'] - [16:21:46] - CompiledPath 
-[INFO] - Getting Test Data [Kids] by Json Path [Products[2].Category] - - [16:21:46] - LogHelper 
-[DEBUG] - Evaluating path: $['Products'][1]['Subcategory'] - [16:21:46] - CompiledPath 
-[INFO] - Getting Test Data [Tshirts] by Json Path [Products[1].Subcategory] - - [16:21:46] - LogHelper 
-[INFO] - Getting Text [Blue Top] from Element located by [By.cssSelector: .product-information h2] - - [16:21:47] - LogHelper 
-[INFO] - Getting Text [Rs. 500] from Element located by [By.xpath: (//div[@class='product-details']/descendant::span[contains(.,'Rs')])[2]] - - [16:21:47] - LogHelper 
-[WARN] - Soft Assertion Failed: expected [Rs. 679] but found [Rs. 500] - - [16:21:47] - LogHelper 
-[WARN] - Capturing Screenshot for Soft Assertion Failure - - [16:21:47] - LogHelper 
-[INFO] - Getting Text [Availability: In Stock] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Availability')]] - - [16:21:48] - LogHelper 
-[INFO] - Getting Text [Condition: New] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Condition')]] - - [16:21:48] - LogHelper 
-[INFO] - Getting Text [Brand:  Polo] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Brand')]] - - [16:21:48] - LogHelper 
-[WARN] - Soft Assertion Failed: expected [Brand: H&M] but found [Brand:  Polo] - - [16:21:48] - LogHelper 
-[WARN] - Capturing Screenshot for Soft Assertion Failure - - [16:21:48] - LogHelper 
-[INFO] - Getting Text [Category: Women > Tops] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Category')]] - - [16:21:48] - LogHelper 
-[WARN] - Soft Assertion Failed: expected [true] but found [false] - - [16:21:49] - LogHelper 
-[WARN] - Capturing Screenshot for Soft Assertion Failure - - [16:21:49] - LogHelper 
-[INFO] - Getting Text [Category: Women > Tops] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Category')]] - - [16:21:49] - LogHelper 
-[WARN] - Soft Assertion Failed: expected [true] but found [false] - - [16:21:49] - LogHelper 
-[WARN] - Capturing Screenshot for Soft Assertion Failure - - [16:21:49] - LogHelper 
-[INFO] - Capturing Screenshot for Succeeded Scenario - - [16:21:51] - LogHelper 
+[INFO] - Loading Properties File Data - - [17:23:52] - LogHelper 
+[INFO] - Starting Chrome Browser ............ - - [17:23:55] - LogHelper 
+[INFO] - Navigating to URL [https://automationexercise.com/] - - [17:23:57] - LogHelper 
+[INFO] - Clicking on Element [ Products] - - [17:24:08] - LogHelper 
+[DEBUG] - Evaluating path: $['Messages']['AllProductsHeader'] - [17:24:09] - CompiledPath 
+[INFO] - Getting Test Data [ALL PRODUCTS] by Json Path [Messages.AllProductsHeader] - - [17:24:09] - LogHelper 
+[INFO] - Getting Text [ALL PRODUCTS] from Element located by [By.xpath: //h2[contains(@class,'title')]] - - [17:24:09] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [17:24:09] - CompiledPath 
+[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [17:24:09] - LogHelper 
+[INFO] - Clearing the Text on Element [Search Product] - - [17:24:09] - LogHelper 
+[INFO] - Typing [Blue Top] on Element [Search Product] - - [17:24:09] - LogHelper 
+[INFO] - Clicking on Element [] - - [17:24:12] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [17:24:12] - CompiledPath 
+[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [17:24:12] - LogHelper 
+[INFO] - The Element [ecommerce website products] is Displayed - - [17:24:12] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [17:24:12] - CompiledPath 
+[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [17:24:12] - LogHelper 
+[INFO] - Clicking on Element [ View Product] - - [17:24:14] - LogHelper 
+[DEBUG] - Evaluating path: $['Messages']['AllProductsHeader'] - [17:24:14] - CompiledPath 
+[INFO] - Getting Test Data [ALL PRODUCTS] by Json Path [Messages.AllProductsHeader] - - [17:24:14] - LogHelper 
+[INFO] - Getting Text [WRITE YOUR REVIEW] from Element located by [By.xpath: //a[contains(.,'Review')]] - - [17:24:14] - LogHelper 
+[WARN] - Soft Assertion Failed: expected [ALL PRODUCTS] but found [WRITE YOUR REVIEW] - - [17:24:15] - LogHelper 
+[WARN] - Capturing Screenshot for Soft Assertion Failure - - [17:24:15] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [17:24:15] - CompiledPath 
+[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [17:24:15] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][2]['Price'] - [17:24:15] - CompiledPath 
+[INFO] - Getting Test Data [Rs. 679] by Json Path [Products[2].Price] - - [17:24:15] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][2]['Availability'] - [17:24:15] - CompiledPath 
+[INFO] - Getting Test Data [In Stock] by Json Path [Products[2].Availability] - - [17:24:15] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][2]['Condition'] - [17:24:15] - CompiledPath 
+[INFO] - Getting Test Data [New] by Json Path [Products[2].Condition] - - [17:24:15] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['Brand'] - [17:24:15] - CompiledPath 
+[INFO] - Getting Test Data [H&M] by Json Path [Products[1].Brand] - - [17:24:15] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][2]['Category'] - [17:24:15] - CompiledPath 
+[INFO] - Getting Test Data [Kids] by Json Path [Products[2].Category] - - [17:24:15] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['Subcategory'] - [17:24:15] - CompiledPath 
+[INFO] - Getting Test Data [Tshirts] by Json Path [Products[1].Subcategory] - - [17:24:15] - LogHelper 
+[INFO] - Getting Text [Blue Top] from Element located by [By.cssSelector: .product-information h2] - - [17:24:15] - LogHelper 
+[INFO] - Getting Text [Rs. 500] from Element located by [By.xpath: (//div[@class='product-details']/descendant::span[contains(.,'Rs')])[2]] - - [17:24:15] - LogHelper 
+[WARN] - Soft Assertion Failed: expected [Rs. 679] but found [Rs. 500] - - [17:24:16] - LogHelper 
+[WARN] - Capturing Screenshot for Soft Assertion Failure - - [17:24:16] - LogHelper 
+[INFO] - Getting Text [Availability: In Stock] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Availability')]] - - [17:24:16] - LogHelper 
+[INFO] - Getting Text [Condition: New] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Condition')]] - - [17:24:16] - LogHelper 
+[INFO] - Getting Text [Brand:  Polo] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Brand')]] - - [17:24:16] - LogHelper 
+[WARN] - Soft Assertion Failed: expected [Brand: H&M] but found [Brand:  Polo] - - [17:24:17] - LogHelper 
+[WARN] - Capturing Screenshot for Soft Assertion Failure - - [17:24:17] - LogHelper 
+[INFO] - Getting Text [Category: Women > Tops] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Category')]] - - [17:24:17] - LogHelper 
+[WARN] - Soft Assertion Failed: expected [true] but found [false] - - [17:24:18] - LogHelper 
+[WARN] - Capturing Screenshot for Soft Assertion Failure - - [17:24:18] - LogHelper 
+[INFO] - Getting Text [Category: Women > Tops] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Category')]] - - [17:24:18] - LogHelper 
+[WARN] - Soft Assertion Failed: expected [true] but found [false] - - [17:24:18] - LogHelper 
+[WARN] - Capturing Screenshot for Soft Assertion Failure - - [17:24:18] - LogHelper 
+[INFO] - Capturing Screenshot for Succeeded Scenario - - [17:24:20] - LogHelper 
 [WARN] - Soft Assertions Summary:
 Soft Assertion Failed: expected [ALL PRODUCTS] but found [WRITE YOUR REVIEW]
 Soft Assertion Failed: expected [Rs. 679] but found [Rs. 500]
 Soft Assertion Failed: expected [Brand: H&M] but found [Brand:  Polo]
 Soft Assertion Failed: expected [true] but found [false]
-Soft Assertion Failed: expected [true] but found [false] - - [16:21:51] - LogHelper 
-[INFO] - Closing All Browser Windows - - [16:21:51] - LogHelper 
+Soft Assertion Failed: expected [true] but found [false] - - [17:24:20] - LogHelper 
+[INFO] - Closing the current Browser Window - - [17:24:21] - LogHelper 

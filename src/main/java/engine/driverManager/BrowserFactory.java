@@ -87,7 +87,6 @@ public class BrowserFactory {
         }
 
         //Set the Logger Classes with the driver
-        CustomSoftAssert.softAssertDriver = getDriver(driver);
         context.setAttribute("isolatedDriver",driver);
         return driver;
     }
@@ -95,7 +94,7 @@ public class BrowserFactory {
     private static ChromeOptions getChromeOptions()
     {
         ChromeOptions option = new ChromeOptions();
-        option.addArguments("--disable-infobars");
+        option.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
         option.addArguments("--start-maximized");
         if (executionType.equalsIgnoreCase("LocalHeadless") || executionType.equalsIgnoreCase("Remote"))
             option.addArguments("--headless");
@@ -106,7 +105,7 @@ public class BrowserFactory {
     private static EdgeOptions getEdgeOptions()
     {
         EdgeOptions option = new EdgeOptions();
-        option.addArguments("--disable-infobars");
+        option.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
         option.addArguments("--start-maximized");
         if (executionType.equalsIgnoreCase("LocalHeadless") || executionType.equalsIgnoreCase("Remote"))
             option.addArguments("--headless");
