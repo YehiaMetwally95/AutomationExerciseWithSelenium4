@@ -18,16 +18,14 @@ import static engine.loggers.LogHelper.*;
 
 public class Screenshot {
 
-    public static WebDriver screenshotDriver;
-
-    public static void captureSuccess(ITestResult result){
+    public static void captureSuccess(WebDriver driver, ITestResult result){
             try {
                 Thread.sleep(1000);
-                File source = ((TakesScreenshot) screenshotDriver).getScreenshotAs(OutputType.FILE);
+                File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
                 File destination = new File("src/main/resources/screenshots/SuccessfulTests/" + result.getMethod().getMethodName() + ".png");
                 FileHandler.copy(source, destination);
 
-                var screenshot = ((TakesScreenshot) screenshotDriver).getScreenshotAs(OutputType.BYTES);
+                var screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
                 Allure.addAttachment("Successful Screenshot for [" + result.getMethod().getMethodName()+"]", new ByteArrayInputStream(screenshot));
                 logInfoStep("Capturing Screenshot for Succeeded Scenario");
             }catch (Exception e)
@@ -36,14 +34,14 @@ public class Screenshot {
             }
     }
 
-    public static void captureFailure(ITestResult result){
+    public static void captureFailure(WebDriver driver, ITestResult result){
             try {
             Thread.sleep(1000);
-            File source = ((TakesScreenshot) screenshotDriver).getScreenshotAs(OutputType.FILE);
+            File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             File destination = new File("src/main/resources/screenshots/FailedTests/"+ result.getMethod().getMethodName() +".png");
             FileHandler.copy(source, destination);
 
-            var screenshot = ((TakesScreenshot) screenshotDriver).getScreenshotAs(OutputType.BYTES);
+            var screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             Allure.addAttachment("Failure Screenshot for ["+result.getMethod().getMethodName()+"]",new ByteArrayInputStream(screenshot));
                 logInfoStep("Capturing Screenshot for Failed Scenario");
             }catch (Exception e)
@@ -52,14 +50,14 @@ public class Screenshot {
             }
     }
 
-    public static void captureSoftFailure(IAssert<?> assertCommand,String error){
+    public static void captureSoftFailure(WebDriver driver,IAssert<?> assertCommand,String error){
 
         try {
-            File source = ((TakesScreenshot) screenshotDriver).getScreenshotAs(OutputType.FILE);
+            File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             File destination = new File("src/main/resources/screenshots/SoftAssertionFailures/"+ assertCommand.getExpected() +".png");
             FileHandler.copy(source, destination);
 
-            var screenshot = ((TakesScreenshot) screenshotDriver).getScreenshotAs(OutputType.BYTES);
+            var screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             Allure.addAttachment("Failed Soft Assertion Screenshot",new ByteArrayInputStream(screenshot));
             Allure.step(error);
             logWarningStep(error);

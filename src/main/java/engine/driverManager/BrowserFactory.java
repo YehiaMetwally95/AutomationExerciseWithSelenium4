@@ -1,7 +1,6 @@
 package engine.driverManager;
 
 import engine.loggers.CustomSoftAssert;
-import engine.loggers.Screenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -88,8 +87,8 @@ public class BrowserFactory {
         }
 
         //Set the Logger Classes with the driver
-        Screenshot.screenshotDriver= getDriver(driver);
-       // context.setAttribute("driver",getDriver(driver));
+        CustomSoftAssert.softAssertDriver = getDriver(driver);
+        context.setAttribute("driver",getDriver(driver));
         return driver;
     }
 

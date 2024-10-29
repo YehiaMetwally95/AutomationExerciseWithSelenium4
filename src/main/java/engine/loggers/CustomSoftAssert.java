@@ -18,12 +18,13 @@ public class CustomSoftAssert extends SoftAssert{
 
     private final static List<String> errors = new ArrayList<>();
     public static CustomSoftAssert softAssert = new CustomSoftAssert();
+    public static WebDriver softAssertDriver;
 
     @SneakyThrows
     @Override
     public void onAssertFailure(IAssert<?> assertCommand, AssertionError ex) {
         String errorMessage = "Soft Assertion Failed: " + ex.getMessage();
-        Screenshot.captureSoftFailure(assertCommand,errorMessage);
+        Screenshot.captureSoftFailure(softAssertDriver,assertCommand,errorMessage);
         errors.add(errorMessage);
     }
 
