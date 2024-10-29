@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import static engine.loggers.LogHelper.logError;
 import static engine.loggers.LogHelper.logInfo;
+import static engine.loggers.Screenshot.captureSuccess;
 
 public class WindowManager {
 
@@ -83,7 +84,8 @@ public class WindowManager {
             logInfo("Closing the current Browser Window");
         }catch (Exception e){
             logError("Failed to Close the current Browser Window",e);
-        }    }
+        }
+    }
 
     public static void closeAllWindows(WebDriver driver)
     {

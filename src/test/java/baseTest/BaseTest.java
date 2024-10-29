@@ -1,10 +1,9 @@
 package baseTest;
 
-import org.openqa.selenium.*;
-import org.testng.ITestResult;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
 import engine.listeners.TestNGListners;
-import engine.loggers.CustomSoftAssert;
 import prepareTestData.LoadProductsFromDB;
 import prepareTestData.LoadUsersFromDB;
 
@@ -12,7 +11,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import static engine.driverManager.BrowserFactory.*;
-import static engine.loggers.Screenshot.*;
 import static engine.browserActions.WindowManager.*;
 import static engine.managers.PropertiesManager.*;
 
@@ -20,7 +18,7 @@ import static engine.managers.PropertiesManager.*;
 public class BaseTest {
 
     //Variables
-    protected ThreadLocal<WebDriver> isolatedDriver = new ThreadLocal<>();;
+    protected ThreadLocal<RemoteWebDriver> isolatedDriver;;
 
     public String jsonFilePathForSessionDataUser0 = "src/test/resources/SessionData/SessionDataForUser0.json";
     public String jsonFilePathForSessionDataUser1 = "src/test/resources/SessionData/SessionDataForUser1.json";
@@ -40,30 +38,15 @@ public class BaseTest {
     //Open Browser
     @Parameters({"BrowserType"})
     @BeforeMethod
-    public void setUpAndOpenBrowser(@Optional String browserType) throws IOException {
+    public void setUpAndOpenBrowser(@Optional String browserType, ITestContext cont) throws IOException {
         //Open Browser
-        WebDriver driver = openBrowser();
-
-        //Generate an Isolated Driver by ThreadLocal
-        isolateWebDriver(driver,isolatedDriver);
+        isolatedDriver = openBrowser();
 
         //Perform actions on Window
         navigateToURL(getDriver(isolatedDriver),getPropertiesValue("baseUrlWeb"));
-
-        //Set the CustomSoftAssert Class with the driver
-        CustomSoftAssert.softAssertDriver = getDriver(isolatedDriver);
     }
 
     @AfterMethod
-    public void getScreenshots(ITestResult result) throws IOException, InterruptedException {
-        //Take Screenshot after every successful test
-        captureSuccess(getDriver(isolatedDriver),result);
-
-        //Take Screenshot after every failed test
-        captureFailure(getDriver(isolatedDriver), result);
-    }
-
-    @AfterMethod (dependsOnMethods = "getScreenshots")
     public void tearDownBrowser(){
         //Close Browser after every test
         closeAllWindows(getDriver(isolatedDriver));

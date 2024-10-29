@@ -1,5 +1,7 @@
 package engine.driverManager;
 
+import engine.loggers.CustomSoftAssert;
+import engine.loggers.Screenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,6 +11,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.ITestContext;
+import org.testng.ITestResult;
+import org.testng.Reporter;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -19,31 +24,32 @@ import static engine.loggers.LogHelper.logError;
 import static engine.loggers.LogHelper.logInfo;
 
 public class BrowserFactory {
+    private static final ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();;
 
     private static final String browserType = System.getProperty("browserType");
     private static final String executionType = System.getProperty("executionType");
     private static final String remoteExecutionHost = System.getProperty("remoteExecutionHost");
     private static final String remoteExecutionPort = System.getProperty("remoteExecutionPort");
 
-    public static WebDriver openBrowser() throws MalformedURLException {
-        RemoteWebDriver driver = null;
-
+    public static ThreadLocal<RemoteWebDriver> openBrowser() throws MalformedURLException {
+        ITestResult result = Reporter.getCurrentTestResult();
+        ITestContext context = result.getTestContext();
         if (executionType.equalsIgnoreCase("Local") || executionType.equalsIgnoreCase("LocalHeadless"))
         {
             switch (browserType)
             {
                 case "Chrome" :
-                    driver = new ChromeDriver(getChromeOptions());
+                    driver.set(new ChromeDriver(getChromeOptions()));
                     logInfo("Starting "+ browserType +" Browser ............");
                     break;
 
                 case "Firefox" :
-                    driver = new FirefoxDriver(getFireFoxOptions());
+                    driver.set(new FirefoxDriver(getFireFoxOptions()));
                     logInfo("Starting "+ browserType +" Browser ............");
                     break;
 
                 case "Edge" :
-                    driver = new EdgeDriver(getEdgeOptions());
+                    driver.set(new EdgeDriver(getEdgeOptions()));
                     logInfo("Starting "+ browserType +" Browser ............");
                     break;
                 default:
@@ -56,32 +62,36 @@ public class BrowserFactory {
             switch (browserType)
             {
                 case "Chrome" :
-                    driver = new RemoteWebDriver(
+                    driver.set(new RemoteWebDriver(
                             new URL("http://" + remoteExecutionHost + ":" + remoteExecutionPort + "/wd/hub")
-                            ,getChromeOptions());
-                    driver.setFileDetector(new LocalFileDetector());
+                            ,getChromeOptions()));
+                    driver.get().setFileDetector(new LocalFileDetector());
                     logInfo("Starting "+ browserType +" Browser ............");
                     break;
 
                 case "Firefox" :
-                    driver = new RemoteWebDriver(
+                    driver.set(new RemoteWebDriver(
                             new URL("http://" + remoteExecutionHost + ":" + remoteExecutionPort + "/wd/hub")
-                            ,getFireFoxOptions());
-                    driver.setFileDetector(new LocalFileDetector());
+                            ,getFireFoxOptions()));
+                    driver.get().setFileDetector(new LocalFileDetector());
                     logInfo("Starting "+ browserType +" Browser ............");
                     break;
 
                 case "Edge" :
-                    driver = new RemoteWebDriver(
+                    driver.set(new RemoteWebDriver(
                             new URL("http://" + remoteExecutionHost + ":" + remoteExecutionPort + "/wd/hub")
-                            ,getEdgeOptions());
-                    driver.setFileDetector(new LocalFileDetector());
+                            ,getEdgeOptions()));
+                    driver.get().setFileDetector(new LocalFileDetector());
                     logInfo("Starting "+ browserType +" Browser ............");
                     break;
                 default:
                     logError("Failed to Start Browser, The Input Browser Name is Incorrect");
             }
         }
+
+        //Set the Logger Classes with the driver
+        CustomSoftAssert.softAssertDriver = getDriver(driver);
+        context.setAttribute("driver",getDriver(driver));
         return driver;
     }
 
@@ -117,17 +127,12 @@ public class BrowserFactory {
         return option;
     }
 
-    public static WebDriver getDriver(ThreadLocal<WebDriver> isolatedDriver)
+    public static WebDriver getDriver(ThreadLocal<RemoteWebDriver> isolatedDriver)
     {
         return isolatedDriver.get();
     }
 
-    public static void isolateWebDriver(WebDriver driver , ThreadLocal<WebDriver> isolatedDriver)
-    {
-        isolatedDriver.set(driver);
-    }
-
-    public static void removeIsolatedDriver (ThreadLocal<WebDriver> isolatedDriver)
+    public static void removeIsolatedDriver (ThreadLocal<RemoteWebDriver> isolatedDriver)
     {
         isolatedDriver.remove();
     }

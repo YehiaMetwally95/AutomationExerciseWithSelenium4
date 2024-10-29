@@ -2,6 +2,9 @@ package testCases.ContactUsTests;
 
 import baseTest.BaseTest;
 import io.qameta.allure.*;
+import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
+import org.testng.ITestResult;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -36,7 +39,7 @@ public class SubmitContactUsRequest extends BaseTest {
     public void submitContactusRequest() throws IOException {
         new HomePage(getDriver(isolatedDriver))
                 .openContactUsPage()
-                .verifyContactUsPageIsOpened(json.getData("Messages.RequestSubmitted"))
+                .verifyContactUsPageIsOpened(json.getData("Messages.ContactUsHeader"))
                 .submitContactUsRequest(json.getData("Details.Name"),
                         json.getData("Details.Email"),json.getData("Details.Subject"),
                         json.getData("Details.Description"),json.getData("Details.FilePath"))

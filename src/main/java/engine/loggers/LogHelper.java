@@ -16,7 +16,6 @@ public class LogHelper {
         log.info(Step + " -");
     }
 
-    @Step("{Warning}")
     public static void logWarning (String Warning)
     {
         log.warn(Warning + " -");

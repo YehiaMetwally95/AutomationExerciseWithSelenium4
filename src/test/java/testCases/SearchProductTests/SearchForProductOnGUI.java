@@ -32,12 +32,12 @@ public class SearchForProductOnGUI extends BaseTest {
                 .verifySearchedProduct(json.getData("Products[0].Name"))
                 // Open Product Details Page On GUI
                 .openProductDetailsPage(json.getData("Products[0].Name"))
-                .verifyProductDetailsPageIsOpened(json.getData("Messages.ReviewSection"))
+                .verifyProductDetailsPageIsOpened(json.getData("Messages.AllProductsHeader"))
                 // The Data Validation on product details is done on GUI Layer
                 .verifyAllProductDetails(json.getData("Products[0].Name")
-                        ,json.getData("Products[0].Price"),json.getData("Products[0].Availability")
-                        ,json.getData("Products[0].Condition"),json.getData("Products[1].Brand")
-                        ,json.getData("Products[0].Category"),json.getData("Products[0].Subcategory"));
+                        ,json.getData("Products[2].Price"),json.getData("Products[2].Availability")
+                        ,json.getData("Products[2].Condition"),json.getData("Products[1].Brand")
+                        ,json.getData("Products[2].Category"),json.getData("Products[1].Subcategory"));
     }
 
 }
