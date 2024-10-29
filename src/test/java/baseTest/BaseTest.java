@@ -48,7 +48,7 @@ public class BaseTest {
     @AfterMethod
     public void tearDownBrowser(){
         //Close Browser after every test
-        closeAllWindows(getDriver(isolatedDriver));
+        closeCurrentWindow(getDriver(isolatedDriver));
 
         //Remove the Isolated Driver from Memory
         removeIsolatedDriver(isolatedDriver);
