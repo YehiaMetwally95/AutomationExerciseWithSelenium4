@@ -4,10 +4,12 @@ import engine.loggers.CustomSoftAssert;
 import engine.managers.PropertiesManager;
 import lombok.SneakyThrows;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.*;
 
 import java.io.File;
 
+import static engine.driverManager.BrowserFactory.getDriver;
 import static engine.loggers.Screenshot.captureFailure;
 import static engine.loggers.Screenshot.captureSuccess;
 import static engine.utilities.DeleteDirectoryFiles.deleteFiles;
@@ -51,14 +53,14 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
             {
                 //Log Screenshots for Successful and Failed Tests
                 ITestContext context = testResult.getTestContext();
-                WebDriver driver = (WebDriver) context.getAttribute("driver");
+                ThreadLocal<RemoteWebDriver> driver = (ThreadLocal<RemoteWebDriver>) context.getAttribute("isolatedDriver");
                 //Take Screenshot after every succeeded test
                 if (ITestResult.SUCCESS == testResult.getStatus() )
-                    captureSuccess(driver,testResult);
+                    captureSuccess(getDriver(driver),testResult);
 
                 //Take Screenshot after every failed test
                 else if (ITestResult.FAILURE == testResult.getStatus())
-                    captureFailure(driver,testResult);
+                    captureFailure(getDriver(driver),testResult);
 
                 //Log All Soft Assertion Errors after Every Run
                 CustomSoftAssert.reportSoftAssertionErrors(method);

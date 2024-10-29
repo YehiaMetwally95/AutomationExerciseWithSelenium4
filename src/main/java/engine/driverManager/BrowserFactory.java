@@ -88,7 +88,7 @@ public class BrowserFactory {
 
         //Set the Logger Classes with the driver
         CustomSoftAssert.softAssertDriver = getDriver(driver);
-        context.setAttribute("driver",getDriver(driver));
+        context.setAttribute("isolatedDriver",driver);
         return driver;
     }
 
