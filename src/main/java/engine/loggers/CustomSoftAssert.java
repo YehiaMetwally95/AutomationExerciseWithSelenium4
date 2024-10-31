@@ -46,7 +46,7 @@ public class CustomSoftAssert extends SoftAssert{
             }
         }catch (Exception e)
             {
-                LogHelper.logErrorStep("Failed to Log the Soft Assertion Errors",e);
+                LogHelper.logErrorStep("Failed to Log the Soft Assertion Summery Report",e);
             }
     }
 

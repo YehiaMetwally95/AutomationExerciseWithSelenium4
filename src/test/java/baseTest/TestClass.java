@@ -10,8 +10,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import org.openqa.selenium.support.locators.RelativeLocator;
+import org.testng.ITestContext;
+import org.testng.ITestResult;
+import org.testng.Reporter;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import org.testng.xml.XmlSuite;
 
 import java.io.IOException;
 
@@ -26,7 +30,9 @@ public class TestClass {
         By continueButton = By.xpath("//a[contains(@data-qa,'continue')]");
         By yehia = RelativeLocator.with(By.tagName("a")).below(continueButton);
         System.out.println(yehia);
-
+        ITestResult result = Reporter.getCurrentTestResult();
+        ITestContext context = result.getTestContext();
+        context.getCurrentXmlTest().getSuite().setParallel(XmlSuite.ParallelMode.METHODS);
        /* logInfo("Starting my test");
         logWarning("This is warning");
 

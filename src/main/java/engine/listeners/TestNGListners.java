@@ -10,8 +10,9 @@ import org.testng.*;
 import java.io.File;
 
 import static engine.driverManager.BrowserFactory.getDriver;
-import static engine.loggers.Screenshot.captureFailure;
-import static engine.loggers.Screenshot.captureSuccess;
+import static engine.loggers.AllureReport.generateAllureReport;
+import static engine.loggers.AllureReport.uploadLogFileIntoAllure;
+import static engine.loggers.Screenshot.*;
 import static engine.utilities.DeleteDirectoryFiles.deleteFiles;
 
 public class TestNGListners implements ITestListener , IInvokedMethodListener , ISuiteListener {
@@ -43,6 +44,8 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
     }
 
     public void onFinish (ISuite suite) {
+        //Genarate the Allure Report after Suite Run
+        generateAllureReport();
     }
 
     public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
@@ -62,8 +65,11 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
                 else if (ITestResult.FAILURE == testResult.getStatus())
                     captureFailure(getDriver(driver),testResult);
 
-                //Log All Soft Assertion Errors after Every Run
+                //Log Summery Report for Soft Assertion Errors after Every Run
                 CustomSoftAssert.reportSoftAssertionErrors(method);
+
+                //Upload the Log File to Allure Report
+                uploadLogFileIntoAllure();
             }     
     }
 }

@@ -8,7 +8,6 @@ import org.testng.Assert;
 public class LogHelper {
 
     static Logger log = LogManager.getLogger();
-   // static String callerMethodName = Thread.currentThread().getStackTrace()[4].getMethodName();
 
     public static void logInfoStep(String Step)
     {
