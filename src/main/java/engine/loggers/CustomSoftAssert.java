@@ -35,22 +35,20 @@ public class CustomSoftAssert extends SoftAssert{
         errors.get().add(errorMessage); // Add error to the ThreadLocal list for this thread
     }
 
-    public static void reportSoftAssertionErrors(IInvokedMethod method)
-    {
-        try{
+    public static void reportSoftAssertionErrors(IInvokedMethod method) {
+        try {
             List<String> threadErrors = errors.get();  // Get the thread-local errors list
             if (!threadErrors.isEmpty()) {
-                String combinedError = String.join("\n",threadErrors);
+                String combinedError = String.join("\n", threadErrors);
                 logWarningStep("Soft Assertions Summary:\n" + combinedError);
-                Allure.step("Soft Assertions Summary for "+method.getTestMethod().getMethodName()+": \n", () -> {
+                Allure.step("Soft Assertions Summary for " + method.getTestMethod().getMethodName() + ": \n", () -> {
                     threadErrors.forEach(Allure::step);
                 });
             }
-        }catch (Exception e)
-            {
-                LogHelper.logErrorStep("Failed to Log the Soft Assertion Summery Report",e);
-            }finally {
+        } catch (Exception e) {
+            LogHelper.logErrorStep("Failed to Log the Soft Assertion Summery Report", e);
+        } finally {
             errors.remove();  // Clear the ThreadLocal list after reporting
+        }
     }
-
 }
