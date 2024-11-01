@@ -51,7 +51,7 @@ public class AllureReport {
 
     public static void generateAllureReport() {
         try {
-            ProcessBuilder builder = new ProcessBuilder("mvn.cmd", "allure:report");
+            ProcessBuilder builder = new ProcessBuilder("mvn", "allure:report");
             builder.inheritIO().start().waitFor();
             logInfoStep("Generating the Allure Report");
         } catch (Exception e) {
