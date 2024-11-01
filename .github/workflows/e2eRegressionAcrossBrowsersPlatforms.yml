@@ -265,7 +265,7 @@ jobs:
           -DexecutionType="Local"
           -DbrowserType="Edge"
           -DisHeadless="true"
-          -DsyncWithDB="true"
+          -DsyncWithDB="false"
           -DparallelMode="METHODS"
           -DthreadCount="2"
 
