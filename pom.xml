@@ -236,9 +236,9 @@
                         </argLine>
 
                         <!--suppress UnresolvedMavenProperty -->
-                        <parallel>${parallel_mode}</parallel>
+                        <parallel>${parallelMode}</parallel>
                         <!--suppress UnresolvedMavenProperty -->
-                        <threadCount>${thread.count}</threadCount>
+                        <threadCount>${threadCount}</threadCount>
                         <properties>
                             <property>
                                 <name>usedefaultlisteners</name>
