@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
       - master
@@ -43,7 +43,11 @@ jobs:
       - name: Run tests
         continue-on-error: true
         run: >
-          mvn clean test -Dtest="LoginTests.**"
+          mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnGUI,
+          CheckoutTests.CheckoutProductOnGUI,
+          RegisterTests.RegisterNewUserOnGUI,
+          SearchProductTests.SearchForProductOnGUI
+          LoginTests.**"
           -DexecutionType="Remote"
           -DbrowserType="Chrome"
           -DisHeadless="true"
