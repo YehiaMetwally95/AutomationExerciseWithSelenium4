@@ -1,142 +1,20 @@
-[INFO] - Loading Properties File Data - - [10:15:53] - LogHelper 
-[INFO] - Starting Chrome Browser ............ - - [10:15:56] - LogHelper 
-[INFO] - Navigating to URL [https://automationexercise.com/] - - [10:15:59] - LogHelper 
-[INFO] - The Element [Website for automation practice] is Displayed - - [10:16:00] - LogHelper 
-[INFO] - Clicking on Element [ Signup / Login] - - [10:16:07] - LogHelper 
-[DEBUG] - Evaluating path: $['Messages']['LoginHeader'] - [10:16:07] - CompiledPath 
-[INFO] - Getting Test Data [Login to your account] by Json Path [Messages.LoginHeader] - - [10:16:07] - LogHelper 
-[DEBUG] - Evaluating path: $['Messages']['SignupHeader'] - [10:16:07] - CompiledPath 
-[INFO] - Getting Test Data [New User Signup!] by Json Path [Messages.SignupHeader] - - [10:16:07] - LogHelper 
-[INFO] - Getting Text [Login to your account] from Element located by [[unknown locator]] - - [10:16:08] - LogHelper 
-[INFO] - Getting Text [New User Signup!] from Element located by [[unknown locator]] - - [10:16:08] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][0]['Email'] - [10:16:08] - CompiledPath 
-[INFO] - Getting Test Data [Test2438307@gmail.com] by Json Path [Users[0].Email] - - [10:16:08] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][0]['Password'] - [10:16:08] - CompiledPath 
-[INFO] - Getting Test Data [Test@%^2438311] by Json Path [Users[0].Password] - - [10:16:08] - LogHelper 
-[INFO] - Clearing the Text on Element [Email Address] - - [10:16:08] - LogHelper 
-[INFO] - Typing [Test2438307@gmail.com] on Element [Email Address] - - [10:16:08] - LogHelper 
-[INFO] - Clearing the Text on Element [Password] - - [10:16:09] - LogHelper 
-[INFO] - Typing [Test@%^2438311] on Element [Password] - - [10:16:09] - LogHelper 
-[INFO] - Clicking on Element [Login] - - [10:16:19] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][1]['Name'] - [10:16:19] - CompiledPath 
-[INFO] - Getting Test Data [Test2440927] by Json Path [Users[1].Name] - - [10:16:19] - LogHelper 
-[INFO] - Getting Text [Logged in as Test2438300] from Element located by [By.partialLinkText: Logged in] - - [10:16:19] - LogHelper 
-[INFO] - Capturing Screenshot for Failed Scenario - - [10:16:21] - LogHelper 
-[INFO] - Closing the current Browser Window - - [10:16:21] - LogHelper 
-[INFO] - Starting Chrome Browser ............ - - [10:16:23] - LogHelper 
-[INFO] - Navigating to URL [https://automationexercise.com/] - - [10:16:30] - LogHelper 
-[INFO] - The Element [Website for automation practice] is Displayed - - [10:16:30] - LogHelper 
-[INFO] - Clicking on Element [ Signup / Login] - - [10:16:36] - LogHelper 
-[DEBUG] - Evaluating path: $['Messages']['LoginHeader'] - [10:16:36] - CompiledPath 
-[INFO] - Getting Test Data [Login to your account] by Json Path [Messages.LoginHeader] - - [10:16:36] - LogHelper 
-[DEBUG] - Evaluating path: $['Messages']['SignupHeader'] - [10:16:36] - CompiledPath 
-[INFO] - Getting Test Data [New User Signup!] by Json Path [Messages.SignupHeader] - - [10:16:36] - LogHelper 
-[INFO] - Getting Text [Login to your account] from Element located by [[unknown locator]] - - [10:16:37] - LogHelper 
-[INFO] - Getting Text [New User Signup!] from Element located by [[unknown locator]] - - [10:16:37] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][1]['Email'] - [10:16:37] - CompiledPath 
-[INFO] - Getting Test Data [Test2441001@gmail.com] by Json Path [Users[1].Email] - - [10:16:37] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][1]['Password'] - [10:16:37] - CompiledPath 
-[INFO] - Getting Test Data [Test@%^2441004] by Json Path [Users[1].Password] - - [10:16:37] - LogHelper 
-[INFO] - Clearing the Text on Element [Email Address] - - [10:16:37] - LogHelper 
-[INFO] - Typing [Test2441001@gmail.com] on Element [Email Address] - - [10:16:38] - LogHelper 
-[INFO] - Clearing the Text on Element [Password] - - [10:16:38] - LogHelper 
-[INFO] - Typing [Test@%^2441004] on Element [Password] - - [10:16:38] - LogHelper 
-[INFO] - Clicking on Element [Login] - - [10:16:49] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][1]['Name'] - [10:16:49] - CompiledPath 
-[INFO] - Getting Test Data [Test2440927] by Json Path [Users[1].Name] - - [10:16:49] - LogHelper 
-[INFO] - Getting Text [Logged in as Test2440927] from Element located by [By.partialLinkText: Logged in] - - [10:16:49] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][1]['Name'] - [10:16:49] - CompiledPath 
-[INFO] - Getting Test Data [Test2440927] by Json Path [Users[1].Name] - - [10:16:49] - LogHelper 
-[INFO] - Getting Cookies Data from Current Browser Session - - [10:16:49] - LogHelper 
-[INFO] - Writing Into Json File By filePath [src/test/resources/SessionData/SessionDataForUser1.json] - - [10:16:49] - LogHelper 
-[INFO] - Storing Cookies Data Into Json Session Files - - [10:16:49] - LogHelper 
-[INFO] - Capturing Screenshot for Succeeded Scenario - - [10:16:51] - LogHelper 
-[INFO] - Closing the current Browser Window - - [10:16:51] - LogHelper 
-[INFO] - Starting Chrome Browser ............ - - [10:16:53] - LogHelper 
-[INFO] - Navigating to URL [https://automationexercise.com/] - - [10:16:59] - LogHelper 
-[INFO] - The Element [Website for automation practice] is Displayed - - [10:16:59] - LogHelper 
-[INFO] - Clicking on Element [ Signup / Login] - - [10:17:03] - LogHelper 
-[DEBUG] - Evaluating path: $['Messages']['LoginHeader'] - [10:17:03] - CompiledPath 
-[INFO] - Getting Test Data [Login to your account] by Json Path [Messages.LoginHeader] - - [10:17:03] - LogHelper 
-[DEBUG] - Evaluating path: $['Messages']['SignupHeader'] - [10:17:03] - CompiledPath 
-[INFO] - Getting Test Data [New User Signup!] by Json Path [Messages.SignupHeader] - - [10:17:03] - LogHelper 
-[INFO] - Getting Text [Login to your account] from Element located by [[unknown locator]] - - [10:17:04] - LogHelper 
-[INFO] - Getting Text [New User Signup!] from Element located by [[unknown locator]] - - [10:17:04] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][2]['Email'] - [10:17:04] - CompiledPath 
-[INFO] - Getting Test Data [Test2605560@gmail.com] by Json Path [Users[2].Email] - - [10:17:04] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][2]['Password'] - [10:17:04] - CompiledPath 
-[INFO] - Getting Test Data [Test@%^2605562] by Json Path [Users[2].Password] - - [10:17:04] - LogHelper 
-[INFO] - Clearing the Text on Element [Email Address] - - [10:17:05] - LogHelper 
-[INFO] - Typing [Test2605560@gmail.com] on Element [Email Address] - - [10:17:05] - LogHelper 
-[INFO] - Clearing the Text on Element [Password] - - [10:17:05] - LogHelper 
-[INFO] - Typing [Test@%^2605562] on Element [Password] - - [10:17:05] - LogHelper 
-[INFO] - Clicking on Element [Login] - - [10:17:08] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][2]['Name'] - [10:17:08] - CompiledPath 
-[INFO] - Getting Test Data [Test2605552] by Json Path [Users[2].Name] - - [10:17:08] - LogHelper 
-[INFO] - Getting Text [Logged in as Test2605552] from Element located by [By.partialLinkText: Logged in] - - [10:17:08] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][2]['Name'] - [10:17:08] - CompiledPath 
-[INFO] - Getting Test Data [Test2605552] by Json Path [Users[2].Name] - - [10:17:08] - LogHelper 
-[INFO] - Getting Cookies Data from Current Browser Session - - [10:17:08] - LogHelper 
-[INFO] - Writing Into Json File By filePath [src/test/resources/SessionData/SessionDataForUser2.json] - - [10:17:08] - LogHelper 
-[INFO] - Storing Cookies Data Into Json Session Files - - [10:17:08] - LogHelper 
-[INFO] - Capturing Screenshot for Succeeded Scenario - - [10:17:10] - LogHelper 
-[INFO] - Closing the current Browser Window - - [10:17:10] - LogHelper 
-[INFO] - Starting Chrome Browser ............ - - [10:17:12] - LogHelper 
-[INFO] - Navigating to URL [https://automationexercise.com/] - - [10:17:14] - LogHelper 
-[INFO] - The Element [Website for automation practice] is Displayed - - [10:17:14] - LogHelper 
-[INFO] - Clicking on Element [ Signup / Login] - - [10:17:16] - LogHelper 
-[DEBUG] - Evaluating path: $['Messages']['LoginHeader'] - [10:17:16] - CompiledPath 
-[INFO] - Getting Test Data [Login to your account] by Json Path [Messages.LoginHeader] - - [10:17:16] - LogHelper 
-[DEBUG] - Evaluating path: $['Messages']['SignupHeader'] - [10:17:16] - CompiledPath 
-[INFO] - Getting Test Data [New User Signup!] by Json Path [Messages.SignupHeader] - - [10:17:16] - LogHelper 
-[INFO] - Getting Text [Login to your account] from Element located by [[unknown locator]] - - [10:17:17] - LogHelper 
-[INFO] - Getting Text [New User Signup!] from Element located by [[unknown locator]] - - [10:17:17] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][3]['Email'] - [10:17:17] - CompiledPath 
-[INFO] - Getting Test Data [Test2606870@gmail.com] by Json Path [Users[3].Email] - - [10:17:17] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][3]['Password'] - [10:17:17] - CompiledPath 
-[INFO] - Getting Test Data [Test@%^2606876] by Json Path [Users[3].Password] - - [10:17:17] - LogHelper 
-[INFO] - Clearing the Text on Element [Email Address] - - [10:17:18] - LogHelper 
-[INFO] - Typing [Test2606870@gmail.com] on Element [Email Address] - - [10:17:19] - LogHelper 
-[INFO] - Clearing the Text on Element [Password] - - [10:17:19] - LogHelper 
-[INFO] - Typing [Test@%^2606876] on Element [Password] - - [10:17:19] - LogHelper 
-[INFO] - Clicking on Element [Login] - - [10:17:23] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][3]['Name'] - [10:17:23] - CompiledPath 
-[INFO] - Getting Test Data [Test2606768] by Json Path [Users[3].Name] - - [10:17:23] - LogHelper 
-[INFO] - Getting Text [Logged in as Test2606768] from Element located by [By.partialLinkText: Logged in] - - [10:17:24] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][3]['Name'] - [10:17:24] - CompiledPath 
-[INFO] - Getting Test Data [Test2606768] by Json Path [Users[3].Name] - - [10:17:24] - LogHelper 
-[INFO] - Getting Cookies Data from Current Browser Session - - [10:17:24] - LogHelper 
-[INFO] - Writing Into Json File By filePath [src/test/resources/SessionData/SessionDataForUser3.json] - - [10:17:24] - LogHelper 
-[INFO] - Storing Cookies Data Into Json Session Files - - [10:17:24] - LogHelper 
-[INFO] - Capturing Screenshot for Succeeded Scenario - - [10:17:25] - LogHelper 
-[INFO] - Closing the current Browser Window - - [10:17:25] - LogHelper 
-[INFO] - Starting Chrome Browser ............ - - [10:17:31] - LogHelper 
-[INFO] - Navigating to URL [https://automationexercise.com/] - - [10:17:32] - LogHelper 
-[INFO] - The Element [Website for automation practice] is Displayed - - [10:17:34] - LogHelper 
-[INFO] - Clicking on Element [ Signup / Login] - - [10:17:36] - LogHelper 
-[DEBUG] - Evaluating path: $['Messages']['LoginHeader'] - [10:17:36] - CompiledPath 
-[INFO] - Getting Test Data [Login to your account] by Json Path [Messages.LoginHeader] - - [10:17:36] - LogHelper 
-[DEBUG] - Evaluating path: $['Messages']['SignupHeader'] - [10:17:36] - CompiledPath 
-[INFO] - Getting Test Data [New User Signup!] by Json Path [Messages.SignupHeader] - - [10:17:36] - LogHelper 
-[INFO] - Getting Text [Login to your account] from Element located by [[unknown locator]] - - [10:17:36] - LogHelper 
-[INFO] - Getting Text [New User Signup!] from Element located by [[unknown locator]] - - [10:17:37] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][4]['Email'] - [10:17:37] - CompiledPath 
-[INFO] - Getting Test Data [Test2720749@gmail.com] by Json Path [Users[4].Email] - - [10:17:37] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][4]['Password'] - [10:17:37] - CompiledPath 
-[INFO] - Getting Test Data [Test@%^2720751] by Json Path [Users[4].Password] - - [10:17:37] - LogHelper 
-[INFO] - Clearing the Text on Element [Email Address] - - [10:17:37] - LogHelper 
-[INFO] - Typing [Test2720749@gmail.com] on Element [Email Address] - - [10:17:37] - LogHelper 
-[INFO] - Clearing the Text on Element [Password] - - [10:17:37] - LogHelper 
-[INFO] - Typing [Test@%^2720751] on Element [Password] - - [10:17:37] - LogHelper 
-[INFO] - Clicking on Element [Login] - - [10:17:40] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][4]['Name'] - [10:17:40] - CompiledPath 
-[INFO] - Getting Test Data [Test2720747] by Json Path [Users[4].Name] - - [10:17:40] - LogHelper 
-[INFO] - Getting Text [Logged in as Test2720747] from Element located by [By.partialLinkText: Logged in] - - [10:17:41] - LogHelper 
-[DEBUG] - Evaluating path: $['Users'][4]['Name'] - [10:17:41] - CompiledPath 
-[INFO] - Getting Test Data [Test2720747] by Json Path [Users[4].Name] - - [10:17:41] - LogHelper 
-[INFO] - Getting Cookies Data from Current Browser Session - - [10:17:41] - LogHelper 
-[INFO] - Writing Into Json File By filePath [src/test/resources/SessionData/SessionDataForUser4.json] - - [10:17:41] - LogHelper 
-[INFO] - Storing Cookies Data Into Json Session Files - - [10:17:41] - LogHelper 
-[INFO] - Capturing Screenshot for Succeeded Scenario - - [10:17:42] - LogHelper 
-[INFO] - Closing the current Browser Window - - [10:17:42] - LogHelper 
-[INFO] - Generating the Allure Report - - [10:17:54] - LogHelper 
+[INFO] - Loading Properties File Data - - [10:41:41] - LogHelper 
+[INFO] - Starting Chrome Browser ............ - - [10:41:47] - LogHelper 
+[INFO] - Starting Chrome Browser ............ - - [10:41:47] - LogHelper 
+[INFO] - Navigating to URL [https://automationexercise.com/] - - [10:41:55] - LogHelper 
+[INFO] - Navigating to URL [https://automationexercise.com/] - - [10:41:57] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [10:41:58] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [10:41:58] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser2']['Title'] - [10:41:59] - CompiledPath 
+[DEBUG] - Evaluating path: $['NewUser1']['Title'] - [10:41:59] - CompiledPath 
+[DEBUG] - Set path $['NewUser2']['Title'] new value Mr - [10:41:59] - JsonContext 
+[DEBUG] - Set path $['NewUser1']['Title'] new value Mr - [10:41:59] - JsonContext 
+[INFO] - Update the Json Path [NewUser2.Title] with new Test Data [Mr] - - [10:41:59] - LogHelper 
+[INFO] - Update the Json Path [NewUser1.Title] with new Test Data [Mr] - - [10:41:59] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [10:41:59] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [10:41:59] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [10:41:59] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [10:41:59] - LogHelper 
+[ERROR] - Failed to Read the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [10:41:59] - LogHelper 
+[ERROR] - Failed to Read the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [10:41:59] - LogHelper 
+[INFO] - Generating the Allure Report - - [10:42:18] - LogHelper 

@@ -20,6 +20,7 @@ import static engine.loggers.LogHelper.logWarningStep;
 public class CustomSoftAssert extends SoftAssert{
 
     public static CustomSoftAssert softAssert = new CustomSoftAssert();
+    // Use ThreadLocal to store errors separately for each test thread
     private static final ThreadLocal<List<String>> errors = ThreadLocal.withInitial(ArrayList::new);
 
     @SneakyThrows
@@ -31,23 +32,25 @@ public class CustomSoftAssert extends SoftAssert{
 
         String errorMessage = "Soft Assertion Failed: " + ex.getMessage();
         Screenshot.captureSoftFailure(getDriver(driver),assertCommand,errorMessage);
-        errors.get().add(errorMessage);
+        errors.get().add(errorMessage); // Add error to the ThreadLocal list for this thread
     }
 
     public static void reportSoftAssertionErrors(IInvokedMethod method)
     {
         try{
-            if (!errors.get().isEmpty()) {
-                String combinedError = String.join("\n",errors.get());
+            List<String> threadErrors = errors.get();  // Get the thread-local errors list
+            if (!threadErrors.isEmpty()) {
+                String combinedError = String.join("\n",threadErrors);
                 logWarningStep("Soft Assertions Summary:\n" + combinedError);
                 Allure.step("Soft Assertions Summary for "+method.getTestMethod().getMethodName()+": \n", () -> {
-                    errors.get().forEach(Allure::step);
+                    threadErrors.forEach(Allure::step);
                 });
             }
         }catch (Exception e)
             {
                 LogHelper.logErrorStep("Failed to Log the Soft Assertion Summery Report",e);
-            }
+            }finally {
+            errors.remove();  // Clear the ThreadLocal list after reporting
     }
 
 }

@@ -35,7 +35,7 @@ public class RegisterNewUserOnAPI extends BaseTest {
         json = new JsonManager(jsonFilePath);
         json
                 .setData("NewUser2.Title",RegisterPage.getRandomTitle())
-                .setData("NewUser2.Name",generateUniqueName())
+                . setData("NewUser2.Name",generateUniqueName())
                 .setData("NewUser2.Email",generateUniqueEmail())
                 .setData("NewUser2.Password",generateStrongPassword())
                 .setData("NewUser2.DayOfBirth",RegisterPage.getRandomDayOfBirth())
