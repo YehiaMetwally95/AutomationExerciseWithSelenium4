@@ -18,7 +18,7 @@ public class ParallelExecutionListener implements IAlterSuiteListener {
 
         //Configure Parallel mode and thread count
         try {
-            String parallel_Mode = System.getProperty("parallel.mode");
+            String parallel_Mode = System.getProperty("parallel_mode");
             String thread_count = System.getProperty("thread.count");
 
             for (XmlSuite suite : suites) {

@@ -236,7 +236,7 @@
                         </argLine>
 
                         <!--suppress UnresolvedMavenProperty -->
-                        <parallel>${parallel.mode}</parallel>
+                        <parallel>${parallel_mode}</parallel>
                         <!--suppress UnresolvedMavenProperty -->
                         <threadCount>${thread.count}</threadCount>
                         <properties>
