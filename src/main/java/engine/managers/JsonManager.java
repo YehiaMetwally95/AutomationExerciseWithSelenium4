@@ -85,9 +85,9 @@ public class JsonManager {
             jsonString = JsonPath.parse(jsonString).set(jsonPath, value).jsonString();
             // Convert the Updated Json String into Json Object
             JsonObject obj = JsonParser.parseString(jsonString).getAsJsonObject();
+            logInfoStep("Update the Json Path ["+jsonPath+"] with new Test Data ["+value+"]");
             // Set the Json File with the new Json Object
             createJsonFile(obj, filePath);
-            logInfoStep("Update the Json Path ["+jsonPath+"] with new Test Data ["+value+"]");
         }catch (Exception e){
             logInfoStep("Failed to Update the Json Path ["+jsonPath+"] with new Test Data ["+value+"]");
         }
@@ -102,10 +102,10 @@ public class JsonManager {
         //convert the json file to string
         String jsonString = FileUtils.readFileToString(filename, "UTF8");
         //parse the json string into Json Object (Deserialization)
-            logInfoStep("Reading Json File from filePath ["+filePath+"]");
+            logInfoStep("Reading the Json File By filePath ["+filePath+"]");
             return JsonParser.parseString(jsonString).getAsJsonObject();
         }catch (Exception e){
-            LogHelper.logErrorStep("Failed to Read Json File from filePath ["+filePath+"]",e);
+            LogHelper.logErrorStep("Failed to Read the Json File By filePath ["+filePath+"]",e);
             return null;
         }
     }
@@ -118,9 +118,9 @@ public class JsonManager {
             String formattedJson = gson.toJson(obj);
             file.write(formattedJson);
             file.close();
-            logInfoStep("Writing Data Into Json File of filePath ["+filePath+"]");
+            logInfoStep("Writing Into Json File By filePath ["+filePath+"]");
         }catch (Exception e){
-            LogHelper.logErrorStep("Failed to Write Data Into Json File Into filePath ["+filePath+"]",e);
+            LogHelper.logErrorStep("Failed to Write Data Into Json File By filePath ["+filePath+"]",e);
         }
     }
 

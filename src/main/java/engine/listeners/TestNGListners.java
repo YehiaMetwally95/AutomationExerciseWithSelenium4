@@ -45,7 +45,7 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
 
     public void onFinish (ISuite suite) {
         //Genarate the Allure Report after Suite Run
-        generateAllureReport();
+        //generateAllureReport();
     }
 
     public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
