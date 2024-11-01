@@ -220,7 +220,8 @@ jobs:
           -DbrowserType="Chrome"
           -DisHeadless="true"
           -DsyncWithDB="false"
-          -Dparallel_mode="NONE"
+          -Dparallel_mode="Methods"
+          -Dthread.count="2"
 
       - name: Upload allure-results file in Target Directory
         uses: actions/upload-artifact@v4
@@ -264,8 +265,9 @@ jobs:
           -DexecutionType="Local"
           -DbrowserType="Edge"
           -DisHeadless="true"
-          -DsyncWithDB="false"
-          -Dparallel_mode="NONE"
+          -DsyncWithDB="true"
+          -Dparallel_mode="METHODS"
+          -Dthread.count="2"
 
       - name: Upload allure-results file in Target Directory
         uses: actions/upload-artifact@v4
@@ -311,7 +313,8 @@ jobs:
           -DbrowserType="Firefox"
           -DisHeadless="true"
           -DsyncWithDB="false"
-          -Dparallel_mode="NONE"
+          -Dparallel_mode="METHODS"
+          -Dthread.count="4"
 
       - name: Upload allure-results file in Target Directory
         uses: actions/upload-artifact@v4
