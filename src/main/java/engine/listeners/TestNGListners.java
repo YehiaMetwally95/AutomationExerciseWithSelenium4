@@ -50,10 +50,6 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
     }
 
     public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
-    if (method.isTestMethod())
-        {
-
-        }
     }
 
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {

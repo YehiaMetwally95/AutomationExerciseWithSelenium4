@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
+import pages.RegisterPage;
 import pojoClassesForAPIs.RegistrationRequestPojo;
 import pojoClassesForAPIs.RegistrationResponsePojo;
 import engine.managers.JsonManager;
@@ -12,6 +13,8 @@ import java.io.IOException;
 
 import static engine.managers.ApisManager.*;
 import static engine.managers.PropertiesManager.getPropertiesValue;
+import static engine.utilities.RandomDataGenerator.*;
+import static pages.RegisterPage.*;
 
 public class RegistrationRequestModel {
 
@@ -28,10 +31,27 @@ public class RegistrationRequestModel {
     RegistrationResponsePojo responseObject;
 
     //Method to set Request Body by reading from Json File
-    @Step("Prepare Registration Request Body From Json File")
-    public RegistrationRequestModel prepareRegisterRequest(String userData) throws IOException {
-        mapper = new JsonMapper();
-        requestObject = mapper.readValue(userData, RegistrationRequestPojo.class);
+    @Step("Prepare Registration Request Body With Random Data")
+    public RegistrationRequestModel prepareRegisterRequestWithRandomData() throws IOException {
+        requestObject = RegistrationRequestPojo.builder()
+                .title(RegisterPage.getRandomTitle())
+                .name(generateUniqueName())
+                .email(generateUniqueEmail())
+                .password(generateStrongPassword())
+                .birth_date(getRandomDayOfBirth())
+                .birth_month(getRandomMonthOfBirth())
+                .birth_year(getRandomYearOfBirth())
+                .firstname(generateName())
+                .lastname(generateName())
+                .company(generateCompany())
+                .address1(generateAddress())
+                .address2(generateAddress())
+                .country(getRandomCountry())
+                .state(generateCity())
+                .city(generateCity())
+                .zipcode(generateZipCode())
+                .mobile_number(generateUniqueInteger())
+                .build();
         return this;
     }
 

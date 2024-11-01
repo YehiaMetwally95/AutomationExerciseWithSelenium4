@@ -105,7 +105,7 @@ public class CheckoutProductOnAPI extends BaseTest {
                 .verifyTotalPriceOfAllProducts()
         // Proceed to Payment Page and Perform Payment On GUI Layer
                 .placeOrder()
-                .verifyPaymentPageIsOpened(json.getData("Messages.PaymentHeader"))
+                .verifyPaymentPageIsOpened(json.getData("Messages.OrderPlaced"))
                 .performPayment(json.getData("CreditCards[0].Name"),json.getData("CreditCards[0].Number"),
                         json.getData("CreditCards[0].CVC"),json.getData("CreditCards[0].ExpiryMonth")
                         ,json.getData("CreditCards[0].ExpiryYear"))

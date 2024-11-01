@@ -77,11 +77,11 @@ public class CheckoutProductOnGUI extends BaseTest {
                         ,json.getData("Products[2].Quantity")
                         ,json.getData("Products[2].TotalPrice"))
                 .verifyAllProductDetails(json.getData("Products[3].Name")
-                        ,json.getData("Products[3].Price")
-                        ,json.getData("Products[3].Quantity")
-                        ,json.getData("Products[3].TotalPrice"))
+                        ,json.getData("Products[2].Price")
+                        ,json.getData("Products[2].Quantity")
+                        ,json.getData("Products[2].TotalPrice"))
         // The Data Validation on Address Details is done on GUI Layer
-                .verifyAddressDetails(json.getData("Users[4].FirstName"),
+                .verifyAddressDetails(json.getData("Users[3].FirstName"),
                         json.getData("Users[4].LastName"),json.getData("Users[4].Company"),
                         json.getData("Users[4].Address1"), json.getData("Users[4].Address2"),
                         json.getData("Users[4].State"), json.getData("Users[4].City"),

@@ -24,7 +24,7 @@ public class RegisterNewUserOnGUI extends BaseTest {
     String jsonFilePath = "src/test/resources/TestDataJsonFiles/RegisterTestData.json";
     JsonManager json;
 
-    //Test Data Preparation as setting registration inputs with random data
+    //Test Data Preparation as setting registration inputs Statically from Json File
     @BeforeMethod
     public void prepareTestData() throws IOException {
         json = new JsonManager(jsonFilePath);
@@ -64,10 +64,9 @@ public class RegisterNewUserOnGUI extends BaseTest {
                         ,json.getData("NewUser1.Address1"),json.getData("NewUser1.Address2"),json.getData("NewUser1.Country")
                         ,json.getData("NewUser1.State"),json.getData("NewUser1.City"),json.getData("NewUser1.ZipCode")
                         ,json.getData("NewUser1.MobileNumber"))
-              /*  .logout()
-                .openLoginSignupPage()
-                .verifyLoginSignupPageIsOpened()
-                .loginWithValidUser(json.getData("NewUser1.Email"),json.getData("NewUser1.Password"))*/
+                .logout()
+                .verifyLoginSignupPageIsOpened(json.getData("Messages.LoginHeader"),json.getData("Messages.SignupHeader"))
+                .loginWithValidUser(json.getData("NewUser1.Email"),json.getData("NewUser1.Password"))
                 .assertUserIsLoggedIn(json.getData("NewUser1.Name"));
     }
 
