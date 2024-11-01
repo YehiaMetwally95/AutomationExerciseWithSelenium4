@@ -1,12 +1,11 @@
 package baseTest;
 
-import engine.elementActions.WaitsManager;
 import engine.elementActions.WebElementsActionBot;
-import engine.listeners.TestNGListners;
-import org.checkerframework.framework.qual.RelevantJavaTypes;
+import engine.listeners.ParallelExecutionListener;
+import engine.listeners.MethodListeners;
+import engine.listeners.SuiteListeners;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import org.openqa.selenium.support.locators.RelativeLocator;
@@ -19,9 +18,8 @@ import org.testng.xml.XmlSuite;
 
 import java.io.IOException;
 
-import static engine.loggers.LogHelper.*;
 
-@Listeners(TestNGListners.class)
+@Listeners({ParallelExecutionListener.class, MethodListeners.class, SuiteListeners.class})
 public class TestClass {
 
     @Test

@@ -2,14 +2,9 @@ package testCases.ContactUsTests;
 
 import baseTest.BaseTest;
 import io.qameta.allure.*;
-import org.openqa.selenium.WebDriver;
-import org.testng.ITestContext;
-import org.testng.ITestResult;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import engine.listeners.TestNGListners;
 import engine.managers.JsonManager;
 import engine.managers.SessionManager;
 
@@ -20,7 +15,6 @@ import static engine.driverManager.BrowserFactory.*;
 @Epic("Automation Exercise Features")
 @Feature("Contact Us")
 @Story("Verify User can Submit Contact Us Form")
-@Listeners(TestNGListners.class)
 public class SubmitContactUsRequest extends BaseTest {
 
     static String jsonFilePathForContactus = "src/test/resources/TestDataJsonFiles/ContactusTestData.json";

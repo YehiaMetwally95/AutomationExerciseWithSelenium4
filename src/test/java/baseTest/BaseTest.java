@@ -2,7 +2,6 @@ package baseTest;
 
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
-import engine.listeners.TestNGListners;
 import prepareTestData.LoadProductsFromDB;
 import prepareTestData.LoadUsersFromDB;
 
@@ -13,7 +12,6 @@ import static engine.driverManager.BrowserFactory.*;
 import static engine.browserActions.WindowManager.*;
 import static engine.managers.PropertiesManager.*;
 
-@Listeners(TestNGListners.class)
 public class BaseTest {
 
     //Variables

@@ -23,7 +23,6 @@ public class CustomSoftAssert extends SoftAssert{
     // Use ThreadLocal to store errors separately for each test thread
     private static final ThreadLocal<List<String>> errors = ThreadLocal.withInitial(ArrayList::new);
 
-    @SneakyThrows
     @Override
     public void onAssertFailure(IAssert<?> assertCommand, AssertionError ex) {
         ITestResult result = Reporter.getCurrentTestResult();

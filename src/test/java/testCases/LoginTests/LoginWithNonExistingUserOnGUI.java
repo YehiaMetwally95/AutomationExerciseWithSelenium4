@@ -2,10 +2,8 @@ package testCases.LoginTests;
 
 import baseTest.BaseTest;
 import io.qameta.allure.*;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import engine.listeners.TestNGListners;
 import engine.managers.JsonManager;
 
 import java.io.IOException;
@@ -15,7 +13,6 @@ import static engine.driverManager.BrowserFactory.*;
 @Epic("Automation Exercise Features")
 @Feature("User Login")
 @Story("Verify User Login Through GUI")
-@Listeners(TestNGListners.class)
 public class LoginWithNonExistingUserOnGUI extends BaseTest {
     //Variables
     String jsonFilePathForLogin = "src/test/resources/TestDataJsonFiles/LoginTestData.json";

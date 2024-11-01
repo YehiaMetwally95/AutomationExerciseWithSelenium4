@@ -2,10 +2,8 @@ package testCases.SearchProductTests;
 
 import baseTest.BaseTest;
 import io.qameta.allure.*;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import engine.listeners.TestNGListners;
 import engine.managers.JsonManager;
 
 import java.io.IOException;
@@ -15,7 +13,6 @@ import static engine.driverManager.BrowserFactory.*;
 @Epic("Automation Exercise Features")
 @Feature("Product Search")
 @Story("Verify User can Search for any Product")
-@Listeners(TestNGListners.class)
 public class SearchForProductOnGUI extends BaseTest {
     String jsonFilePathForSearchProduct = "src/test/resources/TestDataJsonFiles/SearchProductTestData.json";
     JsonManager json = new JsonManager(jsonFilePathForSearchProduct);

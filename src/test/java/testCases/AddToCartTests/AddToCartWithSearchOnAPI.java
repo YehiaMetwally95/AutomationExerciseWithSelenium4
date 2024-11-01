@@ -4,10 +4,8 @@ import baseTest.BaseTest;
 import io.qameta.allure.*;
 import objectModelsForAPIs.SearchProductRequestModel;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import engine.listeners.TestNGListners;
 import engine.managers.JsonManager;
 import engine.managers.SessionManager;
 import static engine.driverManager.BrowserFactory.*;
@@ -17,7 +15,6 @@ import java.io.IOException;
 @Epic("Automation Exercise Features")
 @Feature("AddToCart")
 @Story("Verify User can add Products to Cart")
-@Listeners(TestNGListners.class)
 public class AddToCartWithSearchOnAPI extends BaseTest {
     String jsonFilePathForAddToCart = "src/test/resources/TestDataJsonFiles/AddToCartTestData.json";
     JsonManager json = new JsonManager(jsonFilePathForAddToCart);

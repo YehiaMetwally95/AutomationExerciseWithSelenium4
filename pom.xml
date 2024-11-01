@@ -179,6 +179,13 @@
 
 
     <build>
+
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+            </resource>
+        </resources>
+
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -227,8 +234,11 @@
                         <argLine>
                             -javaagent:${user.home}/.m2/repository/org/aspectj/aspectjweaver/1.9.22.1/aspectjweaver-1.9.22.1.jar
                         </argLine>
-                        <parallel>methods</parallel>
-                        <threadCount>6</threadCount>
+
+                        <!--suppress UnresolvedMavenProperty -->
+                        <parallel>${parallel.mode}</parallel>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <threadCount>${thread.count}</threadCount>
                         <properties>
                             <property>
                                 <name>usedefaultlisteners</name>
@@ -236,7 +246,15 @@
                             </property>
                             <property>
                                 <name>listener</name>
-                                <value>engine.listeners.TestNGListners</value>
+                                <value>engine.listeners.MethodListeners</value>
+                            </property>
+                            <property>
+                                <name>listener</name>
+                                <value>engine.listeners.SuiteListeners</value>
+                            </property>
+                            <property>
+                                <name>listener</name>
+                                <value>engine.listeners.ParallelExecutionListener</value>
                             </property>
                         </properties>
                     </configuration>

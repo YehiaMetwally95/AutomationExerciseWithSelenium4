@@ -5,7 +5,6 @@ import io.qameta.allure.*;
 import org.testng.annotations.*;
 import pages.HomePage;
 import pages.RegisterPage;
-import engine.listeners.TestNGListners;
 import engine.managers.JDBCManager;
 import engine.managers.JsonManager;
 import static engine.utilities.RandomDataGenerator.*;
@@ -18,7 +17,6 @@ import java.sql.SQLException;
 @Epic("Automation Exercise Features")
 @Feature("User Register")
 @Story("Verify New User Register")
-@Listeners(TestNGListners.class)
 public class RegisterNewUserOnGUI extends BaseTest {
     //Variables
     String jsonFilePath = "src/test/resources/TestDataJsonFiles/RegisterTestData.json";

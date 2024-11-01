@@ -7,7 +7,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import engine.listeners.TestNGListners;
 import engine.managers.JsonManager;
 import engine.managers.SessionManager;
 
@@ -18,7 +17,6 @@ import static engine.driverManager.BrowserFactory.*;
 @Epic("Automation Exercise Features")
 @Feature("AddToCart")
 @Story("Verify User can add Products to Cart")
-@Listeners(TestNGListners.class)
 public class RemoveFromCartWithSearchOnAPI extends BaseTest {
     String jsonFilePathForAddToCart = "src/test/resources/TestDataJsonFiles/AddToCartTestData.json";
     JsonManager json = new JsonManager(jsonFilePathForAddToCart);

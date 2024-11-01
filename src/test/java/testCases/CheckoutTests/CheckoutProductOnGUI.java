@@ -6,7 +6,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import engine.listeners.TestNGListners;
 import engine.managers.JsonManager;
 import engine.managers.SessionManager;
 
@@ -17,7 +16,6 @@ import static engine.driverManager.BrowserFactory.*;
 @Epic("Automation Exercise Features")
 @Feature("Checkout")
 @Story("Verify User can add Products to Cart then Checkout")
-@Listeners(TestNGListners.class)
 public class CheckoutProductOnGUI extends BaseTest {
     String jsonFilePathForCheckout = "src/test/resources/TestDataJsonFiles/CheckoutTestData.json";
     JsonManager json = new JsonManager(jsonFilePathForCheckout);

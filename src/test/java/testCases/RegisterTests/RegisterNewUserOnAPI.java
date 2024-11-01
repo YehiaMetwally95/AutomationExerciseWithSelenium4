@@ -4,12 +4,10 @@ import baseTest.BaseTest;
 import io.qameta.allure.*;
 import objectModelsForAPIs.RegistrationRequestModel;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.RegisterPage;
-import engine.listeners.TestNGListners;
+
 import engine.managers.JDBCManager;
 import engine.managers.JsonManager;
 import pojoClassesForAPIs.RegistrationRequestPojo;
@@ -17,14 +15,12 @@ import pojoClassesForAPIs.RegistrationRequestPojo;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static engine.utilities.RandomDataGenerator.*;
 import static engine.driverManager.BrowserFactory.*;
 
 
 @Epic("Automation Exercise Features")
 @Feature("User Register")
 @Story("Verify New User Register")
-@Listeners(TestNGListners.class)
 public class RegisterNewUserOnAPI extends BaseTest {
     //Variables
     String jsonFilePath = "src/test/resources/TestDataJsonFiles/RegisterTestData.json";
