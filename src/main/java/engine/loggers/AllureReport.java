@@ -50,8 +50,15 @@ public class AllureReport {
     }
 
     public static void generateAllureReport() {
+        String mavenCommand;
+        String os = System.getProperty("os.name").toLowerCase();
+        if (os.contains("win"))
+            mavenCommand = "mvn.cmd"; // Use mvn.cmd for Windows
+        else
+            mavenCommand = "mvn"; // Use mvn for Unix/Linux
+
         try {
-            ProcessBuilder builder = new ProcessBuilder("mvn", "allure:report");
+            ProcessBuilder builder = new ProcessBuilder(mavenCommand, "allure:report");
             builder.inheritIO().start().waitFor();
             logInfoStep("Generating the Allure Report");
         } catch (Exception e) {
