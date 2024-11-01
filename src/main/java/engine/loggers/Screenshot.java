@@ -1,7 +1,5 @@
 package engine.loggers;
 
-import io.qameta.allure.Allure;
-import io.qameta.allure.restassured.AllureRestAssured;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -10,12 +8,10 @@ import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestResult;
 import org.testng.asserts.IAssert;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 
-import static engine.loggers.AllureReport.*;
+import static engine.loggers.AllureReportLogger.*;
 import static engine.loggers.LogHelper.*;
 
 public class Screenshot {

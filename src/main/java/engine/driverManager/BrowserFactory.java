@@ -16,6 +16,8 @@ import org.testng.Reporter;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import static engine.loggers.LogHelper.logErrorStep;
 import static engine.loggers.LogHelper.logInfoStep;
@@ -85,9 +87,9 @@ public class BrowserFactory {
                     logErrorStep("Failed to Start Browser, The Input Browser Name is Incorrect");
             }
         }
-
         //Set the Logger Classes with the driver
         context.setAttribute("isolatedDriver",driver);
+
         return driver;
     }
 

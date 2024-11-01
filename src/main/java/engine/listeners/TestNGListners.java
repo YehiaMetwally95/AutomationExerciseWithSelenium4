@@ -3,15 +3,16 @@ package engine.listeners;
 import engine.loggers.CustomSoftAssert;
 import engine.managers.PropertiesManager;
 import lombok.SneakyThrows;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.*;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import static engine.driverManager.BrowserFactory.getDriver;
-import static engine.loggers.AllureReport.generateAllureReport;
-import static engine.loggers.AllureReport.uploadLogFileIntoAllure;
+import static engine.loggers.AllureReportLogger.generateAllureReport;
+import static engine.loggers.AllureReportLogger.uploadLogFileIntoAllure;
 import static engine.loggers.Screenshot.*;
 import static engine.utilities.DeleteDirectoryFiles.deleteFiles;
 
@@ -45,10 +46,14 @@ public class TestNGListners implements ITestListener , IInvokedMethodListener , 
 
     public void onFinish (ISuite suite) {
         //Genarate the Allure Report after Suite Run
-        //generateAllureReport();
+        generateAllureReport();
     }
 
     public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
+    if (method.isTestMethod())
+        {
+
+        }
     }
 
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {

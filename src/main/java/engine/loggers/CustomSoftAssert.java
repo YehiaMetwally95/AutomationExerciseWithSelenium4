@@ -19,8 +19,8 @@ import static engine.loggers.LogHelper.logWarningStep;
 
 public class CustomSoftAssert extends SoftAssert{
 
-    private final static List<String> errors = new ArrayList<>();
     public static CustomSoftAssert softAssert = new CustomSoftAssert();
+    private static final ThreadLocal<List<String>> errors = ThreadLocal.withInitial(ArrayList::new);
 
     @SneakyThrows
     @Override
@@ -31,17 +31,17 @@ public class CustomSoftAssert extends SoftAssert{
 
         String errorMessage = "Soft Assertion Failed: " + ex.getMessage();
         Screenshot.captureSoftFailure(getDriver(driver),assertCommand,errorMessage);
-        errors.add(errorMessage);
+        errors.get().add(errorMessage);
     }
 
     public static void reportSoftAssertionErrors(IInvokedMethod method)
     {
         try{
-            if (!errors.isEmpty()) {
-                String combinedError = String.join("\n",errors);
+            if (!errors.get().isEmpty()) {
+                String combinedError = String.join("\n",errors.get());
                 logWarningStep("Soft Assertions Summary:\n" + combinedError);
                 Allure.step("Soft Assertions Summary for "+method.getTestMethod().getMethodName()+": \n", () -> {
-                    errors.forEach(Allure::step);
+                    errors.get().forEach(Allure::step);
                 });
             }
         }catch (Exception e)

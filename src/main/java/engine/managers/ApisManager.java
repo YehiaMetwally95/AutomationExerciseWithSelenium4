@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import static engine.loggers.AllureReport.logApiRequestsToAllureReport;
+import static engine.loggers.AllureReportLogger.logApiRequestsToAllureReport;
 import static engine.loggers.LogHelper.logInfoStep;
 import static engine.managers.JsonManager.convertMapToJsonObject;
 

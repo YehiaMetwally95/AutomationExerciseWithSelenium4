@@ -13,7 +13,7 @@ import java.nio.file.Files;
 import static engine.loggers.LogHelper.logErrorStep;
 import static engine.loggers.LogHelper.logInfoStep;
 
-public class AllureReport {
+public class AllureReportLogger {
     public static void uploadLogFileIntoAllure() {
         try {
             File file = new File("logs/application.log");
