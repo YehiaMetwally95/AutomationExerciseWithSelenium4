@@ -1,41 +1,32 @@
 {
+  "username": "Test2440927",
   "cookies_data": [
     {
-      "path": "/",
-      "domain": ".automationexercise.com",
       "name": "FCNEC",
-      "isHttpOnly": false,
-      "isSecure": false,
-      "expiry": "Oct 19, 2025, 4:26:36 AM",
-      "value": "%5B%5B%22AKsRol_KRysEjGFSBTSZ_lakvhtPxFPhuzG-noParnR0Ai3Ca4VTQQvQHjURT6bPAGWd0hM0ZyBmLAZEdORGmk63ehsmzonUTWD7ukcHabMCVTl0wIQ5tM52pUtoFVaqgNayOYQD28tLDsOYM5YKcCfdu7iy8uKuww%3D%3D%22%5D%5D"
-    },
-    {
+      "value": "%5B%5B%22AKsRol_HHsg6KCoNNJwwY34UMnSh0C0aWpm9h1rppEtSKk9JejhXaQxV858BPtTiNNNgAeqWosgxEiufcmjrbPMfl2frEeMv8cE0QGKfas2sIA01sWkyzknywv_MjN_bjIozim1-CHHD7Aqd5jRyDnrd0yhHpV2Z0A%3D%3D%22%5D%5D",
       "path": "/",
       "domain": ".automationexercise.com",
-      "name": "__gsas",
-      "isHttpOnly": false,
+      "expiry": "Sat Nov 01 10:16:43 EET 2025",
       "isSecure": false,
-      "expiry": "Nov 13, 2025, 3:26:27 AM",
-      "value": "ID\u003d0be1c48e562bb040:T\u003d1729301187:RT\u003d1729301187:S\u003dALNI_MbabXmf6I3A4D_uIvqPVfw-rR_M9w"
+      "isHttpOnly": false
     },
     {
-      "path": "/",
-      "domain": "automationexercise.com",
       "name": "sessionid",
-      "isHttpOnly": true,
-      "isSecure": false,
-      "expiry": "Nov 2, 2024, 3:26:32 AM",
-      "value": "g0nsycmw63iy814d8zav1ejol5bmppze"
-    },
-    {
+      "value": "x5o0r2rxlifq0h2vjnckgi0kse7bj5tk",
       "path": "/",
       "domain": "automationexercise.com",
-      "name": "csrftoken",
-      "isHttpOnly": false,
+      "expiry": "Fri Nov 15 10:16:44 EET 2024",
       "isSecure": false,
-      "expiry": "Oct 18, 2025, 4:26:32 AM",
-      "value": "ddmWOLgeDS28simoyJZEXNqpa9lsyaFy0NsmvVAFOQCsedWCArSkWgrvai3Losk7"
+      "isHttpOnly": true
+    },
+    {
+      "name": "csrftoken",
+      "value": "nibub7XzCvXVq9yhXAMnxxqhz7ErHIpguvzHhJh1iLAY7nlfgsWjFYH49Ge6H5Y1",
+      "path": "/",
+      "domain": "automationexercise.com",
+      "expiry": "Fri Oct 31 10:16:45 EET 2025",
+      "isSecure": false,
+      "isHttpOnly": false
     }
-  ],
-  "username": "Test2440927"
+  ]
 }
