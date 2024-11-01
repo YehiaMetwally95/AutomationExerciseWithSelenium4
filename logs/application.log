@@ -1,20 +1,174 @@
-[INFO] - Loading Properties File Data - - [10:41:41] - LogHelper 
-[INFO] - Starting Chrome Browser ............ - - [10:41:47] - LogHelper 
-[INFO] - Starting Chrome Browser ............ - - [10:41:47] - LogHelper 
-[INFO] - Navigating to URL [https://automationexercise.com/] - - [10:41:55] - LogHelper 
-[INFO] - Navigating to URL [https://automationexercise.com/] - - [10:41:57] - LogHelper 
-[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [10:41:58] - LogHelper 
-[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [10:41:58] - LogHelper 
-[DEBUG] - Evaluating path: $['NewUser2']['Title'] - [10:41:59] - CompiledPath 
-[DEBUG] - Evaluating path: $['NewUser1']['Title'] - [10:41:59] - CompiledPath 
-[DEBUG] - Set path $['NewUser2']['Title'] new value Mr - [10:41:59] - JsonContext 
-[DEBUG] - Set path $['NewUser1']['Title'] new value Mr - [10:41:59] - JsonContext 
-[INFO] - Update the Json Path [NewUser2.Title] with new Test Data [Mr] - - [10:41:59] - LogHelper 
-[INFO] - Update the Json Path [NewUser1.Title] with new Test Data [Mr] - - [10:41:59] - LogHelper 
-[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [10:41:59] - LogHelper 
-[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [10:41:59] - LogHelper 
-[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [10:41:59] - LogHelper 
-[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [10:41:59] - LogHelper 
-[ERROR] - Failed to Read the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [10:41:59] - LogHelper 
-[ERROR] - Failed to Read the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [10:41:59] - LogHelper 
-[INFO] - Generating the Allure Report - - [10:42:18] - LogHelper 
+[INFO] - Loading Properties File Data - - [11:29:28] - LogHelper 
+[INFO] - Starting Chrome Browser ............ - - [11:32:20] - LogHelper 
+[INFO] - Navigating to URL [https://automationexercise.com/] - - [11:32:25] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:26] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Title'] - [11:32:26] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['Title'] new value Mr - [11:32:26] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.Title] with new Test Data [Mr] - - [11:32:26] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:26] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:26] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Name'] - [11:32:26] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['Name'] new value Test3226635 - [11:32:26] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.Name] with new Test Data [Test3226635] - - [11:32:26] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:26] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:26] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Email'] - [11:32:26] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['Email'] new value Test3226645@gmail.com - [11:32:26] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.Email] with new Test Data [Test3226645@gmail.com] - - [11:32:26] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:26] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:26] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Password'] - [11:32:26] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['Password'] new value Test@%^3226652 - [11:32:26] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.Password] with new Test Data [Test@%^3226652] - - [11:32:26] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:26] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:26] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['DayOfBirth'] - [11:32:26] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['DayOfBirth'] new value 21 - [11:32:26] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.DayOfBirth] with new Test Data [21] - - [11:32:26] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:26] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:26] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['MonthOfBirth'] - [11:32:26] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['MonthOfBirth'] new value August - [11:32:26] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.MonthOfBirth] with new Test Data [August] - - [11:32:26] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:26] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:26] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['YearOfBirth'] - [11:32:26] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['YearOfBirth'] new value 1916 - [11:32:26] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.YearOfBirth] with new Test Data [1916] - - [11:32:26] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:26] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:27] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['FirstName'] - [11:32:27] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['FirstName'] new value Melania - [11:32:27] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.FirstName] with new Test Data [Melania] - - [11:32:27] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:27] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:27] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['LastName'] - [11:32:27] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['LastName'] new value Tosha - [11:32:27] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.LastName] with new Test Data [Tosha] - - [11:32:27] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:27] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:27] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Company'] - [11:32:27] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['Company'] new value Hagenes, Rolfson and Reichert - [11:32:27] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.Company] with new Test Data [Hagenes, Rolfson and Reichert] - - [11:32:27] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:27] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:27] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Address1'] - [11:32:27] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['Address1'] new value 7387 Weldon Crossing, Colehaven, MT 39673-4915 - [11:32:27] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.Address1] with new Test Data [7387 Weldon Crossing, Colehaven, MT 39673-4915] - - [11:32:27] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:27] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:28] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Address2'] - [11:32:28] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['Address2'] new value Suite 767 30645 Fisher Greens, New Errolshire, KS 23442-1384 - [11:32:28] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.Address2] with new Test Data [Suite 767 30645 Fisher Greens, New Errolshire, KS 23442-1384] - - [11:32:28] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:28] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:28] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Country'] - [11:32:28] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['Country'] new value Singapore - [11:32:28] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.Country] with new Test Data [Singapore] - - [11:32:28] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:28] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:28] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['State'] - [11:32:28] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['State'] new value Nenachester - [11:32:28] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.State] with new Test Data [Nenachester] - - [11:32:28] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:28] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:28] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['City'] - [11:32:28] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['City'] new value Lake Luigiton - [11:32:28] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.City] with new Test Data [Lake Luigiton] - - [11:32:28] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:28] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:28] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['ZipCode'] - [11:32:28] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['ZipCode'] new value 91704-0806 - [11:32:28] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.ZipCode] with new Test Data [91704-0806] - - [11:32:28] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:28] - LogHelper 
+[INFO] - Reading the Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:28] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['MobileNumber'] - [11:32:28] - CompiledPath 
+[DEBUG] - Set path $['NewUser1']['MobileNumber'] new value 3228277 - [11:32:28] - JsonContext 
+[INFO] - Update the Json Path [NewUser1.MobileNumber] with new Test Data [3228277] - - [11:32:28] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/TestDataJsonFiles/RegisterTestData.json] - - [11:32:28] - LogHelper 
+[INFO] - The Element [Website for automation practice] is Displayed - - [11:32:28] - LogHelper 
+[INFO] - Clicking on Element [ Signup / Login] - - [11:32:31] - LogHelper 
+[DEBUG] - Evaluating path: $['Messages']['LoginHeader'] - [11:32:31] - CompiledPath 
+[INFO] - Getting Test Data [Login to your account] by Json Path [Messages.LoginHeader] - - [11:32:31] - LogHelper 
+[DEBUG] - Evaluating path: $['Messages']['SignupHeader'] - [11:32:31] - CompiledPath 
+[INFO] - Getting Test Data [New User Signup!] by Json Path [Messages.SignupHeader] - - [11:32:31] - LogHelper 
+[INFO] - Getting Text [Login to your account] from Element located by [[unknown locator]] - - [11:32:31] - LogHelper 
+[INFO] - Getting Text [New User Signup!] from Element located by [[unknown locator]] - - [11:32:32] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Name'] - [11:32:32] - CompiledPath 
+[INFO] - Getting Test Data [Test3226635] by Json Path [NewUser1.Name] - - [11:32:32] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Email'] - [11:32:32] - CompiledPath 
+[INFO] - Getting Test Data [Test3226645@gmail.com] by Json Path [NewUser1.Email] - - [11:32:32] - LogHelper 
+[INFO] - Clearing the Text on Element [Name] - - [11:32:32] - LogHelper 
+[INFO] - Typing [Test3226635] on Element [Name] - - [11:32:33] - LogHelper 
+[INFO] - Clearing the Text on Element [Email Address] - - [11:32:33] - LogHelper 
+[INFO] - Typing [Test3226645@gmail.com] on Element [Email Address] - - [11:32:33] - LogHelper 
+[INFO] - Clicking on Element [Signup] - - [11:32:35] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Title'] - [11:32:35] - CompiledPath 
+[INFO] - Getting Test Data [Mr] by Json Path [NewUser1.Title] - - [11:32:35] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Name'] - [11:32:35] - CompiledPath 
+[INFO] - Getting Test Data [Test3226635] by Json Path [NewUser1.Name] - - [11:32:35] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Password'] - [11:32:35] - CompiledPath 
+[INFO] - Getting Test Data [Test@%^3226652] by Json Path [NewUser1.Password] - - [11:32:35] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['DayOfBirth'] - [11:32:35] - CompiledPath 
+[INFO] - Getting Test Data [21] by Json Path [NewUser1.DayOfBirth] - - [11:32:35] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['MonthOfBirth'] - [11:32:35] - CompiledPath 
+[INFO] - Getting Test Data [August] by Json Path [NewUser1.MonthOfBirth] - - [11:32:35] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['YearOfBirth'] - [11:32:35] - CompiledPath 
+[INFO] - Getting Test Data [1916] by Json Path [NewUser1.YearOfBirth] - - [11:32:35] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['FirstName'] - [11:32:35] - CompiledPath 
+[INFO] - Getting Test Data [Melania] by Json Path [NewUser1.FirstName] - - [11:32:35] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['LastName'] - [11:32:35] - CompiledPath 
+[INFO] - Getting Test Data [Tosha] by Json Path [NewUser1.LastName] - - [11:32:35] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Company'] - [11:32:35] - CompiledPath 
+[INFO] - Getting Test Data [Hagenes, Rolfson and Reichert] by Json Path [NewUser1.Company] - - [11:32:35] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Address1'] - [11:32:35] - CompiledPath 
+[INFO] - Getting Test Data [7387 Weldon Crossing, Colehaven, MT 39673-4915] by Json Path [NewUser1.Address1] - - [11:32:35] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Address2'] - [11:32:35] - CompiledPath 
+[INFO] - Getting Test Data [Suite 767 30645 Fisher Greens, New Errolshire, KS 23442-1384] by Json Path [NewUser1.Address2] - - [11:32:35] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Country'] - [11:32:35] - CompiledPath 
+[INFO] - Getting Test Data [Singapore] by Json Path [NewUser1.Country] - - [11:32:35] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['State'] - [11:32:35] - CompiledPath 
+[INFO] - Getting Test Data [Nenachester] by Json Path [NewUser1.State] - - [11:32:35] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['City'] - [11:32:35] - CompiledPath 
+[INFO] - Getting Test Data [Lake Luigiton] by Json Path [NewUser1.City] - - [11:32:35] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['ZipCode'] - [11:32:35] - CompiledPath 
+[INFO] - Getting Test Data [91704-0806] by Json Path [NewUser1.ZipCode] - - [11:32:35] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['MobileNumber'] - [11:32:35] - CompiledPath 
+[INFO] - Getting Test Data [3228277] by Json Path [NewUser1.MobileNumber] - - [11:32:35] - LogHelper 
+[INFO] - Clicking on Element [ Mr.] - - [11:32:37] - LogHelper 
+[INFO] - Clearing the Text on Element [Name *] - - [11:32:38] - LogHelper 
+[INFO] - Typing [Test3226635] on Element [Name *] - - [11:32:38] - LogHelper 
+[INFO] - Clearing the Text on Element [Password *] - - [11:32:39] - LogHelper 
+[INFO] - Typing [Test@%^3226652] on Element [Password *] - - [11:32:39] - LogHelper 
+[INFO] - Selecting [21] fromBy.id: days - - [11:32:40] - LogHelper 
+[INFO] - Selecting [August] from[unknown locator] - - [11:32:42] - LogHelper 
+[INFO] - Selecting [1916] from[unknown locator] - - [11:32:44] - LogHelper 
+[INFO] - Clearing the Text on Element [First name *] - - [11:32:45] - LogHelper 
+[INFO] - Typing [Melania] on Element [First name *] - - [11:32:46] - LogHelper 
+[INFO] - Clearing the Text on Element [Last name *] - - [11:32:46] - LogHelper 
+[INFO] - Typing [Tosha] on Element [Last name *] - - [11:32:47] - LogHelper 
+[INFO] - Clearing the Text on Element [Company] - - [11:32:48] - LogHelper 
+[INFO] - Typing [Hagenes, Rolfson and Reichert] on Element [Company] - - [11:32:48] - LogHelper 
+[INFO] - Clearing the Text on Element [Address * (Street address, P.O. Box, Company name, etc.)] - - [11:32:49] - LogHelper 
+[INFO] - Typing [7387 Weldon Crossing, Colehaven, MT 39673-4915] on Element [Address * (Street address, P.O. Box, Company name, etc.)] - - [11:32:49] - LogHelper 
+[INFO] - Clearing the Text on Element [Address 2] - - [11:32:50] - LogHelper 
+[INFO] - Typing [Suite 767 30645 Fisher Greens, New Errolshire, KS 23442-1384] on Element [Address 2] - - [11:32:51] - LogHelper 
+[INFO] - Selecting [Singapore] fromCountry * - - [11:32:52] - LogHelper 
+[INFO] - Clearing the Text on Element [State *] - - [11:32:52] - LogHelper 
+[INFO] - Typing [Nenachester] on Element [State *] - - [11:32:52] - LogHelper 
+[INFO] - Clearing the Text on Element [City * Zipcode *] - - [11:32:53] - LogHelper 
+[INFO] - Typing [Lake Luigiton] on Element [City * Zipcode *] - - [11:32:53] - LogHelper 
+[INFO] - Clearing the Text on Element [By.id: zipcode] - - [11:32:53] - LogHelper 
+[INFO] - Typing [91704-0806] on Element [By.id: zipcode] - - [11:32:53] - LogHelper 
+[INFO] - Clearing the Text on Element [Mobile Number *] - - [11:32:54] - LogHelper 
+[INFO] - Typing [3228277] on Element [Mobile Number *] - - [11:32:54] - LogHelper 
+[INFO] - Clicking on Element [Sign up for our newsletter!] - - [11:32:54] - LogHelper 
+[INFO] - Clicking on Element [Receive special offers from our partners!] - - [11:32:55] - LogHelper 
+[INFO] - Clicking on Element [Create Account] - - [11:32:57] - LogHelper 
+[INFO] - Clicking on Element [Continue] - - [11:33:00] - LogHelper 
+[DEBUG] - Evaluating path: $['NewUser1']['Name'] - [11:33:00] - CompiledPath 
+[INFO] - Getting Test Data [Test3226635] by Json Path [NewUser1.Name] - - [11:33:00] - LogHelper 
+[INFO] - Getting Text [Logged in as Test3226635] from Element located by [By.partialLinkText: Logged in] - - [11:33:00] - LogHelper 
+[INFO] - Capturing Screenshot for Succeeded Scenario - - [11:33:02] - LogHelper 
+[INFO] - Closing the current Browser Window - - [11:33:02] - LogHelper 
+[INFO] - Generating the Allure Report - - [11:33:13] - LogHelper 
