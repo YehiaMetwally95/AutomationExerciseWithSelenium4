@@ -22,7 +22,7 @@ public class ParallelExecutionListener implements IAlterSuiteListener {
             String thread_count = System.getProperty("threadCount");
 
             for (XmlSuite suite : suites) {
-                suite.setParallel(XmlSuite.ParallelMode.valueOf(parallel_Mode));
+                suite.setParallel(XmlSuite.ParallelMode.valueOf(parallel_Mode.toUpperCase()));
                 suite.setThreadCount(Integer.parseInt(thread_count));
             }
             logInfoStep("Running Tests with Parallel Mode = ["+parallel_Mode+"]");
@@ -30,7 +30,7 @@ public class ParallelExecutionListener implements IAlterSuiteListener {
                 logInfoStep("Thread Count = ["+thread_count+"]");
 
         }catch (Exception e){
-            logErrorStep("Failed to Run Tests",e);
+            logErrorStep("Failed to Run Tests, Please Check Value of Parallel Mode or Thread Count",e);
         }
     }
 }
