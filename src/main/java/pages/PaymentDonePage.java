@@ -4,7 +4,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import engine.loggers.CustomSoftAssert;
+import yehiaEngine.assertions.CustomAssert;
+import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,7 +39,7 @@ public class PaymentDonePage extends HomePage {
     //Validation
     @Step("Assert Order Confirm Message")
     public PaymentDonePage assertOrderConfirmMessage(String message) throws IOException {
-        Assert.assertEquals(bot.readText(orderConfirmMessageLocator),message);
+        CustomAssert.assertEquals(bot.readText(orderConfirmMessageLocator),message);
         return this;
     }
 
@@ -58,7 +59,7 @@ public class PaymentDonePage extends HomePage {
                 elapsedTime++;
             }
         }
-        CustomSoftAssert.softAssert.assertTrue(isDownloadComplete);
+        CustomSoftAssert.assertTrue(isDownloadComplete);
         return this;
     }
 }

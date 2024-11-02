@@ -4,18 +4,17 @@ import baseTest.BaseTest;
 import io.qameta.allure.*;
 import objectModelsForAPIs.RegistrationRequestModel;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
-import engine.managers.JDBCManager;
-import engine.managers.JsonManager;
+import yehiaEngine.managers.JDBCManager;
+import yehiaEngine.managers.JsonManager;
 import pojoClassesForAPIs.RegistrationRequestPojo;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static engine.driverManager.BrowserFactory.*;
+import static yehiaEngine.driverManager.BrowserFactory.*;
 
 
 @Epic("Automation Exercise Features")

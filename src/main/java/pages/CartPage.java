@@ -6,13 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import org.testng.Assert;
+import yehiaEngine.assertions.CustomAssert;
+import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static engine.loggers.CustomSoftAssert.softAssert;
-import static engine.browserActions.WindowManager.refreshWindow;
+import static yehiaEngine.browserActions.WindowManager.refreshWindow;
 
 public class CartPage extends HomePage {
     //Variables
@@ -103,7 +104,7 @@ public class CartPage extends HomePage {
         for (WebElement element : elements) {
             productNames.add(bot.readText(element));
         }
-        Assert.assertListContainsObject(productNames,productName,"Element is Not Added");
+        CustomAssert.assertListContainsObject(productNames,productName,"Element is Not Added");
         return this;
     }
 
@@ -116,7 +117,7 @@ public class CartPage extends HomePage {
             for (WebElement element : elements) {
                 productNames.add(bot.readText(element));
             }
-            Assert.assertListNotContainsObject(productNames,productName,"Element is Not Removed");
+            CustomAssert.assertListNotContainsObject(productNames,productName,"Element is Not Removed");
         }
         return this;
     }
@@ -124,7 +125,7 @@ public class CartPage extends HomePage {
     //Private Methods
     @Step("Verify Product Name")
     private CartPage verifyProductName(String productName) throws IOException {
-        softAssert.assertEquals(
+        CustomSoftAssert.assertEquals(
                 bot.readText(productNameLocator(productName)),productName
         );
         return this;
@@ -132,7 +133,7 @@ public class CartPage extends HomePage {
 
     @Step("Verify Product Price")
     private CartPage verifyProductPrice(String productName,String productPrice) throws IOException {
-        softAssert.assertEquals(
+        CustomSoftAssert.assertEquals(
                 bot.readText(productPriceLocator(productName)),productPrice
         );
         return this;
@@ -140,13 +141,13 @@ public class CartPage extends HomePage {
 
     @Step("Verify Product Quantity")
     private CartPage verifyProductQuantity(String productName,String productQuantity) throws IOException {
-        softAssert.assertEquals(bot.readText(productQuantityLocator(productName)),productQuantity);
+        CustomSoftAssert.assertEquals(bot.readText(productQuantityLocator(productName)),productQuantity);
         return this;
     }
 
     @Step("Verify Product Total Price")
     private CartPage verifyProductTotalPrice(String productName,String totalPrice) throws IOException {
-        softAssert.assertEquals(
+        CustomSoftAssert.assertEquals(
                 bot.readText(productTotalPriceLocator(productName)),"Rs. "+totalPrice
         );
         return this;
@@ -154,7 +155,7 @@ public class CartPage extends HomePage {
 
     @Step("Verify Shopping Cart Header")
     private CartPage verifyShoppingCartHeader(String header) throws IOException {
-        softAssert.assertEquals(bot.readText(ShoppingCartHeaderLocator),header);
+        CustomSoftAssert.assertEquals(bot.readText(ShoppingCartHeaderLocator),header);
         return this;
     }
 

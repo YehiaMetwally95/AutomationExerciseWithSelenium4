@@ -5,15 +5,14 @@ import io.qameta.allure.*;
 import objectModelsForAPIs.SearchProductRequestModel;
 import objectModelsForAPIs.UserDetailsRequestModel;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import engine.managers.JsonManager;
-import engine.managers.SessionManager;
+import yehiaEngine.managers.JsonManager;
+import yehiaEngine.managers.SessionManager;
 
 import java.io.IOException;
 
-import static engine.driverManager.BrowserFactory.*;
+import static yehiaEngine.driverManager.BrowserFactory.*;
 
 @Epic("Automation Exercise Features")
 @Feature("Checkout")

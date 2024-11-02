@@ -10,8 +10,8 @@ import pojoClassesForAPIs.UserDetailsResponsePojo;
 import java.util.HashMap;
 import java.util.Map;
 
-import static engine.managers.ApisManager.*;
-import static engine.managers.PropertiesManager.getPropertiesValue;
+import static yehiaEngine.managers.ApisManager.*;
+import static yehiaEngine.managers.PropertiesManager.getPropertiesValue;
 
 public class UserDetailsRequestModel {
 

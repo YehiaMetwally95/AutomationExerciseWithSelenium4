@@ -4,7 +4,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import engine.loggers.CustomSoftAssert;
+import yehiaEngine.assertions.CustomAssert;
+import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.IOException;
 
@@ -47,7 +48,7 @@ public class PaymentPage extends HomePage{
 
     @Step("Assert Payment Success Massage")
     public PaymentPage assertPaymentSuccessMassage(String message) throws IOException {
-        Assert.assertEquals(bot.readText(successMessageLocator),message);
+        CustomAssert.assertEquals(bot.readText(successMessageLocator),message);
         return this;
     }
 
@@ -90,7 +91,7 @@ public class PaymentPage extends HomePage{
 
     @Step("Verify Payment Header")
     private PaymentPage verifyPaymentHeader(String header) throws IOException {
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(paymentHeaderLocator),header);
+        CustomSoftAssert.assertEquals(bot.readText(paymentHeaderLocator),header);
         return this;
     }
 }

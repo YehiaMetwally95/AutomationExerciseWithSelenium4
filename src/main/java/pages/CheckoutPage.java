@@ -6,7 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import org.testng.Assert;
-import engine.loggers.CustomSoftAssert;
+import yehiaEngine.assertions.CustomAssert;
+import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -89,7 +90,7 @@ public class CheckoutPage extends HomePage{
             total = total + Integer.parseInt(element.getText().split("Rs. ",2)[1]);
         }
         totalPrice = Integer.toString(total);
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(totalPriceLocator),"Rs. "+totalPrice);
+        CustomSoftAssert.assertEquals(bot.readText(totalPriceLocator),"Rs. "+totalPrice);
         return this;
     }
 
@@ -97,16 +98,16 @@ public class CheckoutPage extends HomePage{
     public CheckoutPage verifyAddressDetails(String firstName,String lastName,String company,
                                              String address1,String address2,String state,String city,
                                              String zipCode,String country,String mobileNumber) throws IOException {
-        CustomSoftAssert.softAssert.assertTrue(bot.readText(fullNameLocator).contains(firstName));
-        CustomSoftAssert.softAssert.assertTrue(bot.readText(fullNameLocator).contains(lastName));
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(companyLocator),company);
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(address1Locator),address1);
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(address2Locator),address2);
-        CustomSoftAssert.softAssert.assertTrue(bot.readText(stateCityLocator).contains(state));
-        CustomSoftAssert.softAssert.assertTrue(bot.readText(stateCityLocator).contains(city));
-        CustomSoftAssert.softAssert.assertTrue(bot.readText(stateCityLocator).contains(zipCode));
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(countryLocator),country);
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(mobileNumberLocator),mobileNumber);
+        CustomSoftAssert.assertTrue(bot.readText(fullNameLocator).contains(firstName));
+        CustomSoftAssert.assertTrue(bot.readText(fullNameLocator).contains(lastName));
+        CustomSoftAssert.assertEquals(bot.readText(companyLocator),company);
+        CustomSoftAssert.assertEquals(bot.readText(address1Locator),address1);
+        CustomSoftAssert.assertEquals(bot.readText(address2Locator),address2);
+        CustomSoftAssert.assertTrue(bot.readText(stateCityLocator).contains(state));
+        CustomSoftAssert.assertTrue(bot.readText(stateCityLocator).contains(city));
+        CustomSoftAssert.assertTrue(bot.readText(stateCityLocator).contains(zipCode));
+        CustomSoftAssert.assertEquals(bot.readText(countryLocator),country);
+        CustomSoftAssert.assertEquals(bot.readText(mobileNumberLocator),mobileNumber);
         return this;
     }
 
@@ -117,7 +118,7 @@ public class CheckoutPage extends HomePage{
         for (WebElement element : elements) {
             productNames.add(bot.readText(element));
         }
-        Assert.assertListContainsObject(productNames,productName,"Element is Not Added");
+        CustomAssert.assertListContainsObject(productNames,productName,"Element is Not Added");
         return this;
     }
 
@@ -128,38 +129,38 @@ public class CheckoutPage extends HomePage{
         for (WebElement element : elements) {
             productNames.add(bot.readText(element));
         }
-        Assert.assertListNotContainsObject(productNames,productName,"Element is Not Removed");
+        CustomAssert.assertListNotContainsObject(productNames,productName,"Element is Not Removed");
         return this;
     }
 
     //Private Methods
     @Step("Verify View Order Header")
     private CheckoutPage verifyViewOrderHeader(String header) throws IOException {
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(reviewOrderHeaderLocator),header);
+        CustomSoftAssert.assertEquals(bot.readText(reviewOrderHeaderLocator),header);
         return this;
     }
 
     @Step("Verify Product Name")
     private CheckoutPage verifyProductName(String productName) throws IOException {
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(productNameLocator(productName)),productName);
+        CustomSoftAssert.assertEquals(bot.readText(productNameLocator(productName)),productName);
         return this;
     }
 
     @Step("Verify Product Price")
     private CheckoutPage verifyProductPrice(String productName,String productPrice) throws IOException {
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(productPriceLocator(productName)),productPrice);
+        CustomSoftAssert.assertEquals(bot.readText(productPriceLocator(productName)),productPrice);
         return this;
     }
 
     @Step("Verify Product Quantity")
     private CheckoutPage verifyProductQuantity(String productName,String productQuantity) throws IOException {
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(productQuantityLocator(productName)),productQuantity);
+        CustomSoftAssert.assertEquals(bot.readText(productQuantityLocator(productName)),productQuantity);
         return this;
     }
 
     @Step("Verify Product Total Price")
     private CheckoutPage verifyProductTotalPrice(String productName,String totalPrice) throws IOException {
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(productTotalPriceLocator(productName)),"Rs. "+totalPrice);
+        CustomSoftAssert.assertEquals(bot.readText(productTotalPriceLocator(productName)),"Rs. "+totalPrice);
         return this;
     }
 }

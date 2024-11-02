@@ -7,13 +7,13 @@ import io.restassured.response.Response;
 import pages.RegisterPage;
 import pojoClassesForAPIs.RegistrationRequestPojo;
 import pojoClassesForAPIs.RegistrationResponsePojo;
-import engine.managers.JsonManager;
+import yehiaEngine.managers.JsonManager;
 
 import java.io.IOException;
 
-import static engine.managers.ApisManager.*;
-import static engine.managers.PropertiesManager.getPropertiesValue;
-import static engine.utilities.RandomDataGenerator.*;
+import static yehiaEngine.managers.ApisManager.*;
+import static yehiaEngine.managers.PropertiesManager.getPropertiesValue;
+import static yehiaEngine.utilities.RandomDataGenerator.*;
 import static pages.RegisterPage.*;
 
 public class RegistrationRequestModel {

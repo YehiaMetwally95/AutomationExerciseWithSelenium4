@@ -3,7 +3,7 @@ package pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import engine.loggers.CustomSoftAssert;
+import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.IOException;
 
@@ -29,7 +29,7 @@ public class DeleteAccountPage extends HomePage {
     //Validations
     @Step("Verify Account Deleted Massage")
     public DeleteAccountPage verifyDeleteMassage(String massage) throws IOException {
-        CustomSoftAssert.softAssert.assertEquals(
+        CustomSoftAssert.assertEquals(
                 bot.readText(deleteMassageLocator)
                 ,massage
         );

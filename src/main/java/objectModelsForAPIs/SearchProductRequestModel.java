@@ -7,9 +7,9 @@ import io.restassured.response.Response;
 import pojoClassesForAPIs.SearchProductRequestPojo;
 import pojoClassesForAPIs.SearchProductResponsePojo;
 
-import static engine.managers.ApisManager.MakeRequest;
-import static engine.managers.ApisManager.getResponseBody;
-import static engine.managers.PropertiesManager.getPropertiesValue;
+import static yehiaEngine.managers.ApisManager.MakeRequest;
+import static yehiaEngine.managers.ApisManager.getResponseBody;
+import static yehiaEngine.managers.PropertiesManager.getPropertiesValue;
 
 public class SearchProductRequestModel {
 

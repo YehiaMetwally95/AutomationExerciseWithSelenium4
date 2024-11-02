@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import org.testng.Assert;
-import engine.loggers.CustomSoftAssert;
+import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.IOException;
 
@@ -139,13 +139,13 @@ public class LoginSignupPage extends HomePage{
 
     @Step("Verify Login Header")
     private LoginSignupPage verifyLoginHeader(String loginHeader) throws IOException {
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(loginHeaderLocator),loginHeader);
+        CustomSoftAssert.assertEquals(bot.readText(loginHeaderLocator),loginHeader);
         return this;
     }
 
     @Step("Verify Signup Header")
     private LoginSignupPage verifySignupHeader(String signupHeader) throws IOException {
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(signupHeaderLocator),signupHeader);
+        CustomSoftAssert.assertEquals(bot.readText(signupHeaderLocator),signupHeader);
         return this;
     }
 

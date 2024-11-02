@@ -6,9 +6,9 @@ import objectModelsForAPIs.SearchProductRequestModel;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import engine.managers.JsonManager;
-import engine.managers.SessionManager;
-import static engine.driverManager.BrowserFactory.*;
+import yehiaEngine.managers.JsonManager;
+import yehiaEngine.managers.SessionManager;
+import static yehiaEngine.driverManager.BrowserFactory.*;
 
 import java.io.IOException;
 

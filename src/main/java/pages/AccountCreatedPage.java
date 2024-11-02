@@ -3,7 +3,7 @@ package pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import engine.loggers.CustomSoftAssert;
+import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.IOException;
 
@@ -27,7 +27,7 @@ public class AccountCreatedPage extends HomePage{
         //Validation
         @Step("Verify Account Created Success Message")
         public AccountCreatedPage verifyAccountCreatedMessage(String message) throws IOException {
-            CustomSoftAssert.softAssert.assertEquals(bot.readText(successMessage),message);
+            CustomSoftAssert.assertEquals(bot.readText(successMessage),message);
             return this;
         }
 }

@@ -4,7 +4,8 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 import pojoClassesForAPIs.UserDetailsRequestPojo;
 import pojoClassesForAPIs.UserDetailsResponsePojo;
-import engine.loggers.CustomSoftAssert;
+import yehiaEngine.assertions.CustomAssert;
+import yehiaEngine.assertions.CustomSoftAssert;
 
 public class UserDetailsResponseModel {
     //ObjectsFromPojoClasses
@@ -20,7 +21,7 @@ public class UserDetailsResponseModel {
     //Validation Methods
     @Step("Validate Response Code from Response")
     public UserDetailsResponseModel validateResponseCodeFromResponse(int responseCode) {
-        Assert.assertEquals(responseObject.getResponseCode(),responseCode);
+        CustomAssert.assertEquals(responseObject.getResponseCode(),responseCode);
         return this;
     }
 
@@ -45,97 +46,97 @@ public class UserDetailsResponseModel {
 
     @Step("Validate User Id from Response")
     private UserDetailsResponseModel validateUserIdFromResponse(String id) {
-        CustomSoftAssert.softAssert.assertEquals(String.valueOf(responseObject.getUser().getId()),id);
+        CustomSoftAssert.assertEquals(String.valueOf(responseObject.getUser().getId()),id);
         return this;
     }
 
     @Step("Validate User Name from Response")
     private UserDetailsResponseModel validateUserNameFromResponse(String name) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getUser().getName(),name);
+        CustomSoftAssert.assertEquals(responseObject.getUser().getName(),name);
         return this;
     }
 
     @Step("Validate User Email from Response")
     private UserDetailsResponseModel validateUserEmailFromResponse(String email) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getUser().getEmail(),email);
+        CustomSoftAssert.assertEquals(responseObject.getUser().getEmail(),email);
         return this;
     }
 
     @Step("Validate User Title from Response")
     private UserDetailsResponseModel validateUserTitleFromResponse(String title) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getUser().getTitle(),title);
+        CustomSoftAssert.assertEquals(responseObject.getUser().getTitle(),title);
         return this;
     }
 
     @Step("Validate User BirthDay from Response")
     private UserDetailsResponseModel validateUserBirthDayFromResponse(String birthDay) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getUser().getBirth_day(),birthDay);
+        CustomSoftAssert.assertEquals(responseObject.getUser().getBirth_day(),birthDay);
         return this;
     }
 
     @Step("Validate User BirthMonth from Response")
     private UserDetailsResponseModel validateUserBirthMonthFromResponse(String birthMonth) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getUser().getBirth_month(),birthMonth);
+        CustomSoftAssert.assertEquals(responseObject.getUser().getBirth_month(),birthMonth);
         return this;
     }
 
     @Step("Validate User BirthYear from Response")
     private UserDetailsResponseModel validateUserBirthYearFromResponse(String birthYear) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getUser().getBirth_year(),birthYear);
+        CustomSoftAssert.assertEquals(responseObject.getUser().getBirth_year(),birthYear);
         return this;
     }
 
     @Step("Validate User First Name from Response")
     private UserDetailsResponseModel validateUserFirstNameFromResponse(String firstName) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getUser().getFirst_name(),firstName);
+        CustomSoftAssert.assertEquals(responseObject.getUser().getFirst_name(),firstName);
         return this;
     }
 
     @Step("Validate User Last Name from Response")
     private UserDetailsResponseModel validateUserLastNameFromResponse(String lastName) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getUser().getLast_name(),lastName);
+        CustomSoftAssert.assertEquals(responseObject.getUser().getLast_name(),lastName);
         return this;
     }
 
     @Step("Validate User Company from Response")
     private UserDetailsResponseModel validateUserCompanyFromResponse(String company) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getUser().getCompany(),company);
+        CustomSoftAssert.assertEquals(responseObject.getUser().getCompany(),company);
         return this;
     }
 
     @Step("Validate User Address1 from Response")
     private UserDetailsResponseModel validateUserAddress1FromResponse(String address1) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getUser().getAddress1(),address1);
+        CustomSoftAssert.assertEquals(responseObject.getUser().getAddress1(),address1);
         return this;
     }
 
     @Step("Validate User Address2 from Response")
     private UserDetailsResponseModel validateUserAddress2FromResponse(String address2) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getUser().getAddress2(),address2);
+        CustomSoftAssert.assertEquals(responseObject.getUser().getAddress2(),address2);
         return this;
     }
 
     @Step("Validate User Country from Response")
     private UserDetailsResponseModel validateUserCountryFromResponse(String country) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getUser().getCountry(),country);
+        CustomSoftAssert.assertEquals(responseObject.getUser().getCountry(),country);
         return this;
     }
 
     @Step("Validate User State from Response")
     private UserDetailsResponseModel validateUserStateFromResponse(String state) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getUser().getState(),state);
+        CustomSoftAssert.assertEquals(responseObject.getUser().getState(),state);
         return this;
     }
 
     @Step("Validate User City from Response")
     private UserDetailsResponseModel validateUserCityFromResponse(String city) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getUser().getCity(),city);
+        CustomSoftAssert.assertEquals(responseObject.getUser().getCity(),city);
         return this;
     }
 
     @Step("Validate User Zipcode from Response")
     private UserDetailsResponseModel validateUserZipcodeFromResponse(String zipcode) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getUser().getZipcode(),zipcode);
+        CustomSoftAssert.assertEquals(responseObject.getUser().getZipcode(),zipcode);
         return this;
     }
 

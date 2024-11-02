@@ -4,11 +4,11 @@ import baseTest.BaseTest;
 import io.qameta.allure.*;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import engine.managers.JsonManager;
+import yehiaEngine.managers.JsonManager;
 
 import java.io.IOException;
 
-import static engine.driverManager.BrowserFactory.*;
+import static yehiaEngine.driverManager.BrowserFactory.*;
 
 @Epic("Automation Exercise Features")
 @Feature("Product Search")

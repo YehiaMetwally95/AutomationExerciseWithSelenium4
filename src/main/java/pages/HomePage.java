@@ -5,13 +5,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import org.testng.Assert;
-import engine.loggers.CustomSoftAssert;
-import engine.elementActions.WebElementsActionBot;
+import yehiaEngine.assertions.CustomAssert;
+import yehiaEngine.assertions.CustomSoftAssert;
+import yehiaEngine.elementActions.WebElementsActionBot;
 
 import java.io.IOException;
 
-import static engine.managers.PropertiesManager.getPropertiesValue;
-import static engine.browserActions.WindowManager.navigateToURL;
+import static yehiaEngine.managers.PropertiesManager.getPropertiesValue;
+import static yehiaEngine.browserActions.WindowManager.navigateToURL;
 
 public class HomePage {
     //Variables
@@ -107,7 +108,7 @@ public class HomePage {
 
     @Step("Assert User is Logged In")
     public HomePage assertUserIsLoggedIn(String username) throws IOException {
-        Assert.assertEquals(
+        CustomAssert.assertEquals(
                 bot.readText(loggedInButton),("Logged in as "+username)
         );
         return this;
@@ -115,7 +116,7 @@ public class HomePage {
 
     @Step("Assert Subscription Massage")
     public HomePage assertSubscriptionMassage(String massage) throws IOException {
-        Assert.assertEquals(
+        CustomAssert.assertEquals(
                 bot.readText(subscriptionMassage)
                 ,massage
         );
@@ -125,7 +126,7 @@ public class HomePage {
     //Private Methods
     @Step("Verify Site Logo")
     private HomePage verifySiteLogoIsDisplayed() throws IOException {
-        CustomSoftAssert.softAssert.assertTrue(bot.isElementDisplayed(logoButton));
+        CustomSoftAssert.assertTrue(bot.isElementDisplayed(logoButton));
         return this;
     }
 }

@@ -5,10 +5,10 @@ import io.qameta.allure.*;
 import org.testng.annotations.*;
 import pages.HomePage;
 import pages.RegisterPage;
-import engine.managers.JDBCManager;
-import engine.managers.JsonManager;
-import static engine.utilities.RandomDataGenerator.*;
-import static engine.driverManager.BrowserFactory.*;
+import yehiaEngine.managers.JDBCManager;
+import yehiaEngine.managers.JsonManager;
+import static yehiaEngine.utilities.RandomDataGenerator.*;
+import static yehiaEngine.driverManager.BrowserFactory.*;
 
 import java.io.IOException;
 import java.sql.SQLException;

@@ -4,13 +4,13 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
-import engine.loggers.CustomSoftAssert;
+import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import static engine.utilities.RandomDataGenerator.*;
+import static yehiaEngine.utilities.RandomDataGenerator.*;
 
 public class RegisterPage extends HomePage{
     //Variables
@@ -122,13 +122,13 @@ public class RegisterPage extends HomePage{
 
     @Step("Verify Account Info Header")
     private RegisterPage verifyAccountInfoHeader(String accountHeader) throws IOException {
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(accountInfoHeaderLocator),accountHeader);
+        CustomSoftAssert.assertEquals(bot.readText(accountInfoHeaderLocator),accountHeader);
         return this;
     }
 
     @Step("Verify Address Info Header")
     private RegisterPage verifyAddressInfoHeader(String addressHeader) throws IOException {
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(addressInfoHeaderLocator),addressHeader);
+        CustomSoftAssert.assertEquals(bot.readText(addressInfoHeaderLocator),addressHeader);
         return this;
     }
 

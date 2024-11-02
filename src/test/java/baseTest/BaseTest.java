@@ -8,9 +8,9 @@ import prepareTestData.LoadUsersFromDB;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static engine.driverManager.BrowserFactory.*;
-import static engine.browserActions.WindowManager.*;
-import static engine.managers.PropertiesManager.*;
+import static yehiaEngine.driverManager.BrowserFactory.*;
+import static yehiaEngine.browserActions.WindowManager.*;
+import static yehiaEngine.managers.PropertiesManager.*;
 
 public class BaseTest {
 

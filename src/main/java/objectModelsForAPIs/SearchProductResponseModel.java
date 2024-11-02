@@ -4,7 +4,8 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 import pojoClassesForAPIs.SearchProductRequestPojo;
 import pojoClassesForAPIs.SearchProductResponsePojo;
-import engine.loggers.CustomSoftAssert;
+import yehiaEngine.assertions.CustomAssert;
+import yehiaEngine.assertions.CustomSoftAssert;
 
 public class SearchProductResponseModel {
     //ObjectsFromPojoClasses
@@ -20,7 +21,7 @@ public class SearchProductResponseModel {
     //Validation Methods
     @Step("Validate Response Code from Response")
     public SearchProductResponseModel validateResponseCodeFromResponse(int responseCode) {
-        Assert.assertEquals(responseObject.getResponseCode(),responseCode);
+        CustomAssert.assertEquals(responseObject.getResponseCode(),responseCode);
         return this;
     }
 
@@ -54,38 +55,38 @@ public class SearchProductResponseModel {
 
     @Step("Validate Product Id from Response")
     private SearchProductResponseModel validateProductIdFromResponse(String id) {
-        CustomSoftAssert.softAssert.assertEquals(String.valueOf(responseObject.getProducts().get(0).getId()),id);
+        CustomSoftAssert.assertEquals(String.valueOf(responseObject.getProducts().get(0).getId()),id);
         return this;
     }
 
     @Step("Validate Product Name from Response")
     private SearchProductResponseModel validateProductNameFromResponse(String name) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getProducts().get(0).getName(),name);
+        CustomSoftAssert.assertEquals(responseObject.getProducts().get(0).getName(),name);
         return this;
     }
 
     @Step("Validate Product Price from Response")
     private SearchProductResponseModel validateProductPriceFromResponse(String price) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getProducts().get(0).getPrice(),price);
+        CustomSoftAssert.assertEquals(responseObject.getProducts().get(0).getPrice(),price);
         return this;
     }
 
     @Step("Validate Product Brand from Response")
     private SearchProductResponseModel validateProductBrandFromResponse(String brand) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getProducts().get(0).getBrand(),brand);
+        CustomSoftAssert.assertEquals(responseObject.getProducts().get(0).getBrand(),brand);
         return this;
     }
 
     @Step("Validate Product Category from Response")
     private SearchProductResponseModel validateProductCategoryFromResponse(String category) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getProducts().get(0)
+        CustomSoftAssert.assertEquals(responseObject.getProducts().get(0)
                 .getCategory().getUsertype().getUsertype(),category);
         return this;
     }
 
     @Step("Validate Product Subcategory from Response")
     private SearchProductResponseModel validateProductSubcategoryFromResponse(String subCategory) {
-        CustomSoftAssert.softAssert.assertEquals(responseObject.getProducts().get(0)
+        CustomSoftAssert.assertEquals(responseObject.getProducts().get(0)
                 .getCategory().getCategory(),subCategory);
         return this;
     }
@@ -95,7 +96,7 @@ public class SearchProductResponseModel {
         int productPrice = Integer.parseInt(responseObject.getProducts().get(0).getPrice().split("Rs. ",2)[1]);
         int productQuantity = Integer.parseInt(quantity);
         int productTotalPrice = Integer.parseInt(totalPrice);
-        CustomSoftAssert.softAssert.assertEquals(productPrice*productQuantity , productTotalPrice);
+        CustomSoftAssert.assertEquals(productPrice*productQuantity , productTotalPrice);
         return this;
     }
 

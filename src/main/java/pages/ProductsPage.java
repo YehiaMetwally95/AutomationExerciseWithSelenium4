@@ -4,7 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
-import engine.loggers.CustomSoftAssert;
+import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.IOException;
 
@@ -92,14 +92,14 @@ public class ProductsPage extends HomePage{
 
     @Step("Verify Searched Products")
     public ProductsPage verifySearchedProduct(String productName) {
-        CustomSoftAssert.softAssert.assertTrue(bot.isElementDisplayed(productImageOuterLocator(productName)));
+        CustomSoftAssert.assertTrue(bot.isElementDisplayed(productImageOuterLocator(productName)));
         return this;
     }
 
     //Private Methods
     @Step("Verify Products Header")
     private ProductsPage verifyProductsHeader(String header) throws IOException {
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(allProductsHeaderLocator),header);
+        CustomSoftAssert.assertEquals(bot.readText(allProductsHeaderLocator),header);
         return this;
     }
 }

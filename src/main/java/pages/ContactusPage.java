@@ -4,7 +4,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import engine.loggers.CustomSoftAssert;
+import yehiaEngine.assertions.CustomAssert;
+import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.IOException;
 
@@ -44,7 +45,7 @@ public class ContactusPage extends HomePage {
 
     @Step("Assert Contact Success Massage")
     public ContactusPage assertContactSuccessMassage(String message) throws IOException {
-        Assert.assertEquals(
+        CustomAssert.assertEquals(
                 bot.readText(successMassageLocator)
                 ,message
         );
@@ -73,7 +74,7 @@ public class ContactusPage extends HomePage {
 
     @Step("Verify Contact Us Header")
     private ContactusPage verifyContactUsHeader(String header) throws IOException {
-        CustomSoftAssert.softAssert.assertEquals(bot.readText(contactUsHeaderLocator),header);
+        CustomSoftAssert.assertEquals(bot.readText(contactUsHeaderLocator),header);
         return this;
     }
 

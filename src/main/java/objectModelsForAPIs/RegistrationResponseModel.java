@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 import pojoClassesForAPIs.RegistrationRequestPojo;
 import pojoClassesForAPIs.RegistrationResponsePojo;
+import yehiaEngine.assertions.CustomAssert;
 
 public class RegistrationResponseModel {
 
@@ -20,13 +21,13 @@ public class RegistrationResponseModel {
     //Validation Methods
     @Step("validateMassageFromResponse")
     public RegistrationResponseModel validateMassageFromResponse(String expectedMessage) {
-        Assert.assertEquals(responseObject.getMessage(), expectedMessage);
+        CustomAssert.assertEquals(responseObject.getMessage(), expectedMessage);
         return this;
     }
 
     @Step("validateCodeFromResponse")
     public RegistrationResponseModel validateCodeFromResponse(int responseCody) {
-        Assert.assertEquals(responseObject.getResponseCode(), responseCody);
+        CustomAssert.assertEquals(responseObject.getResponseCode(), responseCody);
         return this;
     }
 

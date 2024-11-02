@@ -5,13 +5,11 @@ import io.qameta.allure.*;
 import objectModelsForAPIs.SearchProductRequestModel;
 import org.testng.annotations.Test;
 import pages.HomePage;
-import engine.managers.JsonManager;
+import yehiaEngine.managers.JsonManager;
 
 import java.io.IOException;
 
-import static engine.browserActions.WindowManager.navigateToURL;
-import static engine.driverManager.BrowserFactory.*;
-import static engine.managers.PropertiesManager.getPropertiesValue;
+import static yehiaEngine.driverManager.BrowserFactory.*;
 
 @Epic("Automation Exercise Features")
 @Feature("Product Search")
