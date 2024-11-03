@@ -2,9 +2,6 @@ name: E2E UI Tests Remotely
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
   pull_request:
     branches:
       - master

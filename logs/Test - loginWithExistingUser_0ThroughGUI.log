@@ -1,0 +1,29 @@
+[INFO] - The Element [Website for automation practice] is Displayed - - [04:53:38] - LogHelper 
+[INFO] - Soft Asserting condition is True - - [04:53:38] - LogHelper 
+[INFO] - Soft Assertion Passed - - [04:53:38] - LogHelper 
+[INFO] - Clicking on Element [ Signup / Login] - - [04:53:45] - LogHelper 
+[DEBUG] - Evaluating path: $['Messages']['LoginHeader'] - [04:53:45] - CompiledPath 
+[INFO] - Getting Test Data [Login to your account] by Json Path [Messages.LoginHeader] - - [04:53:45] - LogHelper 
+[DEBUG] - Evaluating path: $['Messages']['SignupHeader'] - [04:53:45] - CompiledPath 
+[INFO] - Getting Test Data [New User Signup!] by Json Path [Messages.SignupHeader] - - [04:53:45] - LogHelper 
+[INFO] - Getting Text [Login to your account] from Element located by [[unknown locator]] - - [04:53:46] - LogHelper 
+[INFO] - Soft Asserting actual result: [Login to your account] equals expected result: [Login to your account] - - [04:53:46] - LogHelper 
+[INFO] - Soft Assertion Passed - - [04:53:46] - LogHelper 
+[INFO] - Getting Text [New User Signup!] from Element located by [[unknown locator]] - - [04:53:46] - LogHelper 
+[INFO] - Soft Asserting actual result: [New User Signup!] equals expected result: [New User Signup!] - - [04:53:46] - LogHelper 
+[INFO] - Soft Assertion Passed - - [04:53:46] - LogHelper 
+[DEBUG] - Evaluating path: $['Users'][0]['Email'] - [04:53:46] - CompiledPath 
+[INFO] - Getting Test Data [Test2438307@gmail.com] by Json Path [Users[0].Email] - - [04:53:46] - LogHelper 
+[DEBUG] - Evaluating path: $['Users'][0]['Password'] - [04:53:46] - CompiledPath 
+[INFO] - Getting Test Data [Test@%^2438311] by Json Path [Users[0].Password] - - [04:53:46] - LogHelper 
+[INFO] - Clearing the Text on Element [Email Address] - - [04:53:46] - LogHelper 
+[INFO] - Typing [Test2438307@gmail.com] on Element [Email Address] - - [04:53:47] - LogHelper 
+[INFO] - Clearing the Text on Element [Password] - - [04:53:47] - LogHelper 
+[INFO] - Typing [Test@%^2438311] on Element [Password] - - [04:53:47] - LogHelper 
+[INFO] - Clicking on Element [Login] - - [04:53:56] - LogHelper 
+[DEBUG] - Evaluating path: $['Users'][1]['Name'] - [04:53:56] - CompiledPath 
+[INFO] - Getting Test Data [Test2440927] by Json Path [Users[1].Name] - - [04:53:56] - LogHelper 
+[INFO] - Getting Text [Logged in as Test2438300] from Element located by [By.partialLinkText: Logged in] - - [04:53:56] - LogHelper 
+[INFO] - Asserting actual result: [Logged in as Test2438300] equals expected result: [Logged in as Test2440927] - - [04:53:56] - LogHelper 
+[ERROR] - Assertion Failed - - [04:53:56] - LogHelper 
+[INFO] - Capturing Screenshot for Failed Scenario - - [04:53:58] - LogHelper 

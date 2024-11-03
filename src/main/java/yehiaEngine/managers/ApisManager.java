@@ -158,13 +158,18 @@ public class ApisManager {
         response = request.when().get(endpoint);
 
         logInfoStep("Sending Get Request for URL ["+endpoint+"]");
-            //Convert Request body and Response body to Objects
+            //Convert Request body to Objects
             Object responseBody = JsonParser.parseString(getResponseBody(response)).getAsJsonObject();
-            Object requestBody = convertMapToJsonObject(queryParameters);
-
-            //Log Request Body and Response Body
-            logRequestBody(requestBody);
+            //Log Request Body
             logResponseBody(responseBody);
+
+            if (queryParameters != null)
+            {
+                //Convert Response body to Object
+                Object requestBody = convertMapToJsonObject(queryParameters);
+                //Log Response Body
+                logRequestBody(requestBody);
+            }
         return response;
      } catch (Exception e)
         {
@@ -204,14 +209,19 @@ public class ApisManager {
 
         response = request.when().get(endpoint);
         logInfoStep("Sending Auth Get Request for URL ["+endpoint+"]");
-            //Convert Request body and Response body to Objects
-            Object responseBody = JsonParser.parseString(getResponseBody(response)).getAsJsonObject();
-            Object requestBody = convertMapToJsonObject(queryParameters);
 
-            //Log Request Body and Response Body
-            logRequestBody(requestBody);
+            //Convert Request body to Objects
+            Object responseBody = JsonParser.parseString(getResponseBody(response)).getAsJsonObject();
+            //Log Request Body
             logResponseBody(responseBody);
 
+            if (queryParameters != null)
+            {
+                //Convert Response body to Object
+                Object requestBody = convertMapToJsonObject(queryParameters);
+                //Log Response Body
+                logRequestBody(requestBody);
+            }
         return response;
     } catch (Exception e)
         {

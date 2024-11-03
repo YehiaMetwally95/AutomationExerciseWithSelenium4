@@ -3,55 +3,55 @@
   "cookies_data": [
     {
       "name": "FCNEC",
-      "value": "%5B%5B%22AKsRol8aCq-w8h6lYYfGwQ6g87tfQSYJnKALSf07keZE8iEbR0v3Txu90HnNNb-652VUfhdo4fu112xEDDdaPInOFpyWE-QdjKtC6kmVvFu42g0FNQXL4NG6OYJ8TIMnQeWeg4dLudRRe98AXAabdZVEjccqL6mq6A%3D%3D%22%5D%5D",
+      "value": "%5B%5B%22AKsRol-vaoquSQ2pvZ6hVelhd-CWAIcGTjz-XZbap7FO-wCLeYDzHkYWCKsVQsXmZHh5AJdbaa9Njc4Iyt-kTox7lz55iPygblmBIUsPw1gS8BuvCCFq4BJ23XUYbsbAQb5E5euqX_oigCxWd9WN_ekN-5wDwpbk-w%3D%3D%22%5D%5D",
       "path": "/",
       "domain": ".automationexercise.com",
-      "expiry": "Sat Nov 01 10:17:05 EET 2025",
+      "expiry": "Mon Nov 03 04:54:25 EET 2025",
       "isSecure": false,
       "isHttpOnly": false
     },
     {
       "name": "__gpi",
-      "value": "UID\u003d00000f638f318603:T\u003d1730449024:RT\u003d1730449024:S\u003dALNI_MZmOXaCUOGSVAKE-QknVFlA1DnSLw",
+      "value": "UID\u003d00000f4f9960313b:T\u003d1730602464:RT\u003d1730602464:S\u003dALNI_MZrAugcteVXlGxwtry0bheGmRTrog",
       "path": "/",
       "domain": ".automationexercise.com",
-      "expiry": "Wed Nov 26 10:17:04 EET 2025",
+      "expiry": "Fri Nov 28 04:54:24 EET 2025",
       "isSecure": true,
       "isHttpOnly": false
     },
     {
       "name": "__eoi",
-      "value": "ID\u003d129e75c60b126196:T\u003d1730449024:RT\u003d1730449024:S\u003dAA-AfjaV7OLzLycZdKKWdOBdvDoK",
+      "value": "ID\u003d07d13633130a61ca:T\u003d1730602464:RT\u003d1730602464:S\u003dAA-AfjYQhr6OBCHL_EW2-dZyY8Sp",
       "path": "/",
       "domain": ".automationexercise.com",
-      "expiry": "Wed Apr 30 11:17:04 EEST 2025",
+      "expiry": "Fri May 02 05:54:24 EEST 2025",
       "isSecure": true,
       "isHttpOnly": false
     },
     {
       "name": "sessionid",
-      "value": "gmjxhqyrs3dph85d6q93ddam6dcr6gpq",
+      "value": "vzlauijd3ceeq2g9jz5raf4p7nazf2qm",
       "path": "/",
       "domain": "automationexercise.com",
-      "expiry": "Fri Nov 15 10:17:06 EET 2024",
+      "expiry": "Sun Nov 17 04:54:26 EET 2024",
       "isSecure": false,
       "isHttpOnly": true
     },
     {
       "name": "csrftoken",
-      "value": "mVjCZXHilDIyxdLqYx0XaD3nbRdpJXetsnqDjTzVbUxJm2G2zivjsL0fhcHSbvOc",
+      "value": "b1ZXXOIblDAmi0k2HSVBkXIi70GphbmsgZos4HRC8mYqVbnczVgaahsE793z7fUF",
       "path": "/",
       "domain": "automationexercise.com",
-      "expiry": "Fri Oct 31 10:17:06 EET 2025",
+      "expiry": "Sun Nov 02 04:54:27 EET 2025",
       "isSecure": false,
       "isHttpOnly": false
     },
     {
       "name": "__gads",
-      "value": "ID\u003dc71579a23bc1ae4d:T\u003d1730449024:RT\u003d1730449024:S\u003dALNI_MYVNzoSdVs6DkoE0S2jQ9hQSNRdyQ",
+      "value": "ID\u003d6b4fc059d65d7f6c:T\u003d1730602464:RT\u003d1730602464:S\u003dALNI_MbuKbsDSqrN25ykepjHzG6RPamPwA",
       "path": "/",
       "domain": ".automationexercise.com",
-      "expiry": "Wed Nov 26 10:17:04 EET 2025",
+      "expiry": "Fri Nov 28 04:54:24 EET 2025",
       "isSecure": true,
       "isHttpOnly": false
     }

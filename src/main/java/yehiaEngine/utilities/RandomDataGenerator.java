@@ -57,6 +57,11 @@ public class RandomDataGenerator {
         return new Faker().address().zipCode();
     }
 
+    public static String generateDescription()
+    {
+        return new Faker().lorem().sentence();
+    }
+
     public static String generateItemFromList(List<String> list)
     {
         int randomIndex = new Random().nextInt(list.size());
