@@ -24,7 +24,7 @@ public class RegisterNewUserOnGUI extends BaseTest {
 
     //Test Data Preparation as setting registration inputs Statically from Json File
     @BeforeMethod
-    public void prepareTestData() throws IOException {
+    public void prepareRegisterInputs() throws IOException {
         json = new JsonManager(jsonFilePath);
         json
                 .setData("NewUser1.Title",RegisterPage.getRandomTitle())

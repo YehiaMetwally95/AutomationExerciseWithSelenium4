@@ -1,0 +1,76 @@
+[DEBUG] - Evaluating path: $['Products'][1]['Name'] - [15:52:47] - CompiledPath 
+[INFO] - Getting Test Data [Men Tshirt] by Json Path [Products[1].Name] - - [15:52:47] - LogHelper 
+[INFO] - Sending Post Request for URL [https://automationexercise.com/api/searchProduct] - - [15:52:54] - LogHelper 
+[INFO] - Request Body : {"search_product":"Men Tshirt"} - - [15:52:54] - LogHelper 
+[INFO] - Response Body : {"responseCode":200,"products":[{"id":2,"name":"Men Tshirt","price":"Rs. 400","brand":"H&M","category":{"usertype":{"usertype":"Men"},"category":"Tshirts"}}]} - - [15:52:54] - LogHelper 
+[INFO] - Asserting actual result: [200] equals expected result: [200] - - [15:52:54] - LogHelper 
+[INFO] - Assertion Passed - - [15:52:54] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['ID'] - [15:52:54] - CompiledPath 
+[INFO] - Getting Test Data [2] by Json Path [Products[1].ID] - - [15:52:54] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['Name'] - [15:52:54] - CompiledPath 
+[INFO] - Getting Test Data [Men Tshirt] by Json Path [Products[1].Name] - - [15:52:54] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['Price'] - [15:52:54] - CompiledPath 
+[INFO] - Getting Test Data [Rs. 400] by Json Path [Products[1].Price] - - [15:52:54] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['Brand'] - [15:52:54] - CompiledPath 
+[INFO] - Getting Test Data [H&M] by Json Path [Products[1].Brand] - - [15:52:54] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['Category'] - [15:52:54] - CompiledPath 
+[INFO] - Getting Test Data [Men] by Json Path [Products[1].Category] - - [15:52:54] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['Subcategory'] - [15:52:54] - CompiledPath 
+[INFO] - Getting Test Data [Tshirts] by Json Path [Products[1].Subcategory] - - [15:52:54] - LogHelper 
+[INFO] - Soft Asserting actual result: [2] equals expected result: [2] - - [15:52:54] - LogHelper 
+[INFO] - Soft Assertion Passed - - [15:52:54] - LogHelper 
+[INFO] - Soft Asserting actual result: [Men Tshirt] equals expected result: [Men Tshirt] - - [15:52:54] - LogHelper 
+[INFO] - Soft Assertion Passed - - [15:52:54] - LogHelper 
+[INFO] - Soft Asserting actual result: [Rs. 400] equals expected result: [Rs. 400] - - [15:52:54] - LogHelper 
+[INFO] - Soft Assertion Passed - - [15:52:54] - LogHelper 
+[INFO] - Soft Asserting actual result: [H&M] equals expected result: [H&M] - - [15:52:54] - LogHelper 
+[INFO] - Soft Assertion Passed - - [15:52:54] - LogHelper 
+[INFO] - Soft Asserting actual result: [Men] equals expected result: [Men] - - [15:52:54] - LogHelper 
+[INFO] - Soft Assertion Passed - - [15:52:54] - LogHelper 
+[INFO] - Soft Asserting actual result: [Tshirts] equals expected result: [Tshirts] - - [15:52:54] - LogHelper 
+[INFO] - Soft Assertion Passed - - [15:52:54] - LogHelper 
+[INFO] - Navigating to URL [https://automationexercise.com/product_details/2] - - [15:52:56] - LogHelper 
+[DEBUG] - Evaluating path: $['Messages']['ReviewSection'] - [15:52:56] - CompiledPath 
+[INFO] - Getting Test Data [WRITE YOUR REVIEW] by Json Path [Messages.ReviewSection] - - [15:52:56] - LogHelper 
+[INFO] - Getting Text [WRITE YOUR REVIEW] from Element located by [By.xpath: //a[contains(.,'Review')]] - - [15:52:57] - LogHelper 
+[INFO] - Soft Asserting actual result: [WRITE YOUR REVIEW] equals expected result: [WRITE YOUR REVIEW] - - [15:52:57] - LogHelper 
+[INFO] - Soft Assertion Passed - - [15:52:57] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['Name'] - [15:52:57] - CompiledPath 
+[INFO] - Getting Test Data [Men Tshirt] by Json Path [Products[1].Name] - - [15:52:57] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['Price'] - [15:52:57] - CompiledPath 
+[INFO] - Getting Test Data [Rs. 400] by Json Path [Products[1].Price] - - [15:52:57] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['Availability'] - [15:52:57] - CompiledPath 
+[INFO] - Getting Test Data [In Stock] by Json Path [Products[1].Availability] - - [15:52:57] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['Condition'] - [15:52:57] - CompiledPath 
+[INFO] - Getting Test Data [New] by Json Path [Products[1].Condition] - - [15:52:57] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['Brand'] - [15:52:57] - CompiledPath 
+[INFO] - Getting Test Data [H&M] by Json Path [Products[1].Brand] - - [15:52:57] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['Category'] - [15:52:57] - CompiledPath 
+[INFO] - Getting Test Data [Men] by Json Path [Products[1].Category] - - [15:52:57] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][1]['Subcategory'] - [15:52:57] - CompiledPath 
+[INFO] - Getting Test Data [Tshirts] by Json Path [Products[1].Subcategory] - - [15:52:57] - LogHelper 
+[INFO] - Getting Text [Men  Tshirt] from Element located by [By.cssSelector: .product-information h2] - - [15:52:57] - LogHelper 
+[INFO] - Soft Asserting actual result: [Men  Tshirt] equals expected result: [Men Tshirt] - - [15:52:57] - LogHelper 
+[WARN] - Soft Assertion Failed: expected [Men Tshirt] but found [Men  Tshirt] - - [15:52:58] - LogHelper 
+[WARN] - Capturing Screenshot for Soft Assertion Failure - - [15:52:58] - LogHelper 
+[INFO] - Getting Text [Rs. 400] from Element located by [By.xpath: (//div[@class='product-details']/descendant::span[contains(.,'Rs')])[2]] - - [15:52:58] - LogHelper 
+[INFO] - Soft Asserting actual result: [Rs. 400] equals expected result: [Rs. 400] - - [15:52:58] - LogHelper 
+[INFO] - Soft Assertion Passed - - [15:52:58] - LogHelper 
+[INFO] - Getting Text [Availability: In Stock] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Availability')]] - - [15:52:59] - LogHelper 
+[INFO] - Soft Asserting actual result: [Availability: In Stock] equals expected result: [Availability: In Stock] - - [15:52:59] - LogHelper 
+[INFO] - Soft Assertion Passed - - [15:52:59] - LogHelper 
+[INFO] - Getting Text [Condition: New] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Condition')]] - - [15:52:59] - LogHelper 
+[INFO] - Soft Asserting actual result: [Condition: New] equals expected result: [Condition: New] - - [15:52:59] - LogHelper 
+[INFO] - Soft Assertion Passed - - [15:52:59] - LogHelper 
+[INFO] - Getting Text [Brand: H&M] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Brand')]] - - [15:53:00] - LogHelper 
+[INFO] - Soft Asserting actual result: [Brand: H&M] equals expected result: [Brand: H&M] - - [15:53:00] - LogHelper 
+[INFO] - Soft Assertion Passed - - [15:53:00] - LogHelper 
+[INFO] - Getting Text [Category: Men >  Tshirts] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Category')]] - - [15:53:00] - LogHelper 
+[INFO] - Soft Asserting condition is True - - [15:53:00] - LogHelper 
+[INFO] - Soft Assertion Passed - - [15:53:00] - LogHelper 
+[INFO] - Getting Text [Category: Men >  Tshirts] from Element located by [By.xpath: //div[@class='product-details']/descendant::p[contains(.,'Category')]] - - [15:53:00] - LogHelper 
+[INFO] - Soft Asserting condition is True - - [15:53:00] - LogHelper 
+[INFO] - Soft Assertion Passed - - [15:53:00] - LogHelper 
+[INFO] - Capturing Screenshot for Succeeded Scenario - - [15:53:01] - LogHelper 
+[WARN] - Soft Assertions Summary:
+Soft Assertion Failed: expected [Men Tshirt] but found [Men  Tshirt] - - [15:53:01] - LogHelper 

@@ -45,8 +45,7 @@ public class LogHelper {
         Assert.fail(Error,e);
     }
 
-    public static void setLogFileName(String methodName)
-    {
+    public static void setLogFileName(String methodName) {
         // Dynamically set the log file name for each method
         LoggerContext context = (LoggerContext) LogManager.getContext(false);
         Configuration config = context.getConfiguration();

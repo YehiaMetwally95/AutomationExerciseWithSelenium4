@@ -1,71 +1,48 @@
 package yehiaEngine.listeners;
 
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.IInvokedMethod;
-import org.testng.IInvokedMethodListener;
-import org.testng.ITestContext;
-import org.testng.ITestResult;
-import org.testng.asserts.SoftAssert;
+import org.testng.*;
 import yehiaEngine.assertions.SoftAssertHelper;
 import yehiaEngine.loggers.AllureReportLogger;
-import yehiaEngine.utilities.DeleteDirectoryFiles;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 import static yehiaEngine.driverManager.BrowserFactory.getDriver;
-import static yehiaEngine.loggers.LogHelper.setLogFileName;
+import static yehiaEngine.loggers.LogHelper.*;
 import static yehiaEngine.loggers.Screenshot.captureFailure;
 import static yehiaEngine.loggers.Screenshot.captureSuccess;
 
-public class MethodListeners implements IInvokedMethodListener {
+public class MethodListeners implements IInvokedMethodListener , IConfigurationListener {
+    protected static int beforeMethodInvocationCount = 0;
+    protected static int afterMethodInvocationCount = 0;
 
-    static String beforeMethod = null;
-    static String afterMethod= null;
-    static String beforeClass= null;
-    static String afterClass= null;
-    static String beforeSuite= null;
-    static String afterSuite= null;
-    static String beforeGroup= null;
-    static String afterGroup= null;
-    static String beforeTest= null;
-    static String afterTest= null;
-
-    public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
+    public void beforeInvocation(IInvokedMethod method, ITestResult testResult, ITestContext context) {
+        //Set Log File for Test Methods
         if(method.isTestMethod())
             setLogFileName("Test - "+method.getTestMethod().getMethodName());
+
+        //Set Log File for Configurations Methods
         if(method.isConfigurationMethod())
-            setLogFileName("Configuration - "+method.getTestMethod().getMethodName()+"-"+testResult.getTestClass().getRealClass().getSimpleName()+"-"+testResult.getStartMillis());
+        {
+            if(!(method.getTestMethod().isAfterMethodConfiguration() || method.getTestMethod().isBeforeMethodConfiguration()))
+                setLogFileName("Configuration - "+method.getTestMethod().getMethodName()+"-"+testResult.getTestClass().getRealClass().getSimpleName());
+
+            else if (method.getTestMethod().isBeforeMethodConfiguration())
+            {
+                beforeMethodInvocationCount++;
+                setLogFileName("Configuration - "+method.getTestMethod().getMethodName()+"-"+testResult.getTestClass().getRealClass().getSimpleName() +"-"+beforeMethodInvocationCount);
+            }
+
+            else if (method.getTestMethod().isAfterMethodConfiguration())
+            {
+                afterMethodInvocationCount++;
+                setLogFileName("Configuration - "+method.getTestMethod().getMethodName()+"-"+testResult.getTestClass().getRealClass().getSimpleName() +"-"+afterMethodInvocationCount);
+            }
+        }
     }
 
-    public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
-
-        if(method.getTestMethod().isBeforeMethodConfiguration())
-            beforeMethod = "Configuration - "+method.getTestMethod().getMethodName()+"-"+testResult.getTestClass().getRealClass().getSimpleName()+"-"+testResult.getStartMillis();
-        if(method.getTestMethod().isAfterMethodConfiguration())
-            afterMethod = "Configuration - "+method.getTestMethod().getMethodName()+"-"+testResult.getTestClass().getRealClass().getSimpleName()+"-"+testResult.getStartMillis();
-        if(method.getTestMethod().isBeforeClassConfiguration())
-            beforeClass = "Configuration - "+method.getTestMethod().getMethodName()+"-"+testResult.getTestClass().getRealClass().getSimpleName()+"-"+testResult.getStartMillis();
-        if(method.getTestMethod().isAfterClassConfiguration())
-            afterClass = "Configuration - "+method.getTestMethod().getMethodName()+"-"+testResult.getTestClass().getRealClass().getSimpleName()+"-"+testResult.getStartMillis();
-        if(method.getTestMethod().isBeforeSuiteConfiguration())
-            beforeSuite = "Configuration - "+method.getTestMethod().getMethodName()+"-"+testResult.getTestClass().getRealClass().getSimpleName()+"-"+testResult.getStartMillis();
-        if(method.getTestMethod().isAfterSuiteConfiguration())
-            afterSuite = "Configuration - "+method.getTestMethod().getMethodName()+"-"+testResult.getTestClass().getRealClass().getSimpleName()+"-"+testResult.getStartMillis();
-        if(method.getTestMethod().isBeforeTestConfiguration())
-            beforeTest = "Configuration - "+method.getTestMethod().getMethodName()+"-"+testResult.getTestClass().getRealClass().getSimpleName()+"-"+testResult.getStartMillis();
-        if(method.getTestMethod().isAfterTestConfiguration())
-            afterTest = "Configuration - "+method.getTestMethod().getMethodName()+"-"+testResult.getTestClass().getRealClass().getSimpleName()+"-"+testResult.getStartMillis();
-        if(method.getTestMethod().isBeforeGroupsConfiguration())
-            beforeGroup = "Configuration - "+method.getTestMethod().getMethodName()+"-"+testResult.getTestClass().getRealClass().getSimpleName()+"-"+testResult.getStartMillis();
-        if(method.getTestMethod().isAfterGroupsConfiguration())
-            afterGroup = "Configuration - "+method.getTestMethod().getMethodName()+"-"+testResult.getTestClass().getRealClass().getSimpleName()+"-"+testResult.getStartMillis();
-
+    public void afterInvocation(IInvokedMethod method, ITestResult testResult, ITestContext context) {
         if(method.isTestMethod())
         {
             //Log Screenshots for Successful and Failed Tests
-            ITestContext context = testResult.getTestContext();
             ThreadLocal<RemoteWebDriver> driver = (ThreadLocal<RemoteWebDriver>) context.getAttribute("isolatedDriver");
             //Take Screenshot after every succeeded test
             if (ITestResult.SUCCESS == testResult.getStatus() && driver != null)
@@ -79,17 +56,7 @@ public class MethodListeners implements IInvokedMethodListener {
             SoftAssertHelper.reportSoftAssertionErrors(method);
 
             //Upload the Log Files to Allure Report
-            AllureReportLogger.uploadLogFileIntoAllure(beforeSuite);
-            AllureReportLogger.uploadLogFileIntoAllure(beforeGroup);
-            AllureReportLogger.uploadLogFileIntoAllure(beforeTest);
-            AllureReportLogger.uploadLogFileIntoAllure(beforeClass);
-            AllureReportLogger.uploadLogFileIntoAllure(beforeMethod);
             AllureReportLogger.uploadLogFileIntoAllure("Test - "+method.getTestMethod().getMethodName());
-            AllureReportLogger.uploadLogFileIntoAllure(afterMethod);
-            AllureReportLogger.uploadLogFileIntoAllure(afterClass);
-            AllureReportLogger.uploadLogFileIntoAllure(afterTest);
-            AllureReportLogger.uploadLogFileIntoAllure(afterGroup);
-            AllureReportLogger.uploadLogFileIntoAllure(afterSuite);
         }
     }
 }

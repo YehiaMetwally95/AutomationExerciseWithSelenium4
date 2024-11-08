@@ -1,6 +1,7 @@
 package prepareTestData;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import org.testng.annotations.Test;
 import yehiaEngine.managers.JDBCManager;
 
@@ -16,6 +17,7 @@ public class LoadUsersFromDB {
 
     @Description("Load The Latest User from DB and Update them into Test Data Json Files")
     @Test
+    @Step("Load Users from DB")
     public static void loadUsersFromDB() throws SQLException, IOException {
         String dbQuery = "SELECT Title,Username,Email,Password,DayofBirth,MonthofBirth,YearofBirth,FirstName,LastName,Company,Address1,Address2,Country,State,City,ZipCode,MobileNumber FROM automationexercise.users Order By Username Asc;";
 

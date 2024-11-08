@@ -1,6 +1,7 @@
 package prepareTestData;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import org.testng.annotations.Test;
 import yehiaEngine.managers.JDBCManager;
 
@@ -14,6 +15,7 @@ public class LoadProductsFromDB {
 
     @Description("Load The Latest Products from DB and Update them into Test Data Json Files")
     @Test
+    @Step("Load Products from DB")
     public static void loadProductsFromDB() throws SQLException, IOException {
         String dbQuery = "SELECT Id,Name,Category,Subcategory,Price,Availability,Situation,Brand,Quantity,TotalPrice FROM automationexercise.products Order by Id Asc;";
 

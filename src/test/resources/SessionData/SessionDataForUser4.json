@@ -3,64 +3,55 @@
   "cookies_data": [
     {
       "name": "FCNEC",
-      "value": "%5B%5B%22AKsRol_bLeUklDUXZ-risW-inBgP6LhZstqU4h2dOisuj4qIZVaebD53f8056u1TnqHu7BtbrZcsNonc9FQRPOnTtf42K6kNYFjgqAVbAdYbu7eZWlWnYyUR0zHdC14-5Pls-iiSm6bttcPB4eQ64ESYy-oenA8FGQ%3D%3D%22%5D%5D",
+      "value": "%5B%5B%22AKsRol_bdlxJkh0CXK1s-rXMq0wsP4qYUE5c6h2P7gCtuu-wdaDf8ZmJif_Z_l3BNzfLl1EetNfaMv_2-ax9yG0RDmEejpTaJtTRb3NbPrbjoZT0yVMrbEkluWFgHwdJckpXP8TGjtoyEgJeuR6qVAzbXxAURKYGmw%3D%3D%22%5D%5D",
       "path": "/",
       "domain": ".automationexercise.com",
-      "expiry": "Mon Nov 03 04:55:05 EET 2025",
+      "expiry": "Wed Nov 05 02:16:26 EET 2025",
       "isSecure": false,
       "isHttpOnly": false
     },
     {
       "name": "__gpi",
-      "value": "UID\u003d00000f6752fd0f91:T\u003d1730602505:RT\u003d1730602505:S\u003dALNI_MbVSedKo1BufsR6OIMnmAlLr9D6mw",
+      "value": "UID\u003d00000f5a442fc80b:T\u003d1730765784:RT\u003d1730765784:S\u003dALNI_Ma2i9i5qHIA3AdQq76BSt6D5xwZFQ",
       "path": "/",
       "domain": ".automationexercise.com",
-      "expiry": "Fri Nov 28 04:55:05 EET 2025",
+      "expiry": "Sun Nov 30 02:16:24 EET 2025",
       "isSecure": true,
       "isHttpOnly": false
     },
     {
       "name": "__eoi",
-      "value": "ID\u003d4282fae2fb7f722a:T\u003d1730602505:RT\u003d1730602505:S\u003dAA-AfjZ_igAy8ANmtdnjn7Y1rg27",
+      "value": "ID\u003d783d0d6ce57e7512:T\u003d1730765784:RT\u003d1730765784:S\u003dAA-AfjZ_gT9gQFMoL3Ebg24WnZfg",
       "path": "/",
       "domain": ".automationexercise.com",
-      "expiry": "Fri May 02 05:55:05 EEST 2025",
+      "expiry": "Sun May 04 03:16:24 EEST 2025",
       "isSecure": true,
       "isHttpOnly": false
     },
     {
-      "name": "__gsas",
-      "value": "ID\u003d4189dfdfb5c0cd01:T\u003d1730602506:RT\u003d1730602506:S\u003dALNI_MbYkPLaQDmusL9U_o7QgC0FmvH8gA",
-      "path": "/",
-      "domain": ".automationexercise.com",
-      "expiry": "Fri Nov 28 04:55:06 EET 2025",
-      "isSecure": false,
-      "isHttpOnly": false
-    },
-    {
       "name": "sessionid",
-      "value": "atmfjpkgu5xwor5org6cc64clgawj7g6",
+      "value": "mzpmbjxjv8kve7f78hmv152331gzoo9m",
       "path": "/",
       "domain": "automationexercise.com",
-      "expiry": "Sun Nov 17 04:55:07 EET 2024",
+      "expiry": "Tue Nov 19 02:16:27 EET 2024",
       "isSecure": false,
       "isHttpOnly": true
     },
     {
       "name": "csrftoken",
-      "value": "xIlyOSWP4GyCDfn5e1rhvP0wD5aKt5UfzONv2Njm7JWBXea9a46UxT5VdY17eWQG",
+      "value": "ypL0uWtQQkxjQfwBdKpgnlWYPExAI41EKHcc2m0oHPPPCj3JUCoSXo7P7x1LXhvB",
       "path": "/",
       "domain": "automationexercise.com",
-      "expiry": "Sun Nov 02 04:55:09 EET 2025",
+      "expiry": "Tue Nov 04 02:16:28 EET 2025",
       "isSecure": false,
       "isHttpOnly": false
     },
     {
       "name": "__gads",
-      "value": "ID\u003d3cf7439acf3dcf93:T\u003d1730602505:RT\u003d1730602505:S\u003dALNI_MYJkbVGxSywmve4dsr_H6pAyqHzDw",
+      "value": "ID\u003dcf9ecdd6c0a85144:T\u003d1730765784:RT\u003d1730765784:S\u003dALNI_MYvbzKQATD0re_bFhF5VmumrFuLMw",
       "path": "/",
       "domain": ".automationexercise.com",
-      "expiry": "Fri Nov 28 04:55:05 EET 2025",
+      "expiry": "Sun Nov 30 02:16:24 EET 2025",
       "isSecure": true,
       "isHttpOnly": false
     }

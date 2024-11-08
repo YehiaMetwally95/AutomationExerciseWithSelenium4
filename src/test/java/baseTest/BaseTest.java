@@ -24,7 +24,7 @@ public class BaseTest {
     public String jsonFilePathForSessionDataUser4 = "src/test/resources/SessionData/SessionDataForUser4.json";
 
     // Sync with Database to Load Latest Products and Users and Update Test Data Json Files
-    @BeforeSuite
+    @BeforeTest
     public void prepareTestData() throws SQLException, IOException {
         if (System.getProperty("syncWithDB").equalsIgnoreCase("true")) {
             LoadProductsFromDB.loadProductsFromDB();
@@ -44,7 +44,7 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void tearDownBrowser(){
+    public void closeBrowser(){
         //Close Browser after every test
         closeCurrentWindow(getDriver(isolatedDriver));
 
