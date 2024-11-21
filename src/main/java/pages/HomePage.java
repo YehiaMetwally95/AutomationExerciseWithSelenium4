@@ -4,10 +4,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
-import org.testng.Assert;
 import yehiaEngine.assertions.CustomAssert;
 import yehiaEngine.assertions.CustomSoftAssert;
-import yehiaEngine.elementActions.WebElementsActionBot;
+import yehiaEngine.elementActions.WebElementsActions;
 
 import java.io.IOException;
 
@@ -17,7 +16,7 @@ import static yehiaEngine.browserActions.WindowManager.navigateToURL;
 public class HomePage {
     //Variables
     WebDriver driver;
-    WebElementsActionBot bot;
+    WebElementsActions bot;
 
     //Locators of Header
     By logoButton = By.xpath("//div[contains(@class,'logo')]/descendant::img");
@@ -38,7 +37,7 @@ public class HomePage {
     //Constructor
     public HomePage(WebDriver driver) {
         this.driver = driver;
-        bot = new WebElementsActionBot(driver);
+        bot = new WebElementsActions(driver);
     }
 
     //Actions
