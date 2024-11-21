@@ -6,26 +6,25 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.ITestResult;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 
-import static yehiaEngine.loggers.LogHelper.*;
+import static yehiaEngine.loggers.LogHelper.logErrorStep;
+import static yehiaEngine.loggers.LogHelper.logInfoStep;
 
 public class AllureReportLogger {
-    public static void uploadLogFileIntoAllure(String methodName) {
+    public static void uploadLogFileIntoAllure(String methodName) throws IOException {
        if (methodName != null)
        {
            try {
                File file = new File("logs/"+methodName+".log");
                var byteArray = Files.readAllBytes(file.toPath());
                Allure.addAttachment("The Log File for ["+methodName+"]", new ByteArrayInputStream(byteArray));
-           } catch (Exception e) {
-               logErrorStep("Failed to Upload The Log File into Allure", e);
+           } catch (AssertionError e) {
+               logErrorStep("Failed to Upload The Log File into Allure - ",e);
            }
        }
     }

@@ -20,15 +20,15 @@ public class LoadProductsFromDB {
         String dbQuery = "SELECT Id,Name,Category,Subcategory,Price,Availability,Situation,Brand,Quantity,TotalPrice FROM automationexercise.products Order by Id Asc;";
 
         //JsonKeys shall be filled by the same order of table columns of database query
-        String[] jsonKeysForUsers = {"ID", "Name","Category", "Subcategory", "Price","Availability"
+        String[] jsonKeys = {"ID", "Name","Category", "Subcategory", "Price","Availability"
                 ,"Condition","Brand","Quantity","TotalPrice"};
 
         //In Case of writing one JsonMainKey for all records, the Records will represent an array of Json objects
         //In Case of writing JsonMainKey for every record, Each Record will represent an object value for the corresponding JsonMainKey,In this case JsonMainKeys shall be filled by the same order of table rows on database
-        String jsonMainKeyForUsers = "Products";
+        String jsonMainKey = "Products";
 
-        JDBCManager.setJsonFileFromDBAsNestedArrayOfJsonObjects(dbQuery, jsonFilePathForAddToCart, jsonKeysForUsers, jsonMainKeyForUsers);
-        JDBCManager.setJsonFileFromDBAsNestedArrayOfJsonObjects(dbQuery, jsonFilePathForCheckout, jsonKeysForUsers, jsonMainKeyForUsers);
-        JDBCManager.setJsonFileFromDBAsNestedArrayOfJsonObjects(dbQuery, jsonFilePathForSearchProduct, jsonKeysForUsers, jsonMainKeyForUsers);
+        JDBCManager.setJsonFileFromDBAsNestedArrayOfJsonObjects(dbQuery, jsonFilePathForAddToCart, jsonKeys, jsonMainKey);
+        JDBCManager.setJsonFileFromDBAsNestedArrayOfJsonObjects(dbQuery, jsonFilePathForCheckout, jsonKeys, jsonMainKey);
+        JDBCManager.setJsonFileFromDBAsNestedArrayOfJsonObjects(dbQuery, jsonFilePathForSearchProduct, jsonKeys, jsonMainKey);
     }
 }
