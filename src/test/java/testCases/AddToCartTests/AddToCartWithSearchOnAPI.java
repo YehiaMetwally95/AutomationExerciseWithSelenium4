@@ -79,5 +79,6 @@ public class AddToCartWithSearchOnAPI extends BaseTest {
                 .assertProductIsAddedToCart(json.getData("Products[0].Name"))
                 .assertProductIsAddedToCart(json.getData("Products[2].Name"))
                 .assertProductIsAddedToCart(json.getData("Products[3].Name"));
+
     }
 }

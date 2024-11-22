@@ -113,23 +113,25 @@ public class CheckoutPage extends HomePage{
 
     @Step("Assert Product is Added to Cart")
     public CheckoutPage assertProductIsAddedToCart(String productName) throws IOException {
-        List<WebElement> elements = bot.getAllMatchedElements(productNamesLocator);
+        CustomSoftAssert.assertTrue(bot.isElementDisplayed(productNameLocator(productName)));
+       /* List<WebElement> elements = bot.getAllMatchedElements(productNamesLocator);
         List<String> productNames= new ArrayList<>();
         for (WebElement element : elements) {
             productNames.add(bot.readText(element));
         }
-        CustomAssert.assertListContainsObject(productNames,productName,"Element is Not Added");
+        CustomAssert.assertListContainsObject(productNames,productName,"Element is Not Added");*/
         return this;
     }
 
     @Step("Assert Product is Removed from Cart")
     public CheckoutPage assertProductIsRemovedFromCart(String productName) throws IOException {
-        List<WebElement> elements = bot.getAllMatchedElements(productNamesLocator);
+        CustomSoftAssert.assertTrue(bot.isElementNotDisplayed(productNameLocator(productName)));
+        /*List<WebElement> elements = bot.getAllMatchedElements(productNamesLocator);
         List<String> productNames= new ArrayList<>();
         for (WebElement element : elements) {
             productNames.add(bot.readText(element));
         }
-        CustomAssert.assertListNotContainsObject(productNames,productName,"Element is Not Removed");
+        CustomAssert.assertListNotContainsObject(productNames,productName,"Element is Not Removed");*/
         return this;
     }
 

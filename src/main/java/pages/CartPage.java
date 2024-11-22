@@ -56,7 +56,7 @@ public class CartPage extends HomePage {
 
     //Actions
     @Step("Proceed to CheckOut")
-    public CheckoutPage proceedToCheckOut() throws IOException {
+    public CheckoutPage proceedToCheckOut() {
         bot.press(checkOutButton);
         return new CheckoutPage(driver);
     }
@@ -68,7 +68,7 @@ public class CartPage extends HomePage {
     }
 
     @Step("Remove All Old Products from Cart")
-    public CartPage removeAllOldProductsFromCart() throws IOException {
+    public CartPage removeAllOldProductsFromCart() {
         if (bot.isElementDisplayed(removeAllProductsFromCartButton))
         {
             List<WebElement> elements = bot.getAllMatchedElements(removeAllProductsFromCartButton);
@@ -98,19 +98,21 @@ public class CartPage extends HomePage {
     }
 
     @Step("Assert Product is Added to Cart")
-    public CartPage assertProductIsAddedToCart(String productName) throws IOException {
-        List<WebElement> elements = bot.getAllMatchedElements(productNamesLocator);
+    public CartPage assertProductIsAddedToCart(String productName) {
+        CustomSoftAssert.assertTrue(bot.isElementDisplayed(productNameLocator(productName)));
+       /* List<WebElement> elements = bot.getAllMatchedElements(productNamesLocator);
         List<String> productNames= new ArrayList<>();
         for (WebElement element : elements) {
             productNames.add(bot.readText(element));
         }
-        CustomAssert.assertListContainsObject(productNames,productName,"Element is Not Added");
+        CustomAssert.assertListContainsObject(productNames,productName,"Element is Not Added");*/
         return this;
     }
 
     @Step("Assert Product is Removed from Cart")
-    public CartPage assertProductIsRemovedFromCart(String productName) throws IOException, InterruptedException {
-        if (bot.isElementDisplayed(productNamesLocator))
+    public CartPage assertProductIsRemovedFromCart(String productName) {
+        CustomSoftAssert.assertTrue(bot.isElementNotDisplayed(productNameLocator(productName)));
+       /* if (bot.isElementDisplayed(productNamesLocator))
         {
             List<WebElement> elements = bot.getAllMatchedElements(productNamesLocator);
             List<String> productNames= new ArrayList<>();
@@ -118,13 +120,13 @@ public class CartPage extends HomePage {
                 productNames.add(bot.readText(element));
             }
             CustomAssert.assertListNotContainsObject(productNames,productName,"Element is Not Removed");
-        }
+        }*/
         return this;
     }
 
     //Private Methods
     @Step("Verify Product Name")
-    private CartPage verifyProductName(String productName) throws IOException {
+    private CartPage verifyProductName(String productName) {
         CustomSoftAssert.assertEquals(
                 bot.readText(productNameLocator(productName)),productName
         );

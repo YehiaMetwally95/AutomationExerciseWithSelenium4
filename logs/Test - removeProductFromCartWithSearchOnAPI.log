@@ -1,0 +1,76 @@
+[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [07:47:23] - CompiledPath 
+[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [07:47:23] - LogHelper 
+[INFO] - Sending Post Request for URL [https://automationexercise.com/api/searchProduct] - - [07:47:31] - LogHelper 
+[INFO] - Request Body : {"search_product":"Blue Top"} - - [07:47:32] - LogHelper 
+[INFO] - Response Body : {"responseCode":200,"products":[{"id":1,"name":"Blue Top","price":"Rs. 500","brand":"Polo","category":{"usertype":{"usertype":"Women"},"category":"Tops"}}]} - - [07:47:32] - LogHelper 
+[INFO] - Asserting actual result: [200] equals expected result: [200] - - [07:47:32] - LogHelper 
+[INFO] - Assertion Passed - - [07:47:32] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][4]['Name'] - [07:47:32] - CompiledPath 
+[INFO] - Getting Test Data [Lace Top For Women] by Json Path [Products[4].Name] - - [07:47:32] - LogHelper 
+[INFO] - Sending Post Request for URL [https://automationexercise.com/api/searchProduct] - - [07:47:34] - LogHelper 
+[INFO] - Request Body : {"search_product":"Lace Top For Women"} - - [07:47:34] - LogHelper 
+[INFO] - Response Body : {"responseCode":200,"products":[{"id":42,"name":"Lace Top For Women","price":"Rs. 1400","brand":"Mast & Harbour","category":{"usertype":{"usertype":"Women"},"category":"Tops"}}]} - - [07:47:34] - LogHelper 
+[INFO] - Asserting actual result: [200] equals expected result: [200] - - [07:47:34] - LogHelper 
+[INFO] - Assertion Passed - - [07:47:34] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][3]['Name'] - [07:47:34] - CompiledPath 
+[INFO] - Getting Test Data [Regular Fit Straight Jeans] by Json Path [Products[3].Name] - - [07:47:34] - LogHelper 
+[INFO] - Sending Post Request for URL [https://automationexercise.com/api/searchProduct] - - [07:47:36] - LogHelper 
+[INFO] - Request Body : {"search_product":"Regular Fit Straight Jeans"} - - [07:47:36] - LogHelper 
+[INFO] - Response Body : {"responseCode":200,"products":[{"id":35,"name":"Regular Fit Straight Jeans","price":"Rs. 1200","brand":"H&M","category":{"usertype":{"usertype":"Men"},"category":"Jeans"}}]} - - [07:47:36] - LogHelper 
+[INFO] - Asserting actual result: [200] equals expected result: [200] - - [07:47:36] - LogHelper 
+[INFO] - Assertion Passed - - [07:47:36] - LogHelper 
+[INFO] - Navigating to URL [https://automationexercise.com/product_details/1] - - [07:47:38] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][0]['Quantity'] - [07:47:38] - CompiledPath 
+[INFO] - Getting Test Data [3] by Json Path [Products[0].Quantity] - - [07:47:38] - LogHelper 
+[INFO] - Clearing the Text on Element [By.id: quantity] - - [07:47:38] - LogHelper 
+[INFO] - Typing [3] on Element [By.id: quantity] - - [07:47:38] - LogHelper 
+[INFO] - Clicking on Element [ Add to cart] - - [07:47:39] - LogHelper 
+[INFO] - Clicking on Element [Continue Shopping] - - [07:47:41] - LogHelper 
+[INFO] - Navigating to URL [https://automationexercise.com/product_details/42] - - [07:47:42] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][4]['Quantity'] - [07:47:42] - CompiledPath 
+[INFO] - Getting Test Data [1] by Json Path [Products[4].Quantity] - - [07:47:42] - LogHelper 
+[INFO] - Clearing the Text on Element [By.id: quantity] - - [07:47:42] - LogHelper 
+[INFO] - Typing [1] on Element [By.id: quantity] - - [07:47:43] - LogHelper 
+[INFO] - Clicking on Element [ Add to cart] - - [07:47:43] - LogHelper 
+[INFO] - Clicking on Element [Continue Shopping] - - [07:47:44] - LogHelper 
+[INFO] - Navigating to URL [https://automationexercise.com/product_details/35] - - [07:47:45] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][3]['Quantity'] - [07:47:45] - CompiledPath 
+[INFO] - Getting Test Data [5] by Json Path [Products[3].Quantity] - - [07:47:45] - LogHelper 
+[INFO] - Clearing the Text on Element [By.id: quantity] - - [07:47:46] - LogHelper 
+[INFO] - Typing [5] on Element [By.id: quantity] - - [07:47:46] - LogHelper 
+[INFO] - Clicking on Element [ Add to cart] - - [07:47:46] - LogHelper 
+[INFO] - Clicking on Element [View Cart] - - [07:47:49] - LogHelper 
+[DEBUG] - Evaluating path: $['Messages']['ShoppingCartHeader'] - [07:47:49] - CompiledPath 
+[INFO] - Getting Test Data [Shopping Cart] by Json Path [Messages.ShoppingCartHeader] - - [07:47:49] - LogHelper 
+[INFO] - Getting Text [Shopping Cart] from Element located by [By.className: active] - - [07:47:49] - LogHelper 
+[INFO] - Soft Asserting actual result: [Shopping Cart] equals expected result: [Shopping Cart] - - [07:47:49] - LogHelper 
+[INFO] - Soft Assertion Passed - - [07:47:49] - LogHelper 
+[INFO] - Refreshing the current Browser Window - - [07:47:50] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [07:47:50] - CompiledPath 
+[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [07:47:50] - LogHelper 
+[INFO] - Clicking on Element [] - - [07:47:51] - LogHelper 
+[INFO] - Refreshing the current Browser Window - - [07:47:53] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][4]['Name'] - [07:47:53] - CompiledPath 
+[INFO] - Getting Test Data [Lace Top For Women] by Json Path [Products[4].Name] - - [07:47:53] - LogHelper 
+[INFO] - Clicking on Element [] - - [07:47:54] - LogHelper 
+[INFO] - Refreshing the current Browser Window - - [07:47:55] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][3]['Name'] - [07:47:55] - CompiledPath 
+[INFO] - Getting Test Data [Regular Fit Straight Jeans] by Json Path [Products[3].Name] - - [07:47:55] - LogHelper 
+[INFO] - Clicking on Element [] - - [07:47:56] - LogHelper 
+[INFO] - Refreshing the current Browser Window - - [07:47:57] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][0]['Name'] - [07:47:57] - CompiledPath 
+[INFO] - Getting Test Data [Blue Top] by Json Path [Products[0].Name] - - [07:47:57] - LogHelper 
+[INFO] - The Element located by [By.linkText: Blue Top] is Not Displayed - - [07:47:57] - LogHelper 
+[INFO] - Soft Asserting condition is True - - [07:47:57] - LogHelper 
+[INFO] - Soft Assertion Passed - - [07:47:57] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][4]['Name'] - [07:47:57] - CompiledPath 
+[INFO] - Getting Test Data [Lace Top For Women] by Json Path [Products[4].Name] - - [07:47:57] - LogHelper 
+[INFO] - The Element located by [By.linkText: Lace Top For Women] is Not Displayed - - [07:47:57] - LogHelper 
+[INFO] - Soft Asserting condition is True - - [07:47:57] - LogHelper 
+[INFO] - Soft Assertion Passed - - [07:47:57] - LogHelper 
+[DEBUG] - Evaluating path: $['Products'][3]['Name'] - [07:47:57] - CompiledPath 
+[INFO] - Getting Test Data [Regular Fit Straight Jeans] by Json Path [Products[3].Name] - - [07:47:57] - LogHelper 
+[INFO] - The Element located by [By.linkText: Regular Fit Straight Jeans] is Not Displayed - - [07:47:57] - LogHelper 
+[INFO] - Soft Asserting condition is True - - [07:47:57] - LogHelper 
+[INFO] - Soft Assertion Passed - - [07:47:57] - LogHelper 
+[INFO] - Capturing Screenshot for Succeeded Scenario - - [07:47:59] - LogHelper 
