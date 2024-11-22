@@ -1,16 +1,15 @@
-package pages;
+package pagesForWebApp;
 
 import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import org.testng.Assert;
 import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.IOException;
 
-public class LoginSignupPage extends HomePage{
+public class LoginSignupPage extends HomePage {
     //Variables
 
     //Locators
@@ -27,7 +26,7 @@ public class LoginSignupPage extends HomePage{
 
 
     //Constructor
-    public LoginSignupPage(WebDriver driver) {
+    public LoginSignupPage(AppiumDriver driver) {
         super(driver);
     }
 

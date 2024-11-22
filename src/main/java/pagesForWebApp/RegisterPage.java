@@ -1,9 +1,8 @@
-package pages;
+package pagesForWebApp;
 
 import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import yehiaEngine.assertions.CustomSoftAssert;
 
@@ -11,9 +10,10 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import static yehiaEngine.utilities.RandomDataGenerator.*;
+import static yehiaEngine.utilities.RandomDataGenerator.generateItemFromList;
+import static yehiaEngine.utilities.RandomDataGenerator.generateNumericalString;
 
-public class RegisterPage extends HomePage{
+public class RegisterPage extends HomePage {
     //Variables
 
     //Locators
@@ -40,16 +40,16 @@ public class RegisterPage extends HomePage{
     By createButtonLocator = RelativeLocator.with(By.tagName("button")).below(mobileNumberLocator);
 
     //Constructor
-    public RegisterPage(WebDriver driver) {
+    public RegisterPage(AppiumDriver driver) {
         super(driver);
     }
 
     //Actions
     @Step("Register New User")
-    public HomePage registerNewUser(String title,String name,String password,String day,String month,
-                                        String year,String firstName,String lastName, String company,
-                                        String address1, String address2,String country,String state,
-                                        String city, String zipcode, String mobileNumber) throws IOException {
+    public HomePage registerNewUser(String title, String name, String password, String day, String month,
+                                    String year, String firstName, String lastName, String company,
+                                    String address1, String address2, String country, String state,
+                                    String city, String zipcode, String mobileNumber) throws IOException {
         enterAccountInfo(title,name,password,day,month,year).
                enterAddressInfo(firstName,lastName,company,address1,address2,country,state,city,zipcode,mobileNumber).
                 checkToSignupForNewsPaper().

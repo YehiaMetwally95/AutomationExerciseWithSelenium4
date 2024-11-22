@@ -1,20 +1,19 @@
-package pages;
+package pagesForWebApp;
 
 import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.IOException;
 
-public class AccountCreatedPage extends HomePage{
+public class AccountCreatedPage extends HomePage {
         //Locator
         private By continueButton = By.xpath("//a[contains(@data-qa,'continue')]");
         private By successMessage= By.xpath("//*[@data-qa='account-created']");
 
         //Constructor
-        public AccountCreatedPage(WebDriver driver) {
+        public AccountCreatedPage(AppiumDriver driver) {
             super(driver);
         }
 

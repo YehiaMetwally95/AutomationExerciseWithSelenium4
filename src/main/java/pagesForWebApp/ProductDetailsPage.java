@@ -1,9 +1,8 @@
-package pages;
+package pagesForWebApp;
 
 import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.IOException;
@@ -25,7 +24,7 @@ public class ProductDetailsPage extends HomePage {
     By writeYourReviewSection = By.xpath("//a[contains(.,'Review')]");
 
     //Constructor
-    public ProductDetailsPage(WebDriver driver) {
+    public ProductDetailsPage(AppiumDriver driver) {
         super(driver);
     }
 

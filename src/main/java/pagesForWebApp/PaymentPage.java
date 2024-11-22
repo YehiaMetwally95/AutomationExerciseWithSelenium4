@@ -1,16 +1,14 @@
-package pages;
+package pagesForWebApp;
 
 import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import yehiaEngine.assertions.CustomAssert;
 import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.IOException;
 
-public class PaymentPage extends HomePage{
+public class PaymentPage extends HomePage {
     //Variables
 
     //Locators
@@ -24,13 +22,13 @@ public class PaymentPage extends HomePage{
     By paymentHeaderLocator=By.className("heading");
 
     //Constructor
-    public PaymentPage(WebDriver driver) {
+    public PaymentPage(AppiumDriver driver) {
         super(driver);
     }
 
     //Actions
     @Step("Perform Payment")
-    public PaymentDonePage performPayment(String name,String number,String cvc,String month,String year) throws IOException {
+    public PaymentDonePage performPayment(String name, String number, String cvc, String month, String year) throws IOException {
         enterCardName(name).
                 enterCardNumber(number).
                 enterCardCVC(cvc).

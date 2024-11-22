@@ -1,10 +1,8 @@
-package pages;
+package pagesForWebApp;
 
 import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import yehiaEngine.assertions.CustomAssert;
 import yehiaEngine.assertions.CustomSoftAssert;
 
@@ -25,7 +23,7 @@ public class ContactusPage extends HomePage {
     By uploadFileControl= By.name("upload_file");
 
     //Constructor
-    public ContactusPage(WebDriver driver) {
+    public ContactusPage(AppiumDriver driver) {
         super(driver);
     }
 

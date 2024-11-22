@@ -1,15 +1,14 @@
-package pages;
+package pagesForWebApp;
 
 import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.IOException;
 
-public class ProductsPage extends HomePage{
+public class ProductsPage extends HomePage {
     //Variables
 
     //Locators
@@ -46,7 +45,7 @@ public class ProductsPage extends HomePage{
     }
 
     //Constructor
-    public ProductsPage(WebDriver driver) {
+    public ProductsPage(AppiumDriver driver) {
         super(driver);
     }
 

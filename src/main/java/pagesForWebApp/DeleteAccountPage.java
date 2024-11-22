@@ -1,9 +1,8 @@
-package pages;
+package pagesForWebApp;
 
 import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.IOException;
@@ -16,7 +15,7 @@ public class DeleteAccountPage extends HomePage {
     By continueButton = By.xpath("//a[@data-qa='continue-button']");
 
     //Constructor
-    public DeleteAccountPage(WebDriver driver) {
+    public DeleteAccountPage(AppiumDriver driver) {
         super(driver);
     }
 

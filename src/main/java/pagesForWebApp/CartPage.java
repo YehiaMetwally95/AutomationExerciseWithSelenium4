@@ -1,17 +1,13 @@
-package pages;
+package pagesForWebApp;
 
 import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.locators.RelativeLocator;
-import org.testng.Assert;
-import yehiaEngine.assertions.CustomAssert;
 import yehiaEngine.assertions.CustomSoftAssert;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import static yehiaEngine.browserActions.WindowManager.refreshWindow;
@@ -51,7 +47,7 @@ public class CartPage extends HomePage {
     }
 
     //Constructor
-    public CartPage(WebDriver driver) {
+    public CartPage(AppiumDriver driver) {
         super(driver);
     }
 

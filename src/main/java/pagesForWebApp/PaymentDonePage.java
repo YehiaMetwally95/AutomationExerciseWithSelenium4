@@ -1,10 +1,8 @@
-package pages;
+package pagesForWebApp;
 
 import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import yehiaEngine.assertions.CustomAssert;
 import yehiaEngine.assertions.CustomSoftAssert;
 
@@ -20,7 +18,7 @@ public class PaymentDonePage extends HomePage {
     By orderConfirmMessageLocator = By.xpath("//h2[@data-qa='order-placed']");
 
     //Constructor
-    public PaymentDonePage(WebDriver driver) {
+    public PaymentDonePage(AppiumDriver driver) {
         super(driver);
     }
 

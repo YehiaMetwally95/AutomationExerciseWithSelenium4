@@ -1,9 +1,8 @@
-package pages;
+package pagesForWebApp;
 
 import io.appium.java_client.AppiumDriver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import yehiaEngine.assertions.CustomAssert;
 import yehiaEngine.assertions.CustomSoftAssert;
@@ -11,12 +10,12 @@ import yehiaEngine.elementActions.WebElementsActions;
 
 import java.io.IOException;
 
-import static yehiaEngine.managers.PropertiesManager.getPropertiesValue;
 import static yehiaEngine.browserActions.WindowManager.navigateToURL;
+import static yehiaEngine.managers.PropertiesManager.getPropertiesValue;
 
 public class HomePage {
     //Variables
-    WebDriver driver;
+    AppiumDriver driver;
     WebElementsActions bot;
 
     //Locators of Header
@@ -36,7 +35,7 @@ public class HomePage {
     By subscriptionMassage = By.cssSelector("#success-subscribe .alert-success");
 
     //Constructor
-    public HomePage(WebDriver driver) {
+    public HomePage(AppiumDriver driver) {
         this.driver = driver;
         bot = new WebElementsActions(driver);
     }
