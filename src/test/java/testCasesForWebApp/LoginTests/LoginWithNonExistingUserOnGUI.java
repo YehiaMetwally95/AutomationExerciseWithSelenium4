@@ -2,9 +2,11 @@ package testCasesForWebApp.LoginTests;
 
 import baseTest.BaseTest;
 import baseTest.BaseTestForWebApp;
+import io.appium.java_client.android.AndroidDriver;
 import io.qameta.allure.*;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-import pages.HomePage;
+import pagesForWebApp.HomePage;
 import yehiaEngine.managers.JsonManager;
 
 import java.io.IOException;

@@ -51,7 +51,7 @@ public class ProductsPage extends HomePage {
 
     //Actions
     @Step("Search For A Product")
-    public ProductsPage searchForProduct(String productName) throws IOException {
+    public ProductsPage searchForProduct(String productName)   {
         bot.
                 type(searchTextBox,productName).
                 press(searchButton);
@@ -59,33 +59,33 @@ public class ProductsPage extends HomePage {
     }
 
     @Step("Open Product Details Page")
-    public ProductDetailsPage openProductDetailsPage(String productName) throws IOException {
+    public ProductDetailsPage openProductDetailsPage(String productName)   {
         bot.press(viewProductButtonLocator(productName));
         return new ProductDetailsPage(driver);
     }
 
     @Step("Add Product To Cart")
-    public ProductsPage addProductToCart(String productName) throws IOException {
+    public ProductsPage addProductToCart(String productName)   {
         bot.press(productImageOuterLocator(productName))
                 .press(addToCartInnerLocator(productName));
         return this;
     }
 
     @Step("Click On Continue Shopping")
-    public ProductsPage continueShopping() throws IOException {
+    public ProductsPage continueShopping()   {
         bot.press(continueShoppingButton);
         return this;
     }
 
     @Step("Click On View Cart")
-    public CartPage viewCart() throws IOException {
+    public CartPage viewCart()   {
         bot.press(viewCartButton);
         return new CartPage(driver);
     }
 
     //Validations
     @Step("Verify Product Page is Opened")
-    public ProductsPage verifyProductPageIsOpened(String header) throws IOException {
+    public ProductsPage verifyProductPageIsOpened(String header)   {
         verifyProductsHeader(header);
         return this;
     }
@@ -98,7 +98,7 @@ public class ProductsPage extends HomePage {
 
     //Private Methods
     @Step("Verify Products Header")
-    private ProductsPage verifyProductsHeader(String header) throws IOException {
+    private ProductsPage verifyProductsHeader(String header)   {
         CustomSoftAssert.assertEquals(bot.readText(allProductsHeaderLocator),header);
         return this;
     }

@@ -84,7 +84,7 @@ public class PaymentPage extends HomePage {
 
     @Step("Click on Confirm Order Button")
     private PaymentPage clickOnConfirmOrderButton() throws IOException {
-        bot.press(confirmOrderButton);
+        bot.press(confirmOrderButton).press(confirmOrderButton);
         return this;
     }
 

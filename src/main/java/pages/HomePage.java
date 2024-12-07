@@ -43,49 +43,49 @@ public class HomePage {
 
     //Actions
     @Step("Open Home Page")
-    public HomePage openHomePage() throws IOException {
+    public HomePage openHomePage()   {
         bot.press(homePageButton);
         return this;
     }
 
     @Step("Open Products Page")
-    public ProductsPage openProductsPage() throws IOException {
+    public ProductsPage openProductsPage()   {
         bot.press(productsPageButton);
         return new ProductsPage(driver);
     }
 
     @Step("Open Cart Page")
-    public CartPage openCartPage() throws IOException {
+    public CartPage openCartPage()   {
         bot.press(cartPageButton);
         return new CartPage(driver);
     }
 
     @Step("Open Login/Signup Page")
-    public LoginSignupPage openLoginSignupPage() throws IOException {
+    public LoginSignupPage openLoginSignupPage()   {
         bot.press(signupLoginPageButton);
         return new LoginSignupPage(driver);
     }
 
     @Step("Open ContactUs Page")
-    public ContactusPage openContactUsPage() throws IOException {
+    public ContactusPage openContactUsPage()   {
         bot.press(contactusPageButton);
         return new ContactusPage(driver);
     }
 
     @Step("Click On Logout")
-    public LoginSignupPage logout() throws IOException {
+    public LoginSignupPage logout()   {
         bot.press(logOutButton);
         return new LoginSignupPage(driver);
     }
 
     @Step("Click On Delete Account")
-    public DeleteAccountPage deleteAccount() throws IOException {
+    public DeleteAccountPage deleteAccount()   {
         bot.press(deleteButton);
         return new DeleteAccountPage(driver);
     }
 
     @Step("Submit Subscription")
-    public HomePage submitEmailSubscription(String email) throws IOException {
+    public HomePage submitEmailSubscription(String email)   {
         bot.scrollToElementIntoView(subscriptionText).
                 type(subscriptionText,email).
                 press(subscriptionButton);
@@ -93,7 +93,7 @@ public class HomePage {
     }
 
     @Step("Open Product Details Page by URL")
-    public ProductDetailsPage openProductDetailsPageByUrl(int productId) throws IOException {
+    public ProductDetailsPage openProductDetailsPageByUrl(int productId)   {
       String url = getPropertiesValue("baseUrlWeb") + "product_details/" + productId;
         navigateToURL(driver,url);
         return new ProductDetailsPage(driver);
@@ -101,13 +101,13 @@ public class HomePage {
 
     //Validations
     @Step("Verify Home Page is Opened")
-    public HomePage verifyHomePageIsOpened() throws IOException {
+    public HomePage verifyHomePageIsOpened()   {
         verifySiteLogoIsDisplayed();
         return this;
     }
 
     @Step("Assert User is Logged In")
-    public HomePage assertUserIsLoggedIn(String username) throws IOException {
+    public HomePage assertUserIsLoggedIn(String username)   {
         CustomAssert.assertEquals(
                 bot.readText(loggedInButton),("Logged in as "+username)
         );
@@ -115,7 +115,7 @@ public class HomePage {
     }
 
     @Step("Assert Subscription Massage")
-    public HomePage assertSubscriptionMassage(String massage) throws IOException {
+    public HomePage assertSubscriptionMassage(String massage)   {
         CustomAssert.assertEquals(
                 bot.readText(subscriptionMassage)
                 ,massage
@@ -125,7 +125,7 @@ public class HomePage {
 
     //Private Methods
     @Step("Verify Site Logo")
-    private HomePage verifySiteLogoIsDisplayed() throws IOException {
+    private HomePage verifySiteLogoIsDisplayed()   {
         CustomSoftAssert.assertTrue(bot.isElementDisplayed(logoButton));
         return this;
     }

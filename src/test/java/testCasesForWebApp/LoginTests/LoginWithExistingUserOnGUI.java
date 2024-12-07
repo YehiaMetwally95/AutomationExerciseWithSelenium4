@@ -3,6 +3,7 @@ package testCasesForWebApp.LoginTests;
 import baseTest.BaseTest;
 import baseTest.BaseTestForWebApp;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;

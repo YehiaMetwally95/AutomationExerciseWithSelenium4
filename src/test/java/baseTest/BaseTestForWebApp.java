@@ -1,7 +1,8 @@
 package baseTest;
 
 import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 import prepareTestData.LoadProductsFromDB;
 import prepareTestData.LoadUsersFromDB;
@@ -49,7 +50,7 @@ public class BaseTestForWebApp {
     @AfterMethod
     public void closeBrowser(){
         //Close Browser after every test
-        closeCurrentWindow(getDriver(isolatedDriver));
+        closeApp(getDriver(isolatedDriver));
 
         //Remove the Isolated Driver from Memory
         removeIsolatedDriver(isolatedDriver);

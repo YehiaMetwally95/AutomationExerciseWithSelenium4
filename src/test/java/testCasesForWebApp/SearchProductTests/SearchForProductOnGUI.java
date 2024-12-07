@@ -1,14 +1,12 @@
 package testCasesForWebApp.SearchProductTests;
 
-import baseTest.BaseTest;
 import baseTest.BaseTestForWebApp;
+import io.appium.java_client.android.AndroidDriver;
 import io.qameta.allure.*;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-import pages.HomePage;
+import pagesForWebApp.HomePage;
 import yehiaEngine.managers.JsonManager;
-
-import java.io.IOException;
-
 import static yehiaEngine.driverManager.AppiumFactory.getDriver;
 
 @Epic("Automation Exercise Features")
@@ -21,7 +19,7 @@ public class SearchForProductOnGUI extends BaseTestForWebApp {
     @Description("Search For Product And Open Product Page On GUI")
     @Severity(SeverityLevel.CRITICAL)
     @Test
-    public void searchForProductAndOpenProductPageOnGUI() throws IOException {
+    public void searchForProductAndOpenProductPageOnGUI() {
         new HomePage(getDriver(isolatedDriver))
                 .openProductsPage()
                 .verifyProductPageIsOpened(json.getData("Messages.AllProductsHeader"))
