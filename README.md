@@ -95,4 +95,18 @@ docker compose -f src/main/resources/dockerFiles/docker-compose-grid-v3.yml down
     - Separate Reports for Tests related to a Single Job
     - Combined Report that Include All Tests that runs on all Jobs 
 
-## Note that the Website currently crashes when press on Logout, so that any test related to logout is commented
+💥 Videos
+Review Project Structure
+https://lnkd.in/de5TC9Pb
+
+Run Test (API+GUI) Locally on Chrome through XML File
+https://lnkd.in/dvCyBnzA
+
+Run Test with soft assertion failure, Remotely on Chrome through Selenium Grid with Docker Container
+https://lnkd.in/d7aVYCuU
+
+Run Regression Workflow of 16 Tests through Pipeline using GitHub actions in Parallel within 100 seconds
+https://lnkd.in/dwrRDcvu
+
+💥Allure Reports for Parallel Test (90 secs) & Sequential Test (8 mins)
+https://lnkd.in/dderUEEn

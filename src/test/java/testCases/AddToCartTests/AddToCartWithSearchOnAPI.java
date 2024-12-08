@@ -56,8 +56,8 @@ public class AddToCartWithSearchOnAPI extends BaseTest {
                 .validateResponseCodeFromResponse(200)
     // The Data Validation on product details is done on API Layer
                 .validateProductDetailsFromResponse(json.getData("Products[3].ID"),json.getData("Products[3].Name"),
-                        json.getData("Products[3].Price"),json.getData("Products[3].Brand"),
-                        json.getData("Products[3].Category"),json.getData("Products[3].Subcategory"),
+                        json.getData("Products[2].Price"),json.getData("Products[2].Brand"),
+                        json.getData("Products[3].Category"),json.getData("Products[2].Subcategory"),
                         json.getData("Products[3].Quantity"),json.getData("Products[3].TotalPrice"))
                 .getResponsePojoObject();
 
@@ -75,7 +75,7 @@ public class AddToCartWithSearchOnAPI extends BaseTest {
                 .addProductToCart()
     // Open Cart Page and Validate Products are Added to Cart On GUI
                 .viewCart()
-                .verifyCartPageIsOpened(json.getData("Messages.ShoppingCartHeader"))
+                .verifyCartPageIsOpened(json.getData("Messages.AllProductsHeader"))
                 .assertProductIsAddedToCart(json.getData("Products[0].Name"))
                 .assertProductIsAddedToCart(json.getData("Products[2].Name"))
                 .assertProductIsAddedToCart(json.getData("Products[3].Name"));
