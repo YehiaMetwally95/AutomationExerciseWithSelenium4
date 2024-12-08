@@ -49,28 +49,17 @@ public class WebElementsActions {
         locateElement(driver,locator);
         //Check if Element is Displayed and Visible on Page
         checkElementDisplayed(driver,locator);
-        //Get Element AccessibleName
+        //Get Element Name
         String elementName = getElementName(driver,locator);
         //Check if Element is Enabled on Page (Not Disabled)
         checkElementEnabled(driver,locator,elementName);
         //Take Action on Element
         try {
-            if (driver instanceof AppiumDriver appiumDriver)
-            {
-                getFluentWait(appiumDriver).until(f -> {
-                    new Actions(appiumDriver).moveToElement(appiumDriver.findElement(locator)).perform();
-                    appiumDriver.findElement(locator).click();
-                    return true;
-                });
-            }
-            else
-            {
-                getFluentWait(driver).until(f -> {
-                    new Actions(driver).moveToElement(driver.findElement(locator)).perform();
-                    driver.findElement(locator).click();
-                    return true;
-                });
-            }
+            getFluentWait(driver).until(f -> {
+                new Actions(driver).moveToElement(driver.findElement(locator)).perform();
+                driver.findElement(locator).click();
+                return true;
+            });
             LogHelper.logInfoStep("Clicking on Element ["+elementName+"]");
         }catch (ElementNotInteractableException | TimeoutException e)
         //If Webdriver Click fails and fluent wait throw Timeout Exception, Try to click using JS

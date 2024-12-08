@@ -74,7 +74,7 @@ public class RegisterPage extends HomePage{
 
     @Step("Enter Account Information")
     private RegisterPage enterAccountInfo(String title,String name,String password,
-                                          String day,String month,String year) throws IOException {
+                                          String day,String month,String year) {
         setTitleLocator(title);
         bot.
                 press(titleLocator).
@@ -85,10 +85,9 @@ public class RegisterPage extends HomePage{
                 selectFromDropdownByText(yearLocator,year);
         return this;
     }
-
     @Step("Enter Address Information")
     private RegisterPage enterAddressInfo(String firstName,String lastName, String company, String address1, String address2,
-                                          String country,String state,String city, String zipcode, String mobileNumber) throws IOException {
+                                          String country,String state,String city, String zipcode, String mobileNumber) {
         bot.
                 type(firstnameLocator,firstName).
                 type(lastnameLocator,lastName).

@@ -103,13 +103,13 @@ public class LoginSignupPage extends HomePage {
 
     @Step("Click on Login Button")
     private HomePage clickOnLoginButtonForSuccess() throws IOException {
-        bot.press(loginButton).press(loginButton);
+        bot.press(loginButton);
         return new HomePage(driver);
     }
 
     @Step("Click on Login Button")
     private LoginSignupPage clickOnLoginButtonForFailure() throws IOException {
-        bot.press(loginButton).press(loginButton);
+        bot.press(loginButton);
         return this;
     }
 
@@ -127,13 +127,13 @@ public class LoginSignupPage extends HomePage {
 
     @Step("Click on Signup Button")
     private RegisterPage clickOnSignupButtonForSuccess() throws IOException {
-        bot.press(signUpButton).press(signUpButton);
+        bot.press(signUpButton);
         return new RegisterPage(driver);
     }
 
     @Step("Click on Signup Button")
     private LoginSignupPage clickOnSignupButtonForFailure() throws IOException {
-        bot.press(signUpButton).press(signUpButton);
+        bot.press(signUpButton);
         return this;
     }
 

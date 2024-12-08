@@ -113,13 +113,13 @@ public class CheckoutPage extends HomePage{
 
     @Step("Assert Product is Added to Cart")
     public CheckoutPage assertProductIsAddedToCart(String productName) throws IOException {
-        CustomSoftAssert.assertTrue(bot.isElementDisplayed(productNameLocator(productName)));
+        CustomAssert.assertTrue(bot.isElementDisplayed(productNameLocator(productName)));
         return this;
     }
 
     @Step("Assert Product is Removed from Cart")
     public CheckoutPage assertProductIsRemovedFromCart(String productName) throws IOException {
-        CustomSoftAssert.assertTrue(bot.isElementNotDisplayed(productNameLocator(productName)));
+        CustomAssert.assertTrue(bot.isElementNotDisplayed(productNameLocator(productName)));
         return this;
     }
 
