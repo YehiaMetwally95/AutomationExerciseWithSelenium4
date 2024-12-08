@@ -38,11 +38,11 @@ jobs:
       - name: Run tests
         continue-on-error: true
         run: >
-          mvn clean test -Dtest="AddToCartTests.AddToCartWithSearchOnAPI,
-          AddToCartTests.RemoveFromCartWithSearchOnAPI,
-          CheckoutTests.CheckoutProductOnAPI,
-          RegisterTests.RegisterNewUserOnAPI,
-          SearchProductTests.SearchForProductOnAPI"
+          mvn clean test -Dtest="testCases.AddToCartTests.AddToCartWithSearchOnAPI,
+          testCases.AddToCartTests.RemoveFromCartWithSearchOnAPI,
+          testCases.CheckoutTests.CheckoutProductOnAPI,
+          testCases.RegisterTests.RegisterNewUserOnAPI,
+          testCases.SearchProductTests.SearchForProductOnAPI"
           -DexecutionType="Remote"
           -DbrowserType="Chrome"
           -DisHeadless="true"
