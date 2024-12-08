@@ -55,7 +55,6 @@ public class CheckoutPage extends HomePage {
     }
 
     //Actions
-
     @Step("Place Order")
     public PaymentPage placeOrder() throws IOException {
         bot.press(placeOrderButton);

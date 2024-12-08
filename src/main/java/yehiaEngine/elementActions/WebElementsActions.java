@@ -80,23 +80,13 @@ public class WebElementsActions {
         String elementName = element.getText();
         checkElementEnabled(element,elementName);
         try {
-            if (driver instanceof AppiumDriver appiumDriver)
-            {
-                getFluentWait(appiumDriver).until(f -> {
-                    new Actions(appiumDriver).moveToElement(element).perform();
-                    element.click();
-                    return true;
-                });
-            }
-            else
-            {
-                getFluentWait(driver).until(f -> {
-                    new Actions(driver).moveToElement(element).perform();
-                    element.click();
-                    return true;
-                });
-                LogHelper.logInfoStep("Clicking on Element ["+elementName+"]");
-            }
+            getFluentWait(driver).until(f -> {
+                new Actions(driver).moveToElement(element).perform();
+                element.click();
+                return true;
+            });
+            LogHelper.logInfoStep("Clicking on Element ["+elementName+"]");
+
         }catch (ElementNotInteractableException | TimeoutException e)
         //If Webdriver Click fails and fluent wait throw Timeout Exception, Try to click using JS
         {
@@ -107,6 +97,29 @@ public class WebElementsActions {
             {
                 LogHelper.logErrorStep("Failed to Click on Element ["+elementName+"]",i);
             }
+        }
+        return this;
+    }
+
+    //Pressing on Button or Link & Log CLicking Action With JS
+    public WebElementsActions pressUsingJs(By locator) {
+        //Locate Element and Check if its present on DOM
+        locateElement(driver,locator);
+        //Check if Element is Displayed and Visible on Page
+        checkElementDisplayed(driver,locator);
+        //Get Element Name
+        String elementName = getElementName(driver,locator);
+        //Check if Element is Enabled on Page (Not Disabled)
+        checkElementEnabled(driver,locator,elementName);
+        //Take Action on Element
+        try {
+            getFluentWait(driver).until(f -> {
+                ((JavascriptExecutor)driver).executeScript("arguments[0].click();", driver.findElement(locator));
+                return true;
+            });
+            LogHelper.logInfoStep("Clicking using JS on Element ["+elementName+"]");
+        }catch (ElementNotInteractableException | TimeoutException e) {
+            LogHelper.logErrorStep("Failed to Click on Element ["+elementName+"]",e);
         }
         return this;
     }

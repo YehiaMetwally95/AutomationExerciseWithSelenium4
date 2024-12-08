@@ -1,0 +1,34 @@
+[INFO] - The Element [By.xpath: //div[contains(@class,'logo')]/descendant::img] is Displayed - - [17:06:10] - LogHelper 
+[INFO] - Soft Asserting condition is True - - [17:06:10] - LogHelper 
+[INFO] - Soft Assertion Passed - - [17:06:10] - LogHelper 
+[INFO] - Clicking on Element [Signup / Login] - - [17:06:15] - LogHelper 
+[DEBUG] - Evaluating path: $['Messages']['LoginHeader'] - [17:06:15] - CompiledPath 
+[INFO] - Getting Test Data [Login to your account] by Json Path [Messages.LoginHeader] - - [17:06:16] - LogHelper 
+[DEBUG] - Evaluating path: $['Messages']['SignupHeader'] - [17:06:16] - CompiledPath 
+[INFO] - Getting Test Data [New User Signup!] by Json Path [Messages.SignupHeader] - - [17:06:16] - LogHelper 
+[INFO] - Getting Text [Login to your account] from Element located by [[unknown locator]] - - [17:06:16] - LogHelper 
+[INFO] - Soft Asserting actual result: [Login to your account] equals expected result: [Login to your account] - - [17:06:16] - LogHelper 
+[INFO] - Soft Assertion Passed - - [17:06:16] - LogHelper 
+[INFO] - Getting Text [New User Signup!] from Element located by [[unknown locator]] - - [17:06:17] - LogHelper 
+[INFO] - Soft Asserting actual result: [New User Signup!] equals expected result: [New User Signup!] - - [17:06:17] - LogHelper 
+[INFO] - Soft Assertion Passed - - [17:06:17] - LogHelper 
+[DEBUG] - Evaluating path: $['Users'][1]['Email'] - [17:06:17] - CompiledPath 
+[INFO] - Getting Test Data [Test2441001@gmail.com] by Json Path [Users[1].Email] - - [17:06:17] - LogHelper 
+[DEBUG] - Evaluating path: $['Users'][1]['Password'] - [17:06:17] - CompiledPath 
+[INFO] - Getting Test Data [Test@%^2441004] by Json Path [Users[1].Password] - - [17:06:17] - LogHelper 
+[INFO] - Clearing the Text on Element [By.xpath: //input[@data-qa='login-email']] - - [17:06:18] - LogHelper 
+[INFO] - Typing [Test2441001@gmail.com] on Element [By.xpath: //input[@data-qa='login-email']] - - [17:06:19] - LogHelper 
+[INFO] - Clearing the Text on Element [By.xpath: //input[@data-qa='login-password']] - - [17:06:20] - LogHelper 
+[INFO] - Typing [Test@%^2441004] on Element [By.xpath: //input[@data-qa='login-password']] - - [17:06:21] - LogHelper 
+[INFO] - Clicking on Element [Login] - - [17:06:25] - LogHelper 
+[DEBUG] - Evaluating path: $['Users'][1]['Name'] - [17:06:25] - CompiledPath 
+[INFO] - Getting Test Data [Test2440927] by Json Path [Users[1].Name] - - [17:06:25] - LogHelper 
+[INFO] - Getting Text [Logged in as Test2440927] from Element located by [By.partialLinkText: Logged in] - - [17:06:26] - LogHelper 
+[INFO] - Asserting actual result: [Logged in as Test2440927] equals expected result: [Logged in as Test2440927] - - [17:06:26] - LogHelper 
+[INFO] - Assertion Passed - - [17:06:26] - LogHelper 
+[DEBUG] - Evaluating path: $['Users'][1]['Name'] - [17:06:26] - CompiledPath 
+[INFO] - Getting Test Data [Test2440927] by Json Path [Users[1].Name] - - [17:06:26] - LogHelper 
+[INFO] - Getting Cookies Data from Current Browser Session - - [17:06:26] - LogHelper 
+[INFO] - Writing Into Json File By filePath [src/test/resources/SessionData/SessionDataForUser1.json] - - [17:06:26] - LogHelper 
+[INFO] - Storing Cookies Data Into Json Session Files - - [17:06:26] - LogHelper 
+[INFO] - Capturing Screenshot for Succeeded Scenario - - [17:06:28] - LogHelper 
