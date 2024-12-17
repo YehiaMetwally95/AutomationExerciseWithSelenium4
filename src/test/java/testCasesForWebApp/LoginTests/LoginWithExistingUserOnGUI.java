@@ -1,11 +1,9 @@
 package testCasesForWebApp.LoginTests;
 
-import baseTest.BaseTest;
 import baseTest.BaseTestForWebApp;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.qameta.allure.*;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 import pagesForWebApp.HomePage;
 import yehiaEngine.managers.JsonManager;
@@ -13,7 +11,7 @@ import yehiaEngine.managers.SessionManager;
 
 import java.io.IOException;
 
-import static yehiaEngine.driverManager.AppiumFactory.getDriver;
+import static yehiaEngine.driverManager.AppiumFactory.*;
 
 @Epic("Automation Exercise Features")
 @Feature("User Login")
@@ -33,7 +31,7 @@ public class LoginWithExistingUserOnGUI extends BaseTestForWebApp {
                 .openLoginSignupPage()
                 .verifyLoginSignupPageIsOpened(json.getData("Messages.LoginHeader"),json.getData("Messages.SignupHeader"))
                 .loginWithValidUser(json.getData("Users[0].Email"),json.getData("Users[0].Password"))
-                .assertUserIsLoggedIn(json.getData("Users[1].Name"));
+                .assertUserIsLoggedIn(json.getData("Users[0].Name"));
 
         //Store Cookies into Json File for the next tests to bypass login
         new SessionManager(driver, jsonFilePathForSessionDataUser0)

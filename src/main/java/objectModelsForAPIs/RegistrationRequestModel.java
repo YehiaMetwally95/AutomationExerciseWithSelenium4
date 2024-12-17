@@ -20,8 +20,6 @@ public class RegistrationRequestModel {
 
     //Variables
     String registerEndpoint = getPropertiesValue("baseUrlApi")+"createAccount";
-    JsonManager json;
-
     String jsonBodyAsString;
     Response response;
     JsonMapper mapper;
@@ -67,5 +65,4 @@ public class RegistrationRequestModel {
 
         return new RegistrationResponseModel(requestObject, responseObject);
     }
-
 }
