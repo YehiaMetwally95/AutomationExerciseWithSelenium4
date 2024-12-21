@@ -34,8 +34,7 @@ public class BaseTest {
 
     @BeforeMethod
     //Open Browser
-    @Parameters({"BrowserType"})
-    public void setUpAndOpenBrowser(@Optional String browserType) throws IOException {
+    public void setUpAndOpenBrowser() throws IOException {
         //Open Browser
         isolatedDriver = openBrowser();
 
