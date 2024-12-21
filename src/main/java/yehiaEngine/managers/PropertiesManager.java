@@ -1,6 +1,7 @@
 package yehiaEngine.managers;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.WebDriver;
 import yehiaEngine.loggers.LogHelper;
 
 import java.io.File;

@@ -32,6 +32,7 @@ public class BaseTest {
         }
     }
 
+    @BeforeMethod
     //Open Browser
     @Parameters({"BrowserType"})
     public void setUpAndOpenBrowser(@Optional String browserType) throws IOException {
