@@ -10,20 +10,19 @@ import yehiaEngine.loggers.LogHelper;
 import java.time.Duration;
 import java.util.List;
 
-import static org.openqa.selenium.interactions.PointerInput.Kind.TOUCH;
 import static org.openqa.selenium.interactions.PointerInput.Origin.viewport;
 import static yehiaEngine.elementActions.Helpers.WaitsManager.getFluentWait;
 import static yehiaEngine.elementActions.Helpers.WaitsManager.getSwipeWait;
 import static yehiaEngine.managers.PropertiesManager.getPropertiesValue;
 
-public class W3CTouchActionsHelper  {
+public class W3CFingerActionsHelper {
 
     /**
      * *********************************  Helper Methods  *************************************
      */
     //Build the sequence of swipe by one finger according to W3c Touch Actions
     public static Sequence singleFingerSwipe(String fingerName, Point start, Point end) {
-        PointerInput finger = new PointerInput(TOUCH, fingerName);
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, fingerName);
         Sequence sequence = new Sequence(finger, 0);
 
         sequence.addAction(finger.createPointerMove(Duration.ofMillis(0), viewport(), start.getX(), start.getY()));
@@ -80,6 +79,11 @@ public class W3CTouchActionsHelper  {
         return driver.manage()
                 .window()
                 .getSize();
+    }
+
+    //Get the Dimensions of Element Size
+    public static Dimension getElementSize(WebElement element) {
+        return element.getSize();
     }
 
     // Write Text on TextBox and Log the Action

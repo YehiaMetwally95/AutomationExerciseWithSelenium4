@@ -38,7 +38,7 @@ public class UserDetailsRequestModel {
     @Step("Send Request of Get User Details")
     public UserDetailsResponseModel sendUserDetailsRequest() throws JsonProcessingException {
         response =
-                GetRequest(userDetailsEndpoint,queryParam);
+                GetRequest(userDetailsEndpoint,ParameterType.QUERY,queryParam);
         jsonBodyAsString = getResponseBody(response);
 
         mapper = new JsonMapper();

@@ -6,6 +6,7 @@ import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import pojoClassesForAPIs.SearchProductRequestPojo;
 import pojoClassesForAPIs.SearchProductResponsePojo;
+import yehiaEngine.managers.ApisManager;
 
 import static yehiaEngine.managers.ApisManager.MakeRequest;
 import static yehiaEngine.managers.ApisManager.getResponseBody;
@@ -37,7 +38,7 @@ public class SearchProductRequestModel {
     @Step("Send Request of Search For Product")
     public SearchProductResponseModel sendSearchProductRequest() throws JsonProcessingException {
         response =
-                MakeRequest("Post", searchProductEndpoint,requestObject, "application/x-www-form-urlencoded");
+                MakeRequest(ApisManager.MethodType.POST, searchProductEndpoint,requestObject, ApisManager.ContentType.URLENCODED);
         jsonBodyAsString = getResponseBody(response);
 
         mapper = new JsonMapper();

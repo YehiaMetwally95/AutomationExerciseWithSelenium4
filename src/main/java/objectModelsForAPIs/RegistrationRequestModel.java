@@ -57,7 +57,7 @@ public class RegistrationRequestModel {
     @Step("Send Request of Register New User")
     public RegistrationResponseModel sendRegisterRequest() throws JsonProcessingException {
         response =
-                MakeRequest("Post", registerEndpoint, requestObject, "application/x-www-form-urlencoded");
+                MakeRequest(MethodType.POST, registerEndpoint, requestObject, ContentType.URLENCODED);
         jsonBodyAsString = getResponseBody(response);
 
         mapper = new JsonMapper();

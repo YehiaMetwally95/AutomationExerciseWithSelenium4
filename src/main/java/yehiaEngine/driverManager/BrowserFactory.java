@@ -9,6 +9,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.safari.SafariOptions;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.Reporter;
@@ -44,6 +46,11 @@ public class BrowserFactory {
 
                 case "Edge" :
                     driver.set(new EdgeDriver(getEdgeOptions()));
+                    LogHelper.logInfoStep("Starting "+ browserType +" Browser ............");
+                    break;
+
+                case "Safari" :
+                    driver.set(new SafariDriver(getSarafiOptions()));
                     LogHelper.logInfoStep("Starting "+ browserType +" Browser ............");
                     break;
                 default:
@@ -116,6 +123,13 @@ public class BrowserFactory {
         option.addArguments("--start-minimized");
         if (executionType.equalsIgnoreCase("LocalHeadless") || executionType.equalsIgnoreCase("Remote"))
             option.addArguments("--headless");
+
+        return option;
+    }
+
+    private static SafariOptions getSarafiOptions()
+    {
+        SafariOptions option = new SafariOptions();
 
         return option;
     }

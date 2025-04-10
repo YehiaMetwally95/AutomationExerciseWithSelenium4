@@ -2,30 +2,48 @@
   "username": "Test2606768",
   "cookies_data": [
     {
-      "name": "FCNEC",
-      "value": "%5B%5B%22AKsRol8GMl4R54_OOKZBumfKOp60pxbkkh6bZK4EIq8RV46cdWetpyCbAMmFheI6X9i1znS7c_0IKSv2byM85q_OCK0H-WbwPGIrGpcPMsqFzU52LP2lYfjGMu_eUCNkz89xKPUX9kAQ6psC847YNdBaAGGWexvGkA%3D%3D%22%5D%5D",
+      "name": "__gpi",
+      "value": "UID\u003d0000100af8e58c04:T\u003d1744292232:RT\u003d1744292232:S\u003dALNI_MYl90MdbiF9cUjznbIh3Cab1Ku9fQ",
       "path": "/",
       "domain": ".automationexercise.com",
-      "expiry": "Mon Dec 08 02:16:42 EET 2025",
-      "isSecure": false,
+      "expiry": "Tue May 05 16:37:12 EEST 2026",
+      "isSecure": true,
+      "isHttpOnly": false
+    },
+    {
+      "name": "__eoi",
+      "value": "ID\u003d9e59c2f1cbafd926:T\u003d1744292232:RT\u003d1744292232:S\u003dAA-AfjZ7U_y_H4aIpLLgfztA64Me",
+      "path": "/",
+      "domain": ".automationexercise.com",
+      "expiry": "Tue Oct 07 16:37:12 EEST 2025",
+      "isSecure": true,
       "isHttpOnly": false
     },
     {
       "name": "sessionid",
-      "value": "u1s4x2t815bkbn2ids3ig38nz5qrxfix",
+      "value": "7sw1ls0q4ylopj3630k36s9l8nigy8m1",
       "path": "/",
       "domain": "automationexercise.com",
-      "expiry": "Sun Dec 22 02:16:45 EET 2024",
+      "expiry": "Thu Apr 24 15:37:15 EET 2025",
       "isSecure": false,
       "isHttpOnly": true
     },
     {
       "name": "csrftoken",
-      "value": "Ut8gi4kvybgkoxnlHGJBmkr3gMKUdgPAN5AEuxJPjvV9eElPqSkvfSKgsCdn14pe",
+      "value": "pR0XjNXYmYSSLSso3tgxCfoChDNsKzS3LOBwTmbvYepH5oxjSdn4v7qz7JqluDYc",
       "path": "/",
       "domain": "automationexercise.com",
-      "expiry": "Sun Dec 07 02:16:45 EET 2025",
+      "expiry": "Thu Apr 09 15:37:15 EET 2026",
       "isSecure": false,
+      "isHttpOnly": false
+    },
+    {
+      "name": "__gads",
+      "value": "ID\u003d70fdf4d53d57c3bc:T\u003d1744292232:RT\u003d1744292232:S\u003dALNI_MaWX4BNGHeqA1k7ljwAeOm_zWzUcw",
+      "path": "/",
+      "domain": ".automationexercise.com",
+      "expiry": "Tue May 05 16:37:12 EEST 2026",
+      "isSecure": true,
       "isHttpOnly": false
     }
   ]

@@ -109,7 +109,7 @@ public class HomePage {
     @Step("Assert User is Logged In")
     public HomePage assertUserIsLoggedIn(String username)   {
         CustomAssert.assertEquals(
-                bot.readText(loggedInButton),("Logged in as "+username)
+                bot.readText(loggedInButton).trim(),("Logged in as "+username)
         );
         return this;
     }
